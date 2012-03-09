@@ -1,0 +1,84 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:jQuery</span>appendTo(target)<br></h2>
+   <div class="desc">
+      <p>将指定的内容，插入到每个匹配元素内的结尾处。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.0 新增</span>appendTo(target)
+               								
+            </h4>
+            <div class="arguement"><strong>target</strong>
+               								(Selector, Element, jQuery)
+               								用于插入到匹配元素中的选择器, 元素, HTML 字符串, 或 jQuery 对象。
+            </div>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p><code>
+               <a href="append.htm">.append()</a>
+               </code> 和 <code>.appendTo()</code> 方法的功能是一样的。主要的区别在于语法指定（syntax-specifically）上，也就是说在调用方法时，选择的元素及指定的内容这两个参数的位置是不同的。对于 <code> .append()</code> 而言，选择器表达式写在方法的前面，作为待插入内容的容器，将要被插入的内容作为方法的参数。而 <code>.appendTo()</code> 正好相反，将要被插入的内容写在方法的前面（可以是选择器表达式或动态创建的标记），待插入内容的容器作为参数。
+         </p>
+         				        
+         <p>例如，有如下的 HTML:</p>
+         				        <pre>&lt;h2&gt;Greetings&lt;/h2&gt;
+&lt;div class="container"&gt;
+  &lt;div class="inner"&gt;Hello&lt;/div&gt;
+  &lt;div class="inner"&gt;Goodbye&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+         				        <p>可以一次性将需要插入的内容，插入到多个元素内的尾部：</p>
+         				        <pre>$('&lt;p&gt;Test&lt;/p&gt;').appendTo('.inner');
+</pre>
+         				        <p>其结果是，每个含有 inner 样式的 <code>&lt;div&gt;</code> 内的尾部，都被插入了新的内容：
+         </p>
+         				        <pre>&lt;h2&gt;Greetings&lt;/h2&gt;
+&lt;div class="container"&gt;
+  &lt;div class="inner"&gt;
+    Hello
+    &lt;p&gt;Test&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="inner"&gt;
+    Goodbye
+    &lt;p&gt;Test&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+         				        <p>也可以选择页面上的元素，并将其插入到另外元素内的尾部：</p>
+         				        <pre>$('h2').appendTo($('.container'));
+</pre>
+         				        <p>通过这种方法将页面上选择的元素插入到其它地方，实际上是将原来的元素移动到新的位置，而不是将克隆后的元素插入到新的位置：</p>
+         				        <pre>&lt;div class="container"&gt;
+  &lt;div class="inner"&gt;Hello&lt;/div&gt;
+  &lt;div class="inner"&gt;Goodbye&lt;/div&gt;
+  &lt;h2&gt;Greetings&lt;/h2&gt;
+&lt;/div&gt;
+</pre>
+         				        <p>然而，如果目标元素（即被当成容器的元素）不只一个，那么会将克隆后的插入元素，插入到每个目标元素内的尾部，然后返回新的结果集（原始元素和克隆的元素）。</p>
+         
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>将所有的 span 插入到 ID 为 "foo" 的元素内的末尾。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;#foo { background:yellow; }&lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;span&gt;I have nothing more to say... &lt;/span&gt;
+
+  &lt;div id="foo"&gt;FOO! &lt;/div&gt;
+
+&lt;script&gt;
+
+$("span").appendTo("#foo"); // check append() examples
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe></div>
+</div>

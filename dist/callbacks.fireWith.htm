@@ -1,0 +1,48 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:undefined</span>callbacks.fireWith(<em class="optional">[context]</em>, <em class="optional">[args]</em>)<br></h2>
+   <div class="desc">
+      <p>Call all callbacks in a list with the given context and arguments.</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.7 新增</span>callbacks.fireWith(<em class="optional">[context]</em>, <em class="optional">[args]</em>)
+               								
+            </h4>
+            <div class="arguement"><strong>context</strong>
+               								()
+               								 可选参数，A reference to the context in which the callbacks in the list should be fired.
+            </div>
+            <div class="arguement"><strong>args</strong>
+               								()
+               								 可选参数，An argument, or array of arguments, to pass to the callbacks in the list.
+            </div>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <h2 id="example-1">Example</h2>
+         
+         <p>Using <code>callbacks.fireWith()</code> to fire a list of callbacks with a specific context and an array of arguments:
+         </p>
+         <pre>
+// a sample logging function to be added to a callbacks list
+var log = function( value1, value2 ){
+    console.log( 'Received:' + value1 + ',' + value2 );
+}
+
+var callbacks = $.Callbacks();
+
+// add the log method to the callbacks list
+callbacks.add( log );
+
+// fire the callbacks on the list using the context 'window'
+// and an arguments array
+
+callbacks.fireWith( window, ['foo','bar']);
+
+// outputs: Received: foo, bar
+</pre>
+         </div>
+   </div>
+</div>

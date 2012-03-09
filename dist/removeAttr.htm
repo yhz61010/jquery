@@ -1,0 +1,68 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:jQuery</span>removeAttr(attributeName)<br></h2>
+   <div class="desc">
+      <p>从每个匹配的元素中移除指定的 attribute 属性。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.0 新增</span>removeAttr(attributeName)
+               								
+            </h4>
+            <div class="arguement"><strong>attributeName</strong>
+               								(String)
+               								将要移除的属性名; 从 jQuery 1.7 开始, 可以指定多个属性名，属性名之间用空格分隔。
+            </div>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p><code>.removeAttr()</code> 方法使用了 JavaScript 的 <code>removeAttribute()</code> 函数。可以直接在一个 jQuery 对象上调用该方法，并且它解决了跨浏览器的属性名不同的问题。（原文如下： it accounts for different attribute naming across browsers.）
+         </p>
+         
+         <p>
+            <strong>注意:</strong> 在 IE 6, 7 和 IE 8 中，无法使用 <code>.removeAttr()</code> 来移除 <code>onclick</code> 事件。为了避免潜在的问题，请使用 <code>.prop()</code> 方法来替代:
+         </p>
+         <pre>
+$element.prop("onclick", null);
+console.log("onclick property: ", $element[0].onclick);
+</pre>
+         </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>点击按钮，添加或删除按钮后面 input 元素的 title 属性。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;button&gt;Enable&lt;/button&gt;
+&lt;input type="text" title="hello there" /&gt;
+&lt;div id="log"&gt;&lt;/div&gt;
+
+
+&lt;script&gt;
+
+
+(function() {
+  var inputTitle = $("input").attr("title");
+  $("button").click(function () {
+    var input = $(this).next();
+
+    if ( input.attr("title") == inputTitle ) {
+      input.removeAttr("title")
+    } else {
+      input.attr("title", inputTitle);
+    }
+
+    $("#log").html( "input title is now " + input.attr("title") );
+  });
+})();
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe></div>
+</div>

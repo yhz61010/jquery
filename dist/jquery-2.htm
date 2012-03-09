@@ -1,0 +1,40 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:String</span>jquery
+   </h2>
+   <div class="desc">
+      <p>A string containing the jQuery version number.</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.0 新增</span>jquery
+            </h4>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p><code>.jquery</code> property is assigned to the jQuery prototype, commonly referred to by its alias <code>$.fn</code>. It is a string containing the version number of <code>jQuery</code>, such as "1.5.0" or "1.4.4".
+         </p>
+         
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>Determine if an object is a jQuery object</p>
+      <h5>jQuery 代码:</h5><pre><code>
+var a = { what: "A regular JS object" },
+    b = $('body');
+     
+if ( a.jquery ) { // falsy, since it's undefined
+    alert(' a is a jQuery object! ');    
+}
+
+if ( b.jquery ) { // truthy, since it's a string
+    alert(' b is a jQuery object! ');
+}
+</code></pre><h3>示例:</h3>
+      <p>Get the current version of jQuery running on the page</p>
+      <h5>jQuery 代码:</h5><pre><code>
+alert( 'You are running jQuery version: ' + $.fn.jquery );
+</code></pre></div>
+</div>

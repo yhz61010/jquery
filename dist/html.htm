@@ -1,0 +1,185 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:String</span>html()<br></h2>
+   <div class="desc">
+      <p>取得所有匹配的元素中，第一个匹配元素的 HTML 内容。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.0 新增</span>html()
+               								
+            </h4>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p>该方法对 XML 文档无效。</p>
+         
+         <p>在一个 HTML 文档中,<code>.html()</code> 可能得到任何元素的内容。如果指定的选择器表达式匹配了多个元素，那么只有第一个匹配元素的 HTML 内容会被返回。例如:
+         </p>
+         <pre>$('div.demo-container').html();</pre>
+         <p>为了返回如下 <code>&lt;div&gt;</code> 的内容,该 <code>&lt;div&gt;</code> 必须是文档中第一个含有 <code>class="demo-container"</code> 的 <code>&lt;div&gt;</code>:
+         </p>
+         <pre>&lt;div class="demo-container"&gt;
+  &lt;div class="demo-box"&gt;Demonstration Box&lt;/div&gt;
+&lt;/div&gt;</pre>
+         <p>得到的结果如下:</p>
+         <pre>&lt;div class="demo-box"&gt;Demonstration Box&lt;/div&gt;</pre>
+         <p>该方法使用了浏览器的 <code>innerHTML</code> 属性。有些浏览器返回的结果可能不是原始文档的 HTML 源代码。例如，如果属性的值只是英数字的话，那么 IE 有时不会使用引号包裹它们。
+         </p>
+         
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>点击一个段落，将它的 HTML 代码转换成文本。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+  p { margin:8px; font-size:20px; color:blue; 
+      cursor:pointer; }
+  b { text-decoration:underline; }
+  button { cursor:pointer; }
+  &lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;p&gt;
+
+    &lt;b&gt;Click&lt;/b&gt; to change the &lt;span id="tag"&gt;html&lt;/span&gt;
+  &lt;/p&gt;
+  &lt;p&gt;
+
+    to a &lt;span id="text"&gt;text&lt;/span&gt; node.
+  &lt;/p&gt;
+  &lt;p&gt;
+    This &lt;button name="nada"&gt;button&lt;/button&gt; does nothing.
+  &lt;/p&gt;
+
+&lt;script&gt;
+
+
+    $("p").click(function () {
+      var htmlStr = $(this).html();
+      $(this).text(htmlStr);
+    });
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe></div>
+</div>
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:jQuery</span>html(htmlString)<br></h2>
+   <div class="desc">
+      <p>为每个匹配的元素设置 HTML 内容。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.0 新增</span>html(htmlString)
+               								
+            </h4>
+            <div class="arguement"><strong>htmlString</strong>
+               								(String)
+               								将要为每个匹配元素设置的 HTML 字符串内容。
+            </div>
+         </li>
+         <li>
+            <h4><span>1.4 新增</span>html(function(index, oldhtml))
+               								
+            </h4>
+            <div class="arguement"><strong>function(index, oldhtml)</strong>
+               								(Function)
+               								一个函数，返回将要被设置的 HTML 内容。index 参数表示当前元素在所有匹配元素中的索引位置。oldhtml 参数表示原有的 HTML 内容。在调用该函数之前，jQuery 会先清空元素的内容。使用 oldhtml 参数可以取得之前的内容。在函数中，<code>this</code> 指向集合中的当前元素。
+            </div>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p><code>.html()</code> 方法对 XML 文档无效。
+         </p>
+         				        
+         <p>当使用 <code>.html()</code> 为元素设置内容时,该元素上任何原有的内容都会被新的内容所替换。例如：
+         </p>
+         				        <pre>&lt;div class="demo-container"&gt;
+  &lt;div class="demo-box"&gt;Demonstration Box&lt;/div&gt;
+&lt;/div&gt;</pre>
+         				        <p>可以向这样设置 <code>&lt;div class="demo-container"&gt;</code> 的内容：
+         </p>
+         				        <pre>$('div.demo-container')
+  .html('&lt;p&gt;All new content. &lt;em&gt;You bet!&lt;/em&gt;&lt;/p&gt;');</pre>
+         				        <p>上面的代码会替换 <code>&lt;div class="demo-container"&gt;</code> 内部的任何内容:
+         </p>
+         				        <pre>&lt;div class="demo-container"&gt;
+  &lt;p&gt;All new content. &lt;em&gt;You bet!&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;</pre>
+         <p>从 jQuery 1.4 开始,<code>.html()</code> 方法允许将一个函数作为参数，返回需要设定的 HTML 内容。
+         </p>
+         <pre>$('div.demo-container').html(function() {
+  var emph = '&lt;em&gt;' + $('p').length + ' paragraphs!&lt;/em&gt;';
+  return '&lt;p&gt;All new content for ' + emph + '&lt;/p&gt;';
+});</pre>
+         
+         <p>如果给定的文档中含有 6 个段落，那么上面的例子会为 <code>&lt;div class="demo-container"&gt;</code> 设置 <code>&lt;p&gt;All new content for &lt;em&gt;6 paragraphs!&lt;/em&gt;&lt;/p&gt;</code> 内容。
+         </p>
+         
+         
+         <p>该方法使用了浏览器的 <code>innerHTML</code> 属性。有些浏览器可能不会生成一个根据原始 HTML 源代码产生的 DOM 副本。例如，在 IE 8 之前,会将所有的 <code>href</code> 属性转换成绝对路径。IE 9 之前，如果不添加额外的 <a href="http://code.google.com/p/html5shiv/">compatibility layer（兼容层）</a>，IE 9 是无法正确处理 HTML 5 元素的。
+         </p>
+         
+         
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>为每个 div 添加一些 html。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+
+  .red { color:red; }
+  &lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;span&gt;Hello&lt;/span&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+
+&lt;script&gt;
+
+$("div").html("&lt;span class='red'&gt;Hello &lt;b&gt;Again&lt;/b&gt;&lt;/span&gt;");
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
+      <p>为每个 div 添加一些 html，然后对插入的 html 做进一步操作。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+  div { color:blue; font-size:18px; }
+  &lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+
+&lt;script&gt;
+
+
+
+    $("div").html("&lt;b&gt;Wow!&lt;/b&gt; Such excitement...");
+    $("div b").append(document.createTextNode("!!!"))
+              .css("color", "red");
+
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe></div>
+</div>

@@ -1,0 +1,61 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:jQuery</span>detach(<em class="optional">[selector]</em>)<br></h2>
+   <div class="desc">
+      <p>从 DOM 中移除匹配的元素，但保留移除元素上的事件及 jQuery 数据。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.4 新增</span>detach(<em class="optional">[selector]</em>)
+               								
+            </h4>
+            <div class="arguement"><strong>selector</strong>
+               								(Selector)
+               								 可选参数，选择器表达式，用于过滤出将要被移除的元素。
+            </div>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p><code>.detach()</code> 方法和 <code>
+               <a href="remove.htm">.remove()</a>
+               </code> 一样，只是 <code>.detach()</code> 会保留所有被移除元素上的事件及 jQuery 数据。这个方法特别适用于需要将之前移除的元素重新插入到 DOM 中的情况。
+         </p>
+         
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>从 DOM 中移除所有的段落。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;p { background:yellow; margin:6px 0; } p.off { background: black; }&lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;p&gt;Hello&lt;/p&gt; 
+  how are 
+  &lt;p&gt;you?&lt;/p&gt;
+  &lt;button&gt;Attach/detach paragraphs&lt;/button&gt;
+
+&lt;script&gt;
+
+
+    $("p").click(function(){
+      $(this).toggleClass("off");
+    });
+    var p;
+    $("button").click(function(){
+      if ( p ) {
+        p.appendTo("body");
+        p = null;
+      } else {
+        p = $("p").detach();
+      }
+    });
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe></div>
+</div>

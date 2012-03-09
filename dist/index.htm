@@ -1,0 +1,267 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:Number</span>index()<br></h2>
+   <div class="desc">
+      <p>从匹配的元素中搜索给定元素的索引值。索引值从 0 开始计数。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.4 新增</span>index()
+               								
+            </h4>
+         </li>
+         <li>
+            <h4><span>1.4 新增</span>index(selector)
+               								
+            </h4>
+            <div class="arguement"><strong>selector</strong>
+               								(Selector)
+               								一个选择器，代表一个 jQuery 集合，将会从这个集合中查找元素。
+            </div>
+         </li>
+         <li>
+            <h4><span>1.0 新增</span>index(element)
+               								
+            </h4>
+            <div class="arguement"><strong>element</strong>
+               								(Element, jQuery)
+               								将要用于查找的 DOM 元素，或者 jQuery 对象中的第一个元素。
+            </div>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <h4>返回值</h4>
+         
+         <p>如果不向 <code>.index()</code> 方法传递任何参数，则返回值就是 jQuery 对象中第一个元素相对于它的兄弟元素的位置。
+         </p>
+         
+         <p>如果在一组元素上调用 <code>.index()</code> 方法，并且参数是一个 DOM 元素或是 jQuery 对象，<code>.index()</code> 返回值就是传入的元素相对于原先集合的位置。
+         </p>
+         
+         <p>如果参数是一个选择器，<code>.index()</code> 返回值就是原先的元素相对于选择器匹配到的元素的位置。如果找不到匹配的元素，<code>.index()</code> 返回 -1。
+         </p>
+         
+         <h4>细节</h4>
+         
+         <p><code>.get()</code> 接受一个索引值参数并返回对应的 DOM 节点。<code>.index()</code> 与其正好相反，接受一个 DOM 节点，然后返回其索引值。假设页面上有一个简单的无序列表：
+         </p>
+         <pre>
+&lt;ul&gt;
+  &lt;li id="foo"&gt;foo&lt;/li&gt;
+  &lt;li id="bar"&gt;bar&lt;/li&gt;
+  &lt;li id="baz"&gt;baz&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+         <p>如果我们获取了三个列表项中的一个元素（例如，通过 DOM 函数，或者事件处理函数中的上下文 this），<code>.index()</code> 能够在匹配的元素中找到这个列表项：
+         </p>
+         <pre>
+var listItem = document.getElementById('bar');
+alert('Index: ' + $('li').index(listItem));
+</pre>
+         <p>我们就能得到这个列表项所在的位置（从 0 开始计数）：</p>
+         
+         <p>
+            <span class="output">Index: 1</span>
+            
+         </p>
+         
+         <p>类似的，如果我们获得了一个 jQuery 对象，该对象是这三个列表项之一，那么 <code>.index()</code> 也能用于搜索那个列表项：
+         </p>
+         <pre>
+var listItem = $('#bar');
+alert('Index: ' + $('li').index(listItem));
+</pre>
+         <p>我们同样能得到这个列表项所在的位置（从 0 开始计数）：</p>
+         
+         <p>
+            <span class="output">Index: 1</span>
+            
+         </p>
+         
+         <p>注意，如果作为 <code>.index()</code> 参数的 jQuery 集合含有多个元素，那么只有第一个元素会被使用：
+         </p>
+         <pre>
+var listItems = $('li:gt(0)');
+alert('Index: ' + $('li').index(listItems));
+</pre>
+         <p>于是，我们得到了匹配的列表项集合中，第一个元素的位置（从 0 开始计数）：</p>
+         
+         <p>
+            <span class="output">Index: 1</span>
+            
+         </p>
+         
+         <p>如果我们将一个字符串传递给 <code>.index()</code> 方法，这个字符串会被解析成 jQuery 选择器，将会定位到调用 <code>.index()</code> 的 jQuery 对象中的第一个元素相对于由这个选择器匹配到的元素集合中的位置：
+         </p>
+         <pre>
+var listItem = $('#bar');
+alert('Index: ' + listItem.index('li'));
+</pre>
+         <p>我们能得到这个列表项所在的位置（从 0 开始计数）：</p>
+         
+         <p>
+            <span class="output">Index: 1</span>
+            
+         </p>
+         
+         <p>如果我们忽略参数，<code>.index()</code> 将返回集合中第一个元素相对于其兄弟元素的位置：
+         </p>
+         <pre>alert('Index: ' + $('#bar').index();</pre>
+         <p>我们又一次得到了这个列表项从 0 开始计数的位置：</p>
+         
+         <p>
+            <span class="output">Index: 1</span>
+            
+         </p>
+         
+         
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>点击后，返回那个 div 在页面上的索引值(从 0 开始计数)。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+div { background:yellow; margin:5px; }
+span { color:red; }
+&lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;span&gt;Click a div!&lt;/span&gt;
+&lt;div&gt;First div&lt;/div&gt;
+&lt;div&gt;Second div&lt;/div&gt;
+&lt;div&gt;Third div&lt;/div&gt;
+
+&lt;script&gt;
+
+
+$("div").click(function () {
+  // this is the dom element clicked
+  var index = $("div").index(this);
+  $("span").text("That was div index #" + index);
+});
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
+      <p>返回 ID 为 bar 的元素的索引值。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;div { font-weight: bold; color: #090; }&lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;ul&gt;
+  &lt;li id="foo"&gt;foo&lt;/li&gt;
+  &lt;li id="bar"&gt;bar&lt;/li&gt;
+  &lt;li id="baz"&gt;baz&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div&gt;&lt;/div&gt;
+
+&lt;script&gt;
+
+var listItem = $('#bar');
+    $('div').html( 'Index: ' + $('li').index(listItem) );
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
+      <p>返回 jQuery 集合中第二个列表项的索引值。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;div { font-weight: bold; color: #090; }&lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;ul&gt;
+  &lt;li id="foo"&gt;foo&lt;/li&gt;
+  &lt;li id="bar"&gt;bar&lt;/li&gt;
+  &lt;li id="baz"&gt;baz&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div&gt;&lt;/div&gt;
+
+&lt;script&gt;
+
+var listItems = $('li:gt(0)');
+$('div').html( 'Index: ' + $('li').index(listItems) );
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
+      <p>返回 ID 为 bar 的元素相对于所有 &lt;li&gt; 元素的索引值。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;div { font-weight: bold; color: #090; }&lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;ul&gt;
+  &lt;li id="foo"&gt;foo&lt;/li&gt;
+  &lt;li id="bar"&gt;bar&lt;/li&gt;
+  &lt;li id="baz"&gt;baz&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div&gt;&lt;/div&gt;
+
+&lt;script&gt;
+
+$('div').html('Index: ' +  $('#bar').index('li') );
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
+      <p>返回 ID 为 bar 的元素相对于它的兄弟元素的索引值。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;div { font-weight: bold; color: #090; }&lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;ul&gt;
+  &lt;li id="foo"&gt;foo&lt;/li&gt;
+  &lt;li id="bar"&gt;bar&lt;/li&gt;
+  &lt;li id="baz"&gt;baz&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div&gt;&lt;/div&gt;
+
+&lt;script&gt;
+
+var barIndex = $('#bar').index();
+$('div').html( 'Index: ' +  barIndex );
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
+      <p>由于没有元素的 ID 是 foobar，所以返回 -1。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;div { font-weight: bold; color: #090; }&lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;ul&gt;
+  &lt;li id="foo"&gt;foo&lt;/li&gt;
+  &lt;li id="bar"&gt;bar&lt;/li&gt;
+  &lt;li id="baz"&gt;baz&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div&gt;&lt;/div&gt;
+
+&lt;script&gt;
+
+var foobar = $("li").index( $('#foobar') );
+$('div').html('Index: ' + foobar);
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe></div>
+</div>

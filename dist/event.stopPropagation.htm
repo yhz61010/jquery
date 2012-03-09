@@ -1,0 +1,47 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2>event.stopPropagation()<br></h2>
+   <div class="desc">
+      <p>防止事件冒泡到 DOM 树上，也就是不触发任何父元素上的事件处理函数。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.0 新增</span>event.stopPropagation()
+               								
+            </h4>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p>我们可以用 <code><a href="event.isPropagationStopped.htm">event.isPropagationStopped()</a></code> 来确定这个方法是否(在那个事件对象上)被调用过了。
+         </p>
+         
+         <p>这个方法对使用 <a href="trigger.htm">trigger()</a> 进行自定义的事件同样有效。
+         </p>
+         
+         <p>注意，该方法不会阻止<em>同一个元素</em>上的其它事件处理函数的运行。
+         </p> 
+         
+      </div>
+      <h3 id="notes-0">补充说明:</h3>
+      <div class="longdesc">
+         <ul>
+            <li>因为 <code><a href="http://api.jquery.com/live">
+                     .live()</a></code>
+               事件一旦被传播到文档顶部，就不可能再阻止 live 事件的传播。类似的，通过 <code>
+                  <a href="http://api.jquery.com/delegate/">.delegate()</a>
+                  </code> 执行的事件，也会传播到调用它们的元素上。同时，任何在 DOM 树中，比这些元素低的元素上绑定的相同事件，在 <code>.delegate()</code> 事件被调用的时候，也会被触发。因此，如果要在事件中阻止委托事件被触发，可以通过调用 <code>
+                  <a href="http://api.jquery.com/event.stopPropagation/">event.stopPropagation()</a>
+                  </code> 方法，或返回 <code>false</code> 的方式来实现。
+            </li>
+         </ul>
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>禁止 click 事件的冒泡。</p>
+      <h5>jQuery 代码:</h5><pre><code>$("p").click(function(event){
+  event.stopPropagation();
+  // do something
+});  </code></pre></div>
+</div>

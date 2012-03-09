@@ -1,0 +1,163 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:jQuery</span>wrap(wrappingElement)<br></h2>
+   <div class="desc">
+      <p>在每个匹配的元素外包裹一个 HTML 结构。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.0 新增</span>wrap(wrappingElement)
+               								
+            </h4>
+            <div class="arguement"><strong>wrappingElement</strong>
+               								(String, Selector, Element, jQuery)
+               								用于包裹匹配元素的 HTML 代码片断，选择器表达式，jQuery 对象，或 DOM 元素。
+            </div>
+         </li>
+         <li>
+            <h4><span>1.4 新增</span>wrap(function(index))
+               								
+            </h4>
+            <div class="arguement"><strong>function(index)</strong>
+               								(Function)
+               								回调函数，返回用于包裹匹配元素的 HTML 内容或 jQuery 对象。index 参数表示匹配元素在集合中的集合。该函数内的 <code>this</code> 指向集合中的当前元素。
+            </div>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p>任何可传给 <code>$()</code> 工厂的字符串或对象，都可以作为 <code>.wrap()</code> 函数的参数，表示包裹用的 DOM 结构。这种结构可以嵌套多层，但是最内层只能有一个元素。每个匹配的元素都会被这种结构包裹。该方法返回原始的元素集，以便之后使用链式方法。
+         </p>
+         
+         <p>例如，有如下的 HTML:</p>
+         <pre>&lt;div class="container"&gt;
+  &lt;div class="inner"&gt;Hello&lt;/div&gt;
+  &lt;div class="inner"&gt;Goodbye&lt;/div&gt;
+&lt;/div&gt;</pre>
+         				        <p>使用 <code>.wrap()</code>,我们可以在含有 inner 样式的 <code>&lt;div&gt;</code> 外插入一个 HTML 结构。例如：
+         </p>
+         				        <pre>$('.inner').wrap('&lt;div class="new" /&gt;');</pre>
+         				        <p>新的 <code>&lt;div&gt;</code> 元素会被添加到 DOM 中。结果是每个匹配的元素外，被 <code>&lt;div&gt;</code> 包裹：
+         </p>
+         				        <pre>&lt;div class="container"&gt;
+  &lt;div class="new"&gt;
+    &lt;div class="inner"&gt;Hello&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="new"&gt;
+    &lt;div class="inner"&gt;Goodbye&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+         <p>wrap(function(index)) 方法允许我们指定一个回调函数。这个回调函数会在每个匹配的元素上调用一次。它返回一个 DOM 元素，jQuery 对象，或是 HTML 片断，用于包裹匹配的元素。例如：</p>
+         <pre>$('.inner').wrap(function() {
+  return '&lt;div class="' + $(this).text() + '" /&gt;';
+});</pre>
+         <p>上述代码产生的结果是，每个用于包裹的 <code>&lt;div&gt;</code> 含有的样式就是对应匹配元素内的文本：
+         </p>
+         <pre>&lt;div class="container"&gt;
+  &lt;div class="Hello"&gt;
+    &lt;div class="inner"&gt;Hello&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="Goodbye"&gt;
+    &lt;div class="inner"&gt;Goodbye&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+         </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>为所有的段落包裹一个 div。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+
+  div { border: 2px solid blue; }
+  p { background:yellow; margin:4px; }
+  &lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;p&gt;Hello&lt;/p&gt;
+  &lt;p&gt;cruel&lt;/p&gt;
+  &lt;p&gt;World&lt;/p&gt;
+
+&lt;script&gt;
+
+$("p").wrap("&lt;div&gt;&lt;/div&gt;");
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
+      <p>为 span 标签包裹一个对象树。注意，任何 span 之间的元素都不会被包裹，例如例子中使用的 &lt;strong&gt; (红色文本)。即使是 span 之间的空格也不会被包裹。可以查看原始 HTML 的源代码。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+
+  div { border:2px blue solid; margin:2px; padding:2px; }
+  p { background:yellow; margin:2px; padding:2px; }
+  strong { color:red; }
+  &lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;span&gt;Span Text&lt;/span&gt;
+  &lt;strong&gt;What about me?&lt;/strong&gt;
+  &lt;span&gt;Another One&lt;/span&gt;
+
+&lt;script&gt;
+
+$("span").wrap("&lt;div&gt;&lt;div&gt;&lt;p&gt;&lt;em&gt;&lt;b&gt;&lt;/b&gt;&lt;/em&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;");
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
+      <p>为所有的段落包裹一个 div。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+
+  div { border: 2px solid blue; }
+  p { background:yellow; margin:4px; }
+  &lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;p&gt;Hello&lt;/p&gt;
+  &lt;p&gt;cruel&lt;/p&gt;
+  &lt;p&gt;World&lt;/p&gt;
+
+&lt;script&gt;
+
+$("p").wrap(document.createElement("div"));
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
+      <p>使用一个嵌套深度为两层 div 的 jQuery 对象来包裹所有的段落。注意，这并不会移动用于包裹的对象，只是将克隆后的对象用于包裹。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+
+  div { border: 2px solid blue; margin:2px; padding:2px; }
+  .doublediv { border-color:red; }
+  p { background:yellow; margin:4px; font-size:14px; }
+  &lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;p&gt;Hello&lt;/p&gt;
+  &lt;p&gt;cruel&lt;/p&gt;
+  &lt;p&gt;World&lt;/p&gt;
+  &lt;div class="doublediv"&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;script&gt;
+
+$("p").wrap($(".doublediv"));
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe></div>
+</div>

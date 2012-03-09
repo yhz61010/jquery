@@ -1,0 +1,33 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:Boolean</span>jQuery.isEmptyObject(object)<br></h2>
+   <div class="desc">
+      <p>测试一个对象是否为空对象（不包含任何属性）。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.4 新增</span>jQuery.isEmptyObject(object)
+               								
+            </h4>
+            <div class="arguement"><strong>object</strong>
+               								(Object)
+               								用于检测是否为空的对象。
+            </div>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p>从 jQuery 1.4 开始，这个方法既检测对象本身的属性，也检测从原型继承过来的属性(因为没有使用 hasOwnProperty)。该方法的参数应该是一个普通的 JavaScript <code>Object</code>，如果传入其它类型的对象（如 DOM 元素，基本类型 string/number, 或 宿主对象（host objects））可能会在跨浏览器时返回不一致的结果。要判断哪些对象是普通的 JavaScript 对象，请使用 <code><a href="http://api.jquery.com/jQuery.isPlainObject">
+                  $.isPlainObject()
+                  </a></code> 方法。
+            
+         </p>
+         
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>测试一个对象是否为空对象。</p>
+      <h5>jQuery 代码:</h5><pre><code>jQuery.isEmptyObject({}) // true
+jQuery.isEmptyObject({ foo: "bar" }) // false</code></pre></div>
+</div>

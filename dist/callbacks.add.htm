@@ -1,0 +1,57 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:undefined</span>callbacks.add(callbacks)<br></h2>
+   <div class="desc">
+      <p>Add a callback or a collection of callbacks to a callback list.</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.7 新增</span>callbacks.add(callbacks)
+               								
+            </h4>
+            <div class="arguement"><strong>callbacks</strong>
+               								(Function)
+               								A function, or array of functions, that are to be added to the callback list.
+            </div>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <h2 id="example-1">Example</h2>
+         
+         <p>Using <code>callbacks.add()</code> to add new callbacks to a callback list:
+         </p>
+         <pre>
+// a sample logging function to be added to a callbacks list
+var foo = function( value ){
+    console.log( 'foo:' + value );
+}
+
+// another function to also be added to the list
+var bar = function( value ){
+    console.log( 'bar:' + value );
+}
+
+var callbacks = $.Callbacks();
+
+// add the function 'foo' to the list
+callbacks.add( foo );
+
+// fire the items on the list
+callbacks.fire( 'hello' );  
+// outputs: 'foo: hello'
+
+// add the function 'bar' to the list
+callbacks.add( bar );
+
+// fire the items on the list again
+callbacks.fire( 'world' );  
+
+// outputs:
+// 'foo: world'
+// 'bar: world'
+</pre>
+         
+         </div>
+   </div>
+</div>

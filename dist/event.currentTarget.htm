@@ -1,0 +1,33 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:Element</span>event.currentTarget
+   </h2>
+   <div class="desc">
+      <p>在事件冒泡阶段的当前 DOM 元素。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.3 新增</span>event.currentTarget
+            </h4>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p>这个属性通常与函数的 <code>this</code> 相同。
+         </p>
+         
+         <p>
+            <em>如果你使用了 <a href="jQuery.proxy.htm">jQuery.proxy</a> 或其它方式操作了作用域，<code>this</code> 会等于你所指定的内容，而不再是 <code>event.currentTarget</code>
+               </em>。
+            
+         </p>
+         
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>如果 currentTarget 完全等同于 `this` 则弹出提示框。</p>
+      <h5>jQuery 代码:</h5><pre><code>$("p").click(function(event) {
+  alert( event.currentTarget === this ); // true
+});  </code></pre></div>
+</div>

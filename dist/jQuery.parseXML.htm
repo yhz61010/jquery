@@ -1,0 +1,63 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:XMLDocument</span>jQuery.parseXML(data)<br></h2>
+   <div class="desc">
+      <p>Parses a string into an XML document.</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.5 新增</span>jQuery.parseXML(data)
+               								
+            </h4>
+            <div class="arguement"><strong>data</strong>
+               								(String)
+               								a well-formed XML string to be parsed
+            </div>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p>
+            <code>jQuery.parseXML</code> uses the native parsing function of the browser to create a valid XML Document. This document can then be passed to <code>jQuery</code> to create a typical jQuery object that can be traversed and manipulated.
+         </p>
+         
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>Create a jQuery object using an XML string and obtain the value of the title node.</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+
+&lt;p id="someElement"&gt;&lt;/p&gt;
+&lt;p id="anotherElement"&gt;&lt;/p&gt;
+
+  
+
+
+&lt;script&gt;
+
+
+var xml = "&lt;rss version='2.0'&gt;&lt;channel&gt;&lt;title&gt;RSS Title&lt;/title&gt;&lt;/channel&gt;&lt;/rss&gt;",
+    xmlDoc = $.parseXML( xml ),
+    $xml = $( xmlDoc ),
+    $title = $xml.find( "title" );
+
+/* append "RSS Title" to #someElement */
+$( "#someElement" ).append( $title.text() );
+
+/* change the title to "XML Title" */
+$title.text( "XML Title" );
+
+/* append "XML Title" to #anotherElement */
+$( "#anotherElement" ).append( $title.text() );
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe></div>
+</div>

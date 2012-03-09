@@ -1,0 +1,226 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:jQuery</span>data(key, value)<br></h2>
+   <div class="desc">
+      <p>在匹配的元素上随心所欲的存放数据。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.2.3 新增</span>data(key, value)
+               								
+            </h4>
+            <div class="arguement"><strong>key</strong>
+               								(String)
+               								一个字符串键，代表将要被存储的数据。
+            </div>
+            <div class="arguement"><strong>value</strong>
+               								(Object)
+               								新的数据值；可以是任何 Javascript 类型，包括数组和对象。
+            </div>
+         </li>
+         <li>
+            <h4><span>1.4.3 新增</span>data(obj)
+               								
+            </h4>
+            <div class="arguement"><strong>obj</strong>
+               								(Object)
+               								用于设置或更新数据用的键值对。
+            </div>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p><code>.data()</code> 方法允许我们安全的将任何类型的数据附加到DOM元素上，而不用担心循环引用和内存泄露之类的问题。
+         </p>
+         
+         <p>我们可以在单一元素上设置多个不同的值，之后就可以获取这些值：</p>
+         <pre>
+$('body').data('foo', 52);
+$('body').data('bar', { myType: 'test', count: 40 });
+
+$('body').data('foo'); // 52
+$('body').data(); // {foo: 52, bar: { myType: 'test', count: 40 }}
+</pre>
+         <p>从 jQuery 1.4.3 起，通过 <code>.data(obj)</code> 给元素设置数据时，会在元素原先存放的数据上扩展。jQuery 本身也通过 <code>.data()</code> 方法将信息存储在 'events' 和 'handle'中，并且 jQuery 也保留任何以下划线开头的数据名称，以供内部使用。
+         </p>
+         
+         <p><strong>特别注意</strong>：从 jQuery 1.4 起到 jQuery 1.4.2 的这几个版本中， .data(obj) 方法会<strong>完全替换</strong>掉元素上的所有数据，而不是扩展数据对象。如果你使用了第三方插件，我们不建议完全替换掉元素上的数据对象，因为插件也有可能在上面存放数据。
+         </p>
+         
+         <p>由于浏览器与插件和外部代码的交互方式，导致 <code>.data()</code> 方法无法在 <code>&lt;object&gt;</code> (除非它是一个Flash插件)，<code>&lt;applet&gt;</code> 或者 <code>&lt;embed&gt;</code> 元素上存放数据。
+         </p>
+         
+      </div>
+      <h3 id="notes-0">补充说明:</h3>
+      <div class="longdesc">
+         <ul>
+            <li>注意，目前该方法不具有跨平台性，因为 IE 不支持在 XML 文档中通过 expando 属性进行数据存储。</li>
+         </ul>
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>在 div 元素上先存储再获取数据。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+  div { color:blue; }
+  span { color:red; }
+  &lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div&gt;
+    The values stored were 
+    &lt;span&gt;&lt;/span&gt;
+    and
+    &lt;span&gt;&lt;/span&gt;
+  &lt;/div&gt;
+
+&lt;script&gt;
+
+
+$("div").data("test", { first: 16, last: "pizza!" });
+$("span:first").text($("div").data("test").first);
+$("span:last").text($("div").data("test").last);
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe></div>
+</div>
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:Object</span>data(key)<br></h2>
+   <div class="desc">
+      <p>返回 jQuery 对象集合中第一个元素上储存的数据，这个数据是先前用data(name, value)设定的。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.2.3 新增</span>data(key)
+               								
+            </h4>
+            <div class="arguement"><strong>key</strong>
+               								(String)
+               								先前存放的数据名。
+            </div>
+         </li>
+         <li>
+            <h4><span>1.4 新增</span>data()
+               								
+            </h4>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p><code>.data()</code> 方法允许我们安全的将任何类型的数据附加到 DOM 元素上，而不用担心循环引用和内存泄露之类的问题。我们可以同时获取单一元素上几个独立的数据，或者将它们作为一个集合返回：
+         </p>
+         <pre>
+alert($('body').data('foo'));
+alert($('body').data());
+</pre>
+         <p>上面两行会显示先前设置在 <code>body</code> 元素上的数据。如果该元素上没有设置过任何数据，那么会返回 <code>undefined</code>。
+         </p>
+         <pre>
+alert( $("body").data("foo")); //undefined
+$("body").data("bar", "foobar");
+alert( $("body").data("bar")); //foobar
+</pre>
+         <p>
+            <strong>HTML 5 data- 属性</strong>
+            
+         </p>
+         
+         <p>从 jQuery 1.4.3 开始，<a href="http://ejohn.org/blog/html-5-data-attributes/">HTML 5 data- 属性</a> 会被自动放入到 jQuery 的 data 对象中。对这种内嵌破折号（即 “-”）的属性的处理方式，在 jQuery 1.6 中已经发生了改变，以符合 <a href="http://www.w3.org/TR/html5/elements.html#embedding-custom-non-visible-data-with-the-data-attributes">W3C HTML5 规范</a>.
+         </p>
+         
+         
+         <p>例如，有如下的 HTML:</p>
+         
+         <pre>&lt;div data-role="page" data-last-value="43" data-hidden="true" data-options='{"name":"John"}'&gt;&lt;/div&gt;</pre>
+         
+         <p>那么就可以通过下面的 jQuery 代码来获得数据。下面每个表达式的值都是 true。</p>
+         
+         <pre>$("div").data("role") === "page";
+$("div").data("lastValue") === 43;
+$("div").data("hidden") === true;
+$("div").data("options").name === "John";</pre>
+         
+         <p>用 <code>.data()</code> 方法取出的值将会自动转换成对应的 JavaScript 类型（包括 boolean, number, object, array 和 null），若无法自动转换成上述类型，则将作为字符串类型。若想将取出的属性值直接当作字符串的话，请使用 <code>
+               <a href="attr.htm">attr()</a>
+               </code> 方法。若取出的值是一个以字符串形式表示的对象，(以 '{' 开头) 或是一个数组 (以 '[' 开头)，那么 jQuery 将使用 <code>jQuery.parseJSON</code> 方法进行解析，但该字符串必须满足 <a href="http://en.wikipedia.org/wiki/JSON#Data_types.2C_syntax_and_example">有效的 JSON 语法</a> 
+            <em>属性名使用引号包裹</em>。另外，data- 属性只会在第一次用 .data() 方法获取数据的时候，从 HTML 代码中获取，并保存到 jQuery 内部对象中,之后 <code>.data()</code> 方法就不会再访问或修改 data- 属性的值了。
+         </p>
+         
+         <p>调用 <code>.data()</code> 时如果不带参数，将会以 JavaScript 对象的形式获取所有数据。这个对象可以安全的存放在变量中，因为一旦这个新对象被提取出来，之后对元素进行的 <code>.data(obj)</code> 操作，将不会再影响这个对象。另外，直接操作这个对象会比每次调用 <code>.data()</code> 来设置或获取值要快一些：
+         </p>
+         <pre>
+var mydata = $("#mydiv").data();
+if ( mydata.count &lt; 9 ) {
+    mydata.count = 43;
+    mydata.status = "embiggened";
+}
+</pre>
+         </div>
+      <h3 id="notes-0">补充说明:</h3>
+      <div class="longdesc">
+         <ul>
+            <li>注意，目前该方法不具有跨平台性，因为 IE 不支持在 XML 文档中通过 expando 属性进行数据存储。</li>
+         </ul>
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>获取存放在元素上的名为 "blah" 的数据。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+  div { margin:5px; background:yellow; }
+  button { margin:5px; font-size:14px; }
+  p { margin:5px; color:blue; }
+  span { color:red; }
+  &lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div&gt;A div&lt;/div&gt;
+  &lt;button&gt;Get "blah" from the div&lt;/button&gt;
+  &lt;button&gt;Set "blah" to "hello"&lt;/button&gt;
+
+  &lt;button&gt;Set "blah" to 86&lt;/button&gt;
+  &lt;button&gt;Remove "blah" from the div&lt;/button&gt;
+  &lt;p&gt;The "blah" value of this div is &lt;span&gt;?&lt;/span&gt;&lt;/p&gt;
+
+&lt;script&gt;
+
+
+$("button").click(function(e) {
+  var value;
+
+  switch ($("button").index(this)) {
+    case 0 :
+      value = $("div").data("blah");
+      break;
+    case 1 :
+      $("div").data("blah", "hello");
+      value = "Stored!";
+      break;
+    case 2 :
+      $("div").data("blah", 86);
+      value = "Stored!";
+      break;
+    case 3 :
+      $("div").removeData("blah");
+      value = "Removed!";
+      break;
+  }
+
+  $("span").text("" + value);
+});
+
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe></div>
+</div>

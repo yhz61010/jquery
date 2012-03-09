@@ -1,0 +1,95 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:jQuery</span>parentsUntil(<em class="optional">[selector]</em>, <em class="optional">[filter]</em>)<br></h2>
+   <div class="desc">
+      <p>查找当前元素集的每个祖先元素，直到遇到与选择器， DOM 节点或 jQuery 对象匹配的元素为止，但不包括这些元素。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.4 新增</span>parentsUntil(<em class="optional">[selector]</em>, <em class="optional">[filter]</em>)
+               								
+            </h4>
+            <div class="arguement"><strong>selector</strong>
+               								(Selector)
+               								 可选参数，选择器表达式字符串，用于确定匹配到哪个祖先元素时停止匹配。
+            </div>
+            <div class="arguement"><strong>filter</strong>
+               								(Selector)
+               								 可选参数，用于匹配元素的选择器表达式字符串。
+            </div>
+         </li>
+         <li>
+            <h4><span>1.6 新增</span>parentsUntil(<em class="optional">[element]</em>, <em class="optional">[filter]</em>)
+               								
+            </h4>
+            <div class="arguement"><strong>element</strong>
+               								(Element)
+               								 可选参数，DOM 节点或 jQuery 对象，用于确定匹配到哪个祖先元素时停止匹配。
+            </div>
+            <div class="arguement"><strong>filter</strong>
+               								(Selector)
+               								 可选参数，用于匹配元素的选择器表达式字符串。
+            </div>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p>如果提供一个选择器表达式代表DOM元素集合， <code>.parentsUntil()</code> 方法会找遍所有这些元素的祖先元素，直到遇到了跟参数匹配的元素才会停止。返回的jQuery对象中包含了所有找到的祖先元素，除了与 <code>.parentsUntil()</code> 选择器匹配的那个元素。
+         </p>
+         
+         <p>如果提供的选择器没有匹配到任何元素，或者没有提供选择器，那么所有的祖先元素都会被选中。其效果与没有提供参数的 <code>.parents()</code> 一样。
+         </p>
+         
+         <p>
+            <strong>从 jQuery 1.6 开始</strong>, 可以使用 DOM 节点 或 jQuery 对象作为 <strong>.parentsUntil()</strong> 的第一个参数。
+         </p>
+         
+         <p>该方法的 filter 参数是可选的。如果提供了此参数，就按照此参数指定的选择器表达式进行筛选。</p>
+         
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>查找 &lt;li class="item-a"&gt; 的所有祖先元素，直到遇到 &lt;ul class="level-1"&gt; 为止，并将这些元素的背景设为红色。同样的，查找 &lt;li class="item-2"&gt; 的祖先元素，并且这些元素要有"yes"样式，直到遇到
+         &lt;ul class="level-1"&gt; 为止，并将这些元素的边框设置为绿色。
+      </p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+
+&lt;ul class="level-1 yes"&gt;
+  &lt;li class="item-i"&gt;I&lt;/li&gt;
+  &lt;li class="item-ii"&gt;II
+    &lt;ul class="level-2 yes"&gt;
+      &lt;li class="item-a"&gt;A&lt;/li&gt;
+      &lt;li class="item-b"&gt;B
+        &lt;ul class="level-3"&gt;
+          &lt;li class="item-1"&gt;1&lt;/li&gt;
+          &lt;li class="item-2"&gt;2&lt;/li&gt;
+          &lt;li class="item-3"&gt;3&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li class="item-c"&gt;C&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li class="item-iii"&gt;III&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script&gt;
+
+
+$("li.item-a").parentsUntil(".level-1")
+  .css("background-color", "red");
+
+$("li.item-2").parentsUntil( $("ul.level-1"), ".yes" )
+  .css("border", "3px solid green");
+    
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="220px"></iframe></div>
+</div>
