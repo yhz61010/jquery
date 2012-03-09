@@ -1,0 +1,5 @@
+1. Ajax - load 与 事件 - load 应该是两个 html。分别是 load.htm 和 load-event.htm。
+2. 动画 - toggle 与 事件 - toggle 应该是两个 html。分别是 toggle.htm 和 toggle-event.htm。
+3. 操作 - DOM删除 - empty() 与 选择器 - 内容筛选 - :empty 应该是两个 html。分别是 empty.htm 和 empty-selector.htm。
+4. 选择器 - 表单 - :focus 与 事件 - 表单事件 - focus 应该是两个 html。分别是 focus-selector.htm 和 focus.htm。(目前，focus.htm 显示的内容不对。)
+5. 选择器 - 表单 - :submit 与 事件 - 表单事件 - submit 应该是两个 html。分别是 submit-selector.htm 和 submit.htm。(目前，submit.htm 显示的内容不对。)
