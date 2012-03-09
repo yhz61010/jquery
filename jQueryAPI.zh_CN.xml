@@ -8647,7 +8647,7 @@ $('#target').blur(function() {
          </signature>
          <longdesc>
             <p>带有参数的该方法是 <code>.bind('mousemove', handler)</code> 的快捷方式，不带参数的该方法是 <code>.trigger('mousemove')</code> 的快捷方式。</p>
-            <p><code>mousemove</code> event is sent to an element when the mouse pointer moves inside the element. Any HTML element can receive this event.</p>
+            <p><code>mousemove</code> event is sent to an element when the mouse pointer moves inside the element. 任何 HTML 元素都可以接收该事件。</p>
             <p>举例来说，请看下面的HTML：</p>
             <pre>&lt;div id="target"&gt;
   Move here
@@ -8718,28 +8718,28 @@ $('#target').blur(function() {
          <category name="Version 1.4.3"/>
       </entry>
       <entry type="method" name="hover" return="jQuery">
-         <desc>Bind two handlers to the matched elements, to be executed when the mouse pointer enters and leaves the elements.</desc>
+         <desc>为匹配的元素绑定两个事件，分别在鼠标指针进入和离开元素时被触发。</desc>
          <signature>
             <added>1.0</added>
             <argument name="handlerIn(eventObject)" type="Function">
-               <desc>A function to execute when the mouse pointer enters the element.</desc>
+               <desc>鼠标指针移入元素时要执行的函数。</desc>
             </argument>
             <argument name="handlerOut(eventObject)" type="Function">
-               <desc>A function to execute when the mouse pointer leaves the element.</desc>
+               <desc>鼠标指针移出元素时要执行的函数。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p><code>.hover()</code> method binds handlers for both <code>mouseenter</code> 和 <code>mouseleave</code> events. You can use it to simply apply behavior to an element during the time the mouse is within the element.</p>
-            <p>Calling <code>$(selector).hover(handlerIn, handlerOut)</code> is shorthand for:</p>
+            <p><code>.hover()</code> 事件绑定两个事件，分别是 <code>mouseenter</code> 和 <code>mouseleave</code> 事件。使用该事件可以很简单的为元素绑定鼠标移入移出时的行为。</p>
+            <p><code>$(selector).hover(handlerIn, handlerOut)</code> 是下列用法的便捷方式：</p>
             <pre>$(selector).mouseenter(handlerIn).mouseleave(handlerOut);</pre>
-            <p>See the discussions for <code>
+            <p>更多详细内容，请参阅 <code>
                   <a href="mouseenter.htm">.mouseenter()</a>
                </code> 和 <code>
                   <a href="mouseleave.htm">.mouseleave()</a>
-               </code> for more details.</p>
+               </code>。</p>
          </longdesc>
          <example>
-            <desc>To add a special style to list items that are being hovered over, try:</desc>
+            <desc>鼠标悬停在列表项上时，为其添加一个特殊的样式：</desc>
             <code>
 $("li").hover(
   function () {
@@ -8770,7 +8770,7 @@ $("li.fade").hover(function(){$(this).fadeOut(100);$(this).fadeIn(500);});
   &lt;/ul&gt;</html>
          </example>
          <example>
-            <desc>To add a special style to table cells that are being hovered over, try:</desc>
+            <desc>鼠标悬停在 td 上时，为其添加一个特殊的样式：</desc>
             <code>$("td").hover(
   function () {
     $(this).addClass("hover");
@@ -8781,32 +8781,32 @@ $("li.fade").hover(function(){$(this).fadeOut(100);$(this).fadeIn(500);});
 );</code>
          </example>
          <example>
-            <desc>To unbind the above example use:</desc>
+            <desc>解除上例中绑定的事件：</desc>
             <code>$("td").unbind('mouseenter mouseleave');</code>
          </example>
          <category name="Mouse Events"/>
          <category name="Version 1.0"/>
       </entry>
       <entry type="method" name="hover" return="jQuery">
-         <desc>Bind a single handler to the matched elements, to be executed when the mouse pointer enters or leaves the elements.</desc>
+         <desc>为匹配的元素绑定一个函数，在鼠标指针进入和离开元素时会触发该函数。</desc>
          <signature>
             <added>1.4</added>
             <argument name="handlerInOut(eventObject)" type="Function">
-               <desc>A function to execute when the mouse pointer enters or leaves the element.</desc>
+               <desc>鼠标指针进入和离开元素时触发的函数。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p><code>.hover()</code> method, when passed a single function, will execute that handler for both <code>mouseenter</code> 和 <code>mouseleave</code> events. This allows the user to use jQuery's various toggle methods within the handler or to respond differently within the handler depending on the <code>event.type</code>.</p>
-            <p>Calling <code>$(selector).hover(handlerInOut)</code> is shorthand for:</p>
+            <p>当向 <code>.hover()</code> 方法只传入一个函数时，相当于为 <code>mouseenter</code> 和 <code>mouseleave</code> 绑定了相同的事件。可以在该函数内使用 jQuery 各种各样的切换方法，或根据 <code>event.type</code>，作出不同的响应。</p>
+            <p><code>$(selector).hover(handlerInOut)</code> 是下列用法的便捷方式：</p>
             <pre>$(selector).bind("mouseenter mouseleave", handlerInOut);</pre>
-            <p>See the discussions for <code>
+            <p>更多详细内容，请参阅 <code>
                   <a href="mouseenter.htm">.mouseenter()</a>
                </code> 和 <code>
                   <a href="mouseleave.htm">.mouseleave()</a>
-               </code> for more details.</p>
+               </code>。</p>
          </longdesc>
          <example>
-            <desc>Slide the next sibling LI up or down on hover, and toggle a class.</desc>
+            <desc>向上或向下滑动显示或隐藏下一个兄弟 LI 节点，并切换样式。</desc>
             <code>
 $("li")
 .filter(":odd")
@@ -8841,7 +8841,7 @@ $("li")
          <category name="Version 1.0"/>
       </entry>
       <entry type="method" name="mouseleave" return="jQuery">
-         <desc>Bind an event handler to be fired when the mouse leaves an element, or trigger that handler on an element.</desc>
+         <desc>绑定一个事件，该事件在鼠标移出元素时被触发。或者触发元素上的该事件。</desc>
          <signature>
             <added>1.0</added>
             <argument name="handler(eventObject)" type="Function">
@@ -8862,7 +8862,7 @@ $("li")
          </signature>
          <longdesc>
             <p>带有参数的该方法是 <code>.bind('mouseleave', handler)</code> 的快捷方式，不带参数的该方法是 <code>.trigger('mouseleave')</code> 的快捷方式。</p>
-            <p><code>mouseleave</code> JavaScript event is proprietary to Internet Explorer. Because of the event's general utility, jQuery simulates this event so that it can be used regardless of browser. This event is sent to an element when the mouse pointer leaves the element. Any HTML element can receive this event.</p>
+            <p><code>mouseleave</code> JavaScript 事件是 IE 特有的。由于该事件通常很有用，所以 jQuery 模拟了这个事件，以便在其它浏览器中也可以使用。该事件在鼠标移入到元素上时被触发。任何 HTML 元素都可以接收该事件。 </p>
             <p>举例来说，请看下面的HTML：</p>
             <pre>&lt;div id="outer"&gt;
   Outer
@@ -8877,21 +8877,21 @@ $("li")
             <p class="image">
                <img src="images/0042_05_09.png" alt=""/>
             </p>
-            <p>The event handler can be bound to any element:</p>
+            <p>该事件可以绑定在任何元素上：</p>
             <pre>$('#outer').mouseleave(function() {
   $('#log').append('&lt;div&gt;Handler for .mouseleave() called.&lt;/div&gt;');
 });</pre>
-            <p>Now when the mouse pointer moves out of the <span class="output">Outer</span> 
-               <code>&lt;div&gt;</code>, the message is appended to <code>&lt;div id="log"&gt;</code>. You can also trigger the event when another element is clicked:</p>
+            <p>现在，当鼠标移出 <span class="output">Outer</span> 
+               <code>&lt;div&gt;</code> 元素上时，这会在 <code>&lt;div id="log"&gt;</code> 后追加一段信息。我们也可以通过点击其它元素，手动触发另一个元素上的该事件：</p>
             <pre>$('#other').click(function() {
   $('#outer').mouseleave();
 });</pre>
             <p>在代码执行后，如果你点击 <span class="output">Trigger the handler</span> 将同样会追加上面的消息。</p>
-            <p><code>mouseleave</code> event differs from <code>mouseout</code> in the way it handles event bubbling. If <code>mouseout</code> were used in this example, then when the mouse pointer moved out of the <span class="output">Inner</span> element, the handler would be triggered. This is usually undesirable behavior. The <code>mouseleave</code> event, on the other hand, only triggers its handler when the mouse leaves the element it is bound to, not a descendant. So in this example, the handler is triggered when the mouse leaves the <span class="output">Outer</span> element, but not the <span class="output">Inner</span> element.</p>
+            <p><code>mouseleave</code> 事件与 <code>mouseout</code> 不同之处在事件冒泡上。<code>mouseleave</code> 事件不会进行事件冒泡，而 <code>mouseout</code> 则会事件冒泡。如果上例中使用的是 <code>mouseout</code>，那么当鼠标移出 <span class="output">Inner</span> 元素时，该事件也会被触发，但通常这不是我们想要的结果。另一方面，<code>mouseleave</code> 事件只会在绑定它的元素上被调用，而不会在后代节点上被触发。所以，在上面的例子中，当鼠标移出 <span class="output">Outer</span> 元素时，该事件才会被触发，但是将鼠标移出 <span class="output">Inner</span> 元素时，该事件是不会被触发的。</p>
          </longdesc>
          <example>
-            <desc>Show number of times mouseout and mouseleave events are triggered.
-<code>mouseout</code> fires when the pointer moves out of child element as well, while <code>mouseleave</code> fires only when the pointer moves out of the bound element.</desc>
+		    <desc>当触发 mouseout 和 mouseleave 事件时，显示鼠标移出对象的次数。当鼠标移出绑定
+<code>mouseout</code> 事件元素的子元素时，<code>mouseout</code> 事件同样会被触发。但是，只有在绑定 <code>mouseleave</code> 事件的元素上，将鼠标移出时，才会触发该事件。</desc>
             <code>
     var i = 0;
     $("div.overout").mouseover(function(){
@@ -8942,7 +8942,7 @@ padding:0;
          <category name="Version 1.4.3"/>
       </entry>
       <entry type="method" name="mouseenter" return="jQuery">
-         <desc>Bind an event handler to be fired when the mouse enters an element, or trigger that handler on an element.</desc>
+         <desc>绑定一个事件，该事件在鼠标移入到元素上时被触发。或者触发元素上的该事件。</desc>
          <signature>
             <added>1.0</added>
             <argument name="handler(eventObject)" type="Function">
@@ -8963,7 +8963,7 @@ padding:0;
          </signature>
          <longdesc>
             <p>带有参数的该方法是 <code>.bind('mouseenter', handler)</code> 的快捷方式，不带参数的该方法是 <code>.trigger('mouseenter')</code> 的快捷方式。</p>
-            <p><code>mouseenter</code> JavaScript event is proprietary to Internet Explorer. Because of the event's general utility, jQuery simulates this event so that it can be used regardless of browser. This event is sent to an element when the mouse pointer enters the element. Any HTML element can receive this event.</p>
+            <p><code>mouseenter</code> JavaScript 事件是 IE 特有的事件。由于该事件通常很有用，所以 jQuery 模拟了这个事件，以便在其它浏览器中也可以使用。该事件在鼠标移入到元素上时被触发。任何 HTML 元素都可以接收该事件。</p>
             <p>举例来说，请看下面的HTML：</p>
             <pre>&lt;div id="outer"&gt;
   Outer
@@ -8979,7 +8979,7 @@ padding:0;
             <p class="image">
                <img src="images/0042_05_08.png" alt=""/>
             </p>
-            <p>The event handler can be bound to any element:</p>
+            <p>该事件可以绑定在任何元素上：</p>
             <pre>$('#outer').mouseenter(function() {
   $('#log').append('&lt;div&gt;Handler for .mouseenter() called.&lt;/div&gt;');
 });</pre>
@@ -8989,11 +8989,11 @@ padding:0;
   $('#outer').mouseenter();
 });</pre>
             <p>在代码执行后，如果你点击 <span class="output">Trigger the handler</span> 将同样会追加上面的消息。</p>
-            <p><code>mouseenter</code> event differs from <code>mouseover</code> in the way it handles event bubbling. If <code>mouseover</code> were used in this example, then when the mouse pointer moved over the <span class="output">Inner</span> element, the handler would be triggered. This is usually undesirable behavior. The <code>mouseenter</code> event, on the other hand, only triggers its handler when the mouse enters the element it is bound to, not a descendant. So in this example, the handler is triggered when the mouse enters the <span class="output">Outer</span> element, but not the <span class="output">Inner</span> element.</p>
+            <p><code>mouseenter</code> 事件与 <code>mouseover</code> 不同之处在事件冒泡上。<code>mouseenter</code> 事件不会进行事件冒泡，而 <code>mouseover</code> 则会事件冒泡。如果上例中使用的是 <code>mouseover</code>，那么当鼠标移到 <span class="output">Inner</span> 元素上时，该事件也会被触发，但通常这不是我们想要的结果。另一方面，<code>mouseenter</code> 事件只会在绑定它的元素上被调用，而不会在后代节点上被触发。所以，在上面的例子中，当鼠标移到 <span class="output">Outer</span> 元素时，该事件才会被触发，但是将鼠标移到 <span class="output">Inner</span> 元素上时，该事件是不会被触发的。</p>
          </longdesc>
          <example>
-            <desc>Show texts when mouseenter and mouseout event triggering.
-<code>mouseover</code> fires when the pointer moves into the child element as well, while <code>mouseenter</code> fires only when the pointer moves into the bound element.</desc>
+            <desc>当触发 mouseenter 和 mouseout 事件时，显示一段文字。当鼠标移动到绑定
+<code>mouseover</code> 事件元素的子元素上时，<code>mouseover</code> 事件同样会被触发。但是，只有在绑定 <code>mouseenter</code> 事件的元素上，才会触发该事件。</desc>
             <code>
     var i = 0;
     $("div.overout").mouseover(function(){
@@ -9065,7 +9065,7 @@ padding:0;
          </signature>
          <longdesc>
             <p>带有参数的该方法是 <code>.bind('mouseout', handler)</code> 的快捷方式 two variation, and <code>.trigger('mouseout')</code> 的快捷方式。</p>
-            <p><code>mouseout</code> event is sent to an element when the mouse pointer leaves the element. Any HTML element can receive this event.</p>
+            <p><code>mouseout</code> event is sent to an element when the mouse pointer leaves the element. 任何 HTML 元素都可以接收该事件。</p>
             <p>举例来说，请看下面的HTML：</p>
             <pre>&lt;div id="outer"&gt;
   Outer
@@ -9080,7 +9080,7 @@ padding:0;
             <p class="image">
                <img src="images/0042_05_07.png" alt=""/>
             </p>
-            <p>The event handler can be bound to any element:</p>
+            <p>该事件可以绑定在任何元素上：</p>
             <pre>$('#outer').mouseout(function() {
   $('#log').append('Handler for .mouseout() called.');
 });</pre>
@@ -9166,7 +9166,7 @@ padding:0;
          </signature>
          <longdesc>
             <p>带有参数的该方法是 <code>.bind('mouseover', handler)</code> 的快捷方式，不带参数的该方法是 <code>.trigger('mouseover')</code> 的快捷方式。</p>
-            <p><code>mouseover</code> event is sent to an element when the mouse pointer enters the element. Any HTML element can receive this event.</p>
+            <p><code>mouseover</code> event is sent to an element when the mouse pointer enters the element. 任何 HTML 元素都可以接收该事件。</p>
             <p>举例来说，请看下面的HTML：</p>
             <pre>&lt;div id="outer"&gt;
   Outer
@@ -9182,7 +9182,7 @@ padding:0;
             <p class="image">
                <img src="images/0042_05_06.png" alt=""/>
             </p>
-            <p>The event handler can be bound to any element:</p>
+            <p>该事件可以绑定在任何元素上：</p>
             <pre>$('#outer').mouseover(function() {
   $('#log').append('&lt;div&gt;Handler for .mouseover() called.&lt;/div&gt;');
 });</pre>
@@ -9261,8 +9261,8 @@ p { line-height:1em; margin:0; padding:0; }
             <added>1.0</added>
          </signature>
          <longdesc>
-            <p>带有参数的该方法是 <code>.bind('dblclick', handler)</code> 的快捷方式，不带参数的该方法是 <code>.trigger('dblclick')</code> in the third.
-The <code>dblclick</code> event is sent to an element when the element is double-clicked. Any HTML element can receive this event.
+            <p>带有参数的该方法是 <code>.bind('dblclick', handler)</code> 的快捷方式，不带参数的该方法是 <code>.trigger('dblclick')</code> 的快捷方式。
+当在元素上双击鼠标时，会触发 <code>dblclick</code> 事件。任何 HTML 元素都可以接收该事件。
 举例来说，请看下面的HTML：</p>
             <pre>&lt;div id="target"&gt;
   Double-click here
@@ -9274,11 +9274,11 @@ The <code>dblclick</code> event is sent to an element when the element is double
             <p class="image">
                <img src="images/0042_05_04.png" alt=""/>
             </p>
-            <p>The event handler can be bound to any <code>&lt;div&gt;</code>:</p>
+            <p>该事件可以绑定在任何 <code>&lt;div&gt;</code> 上：</p>
             <pre>$('#target').dblclick(function() {
   alert('Handler for .dblclick() called.');
 });</pre>
-            <p>Now double-clicking on this element displays the alert:</p>
+            <p>现在，在元素上双击鼠标时，就会显示如下提示框：</p>
             <p>
                <span class="output">Handler for .dblclick() called.</span>
             </p>
@@ -9286,23 +9286,23 @@ The <code>dblclick</code> event is sent to an element when the element is double
             <pre>$('#other').click(function() {
   $('#target').dblclick();
 });</pre>
-            <p>After this code executes, (single) clicks on <span class="output">Trigger the handler</span> will also alert the message.</p>
-            <p><code>dblclick</code> event is only triggered after this exact series of events:</p>
+            <p>执行完上述代码之后，单击 <span class="output">Trigger the handler</span>，同样会显示上面的信息。</p>
+            <p><code>dblclick</code> 事件，只有在满足以下条件的情况下才能被触发：</p>
             <ul>
-               <li>The mouse button is depressed while the pointer is inside the element.</li>
-               <li>The mouse button is released while the pointer is inside the element.</li>
-               <li>The mouse button is depressed again while the pointer is inside the element, within a time window that is system-dependent.</li>
-               <li>The mouse button is released while the pointer is inside the element.</li>
+               <li>鼠标已经被按下，并且鼠标指针在目标元素的内部。</li>
+               <li>鼠标松开时，鼠标指针依然在该元素的内部。</li>
+               <li>在系统规定的时间内，再次按下鼠标，并且鼠标指针在目标元素的内部。</li>
+               <li>鼠标再次被松开时，鼠标指针依然在该元素的内部。</li>
             </ul>
-            <p>It is inadvisable to bind handlers to both the <code>click</code> 和 <code>dblclick</code> events for the same element. The sequence of events triggered varies from browser to browser, with some receiving two <code>click</code> events before the <code>dblclick</code> and others only one. Double-click sensitivity (maximum time between clicks that is detected as a double click) can vary by operating system and browser, and is often user-configurable.
+            <p>在同一元素上同时绑定 <code>click</code> 和 <code>dblclick</code> 事件是不明智的。不同的浏览器对事件的触发顺序是不一样的。有些浏览器可能会先接收到两次 <code>click</code> 事件，然后再接收 <code>dblclick</code>，而有些浏览器可能只接收到其它的一个事件。双击灵敏度(即两次点击之间的时间间隔)在不同的操作系统及浏览器中通常是不一样的，因为用户可以改变其设定。
 </p>
          </longdesc>
          <example>
-            <desc>To bind a "Hello World!" alert box the dblclick event on every paragraph on the page:</desc>
+            <desc>在段落上双击时，显示 "Hello World!" 提示框：</desc>
             <code>$("p").dblclick( function () { alert("Hello World!"); });</code>
          </example>
          <example>
-            <desc>Double click to toggle background color.</desc>
+            <desc>双击时改变背景色。</desc>
             <code>
     var divdbl = $("div:first");
     divdbl.dblclick(function () { 
@@ -9347,7 +9347,7 @@ The <code>dblclick</code> event is sent to an element when the element is double
          </signature>
          <longdesc>
             <p>带有参数的该方法是 <code>.bind('click', handler)</code> 的快捷方式，不带参数的该方法是 <code>.trigger('click')</code> 的快捷方式。</p>
-            <p><code>click</code> event is sent to an element when the mouse pointer is over the element, and the mouse button is pressed and released. Any HTML element can receive this event.</p>
+            <p>当用户在元素上点击了鼠标，就会触发 <code>click</code> 事件。任何 HTML 元素都可以接收该事件。</p>
             <pre>举例来说，请看下面的HTML：
 &lt;div id="target"&gt;
   Click here
@@ -9359,28 +9359,28 @@ The <code>dblclick</code> event is sent to an element when the element is double
             <p class="image">
                <img src="images/0042_05_03.png" alt=""/>
             </p>
-            <p>The event handler can be bound to any <code>&lt;div&gt;</code>:</p>
+            <p>可以将该事件绑定到任何 <code>&lt;div&gt;</code> 上：</p>
             <pre>$('#target').click(function() {
   alert('Handler for .click() called.');
 });</pre>
-            <p>Now if we click on this element, the alert is displayed:</p>
+            <p>现在，当你在该元素上点击鼠标时，就会显示提示框：</p>
             <p>
                <span class="output">Handler for .click() called.</span>
             </p>
-            <p>We can also trigger the event when a different element is clicked:</p>
+            <p>可以通过点击其它元素来手动触发另一个元素的该事件：</p>
             <pre>$('#other').click(function() {
   $('#target').click();
 });</pre>
             <p>在代码执行后，如果你点击 <span class="output">Trigger the handler</span> 将同样会弹出上面的消息。</p>
-            <p><code>click</code> event is only triggered after this exact series of events:</p>
+            <p><code>click</code> 事件只有满足以下条件时，才能被触发：</p>
             <ul>
-               <li>The mouse button is depressed while the pointer is inside the element.</li>
-               <li>The mouse button is released while the pointer is inside the element.</li>
+               <li>鼠标已经被按下，并且鼠标指针在目标元素的内部。</li>
+               <li>鼠标松开时，鼠标指针依然在该元素的内部。</li>
             </ul>
-            <p>This is usually the desired sequence before taking an action. If this is not required, the <code>mousedown</code> or <code>mouseup</code> event may be more suitable.</p>
+            <p>该事件通常用于处理目标元素内部的鼠标点击事件。如果只关心鼠标是否被点击，那么使用 <code>mousedown</code> 或 <code>mouseup</code> 事件可能更合适。</p>
          </longdesc>
          <example>
-            <desc>To hide paragraphs on a page when they are clicked:</desc>
+            <desc>当在段落元素上点击时，隐藏所点击的段落：</desc>
             <code>
     $("p").click(function () { 
       $(this).slideUp(); 
@@ -9401,7 +9401,7 @@ The <code>dblclick</code> event is sent to an element when the element is double
   &lt;p&gt;Yet one more Paragraph&lt;/p&gt;</html>
          </example>
          <example>
-            <desc>To trigger the click event on all of the paragraphs on the page:</desc>
+            <desc>触发页面上所有段落的 click 事件：</desc>
             <code>$("p").click();</code>
          </example>
          <category name="Mouse Events"/>
@@ -9430,7 +9430,7 @@ The <code>dblclick</code> event is sent to an element when the element is double
          </signature>
          <longdesc>
             <p>带有参数的该方法是 <code>.bind('mouseup', handler)</code> 的快捷方式 variation, and <code>.trigger('mouseup')</code> in the second.</p>
-            <p><code>mouseup</code> event is sent to an element when the mouse pointer is over the element, and the mouse button is released. Any HTML element can receive this event.</p>
+            <p><code>mouseup</code> event is sent to an element when the mouse pointer is over the element, and the mouse button is released. 任何 HTML 元素都可以接收该事件。</p>
             <p>举例来说，请看下面的HTML：</p>
             <pre>&lt;div id="target"&gt;
   Click here
@@ -9442,16 +9442,16 @@ The <code>dblclick</code> event is sent to an element when the element is double
             <p class="image">
                <img src="images/0042_05_02.png" alt=""/>
             </p>
-            <p>The event handler can be bound to any <code>&lt;div&gt;</code>:</p>
+            <p>该事件可以绑定在任何 <code>&lt;div&gt;</code> 上：</p>
             <pre>$('#target').mouseup(function() {
   alert('Handler for .mouseup() called.');
 });
 </pre>
-            <p>Now if we click on this element, the alert is displayed:</p>
+            <p>现在，当你在元素上点击了鼠标，就会显示如下的提示框：</p>
             <p>
                <span class="output">Handler for .mouseup() called.</span>
             </p>
-            <p>We can also trigger the event when a different element is clicked:</p>
+            <p>我们也可以通过点击其它元素，手动触发另一个元素上的该事件：</p>
             <pre>$('#other').click(function() {
   $('#target').mouseup();
 });</pre>
@@ -9497,7 +9497,7 @@ The <code>dblclick</code> event is sent to an element when the element is double
          </signature>
          <longdesc>
             <p>带有参数的该方法是 <code>.bind('mousedown', handler)</code> 的快捷方式 variation, and <code>.trigger('mousedown')</code> in the second.</p>
-            <p><code>mousedown</code> event is sent to an element when the mouse pointer is over the element, and the mouse button is pressed. Any HTML element can receive this event.</p>
+            <p>当鼠标在元素上发生了点击动作，就会触发 <code>mousedown</code> 事件。任何 HTML 元素都可以接收该事件。</p>
             <p>举例来说，请看下面的HTML：</p>
             <pre>&lt;div id="target"&gt;
   Click here
@@ -9509,26 +9509,26 @@ The <code>dblclick</code> event is sent to an element when the element is double
             <p class="image">
                <img src="images/0042_05_01.png" alt=""/>
             </p>
-            <p>The event handler can be bound to any <code>&lt;div&gt;</code>:</p>
+            <p>该事件可以绑定在任何 <code>&lt;div&gt;</code> 上：</p>
             <pre>$('#target').mousedown(function() {
   alert('Handler for .mousedown() called.');
 });</pre>
-            <p>Now if we click on this element, the alert is displayed:</p>
+            <p>现在，当你在元素上点击了鼠标，就会显示如下的提示框：</p>
             <p>
                <span class="output">Handler for .mousedown() called.</span>
             </p>
-            <p>We can also trigger the event when a different element is clicked:</p>
+            <p>我们也可以通过点击其它元素，手动触发另一个元素上的该事件：</p>
             <pre>$('#other').click(function() {
   $('#target').mousedown();
 });</pre>
             <p>在代码执行后，如果你点击 <span class="output">Trigger the handler</span> 将同样会弹出上面的消息。</p>
-            <p><code>mousedown</code> event is sent when any mouse button is clicked. To act only on specific buttons, we can use the event object's <code>which </code>property. Not all browsers support this property (Internet Explorer uses button instead), but jQuery normalizes the property so that it is safe to use in any browser. The value of <code>which</code> will be 1 for the left button, 2 for the middle button, or 3 for the right button.</p>
-            <p>This event is primarily useful for ensuring that the primary button was used to begin a drag operation; if ignored, strange results can occur when the user attempts to use a context menu. While the middle and right buttons can be detected with these properties, this is not reliable. In Opera and Safari, for example, right mouse button clicks are not detectable by default.</p>
-            <p>If the user clicks on an element, drags away from it, and releases the button, this is still counted as a <code>mousedown</code> event. This sequence of actions is treated as a "canceling" of the button press in most user interfaces, so it is usually better to use the <code>click</code> event unless we know that the <code>mousedown</code> event is preferable for a particular situation.</p>
+            <p>鼠标上的任何一个键被按下，都会触发 <code>mousedown</code> 事件。若要区分是哪个键被按下了，我们可以使用 event 对象的 <code>which </code> 属性。虽然不是所有的浏览器都支持该属性(在 IE 中，要使用 button 属性来代替)，但是 jQuery 对该属性进行了标准化，因此你可以放心的在任何浏览器中使用该属性。<code>which</code> 值是 1 时，表示左键，2 表示 中键，3 表示右键。</p>
+            <p>此事件主要是为了确保主按钮被用来开始拖拽操作。如果不进行这样的判断，当用户尝试使用上下文菜单时，就可能出现奇怪的结果。虽然可以通过这些属性，来检测鼠标中键和右键的点击，但不一定是可靠的。例如，在 Opera 和 Safari 中，默认情况下是无法检测鼠标右键的点击的。</p>
+            <p>如果用户在元素上按住了鼠标不放开，并将鼠标指针移开了该元素，然后再松开了鼠标，此操作依然被认为是该元素上的 <code>mousedown</code> 事件。上述一系列操作，大多数这样的操作，被认为是 "取消" 鼠标点击操作。因此，通过使用 <code>click</code> 事件是比较好的做法，除非在特殊情况下，我们真正关注的是 <code>mousedown</code> 事件。</p>
 
          </longdesc>
          <example>
-            <desc>Show texts when mouseup and mousedown event triggering.</desc>
+            <desc>当触发 mouseup 和 mousedown 事件时，显示一段文本。</desc>
             <code>
     $("p").mouseup(function(){
       $(this).append('&lt;span style="color:#F00;"&gt;Mouse up.&lt;/span&gt;');
