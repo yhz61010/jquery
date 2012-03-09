@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>hover(handlerIn(eventObject), handlerOut(eventObject))<br></h2>
    <div class="desc">
-      <p>Bind two handlers to the matched elements, to be executed when the mouse pointer enters and leaves the elements.</p>
+      <p>为匹配的元素绑定两个事件，分别在鼠标指针进入和离开元素时被触发。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>hover(handlerIn(eventObject), handlerOut(eventObject))
@@ -11,34 +11,34 @@
             </h4>
             <div class="arguement"><strong>handlerIn(eventObject)</strong>
                								(Function)
-               								A function to execute when the mouse pointer enters the element.
+               								鼠标指针移入元素时要执行的函数。
             </div>
             <div class="arguement"><strong>handlerOut(eventObject)</strong>
                								(Function)
-               								A function to execute when the mouse pointer leaves the element.
+               								鼠标指针移出元素时要执行的函数。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p><code>.hover()</code> method binds handlers for both <code>mouseenter</code> 和 <code>mouseleave</code> events. You can use it to simply apply behavior to an element during the time the mouse is within the element.
+         <p><code>.hover()</code> 事件绑定两个事件，分别是 <code>mouseenter</code> 和 <code>mouseleave</code> 事件。使用该事件可以很简单的为元素绑定鼠标移入移出时的行为。
          </p>
          
-         <p>Calling <code>$(selector).hover(handlerIn, handlerOut)</code> is shorthand for:
+         <p><code>$(selector).hover(handlerIn, handlerOut)</code> 是下列用法的便捷方式：
          </p>
          <pre>$(selector).mouseenter(handlerIn).mouseleave(handlerOut);</pre>
-         <p>See the discussions for <code>
+         <p>更多详细内容，请参阅 <code>
                <a href="mouseenter.htm">.mouseenter()</a>
                </code> 和 <code>
                <a href="mouseleave.htm">.mouseleave()</a>
-               </code> for more details.
+               </code>。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>To add a special style to list items that are being hovered over, try:</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>鼠标悬停在列表项上时，为其添加一个特殊的样式：</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -80,7 +80,7 @@ $("li.fade").hover(function(){$(this).fadeOut(100);$(this).fadeIn(500);});
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
-      <p>To add a special style to table cells that are being hovered over, try:</p>
+      <p>鼠标悬停在 td 上时，为其添加一个特殊的样式：</p>
       <h5>jQuery 代码:</h5><pre><code>$("td").hover(
   function () {
     $(this).addClass("hover");
@@ -89,13 +89,13 @@ $("li.fade").hover(function(){$(this).fadeOut(100);$(this).fadeIn(500);});
     $(this).removeClass("hover");
   }
 );</code></pre><h3>示例:</h3>
-      <p>To unbind the above example use:</p>
+      <p>解除上例中绑定的事件：</p>
       <h5>jQuery 代码:</h5><pre><code>$("td").unbind('mouseenter mouseleave');</code></pre></div>
 </div>
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>hover(handlerInOut(eventObject))<br></h2>
    <div class="desc">
-      <p>Bind a single handler to the matched elements, to be executed when the mouse pointer enters or leaves the elements.</p>
+      <p>为匹配的元素绑定一个函数，在鼠标指针进入和离开元素时会触发该函数。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.4 新增</span>hover(handlerInOut(eventObject))
@@ -103,31 +103,30 @@ $("li.fade").hover(function(){$(this).fadeOut(100);$(this).fadeIn(500);});
             </h4>
             <div class="arguement"><strong>handlerInOut(eventObject)</strong>
                								(Function)
-               								A function to execute when the mouse pointer enters or leaves the element.
+               								鼠标指针进入和离开元素时触发的函数。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p><code>.hover()</code> method, when passed a single function, will execute that handler for both <code>mouseenter</code> 和 <code>mouseleave</code> events. This allows the user to use jQuery's various toggle methods within the handler or to respond differently within the
-            handler depending on the <code>event.type</code>.
+         <p>当向 <code>.hover()</code> 方法只传入一个函数时，相当于为 <code>mouseenter</code> 和 <code>mouseleave</code> 绑定了相同的事件。可以在该函数内使用 jQuery 各种各样的切换方法，或根据 <code>event.type</code>，作出不同的响应。
          </p>
          
-         <p>Calling <code>$(selector).hover(handlerInOut)</code> is shorthand for:
+         <p><code>$(selector).hover(handlerInOut)</code> 是下列用法的便捷方式：
          </p>
          <pre>$(selector).bind("mouseenter mouseleave", handlerInOut);</pre>
-         <p>See the discussions for <code>
+         <p>更多详细内容，请参阅 <code>
                <a href="mouseenter.htm">.mouseenter()</a>
                </code> 和 <code>
                <a href="mouseleave.htm">.mouseleave()</a>
-               </code> for more details.
+               </code>。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Slide the next sibling LI up or down on hover, and toggle a class.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>向上或向下滑动显示或隐藏下一个兄弟 LI 节点，并切换样式。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;

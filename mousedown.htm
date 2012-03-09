@@ -38,8 +38,7 @@
          <p>带有参数的该方法是 <code>.bind('mousedown', handler)</code> 的快捷方式 variation, and <code>.trigger('mousedown')</code> in the second.
          </p>
          
-         <p><code>mousedown</code> event is sent to an element when the mouse pointer is over the element, and the mouse button is pressed. Any HTML element
-            can receive this event.
+         <p>当鼠标在元素上发生了点击动作，就会触发 <code>mousedown</code> 事件。任何 HTML 元素都可以接收该事件。
          </p>
          
          <p>举例来说，请看下面的HTML：</p>
@@ -55,36 +54,31 @@
             
          </p>
          
-         <p>The event handler can be bound to any <code>&lt;div&gt;</code>:
+         <p>该事件可以绑定在任何 <code>&lt;div&gt;</code> 上：
          </p>
          <pre>$('#target').mousedown(function() {
   alert('Handler for .mousedown() called.');
 });</pre>
-         <p>Now if we click on this element, the alert is displayed:</p>
+         <p>现在，当你在元素上点击了鼠标，就会显示如下的提示框：</p>
          
          <p>
             <span class="output">Handler for .mousedown() called.</span>
             
          </p>
          
-         <p>We can also trigger the event when a different element is clicked:</p>
+         <p>我们也可以通过点击其它元素，手动触发另一个元素上的该事件：</p>
          <pre>$('#other').click(function() {
   $('#target').mousedown();
 });</pre>
          <p>在代码执行后，如果你点击 <span class="output">Trigger the handler</span> 将同样会弹出上面的消息。
          </p>
          
-         <p><code>mousedown</code> event is sent when any mouse button is clicked. To act only on specific buttons, we can use the event object's <code>which </code>property. Not all browsers support this property (Internet Explorer uses button instead), but jQuery normalizes the property
-            so that it is safe to use in any browser. The value of <code>which</code> will be 1 for the left button, 2 for the middle button, or 3 for the right button.
+         <p>鼠标上的任何一个键被按下，都会触发 <code>mousedown</code> 事件。若要区分是哪个键被按下了，我们可以使用 event 对象的 <code>which </code> 属性。虽然不是所有的浏览器都支持该属性(在 IE 中，要使用 button 属性来代替)，但是 jQuery 对该属性进行了标准化，因此你可以放心的在任何浏览器中使用该属性。<code>which</code> 值是 1 时，表示左键，2 表示 中键，3 表示右键。
          </p>
          
-         <p>This event is primarily useful for ensuring that the primary button was used to begin a drag operation; if ignored, strange
-            results can occur when the user attempts to use a context menu. While the middle and right buttons can be detected with these
-            properties, this is not reliable. In Opera and Safari, for example, right mouse button clicks are not detectable by default.
-         </p>
+         <p>此事件主要是为了确保主按钮被用来开始拖拽操作。如果不进行这样的判断，当用户尝试使用上下文菜单时，就可能出现奇怪的结果。虽然可以通过这些属性，来检测鼠标中键和右键的点击，但不一定是可靠的。例如，在 Opera 和 Safari 中，默认情况下是无法检测鼠标右键的点击的。</p>
          
-         <p>If the user clicks on an element, drags away from it, and releases the button, this is still counted as a <code>mousedown</code> event. This sequence of actions is treated as a "canceling" of the button press in most user interfaces, so it is usually
-            better to use the <code>click</code> event unless we know that the <code>mousedown</code> event is preferable for a particular situation.
+         <p>如果用户在元素上按住了鼠标不放开，并将鼠标指针移开了该元素，然后再松开了鼠标，此操作依然被认为是该元素上的 <code>mousedown</code> 事件。上述一系列操作，大多数这样的操作，被认为是 "取消" 鼠标点击操作。因此，通过使用 <code>click</code> 事件是比较好的做法，除非在特殊情况下，我们真正关注的是 <code>mousedown</code> 事件。
          </p>
          
          
@@ -92,7 +86,7 @@
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Show texts when mouseup and mousedown event triggering.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>当触发 mouseup 和 mousedown 事件时，显示一段文本。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;script src="jquery.min.js"&gt;&lt;/script&gt;

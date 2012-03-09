@@ -38,8 +38,7 @@
          <p>带有参数的该方法是 <code>.bind('mouseup', handler)</code> 的快捷方式 variation, and <code>.trigger('mouseup')</code> in the second.
          </p>
          
-         <p><code>mouseup</code> event is sent to an element when the mouse pointer is over the element, and the mouse button is released. Any HTML element
-            can receive this event.
+         <p><code>mouseup</code> event is sent to an element when the mouse pointer is over the element, and the mouse button is released. 任何 HTML 元素都可以接收该事件。
          </p>
          
          <p>举例来说，请看下面的HTML：</p>
@@ -55,20 +54,20 @@
             
          </p>
          
-         <p>The event handler can be bound to any <code>&lt;div&gt;</code>:
+         <p>该事件可以绑定在任何 <code>&lt;div&gt;</code> 上：
          </p>
          <pre>$('#target').mouseup(function() {
   alert('Handler for .mouseup() called.');
 });
 </pre>
-         <p>Now if we click on this element, the alert is displayed:</p>
+         <p>现在，当你在元素上点击了鼠标，就会显示如下的提示框：</p>
          
          <p>
             <span class="output">Handler for .mouseup() called.</span>
             
          </p>
          
-         <p>We can also trigger the event when a different element is clicked:</p>
+         <p>我们也可以通过点击其它元素，手动触发另一个元素上的该事件：</p>
          <pre>$('#other').click(function() {
   $('#target').mouseup();
 });</pre>

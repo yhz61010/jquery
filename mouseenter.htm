@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>mouseenter(handler(eventObject))<br></h2>
    <div class="desc">
-      <p>Bind an event handler to be fired when the mouse enters an element, or trigger that handler on an element.</p>
+      <p>绑定一个事件，该事件在鼠标移入到元素上时被触发。或者触发元素上的该事件。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>mouseenter(handler(eventObject))
@@ -38,9 +38,7 @@
          <p>带有参数的该方法是 <code>.bind('mouseenter', handler)</code> 的快捷方式，不带参数的该方法是 <code>.trigger('mouseenter')</code> 的快捷方式。
          </p>
          
-         <p><code>mouseenter</code> JavaScript event is proprietary to Internet Explorer. Because of the event's general utility, jQuery simulates this event
-            so that it can be used regardless of browser. This event is sent to an element when the mouse pointer enters the element.
-            Any HTML element can receive this event.
+         <p><code>mouseenter</code> JavaScript 事件是 IE 特有的事件。由于该事件通常很有用，所以 jQuery 模拟了这个事件，以便在其它浏览器中也可以使用。该事件在鼠标移入到元素上时被触发。任何 HTML 元素都可以接收该事件。
          </p>
          
          <p>举例来说，请看下面的HTML：</p>
@@ -60,7 +58,7 @@
             
          </p>
          
-         <p>The event handler can be bound to any element:</p>
+         <p>该事件可以绑定在任何元素上：</p>
          <pre>$('#outer').mouseenter(function() {
   $('#log').append('&lt;div&gt;Handler for .mouseenter() called.&lt;/div&gt;');
 });</pre>
@@ -73,17 +71,15 @@
          <p>在代码执行后，如果你点击 <span class="output">Trigger the handler</span> 将同样会追加上面的消息。
          </p>
          
-         <p><code>mouseenter</code> event differs from <code>mouseover</code> in the way it handles event bubbling. If <code>mouseover</code> were used in this example, then when the mouse pointer moved over the <span class="output">Inner</span> element, the handler would be triggered. This is usually undesirable behavior. The <code>mouseenter</code> event, on the other hand, only triggers its handler when the mouse enters the element it is bound to, not a descendant. So
-            in this example, the handler is triggered when the mouse enters the <span class="output">Outer</span> element, but not the <span class="output">Inner</span> element.
+         <p><code>mouseenter</code> 事件与 <code>mouseover</code> 不同之处在事件冒泡上。<code>mouseenter</code> 事件不会进行事件冒泡，而 <code>mouseover</code> 则会事件冒泡。如果上例中使用的是 <code>mouseover</code>，那么当鼠标移到 <span class="output">Inner</span> 元素上时，该事件也会被触发，但通常这不是我们想要的结果。另一方面，<code>mouseenter</code> 事件只会在绑定它的元素上被调用，而不会在后代节点上被触发。所以，在上面的例子中，当鼠标移到 <span class="output">Outer</span> 元素时，该事件才会被触发，但是将鼠标移到 <span class="output">Inner</span> 元素上时，该事件是不会被触发的。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Show texts when mouseenter and mouseout event triggering.
-         mouseover fires when the pointer moves into the child element as well, while mouseenter fires only when the pointer moves
-         into the bound element.
+      <p>当触发 mouseenter 和 mouseout 事件时，显示一段文字。当鼠标移动到绑定
+         mouseover 事件元素的子元素上时，mouseover 事件同样会被触发。但是，只有在绑定 mouseenter 事件的元素上，才会触发该事件。
       </p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;

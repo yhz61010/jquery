@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>mouseleave(handler(eventObject))<br></h2>
    <div class="desc">
-      <p>Bind an event handler to be fired when the mouse leaves an element, or trigger that handler on an element.</p>
+      <p>绑定一个事件，该事件在鼠标移出元素时被触发。或者触发元素上的该事件。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>mouseleave(handler(eventObject))
@@ -38,9 +38,7 @@
          <p>带有参数的该方法是 <code>.bind('mouseleave', handler)</code> 的快捷方式，不带参数的该方法是 <code>.trigger('mouseleave')</code> 的快捷方式。
          </p>
          
-         <p><code>mouseleave</code> JavaScript event is proprietary to Internet Explorer. Because of the event's general utility, jQuery simulates this event
-            so that it can be used regardless of browser. This event is sent to an element when the mouse pointer leaves the element.
-            Any HTML element can receive this event.
+         <p><code>mouseleave</code> JavaScript 事件是 IE 特有的。由于该事件通常很有用，所以 jQuery 模拟了这个事件，以便在其它浏览器中也可以使用。该事件在鼠标移入到元素上时被触发。任何 HTML 元素都可以接收该事件。 
          </p>
          
          <p>举例来说，请看下面的HTML：</p>
@@ -59,12 +57,12 @@
             
          </p>
          
-         <p>The event handler can be bound to any element:</p>
+         <p>该事件可以绑定在任何元素上：</p>
          <pre>$('#outer').mouseleave(function() {
   $('#log').append('&lt;div&gt;Handler for .mouseleave() called.&lt;/div&gt;');
 });</pre>
-         <p>Now when the mouse pointer moves out of the <span class="output">Outer</span> 
-            <code>&lt;div&gt;</code>, the message is appended to <code>&lt;div id="log"&gt;</code>. You can also trigger the event when another element is clicked:
+         <p>现在，当鼠标移出 <span class="output">Outer</span> 
+            <code>&lt;div&gt;</code> 元素上时，这会在 <code>&lt;div id="log"&gt;</code> 后追加一段信息。我们也可以通过点击其它元素，手动触发另一个元素上的该事件：
          </p>
          <pre>$('#other').click(function() {
   $('#outer').mouseleave();
@@ -72,17 +70,15 @@
          <p>在代码执行后，如果你点击 <span class="output">Trigger the handler</span> 将同样会追加上面的消息。
          </p>
          
-         <p><code>mouseleave</code> event differs from <code>mouseout</code> in the way it handles event bubbling. If <code>mouseout</code> were used in this example, then when the mouse pointer moved out of the <span class="output">Inner</span> element, the handler would be triggered. This is usually undesirable behavior. The <code>mouseleave</code> event, on the other hand, only triggers its handler when the mouse leaves the element it is bound to, not a descendant. So
-            in this example, the handler is triggered when the mouse leaves the <span class="output">Outer</span> element, but not the <span class="output">Inner</span> element.
+         <p><code>mouseleave</code> 事件与 <code>mouseout</code> 不同之处在事件冒泡上。<code>mouseleave</code> 事件不会进行事件冒泡，而 <code>mouseout</code> 则会事件冒泡。如果上例中使用的是 <code>mouseout</code>，那么当鼠标移出 <span class="output">Inner</span> 元素时，该事件也会被触发，但通常这不是我们想要的结果。另一方面，<code>mouseleave</code> 事件只会在绑定它的元素上被调用，而不会在后代节点上被触发。所以，在上面的例子中，当鼠标移出 <span class="output">Outer</span> 元素时，该事件才会被触发，但是将鼠标移出 <span class="output">Inner</span> 元素时，该事件是不会被触发的。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Show number of times mouseout and mouseleave events are triggered.
-         mouseout fires when the pointer moves out of child element as well, while mouseleave fires only when the pointer moves out
-         of the bound element.
+      <p>当触发 mouseout 和 mouseleave 事件时，显示鼠标移出对象的次数。当鼠标移出绑定
+         mouseout 事件元素的子元素时，mouseout 事件同样会被触发。但是，只有在绑定 mouseleave 事件的元素上，将鼠标移出时，才会触发该事件。
       </p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
