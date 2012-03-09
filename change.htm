@@ -1,0 +1,117 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:jQuery</span>change(handler(eventObject))<br></h2>
+   <div class="desc">
+      <p>为 JavaScript 的 "change" 事件绑定一个处理函数，或者触发元素上的该事件。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.0 新增</span>change(handler(eventObject))
+               								
+            </h4>
+            <div class="arguement"><strong>handler(eventObject)</strong>
+               								(Function)
+               								每当事件触发时执行的函数。
+            </div>
+         </li>
+         <li>
+            <h4><span>1.4.3 新增</span>change(<em class="optional">[eventData]</em>, handler(eventObject))
+               								
+            </h4>
+            <div class="arguement"><strong>eventData</strong>
+               								(Object)
+               								 可选参数，将要传递给事件处理函数的数据映射。
+            </div>
+            <div class="arguement"><strong>handler(eventObject)</strong>
+               								(Function)
+               								每当事件触发时执行的函数。
+            </div>
+         </li>
+         <li>
+            <h4><span>1.0 新增</span>change()
+               								
+            </h4>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p>带有参数的该方法是 <code>.bind('change', handler)</code> 的快捷方式，不带参数的该方法是 <code>.trigger('change')</code> 的快捷方式。
+         </p>
+         
+         <p>当值改变的时候，就会触发 <code>change</code> 事件。该事件只能用于 <code>&lt;input&gt;</code> 元素，<code>&lt;textarea&gt;</code> 和 <code>&lt;select&gt;</code> 元素。对于 select，checkbox 和 radio 按钮而言，当用户选择某一项目时，就会立刻触发该事件，但是对于 input 的其它元素而言，只有当元素失去焦点时，才会触发该事件。
+         </p>
+         
+         <p>举例来说，请看下面的HTML：</p>
+         <pre>&lt;form&gt;
+  &lt;input class="target" type="text" value="Field 1" /&gt;
+  &lt;select class="target"&gt;
+    &lt;option value="option1" selected="selected"&gt;Option 1&lt;/option&gt;
+    &lt;option value="option2"&gt;Option 2&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/form&gt;
+&lt;div id="other"&gt;
+  Trigger the handler
+&lt;/div&gt;</pre>
+         <p>该事件可以绑定在文本框和选择列表上：</p>
+         <pre>$('.target').change(function() {
+  alert('Handler for .change() called.');
+});</pre>
+         <p>现在，如果从下拉列表中选择了第二项的话，就是显示出一个提示框。当你改变了文本框的内容并将焦点移走后，同样会显示提示框。虽然文本框失去了焦点，但是内容没有改变的话，是不会触发该事件的。若要手动触发该事件，请调用不带参数的 <code>.change()</code>:
+         </p>
+         <pre>$('#other').click(function() {
+  $('.target').change();
+});</pre>
+         <p>在代码执行后，如果你点击 <span class="output">Trigger the handler</span> 将同样会弹出上面的消息。并且消息会显示两次，因为绑定 <code>change</code> 事件的表单元素有两个。
+         </p>
+         
+         <p>从 jQuery 1.4 开始，<code>change</code> 事件可以在 IE 中进行事件冒泡。在主流的浏览器中，保持了其行为的一致性。
+         </p>
+         
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>为 select 元素添加 change 事件，将选中的项目显示在 div 中。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+
+  div { color:red; }
+  &lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;select name="sweets" multiple="multiple"&gt;
+    &lt;option&gt;Chocolate&lt;/option&gt;
+    &lt;option selected="selected"&gt;Candy&lt;/option&gt;
+
+    &lt;option&gt;Taffy&lt;/option&gt;
+    &lt;option selected="selected"&gt;Caramel&lt;/option&gt;
+    &lt;option&gt;Fudge&lt;/option&gt;
+    &lt;option&gt;Cookie&lt;/option&gt;
+
+  &lt;/select&gt;
+  &lt;div&gt;&lt;/div&gt;
+
+&lt;script&gt;
+
+
+    $("select").change(function () {
+          var str = "";
+          $("select option:selected").each(function () {
+                str += $(this).text() + " ";
+              });
+          $("div").text(str);
+        })
+        .change();
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
+      <p>为所有文本框添加有效性验证：</p>
+      <h5>jQuery 代码:</h5><pre><code>$("input[type='text']").change( function() {
+  // check input ($(this).val()) for validity here
+});</code></pre></div>
+</div>

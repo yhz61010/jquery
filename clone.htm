@@ -1,0 +1,152 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:jQuery</span>clone(<em class="optional">[withDataAndEvents]</em>)<br></h2>
+   <div class="desc">
+      <p>对匹配的元素进行深层拷贝。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.0 新增</span>clone(<em class="optional">[withDataAndEvents]</em>)
+               								
+            </h4>
+            <div class="arguement"><strong>withDataAndEvents</strong>
+               								(Boolean)
+               								 可选参数，默认值:'false'布尔值，表示是否也拷贝元素上的事件。从 jQuery 1.4 开始,同样也会拷贝元素上的数据。
+            </div>
+         </li>
+         <li>
+            <h4><span>1.5 新增</span>clone(<em class="optional">[withDataAndEvents]</em>, <em class="optional">[deepWithDataAndEvents]</em>)
+               								
+            </h4>
+            <div class="arguement"><strong>withDataAndEvents</strong>
+               								(Boolean)
+               								 可选参数，默认值:'false'布尔值，表示是否也拷贝元素上的事件和数据。默认值是 <code>false</code>。<em>* 在 jQuery 1.5.0 中，该默认值被设置成了 <code>true</code>，但这样做似乎并不太合适。所以从 1.5.1 开始，该默认值恢复成了 <code>false</code>。</em>
+               
+            </div>
+            <div class="arguement"><strong>deepWithDataAndEvents</strong>
+               								(Boolean)
+               								 可选参数，默认值:'value of withDataAndEvents'布尔值，表示是否也拷贝元素及该元素上所有子元素的事件和数据。默认情况下，该值与 <code>withDataAndEvents</code> 参数的值是一样的。(也就是说，默认值是 <code>false</code>)。
+            </div>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p><code>.clone()</code> 方法会对匹配的元素进行<em>深拷贝</em>。也就是说，该方法会拷贝匹配元素以及匹配元素的所有后代元素及文本节点。当 <code>.clone()</code> 方法与插入类相关的方法一起使用时，可以很方便的创建页面元素的复本。例如，有如下 HTML：
+         </p>
+         <pre>&lt;div class="container"&gt;
+  &lt;div class="hello"&gt;Hello&lt;/div&gt;
+  &lt;div class="goodbye"&gt;Goodbye&lt;/div&gt;
+&lt;/div&gt;</pre>
+         <p>插入类相关的方法，在这里我们选择 <code>
+               <a href="http://api.jquery.com/append/">.append()</a>
+               </code>。通常情况下，将某元素插入到 DOM 的某处时，意味着是将该元素从原来的位置移动到待插入位置。因此，如果执行完下面的代码：
+         </p>
+         <pre>$('.hello').appendTo('.goodbye');</pre>
+         <p>我们会得到如下的 DOM 结构：</p>
+         <pre>&lt;div class="container"&gt;
+  &lt;div class="goodbye"&gt;
+    Goodbye
+    &lt;div class="hello"&gt;Hello&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+         <p>为了防止这种现象发生，我们可以先对待插入元素进行深拷贝，然后再进行插入操作。所以我们可以按下面这样做：</p>
+         <pre>$('.hello').clone().appendTo('.goodbye');</pre>
+         <p>得到的结果如下：</p>
+         <pre>&lt;div class="container"&gt;
+  &lt;div class="hello"&gt;Hello&lt;/div&gt;
+  &lt;div class="goodbye"&gt;
+    Goodbye
+    &lt;div class="hello"&gt;Hello&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+         <blockquote>
+            
+            <p>注意，当使用 <code>.clone()</code> 方法时，在向文档中插入或再插入之前，你可以修改克隆后的元素或者是其内容。
+            </p>
+            
+         </blockquote>
+         
+         <p>通常情况下，<em>不会</em>对绑定在匹配元素上的任何事件进行深拷贝。<code>withDataAndEvents</code> 参数允许我们改变这种默认行为，从而可以对事件进行拷贝，并将其绑定到新生成的对象上。从 jQuery 1.4 开始，所有的元素数据(通过 <code>.data()</code> 方法添加的)，也会被拷贝到新生成的对象上。
+         </p>
+         
+         <p>但是，如果元素数据中包含对象和数组的话，这些数据是不会被拷贝的。对于被克隆的元素以及克隆生成的新元素而言，这些数据依然是被共享的。如果同样要对这些数据进行深拷贝的话，请手动一个一个的进行拷贝，例如：</p>
+         <pre>var $elem = $('#elem').data( "arr": [ 1 ] ), // Original element with attached data
+    $clone = $elem.clone( true )
+    .data( "arr", $.extend( [], $elem.data("arr") ) ); // Deep copy to prevent data sharing
+</pre>
+         <p>从 jQuery 1.5 开始,使用 <code>withDataAndEvents</code> 参数时，也可以使用增强的 <code>deepWithDataAndEvents </code> 参数，实现对所有子元素的事件和数据的拷贝。
+         </p>
+         
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>克隆所有的 b 元素 (并且选中这些克隆元素)，并将它们添加到段落标签内的起始位置。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+
+  &lt;b&gt;Hello&lt;/b&gt;&lt;p&gt;, how are you?&lt;/p&gt;
+
+
+&lt;script&gt;
+
+
+  $("b").clone().prependTo("p");
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
+      <p>当使用 .clone() 克隆一组元素，并且这些克隆生成的元素尚未被添加到 DOM 中，那么当这些元素被插入到 DOM 中时，不能保证是按它们的原顺序被插入的。但是，可以像下面例子中提到的那样，保证顺序的正确性：</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+  #orig, #copy, #copy-correct {
+    float: left;
+    width: 20%;
+  }
+&lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+
+&lt;div id="orig"&gt;
+    &lt;div class="elem"&gt;&lt;a&gt;1&lt;/a&gt;&lt;/div&gt;
+    &lt;div class="elem"&gt;&lt;a&gt;2&lt;/a&gt;&lt;/div&gt;
+    &lt;div class="elem"&gt;&lt;a&gt;3&lt;/a&gt;&lt;/div&gt;
+    &lt;div class="elem"&gt;&lt;a&gt;4&lt;/a&gt;&lt;/div&gt;
+    &lt;div class="elem"&gt;&lt;a&gt;5&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="copy"&gt;&lt;/div&gt;
+&lt;div id="copy-correct"&gt;&lt;/div&gt;
+
+
+&lt;script&gt;
+
+
+// sort order is not guaranteed here and may vary with browser  
+$('#copy').append($('#orig .elem')
+          .clone()
+          .children('a')
+          .prepend('foo - ')
+          .parent()
+          .clone()); 
+ 
+// correct way to approach where order is maintained
+$('#copy-correct')
+          .append($('#orig .elem')
+          .clone()
+          .children('a')
+          .prepend('bar - ')
+          .end()); 
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe></div>
+</div>

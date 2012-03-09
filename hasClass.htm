@@ -1,0 +1,65 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:Boolean</span>hasClass(className)<br></h2>
+   <div class="desc">
+      <p>判断在所有匹配的元素中，是否至少有一个元素包含给定的样式。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.2 新增</span>hasClass(className)
+               								
+            </h4>
+            <div class="arguement"><strong>className</strong>
+               								(String)
+               								将要查找的样式名。
+            </div>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p>元素上可能有多个样式。在 HTML 中，使用空格来分隔多个样式：</p>
+         		          <pre>&lt;div id="mydiv" class="foo bar"&gt;&lt;/div&gt;</pre>
+         		          <p>只要一个元素含有指定的样式，那么 <code>.hasClass()</code> 方法将返回 <code>true</code>，即使该元素上可能还有其它的样式。例如，在上面的 HTML 中，下面的代码将返回 <code>true</code>:
+         </p>
+         		          <pre>$('#mydiv').hasClass('foo')</pre>
+         		          <p>如下的代码也会返回 <code>true</code>:
+         </p>
+         		          <pre>$('#mydiv').hasClass('bar')</pre>
+         		          <p>但下面的代码会返回 <code>false</code>:
+         </p>
+         		          <pre>$('#mydiv').hasClass('quux')</pre>
+         </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>查找段落标签中是否含有 'selected' 样式。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+  p { margin: 8px; font-size:16px; }
+  .selected { color:red; }
+  &lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+
+  &lt;p&gt;This paragraph is black and is the first paragraph.&lt;/p&gt;
+  &lt;p class="selected"&gt;This paragraph is red and is the second paragraph.&lt;/p&gt;
+
+  &lt;div id="result1"&gt;First paragraph has selected class: &lt;/div&gt;
+  &lt;div id="result2"&gt;Second paragraph has selected class: &lt;/div&gt;
+  &lt;div id="result3"&gt;At least one paragraph has selected class: &lt;/div&gt;
+
+&lt;script&gt;
+
+
+$("div#result1").append($("p:first").hasClass("selected").toString());
+$("div#result2").append($("p:last").hasClass("selected").toString());
+$("div#result3").append($("p").hasClass("selected").toString());
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe></div>
+</div>

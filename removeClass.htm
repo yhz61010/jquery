@@ -1,0 +1,136 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:jQuery</span>removeClass(<em class="optional">[className]</em>)<br></h2>
+   <div class="desc">
+      <p>移除每个匹配元素上的一个，多个或所有样式。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.0 新增</span>removeClass(<em class="optional">[className]</em>)
+               								
+            </h4>
+            <div class="arguement"><strong>className</strong>
+               								(String)
+               								 可选参数，将要被移除的样式名，样式名之前用空格分隔。
+            </div>
+         </li>
+         <li>
+            <h4><span>1.4 新增</span>removeClass(function(index, class))
+               								
+            </h4>
+            <div class="arguement"><strong>function(index, class)</strong>
+               								(Function)
+               								一个函数，返回一个或多个将要被移除的样式名。index 参数表示在所有匹配元素的集合中当前元素的索引位置。class 参数表示原有的样式名。
+            </div>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p>如果将一个样式名作为参数，该方法会移除匹配元素对应的样式。如果不指定样式名，则所有样式都会被删除。</p>
+         				        
+         <p>一次可以移除多个样式，样式之间用空格分隔。例如：</p>
+         				        <pre>$('p').removeClass('myClass yourClass')
+</pre>
+         				        <p>该方法经常与 <code>.addClass()</code> 一起使用，用来改变元素的样式。例如：
+         </p>
+         				        <pre>$('p').removeClass('myClass noClass').addClass('yourClass');
+</pre>
+         				        <p>上例中,所有段落中的 <code>myClass</code> 和 <code>noClass</code> 样式都会被移除，然后添加 <code>yourClass</code> 样式。
+         </p>
+         				        
+         <p>若要替换所有已经存在的样式，可以使用 <code>.attr('class', 'newClass')</code> 来代替。
+         </p>
+         
+         <p>从 jQuery 1.4 开始,<code>.removeClass()</code> 方法允许我们指定一个函数作为参数，返回将要被删除的样式。
+         </p>
+         <pre>$('li:last').removeClass(function() {
+          return $(this).prev().attr('class');
+        });</pre>
+         <p>上例中，移除了最后一个 <code>&lt;li&gt;</code> 中的如下样式：该样式是倒数第二个 <code>&lt;li&gt;</code> 的样式。
+         </p>
+         
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>移除匹配元素上的 'blue' 样式。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+
+  p { margin: 4px; font-size:16px; font-weight:bolder; }
+  .blue { color:blue; }
+  .under { text-decoration:underline; }
+  .highlight { background:yellow; }
+  &lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;p class="blue under"&gt;Hello&lt;/p&gt;
+  &lt;p class="blue under highlight"&gt;and&lt;/p&gt;
+  &lt;p class="blue under"&gt;then&lt;/p&gt;
+
+  &lt;p class="blue under"&gt;Goodbye&lt;/p&gt;
+
+&lt;script&gt;
+
+$("p:even").removeClass("blue");
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
+      <p>移除匹配元素上的 'blue' 和 'under' 样式。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+  p { margin: 4px; font-size:16px; font-weight:bolder; }
+  .blue { color:blue; }
+  .under { text-decoration:underline; }
+  .highlight { background:yellow; }
+  &lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;p class="blue under"&gt;Hello&lt;/p&gt;
+
+  &lt;p class="blue under highlight"&gt;and&lt;/p&gt;
+  &lt;p class="blue under"&gt;then&lt;/p&gt;
+  &lt;p class="blue under"&gt;Goodbye&lt;/p&gt;
+
+&lt;script&gt;
+
+$("p:odd").removeClass("blue under");
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
+      <p>移除匹配元素上的所有样式。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+
+  p { margin: 4px; font-size:16px; font-weight:bolder; }
+  .blue { color:blue; }
+  .under { text-decoration:underline; }
+  .highlight { background:yellow; }
+  &lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;p class="blue under"&gt;Hello&lt;/p&gt;
+  &lt;p class="blue under highlight"&gt;and&lt;/p&gt;
+  &lt;p class="blue under"&gt;then&lt;/p&gt;
+
+  &lt;p class="blue under"&gt;Goodbye&lt;/p&gt;
+
+&lt;script&gt;
+
+$("p:eq(1)").removeClass();
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe></div>
+</div>

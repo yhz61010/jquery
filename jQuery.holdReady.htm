@@ -1,0 +1,42 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:undefined</span>jQuery.holdReady(hold)<br></h2>
+   <div class="desc">
+      <p>Holds or releases the execution of jQuery's ready event.</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.6 新增</span>jQuery.holdReady(hold)
+               								
+            </h4>
+            <div class="arguement"><strong>hold</strong>
+               								(Boolean)
+               								Indicates whether the ready hold is being requested or released
+            </div>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p><code>$.holdReady()</code> method allows the caller to delay jQuery's ready event. This <em>advanced feature</em> would typically be used by dynamic script loaders that want to load additional JavaScript such as jQuery plugins before allowing
+            the ready event to occur, even though the DOM may be ready. This method must be called early in the document, such as in the
+            <code>&lt;head&gt;</code> immediately after the jQuery script tag. Calling this method after the ready event has already fired will have no effect.
+            
+         </p>
+         
+         <p>To delay the ready event, first call <code>$.holdReady(true)</code>. When the ready event should be released to execute, call <code>$.holdReady(false)</code>. Note that multiple holds can be put on the ready event, one for each <code>$.holdReady(true)</code> call. The ready event will not actually fire until all holds have been released with a corresponding number of <code>$.holdReady(false)</code> calls <em>and</em> the normal document ready conditions are met. (详见 <code><a href="http://api.jquery.com/ready/">
+                  ready</a></code>
+            来获得更多信息。)
+         </p>
+         
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>Delay the ready event until a custom plugin has loaded.</p>
+      <h5>jQuery 代码:</h5><pre><code>
+$.holdReady(true);
+$.getScript("myplugin.js", function() {
+     $.holdReady(false);
+});
+</code></pre></div>
+</div>

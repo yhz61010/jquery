@@ -1,0 +1,77 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:String</span>jQuery.browser.version
+   </h2>
+   <div class="desc">
+      <p>The version number of the rendering engine for the user's browser.</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.1.3 新增</span>jQuery.browser.version
+            </h4>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p>Here are some typical results:</p>
+         
+         <ul>
+            
+            <li>Internet Explorer: 6.0, 7.0, 8.0</li>
+            
+            <li>Mozilla/Firefox/Flock/Camino: 1.7.12, 1.8.1.3, 1.9</li>
+            
+            <li>Opera: 10.06, 11.01</li>
+            
+            <li>Safari/Webkit: 312.8, 418.9</li>
+            
+         </ul>
+         
+         <p>Note that IE8 claims to be 7 in Compatibility View.</p>
+         
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>Returns the version number of the rendering engine used by the user's current browser. For example, FireFox 4 returns 2.0
+         (the version of the Gecko rendering engine it utilizes).
+      </p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+  p { color:blue; margin:20px; }
+  span { color:red; }
+  &lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+
+&lt;p&gt;&lt;/p&gt;
+
+
+&lt;script&gt;
+
+
+$("p").html( "The version number of the rendering engine your browser uses is: &lt;span&gt;" +
+                $.browser.version + "&lt;/span&gt;" );
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
+      <p>Alerts the version of IE's rendering engine that is being used:</p>
+      <h5>jQuery 代码:</h5><pre><code>
+if ( $.browser.msie ) {
+  alert( $.browser.version );
+}
+</code></pre><h3>示例:</h3>
+      <p>Often you only care about the "major number," the whole number, which you can get by using JavaScript's built-in parseInt()
+         function:
+      </p>
+      <h5>jQuery 代码:</h5><pre><code>
+if ( $.browser.msie ) {
+  alert( parseInt($.browser.version, 10) );
+}
+</code></pre></div>
+</div>

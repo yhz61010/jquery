@@ -1,0 +1,69 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2>:selected</h2>
+   <div class="desc">
+      <p>获取 select 元素中所有被选中的元素。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.0 新增</span>:selected
+            </h4>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p><code>:selected</code> 选择器仅适用于 <code>&lt;option&gt;</code> 元素。若要选中所有的复选框和单选按钮元素，请使用 <code>:checked</code></p>
+         
+      </div>
+      <h3 id="notes-0">补充说明:</h3>
+      <div class="longdesc">
+         <ul>
+            <li>由于 <code>:selected</code> 是 jQuery 扩展出来的，它并不是 CSS 规范中的一部分。当使用 <code>:selected</code> 时，并不会比使用原生的 DOM 方法 <code>querySelectorAll()</code> 性能好。为了达到高效的 <code>:selected</code> 元素选择，请优先使用纯 CSS 选择器 <code><a href="http://api.jquery.com/filter/">
+                     .filter(":selected")</a></code>
+               。
+            </li>
+         </ul>
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>在 select 元素上添加 change 事件，将选中的 option 元素的文本写入一个 div 中。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+  div { color:red; }
+  &lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;select name="garden" multiple="multiple"&gt;
+
+    &lt;option&gt;Flowers&lt;/option&gt;
+    &lt;option selected="selected"&gt;Shrubs&lt;/option&gt;
+    &lt;option&gt;Trees&lt;/option&gt;
+    &lt;option selected="selected"&gt;Bushes&lt;/option&gt;
+
+    &lt;option&gt;Grass&lt;/option&gt;
+    &lt;option&gt;Dirt&lt;/option&gt;
+  &lt;/select&gt;
+  &lt;div&gt;&lt;/div&gt;
+
+&lt;script&gt;
+
+
+
+    $("select").change(function () {
+          var str = "";
+          $("select option:selected").each(function () {
+                str += $(this).text() + " ";
+              });
+          $("div").text(str);
+        })
+        .trigger('change');
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe></div>
+</div>

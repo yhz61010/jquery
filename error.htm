@@ -1,0 +1,76 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:jQuery</span>error(handler(eventObject))<br></h2>
+   <div class="desc">
+      <p>为 JavaScript 的 "error" 事件绑定一个处理函数。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.0 新增</span>error(handler(eventObject))
+               								
+            </h4>
+            <div class="arguement"><strong>handler(eventObject)</strong>
+               								(Function)
+               								当事件被触发时，执行的函数。
+            </div>
+         </li>
+         <li>
+            <h4><span>1.4.3 新增</span>error(<em class="optional">[eventData]</em>, handler(eventObject))
+               								
+            </h4>
+            <div class="arguement"><strong>eventData</strong>
+               								(Object)
+               								 可选参数，将要传递给事件处理函数的数据映射。
+            </div>
+            <div class="arguement"><strong>handler(eventObject)</strong>
+               								(Function)
+               								每当事件触发时执行的函数。
+            </div>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p>该方法是 <code>.bind('error', handler)</code> 的快捷方式。
+         </p>
+         
+         <p>以图像元素为例，图像元素被文档引用，并且由浏览器浏览器加载。如果元素加载不正确，该方法就会被调用。</p>
+         
+         <p>例如，页面上有一个图像元素：</p>
+         <pre>&lt;img alt="Book" id="book" /&gt;</pre>
+         <p>可以像下面这样为其绑定该事件：</p>
+         <pre>$('#book')
+  .error(function() {
+    alert('Handler for .error() called.')
+  })
+  .attr("src", "missing.png");
+</pre>
+         <p>如果图像不能被加载（例如，可能是由于指定的 URL 不存在），则会弹出如下警告框：</p>
+         
+         <p>
+            <span class="output">Handler for .error() called.</span>
+            
+         </p>
+         
+         <blockquote>
+            
+            <p><em>必须</em>在浏览器触发该事件之前，绑定该事件。这就是为什么上例中，设置图片的 src 属性操作要放到绑定事件之后。同时，如果页面存放在本地，那么该事件可能无法被正确的触发，因为 <code>error</code> 依赖 HTTP 返回的状态码。一般情况下，如果 URL 使用的是 <code>file:</code> 协议，那么该事件也不会被触发。
+            </p>
+            
+         </blockquote>
+         
+         <p>注意: jQuery error 事件不应该绑定到 window 对象上。当脚本出错时，浏览器会触发 window 的 error 事件。然而，window 的 error 事件接收的参数和返回值与传统的事件不一样。若要绑定 window 的
+            error 事件，请使用 <code>window.onerror</code> 来代替。
+            
+         </p>
+         
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>为 IE 用户隐藏 "无效的图片" 图标，并使用自定义图片来代替。</p>
+      <h5>jQuery 代码:</h5><pre><code>$("img")
+  .error(function(){
+    $(this).hide();
+  })
+  .attr("src", "missing.png");</code></pre></div>
+</div>

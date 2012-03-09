@@ -1,0 +1,80 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:jQuery</span>removeProp(propertyName)<br></h2>
+   <div class="desc">
+      <p>移除匹配元素上指定的 property 属性。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.6 新增</span>removeProp(propertyName)
+               								
+            </h4>
+            <div class="arguement"><strong>propertyName</strong>
+               								(String)
+               								将要被移除的 property 属性名。
+            </div>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p><code>.removeProp()</code> 方法会移除使用 <code>
+               <a href="http://api.jquery.com/prop">.prop()</a>
+               </code> 方法设置的属性。
+         </p>
+         
+         <p>若尝试移除 DOM 元素或 <code>window</code> 对象上一些内建的 property 属性，浏览器可能会产生错误。如果真的那么做了，那么 jQuery 首先会将 property 属性设置成 <code>undefined</code>，然后忽略任何浏览器产生的错误。一般来说,只需要移除自定义的 property 属性，而不是移除内建的（原生的） property 属性。
+         </p>
+         
+         <p>
+            <strong>注意:</strong> 不要使用该方法来移除原生的 property 属性，例如：checked, disabled, 或 selected 属性。因为这样会完全移除该 property 属性，它们一旦被删除，就不能再被添加。请使用 <code>
+               <a href="http://api.jquery.com/prop">.prop()</a>
+               </code> 来将这些 property 属性的值设置成 <code>false</code>。
+         </p>
+         
+      </div>
+      <h3 id="notes-0">补充说明:</h3>
+      <div class="longdesc">
+         <ul>
+            <li>在 IE 9 之前,使用<code>
+                  <a href="http://api.jquery.com/prop/">.prop()</a>
+                  </code> 对一个 DOM 元素的属性进行赋值时，若所赋值的类型不是基本类型(number, string, 或 boolean)，而且也没有使用 <code><a href="http://api.jquery.com/removeProp/">
+                     .removeProp()</a></code> 方法在 DOM 元素从文档中被移除之前。为了安全的在 DOM 对象上进行赋值而不用担心内存泄露问题，请使用 <code><a href="http://api.jquery.com/data/">
+                     .data()</a></code> 方法
+               。
+            </li>
+         </ul>
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>在一个段落上设置一个数值 property 属性，然后再将其移除。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+  img { padding:10px; }
+  div { color:red; font-size:24px; }
+&lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+
+  &lt;p&gt;&lt;/p&gt;
+
+
+
+&lt;script&gt;
+
+
+var $para = $("p");
+$para.prop("luggageCode", 1234);
+$para.append("The secret luggage code is: ", String($para.prop("luggageCode")), ". ");
+$para.removeProp("luggageCode");
+$para.append("Now the secret luggage code is: ", String($para.prop("luggageCode")), ". ");
+
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe></div>
+</div>

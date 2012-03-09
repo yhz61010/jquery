@@ -1,0 +1,162 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:jQuery</span>each(function(index, Element))<br></h2>
+   <div class="desc">
+      <p>迭代一个 jQuery 对象，为每个匹配的元素执行函数。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.0 新增</span>each(function(index, Element))
+               								
+            </h4>
+            <div class="arguement"><strong>function(index, Element)</strong>
+               								(Function)
+               								为每个匹配元素执行的函数。
+            </div>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p><code>.each()</code> 方法可以让 DOM 循环结构变得更简单更不易出错。它会迭代 jQuery 对象中的每一个 DOM 元素。每次执行回调函数时，会传递当前循环次数作为参数(从 0 开始计数)。更重要的是，回调函数是在迭代时所处的那个 DOM 元素为上下文的语境中触发的。因此，关键字
+            <code>this</code> 总是指向当前正处于迭代的元素。
+         </p>
+         
+         <p>假设页面上有这样一个简单的无序列表：</p>
+         <pre>&lt;ul&gt;
+    &lt;li&gt;foo&lt;/li&gt;
+    &lt;li&gt;bar&lt;/li&gt;
+&lt;/ul&gt;
+  </pre>
+         <p>我们可以选中并迭代这些列表项：</p>
+         <pre>$('li').each(function(index) {
+    alert(index + ': ' + $(this).text());
+});
+  </pre>
+         <p>下面列出的每条信息，就是在迭代列表的每一项时显示的信息：</p>
+         
+         <p>
+            <span class="output">0: foo</span>
+            <br>
+            <span class="output">1: bar</span>
+            
+         </p>
+         
+         <p>我们可以通过返回 <code>false</code> 的方式，在回调函数内中止循环。
+         </p>
+         
+         
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>遍历三个 div 并设置它们的 color 属性。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+  div { color:red; text-align:center; cursor:pointer; 
+        font-weight:bolder; width:300px; }
+  &lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div&gt;Click here&lt;/div&gt;
+  &lt;div&gt;to iterate through&lt;/div&gt;
+  &lt;div&gt;these divs.&lt;/div&gt;
+
+&lt;script&gt;
+
+
+    $(document.body).click(function () {
+      $("div").each(function (i) {
+        if (this.style.color != "blue") {
+          this.style.color = "blue";
+        } else {
+          this.style.color = "";
+        }
+      });
+    });
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
+      <p>如果在迭代时不想使用普通的 DOM 元素，而是想获得对应的 jQuery 对象的话，请使用 $(this) 函数。例如：</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+  ul { font-size:18px; margin:0; }
+  span { color:blue; text-decoration:underline; cursor:pointer; }
+  .example { font-style:italic; }
+  &lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+To do list: &lt;span&gt;(click here to change)&lt;/span&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Eat&lt;/li&gt;
+    &lt;li&gt;Sleep&lt;/li&gt;
+
+    &lt;li&gt;Be merry&lt;/li&gt;
+  &lt;/ul&gt;
+
+&lt;script&gt;
+
+
+    $("span").click(function () {
+      $("li").each(function(){
+        $(this).toggleClass("example");
+      });
+    });
+
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
+      <p>可以使用 'return' 来提前结束 each() 循环。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+  div { width:40px; height:40px; margin:5px; float:left;
+        border:2px blue solid; text-align:center; }
+  span { color:red; }
+  &lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;button&gt;Change colors&lt;/button&gt; 
+  &lt;span&gt;&lt;/span&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div id="stop"&gt;Stop here&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+
+&lt;script&gt;
+
+
+    $("button").click(function () {
+      $("div").each(function (index, domEle) {
+        // domEle == this
+        $(domEle).css("backgroundColor", "yellow"); 
+        if ($(this).is("#stop")) {
+          $("span").text("Stopped at div index #" + index);
+          return false;
+        }
+      });
+    });
+
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe></div>
+</div>

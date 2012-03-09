@@ -1,0 +1,151 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:Promise</span>promise(<em class="optional">[type]</em>, <em class="optional">[target]</em>)<br></h2>
+   <div class="desc">
+      <p> Return a Promise object to observe when all actions of a certain type bound to the collection, queued or not, have finished.
+         
+      </p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.6 新增</span>promise(<em class="optional">[type]</em>, <em class="optional">[target]</em>)
+               								
+            </h4>
+            <div class="arguement"><strong>type</strong>
+               								(String)
+               								 可选参数，默认值:'fx' The type of queue that needs to be observed. 
+            </div>
+            <div class="arguement"><strong>target</strong>
+               								(Object)
+               								 可选参数，Object onto which the promise methods have to be attached
+            </div>
+         </li>
+      </ul>
+      <div class="longdesc"> 
+         
+         <p><code>.promise()</code> method returns a dynamically generated Promise that is resolved once all actions of a certain type bound to the collection,
+            queued or not, have ended.
+         </p>
+         
+         <p> By default, <code>type</code> is <code>"fx"</code>, which means the returned Promise is resolved when all animations of the selected elements have completed.
+         </p>
+         
+         <p> Resolve context and sole argument is the collection onto which <code>.promise()</code> has been called. 
+         </p>
+         
+         <p> If <code>target</code> is provided, <code>.promise()</code> will attach the methods onto it and then return this object rather than create a new one. This can be useful to attach the
+            Promise behavior to an object that already exists.
+         </p>  
+         
+         <blockquote>
+            
+            <p>
+               <strong>Note: </strong>The returned Promise is linked to a Deferred object stored on the <code>.data()</code> for an element. Since the <code>.remove()</code> method removes the element's data as well as the element itself, it will prevent any of the element's unresolved Promises
+               from resolving. If it is necessary to remove an element from the DOM before its Promise is resolved, use <code>.detach()</code> instead and follow with <code>.removeData()</code> after resolution.
+            </p>
+            
+         </blockquote>
+         
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>Using .promise() on a collection with no active animation returns a resolved Promise:</p>
+      <h5>jQuery 代码:</h5><pre><code>
+var div = $( "&lt;div /&gt;" );
+
+div.promise().done(function( arg1 ) {
+  // will fire right away and alert "true"
+  alert( this === div &amp;&amp; arg1 === div );
+});
+</code></pre><h3>示例:</h3>
+      <p>Resolve the returned Promise when all animations have ended (including those initiated in the animation callback or added
+         later on):
+      </p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+div {
+  height: 50px; width: 50px;
+  float: left; margin-right: 10px;
+  display: none; background-color: #090;
+}
+&lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+
+&lt;button&gt;Go&lt;/button&gt;
+&lt;p&gt;Ready...&lt;/p&gt;
+&lt;div&gt;&lt;/div&gt;
+&lt;div&gt;&lt;/div&gt;
+&lt;div&gt;&lt;/div&gt;
+&lt;div&gt;&lt;/div&gt;
+
+
+
+&lt;script&gt;
+
+
+$("button").bind( "click", function() {
+  $("p").append( "Started...");
+  
+  $("div").each(function( i ) {
+    $( this ).fadeIn().fadeOut( 1000 * (i+1) );
+  });
+
+  $( "div" ).promise().done(function() {
+    $( "p" ).append( " Finished! " );
+  });
+});
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
+      <p>Resolve the returned Promise using a $.when() statement (the .promise() method makes it possible to do this with jQuery collections):</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+div {
+  height: 50px; width: 50px;
+  float: left; margin-right: 10px;
+  display: none; background-color: #090;
+}
+&lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+
+&lt;button&gt;Go&lt;/button&gt;
+&lt;p&gt;Ready...&lt;/p&gt;
+&lt;div&gt;&lt;/div&gt;
+&lt;div&gt;&lt;/div&gt;
+&lt;div&gt;&lt;/div&gt;
+&lt;div&gt;&lt;/div&gt;
+
+
+
+&lt;script&gt;
+
+
+var effect = function() {
+  return $("div").fadeIn(800).delay(1200).fadeOut();
+};
+
+$("button").bind( "click", function() {
+  $("p").append( " Started... ");
+
+  $.when( effect() ).done(function() {
+    $("p").append(" Finished! ");
+  });
+});
+
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe></div>
+</div>

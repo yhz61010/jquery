@@ -1,0 +1,113 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:jQuery</span>select(handler(eventObject))<br></h2>
+   <div class="desc">
+      <p>为 JavaScript 的 "select" 事件绑定一个处理函数，或者触发元素上的该事件。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.0 新增</span>select(handler(eventObject))
+               								
+            </h4>
+            <div class="arguement"><strong>handler(eventObject)</strong>
+               								(Function)
+               								每当事件触发时执行的函数。
+            </div>
+         </li>
+         <li>
+            <h4><span>1.4.3 新增</span>select(<em class="optional">[eventData]</em>, handler(eventObject))
+               								
+            </h4>
+            <div class="arguement"><strong>eventData</strong>
+               								(Object)
+               								 可选参数，将要传递给事件处理函数的数据映射。
+            </div>
+            <div class="arguement"><strong>handler(eventObject)</strong>
+               								(Function)
+               								每当事件触发时执行的函数。
+            </div>
+         </li>
+         <li>
+            <h4><span>1.0 新增</span>select()
+               								
+            </h4>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p>带有参数的该方法是 <code>.bind('select', handler)</code> 的快捷方式，不带参数的该方法是 <code>.trigger('select')</code> 的快捷方式。
+         </p>
+         
+         <p>当用户选中文本中的内容时，就会触发 <code>select</code> 事件。该事件只能用于 <code>&lt;input type="text"&gt;</code> 和 <code>&lt;textarea&gt;</code>。
+         </p>
+         
+         <p>举例来说，请看下面的HTML：</p>
+         <pre>&lt;form&gt;
+  &lt;input id="target" type="text" value="Hello there" /&gt;
+&lt;/form&gt;
+&lt;div id="other"&gt;
+  Trigger the handler
+&lt;/div&gt;</pre>
+         <p>该事件可以绑定在文本框上：</p>
+         <pre>$('#target').select(function() {
+  alert('Handler for .select() called.');
+});</pre>
+         <p>现在，当我们选中部分文本时，就会显示一个提示框。若只是将光标移动到文本框上而不选择任何内容的话，是不会触发该事件的。我们可以调用不带参数的 <code>.select()</code> 方法，手动触发这个事件：
+         </p>
+         <pre>$('#other').click(function() {
+  $('#target').select();
+});</pre>
+         <p>在执行完上面的代码后，点击 Trigger the handler 后，同样会显示以下提示：</p>
+         
+         <p>
+            <span class="output">Handler for .select() called.</span>
+            
+         </p>
+         
+         <p>此外，在执行完上面的代码后，<code>select</code> 的默认动作也会被执行，即，选中整个文本内容。
+         </p>
+         
+         <blockquote>
+            
+            <p>检索当前被选中文本的方法，随着浏览器的不同的而不同。有很多 jQuery 插件提供了跨浏览器的解决方案。</p>
+            
+         </blockquote>
+         
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>当选中文本框中的内容时，以动画形式显示一个提示信息：</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+  p { color:blue; }
+  div { color:red; }
+  &lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;p&gt;
+
+    Click and drag the mouse to select text in the inputs.
+  &lt;/p&gt;
+  &lt;input type="text" value="Some text" /&gt;
+  &lt;input type="text" value="to test on" /&gt;
+
+  &lt;div&gt;&lt;/div&gt;
+
+&lt;script&gt;
+
+
+    $(":input").select( function () { 
+      $("div").text("Something was selected").show().fadeOut(1000); 
+    });
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
+      <p>触发所有 input 元素上的 select 事件：</p>
+      <h5>jQuery 代码:</h5><pre><code>$("input").select();</code></pre></div>
+</div>

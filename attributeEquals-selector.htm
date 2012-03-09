@@ -1,0 +1,59 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2>[attribute="value"]</h2>
+   <div class="desc">
+      <p>选择含有特定属性值，并且其属性值精确等于给定值的元素。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.0 新增</span>[attribute="value"]
+            </h4>
+            <div class="arguement"><strong>attribute</strong>
+               								(String)
+               								属性名。
+            </div>
+            <div class="arguement"><strong>value</strong>
+               								(String)
+               								属性值。<strong>引号是强制性的。</strong>
+               
+            </div>
+         </li>
+      </ul>
+      <div class="longdesc"></div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>查找所有属性值为 'Hot Fuzz' 的 input 元素，并且将跟在它后面的 span 元素中的文本修改成 " Hot Fuzz"。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div&gt;
+    &lt;label&gt;
+      &lt;input type="radio" name="newsletter" value="Hot Fuzz" /&gt;
+      &lt;span&gt;name?&lt;/span&gt;
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;label&gt;
+      &lt;input type="radio" name="newsletter" value="Cold Fusion" /&gt;
+      &lt;span&gt;value?&lt;/span&gt;
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;label&gt;
+      &lt;input type="radio" name="newsletter" value="Evil Plans" /&gt;
+      &lt;span&gt;value?&lt;/span&gt;
+    &lt;/label&gt;
+  &lt;/div&gt;
+
+&lt;script&gt;
+
+$('input[value="Hot Fuzz"]').next().text(" Hot Fuzz");
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe></div>
+</div>

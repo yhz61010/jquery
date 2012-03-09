@@ -1,0 +1,137 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:Function</span>jQuery.proxy(function, context)<br></h2>
+   <div class="desc">
+      <p>接受一个函数，然后返回一个新函数，并且这个新函数始终保持了特定的上下文语境。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.4 新增</span>jQuery.proxy(function, context)
+               								
+            </h4>
+            <div class="arguement"><strong>function</strong>
+               								(Function)
+               								将要改变上下文语境的函数。
+            </div>
+            <div class="arguement"><strong>context</strong>
+               								(Object)
+               								函数的上下文语境(<code>this</code>)会被设置成这个 object 对象。
+            </div>
+         </li>
+         <li>
+            <h4><span>1.4 新增</span>jQuery.proxy(context, name)
+               								
+            </h4>
+            <div class="arguement"><strong>context</strong>
+               								(Object)
+               								函数的上下文语境会被设置成这个 object 对象。
+            </div>
+            <div class="arguement"><strong>name</strong>
+               								(String)
+               								将要改变上下文语境的函数名(这个函数必须是前一个参数 <code>context</code> 对象的属性)。
+            </div>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p>这个方法通常在向一个元素上附加事件处理函数时，上下文语境实际是指向另一个对象的情况下使用。另外，jQuery 能够确保即使你绑定的函数是经过 <code>jQuery.proxy()</code> 处理过的函数，你依然可以用原先的函数来正确地取消绑定。
+         </p>
+         
+         <p>Be aware, however, that jQuery's event binding subsystem assigns a unique id to each event handling function in order to track
+            it when it is used to specify the function to be unbound. The function represented by <code>jQuery.proxy()</code> is seen as a single function by the event subsystem, even when it is used to bind different contexts. To avoid unbinding
+            the wrong handler, use a unique event namespace for binding and unbinding (e.g., <code>"click.myproxy1"</code>) rather than specifying the proxied function during unbinding.
+            
+         </p>
+         
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>修改使用参数为"function, context"的jQuery.proxy()方法绑定的点击事件的上下文语境。并且在第一次点击事件执行后，解除原先的绑定。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+
+&lt;p&gt;&lt;button type="button" id="test"&gt;Test&lt;/button&gt;&lt;/p&gt;
+&lt;div id="log"&gt;&lt;/div&gt;
+
+
+&lt;script&gt;
+
+
+var me = {
+  type: "zombie",
+  test: function(event) {
+    // Without proxy, `this` would refer to the event target
+    // use event.target to reference that element.
+    var element = event.target;
+    $(element).css("background-color", "red");
+
+    // With proxy, `this` refers to the me object encapsulating
+    // this function.
+    $("#log").append( "Hello " + this.type + "&lt;br&gt;" );
+    $("#test").unbind("click", this.test);
+  }
+};
+
+var you = {
+  type: "person",
+  test: function(event) {
+    $("#log").append( this.type + " " );
+  }
+};
+
+// execute you.test() in the context of the `you` object
+// no matter where it is called
+// i.e. the `this` keyword will refer to `you`
+var youClick = $.proxy( you.test, you );
+
+
+// attach click handlers to #test
+$("#test")
+  // this === "zombie"; handler unbound after first click
+  .click( $.proxy( me.test, me ) )
+  // this === "person"
+  .click( youClick )
+  // this === "zombie"
+  .click( $.proxy( you.test, me ) )
+  // this === "&lt;button&gt; element"
+  .click( you.test );
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
+      <p>通过调用参数为"context, function name"的jQuery.proxy()方法，强制修改函数的上下文语境。 并且在第一次点击事件执行后，解除绑定。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+
+  &lt;p&gt;&lt;button id="test"&gt;Test&lt;/button&gt;&lt;/p&gt;
+  &lt;p id="log"&gt;&lt;/p&gt;
+
+
+&lt;script&gt;
+
+
+  var obj = {
+    name: "John",
+    test: function() {
+      $("#log").append( this.name );
+      $("#test").unbind("click", obj.test);
+    }
+  };
+
+  $("#test").click( jQuery.proxy( obj, "test" ) );
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe></div>
+</div>

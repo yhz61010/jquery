@@ -1,0 +1,49 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:jQuery</span>first()<br></h2>
+   <div class="desc">
+      <p>选择第一个匹配到的元素。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.4 新增</span>first()
+               								
+            </h4>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p><code>:first</code> 伪类选择器等价于 <code>:eq(0)</code>。也等价于 <code>:lt(1)</code>，因为这也只能匹配到第一个元素。 <a href="first-child-selector">:first-child</a> 则可以匹配到多个元素：即每个父元素中的第一个元素。
+         </p>
+         
+      </div>
+      <h3 id="notes-0">补充说明:</h3>
+      <div class="longdesc">
+         <ul>
+            <li>由于 <code>:first</code> 是 jQuery 扩展出来的，它并不是 CSS 规范中的一部分。当使用 <code>:first</code> 时，并不会比使用原生的 DOM 方法 <code>querySelectorAll()</code> 性能好。为了达到高效的 <code>:first</code> 元素选择，请优先使用纯 CSS 选择器 <code><a href="http://api.jquery.com/filter/">
+                     .filter(":first")</a></code>
+               。
+            </li>
+         </ul>
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>查找表格中的第一行。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;.highlight{background-color: yellow}&lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;p&gt;&lt;span&gt;Look:&lt;/span&gt; &lt;span&gt;This is some text in a paragraph.&lt;/span&gt; &lt;span&gt;This is a note about it.&lt;/span&gt;&lt;/p&gt;
+
+&lt;script&gt;
+
+$("p span").first().addClass('highlight');
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe></div>
+</div>

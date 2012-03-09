@@ -1,0 +1,318 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:String</span>prop(propertyName)<br></h2>
+   <div class="desc">
+      <p>取得所有匹配的元素中，第一个元素的属性值（property）。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.6 新增</span>prop(propertyName)
+               								
+            </h4>
+            <div class="arguement"><strong>propertyName</strong>
+               								(String)
+               								将要取得的属性名（property）。
+            </div>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p><code>.prop()</code> 方法仅取得所有匹配元素中，<em>第一个</em>元素的属性值（property）。如果元素上没有该属性，或者指定的元素不存在，那么该方法会返回 <code>undefined</code>。若要取得每个匹配元素的属性值（property），请使用循环结构，例如 jQuery 的 <code>.each()</code> 或 <code>.map()</code> 方法。
+         </p>
+         
+         <p>在特定的场合，要注意留意 <em>attributes</em> 和 <em>properties</em> 之间的区别。<strong>在 jQuery 1.6 之前</strong>,<code>
+               <a href="http://api.jquery.com/attr/">.attr()</a>
+               </code> 方法在取某些 attribute 的值时，会返回 property 的值，这就导致了结果的不一致。<strong>从 jQuery 1.6 开始</strong>, <code>.prop()</code> 方法返回 property 的值,而 <code>.attr()</code> 方法返回 attributes 的值。
+         </p>
+         
+         
+         <p>例如, <code>selectedIndex</code>, <code>tagName</code>, <code>nodeName</code>, <code>nodeType</code>, <code>ownerDocument</code>, <code>defaultChecked</code>, 和 <code>defaultSelected</code> 应该使用 <code>.prop()</code> 方法进行取值或赋值。而在 jQuery 1.6 之前, 这些属性是通过 <code>.attr()</code> 方法取得的，虽然这不是 <code>attr</code> 的职责范围。因为它们没有对应的 attributes，只是 properties 而已。
+         </p>
+         
+         
+         <p>关于布尔属性（boolean attributes）,考虑到一个 DOM 元素是通过 HTML 标记定义的，例如 <code>&lt;input type="checkbox" checked="checked" /&gt;</code>,假设该对象在 JavaScript 中对应的变量叫 <code>elem</code>:
+         </p>
+         
+         <table class="listing">
+            
+            <tr>
+               
+               <th>
+                  <code>elem.checked</code>
+                  
+               </th>
+               
+               <td>
+                  <code>true</code> (Boolean) 随 checkbox 状态的改变而改变
+               </td>
+               
+            </tr>
+            
+            <tr>
+               
+               <th>
+                  <code>$(elem).prop("checked")</code>
+                  
+               </th>
+               
+               <td>
+                  <code>true</code> (Boolean) 随 checkbox 状态的改变而改变
+               </td>
+               
+            </tr>
+            
+            <tr>
+               
+               <th>
+                  <code>elem.getAttribute("checked")</code>
+                  
+               </th>
+               
+               <td>
+                  <code>"checked"</code> (String) checkbox 的初始状态，该值不会变
+               </td>
+               
+            </tr>
+            
+            <tr>
+               
+               <th>
+                  <code>$(elem).attr("checked")</code>
+                  <em>(1.6)</em>
+                  
+               </th>
+               
+               <td>
+                  <code>"checked"</code> (String) checkbox 的初始状态，该值不会变
+               </td>
+               
+            </tr>
+            
+            <tr>
+               
+               <th>
+                  <code>$(elem).attr("checked")</code>
+                  <em>(1.6.1+)</em>
+                  
+               </th>
+               
+               <td>
+                  <code>"checked"</code> (String) 随 checkbox 状态的改变而改变
+               </td>
+               
+            </tr>
+            
+            <tr>
+               
+               <th>
+                  <code>$(elem).attr("checked")</code>
+                  <em>(pre-1.6)</em>
+                  
+               </th>
+               
+               <td>
+                  <code>true</code> (Boolean) 随 checkbox 状态的改变而改变
+               </td>
+               
+            </tr>
+            
+         </table>
+         
+         <p>
+            根据 <a href="http://www.w3.org/TR/html401/interact/forms.html#h-17.4">W3C 表单规范</a>, <code>checked</code> 属性应该是一个 <em>
+               <a href="http://www.w3.org/TR/html4/intro/sgmltut.html#h-3.3.4.2">boolean attribute（布尔属性）</a>
+               </em>, 这意味着只要该 attribute 存在，即使它没有值，或是一个空字符串，该属性对应的 property 就是 true。以下推荐的是兼容浏览器方式，判断 checkbox 元素的 checked 属性是否为"真" 的方法：
+         </p>
+         
+         <ul>
+            
+            <li>
+               <code>if ( elem.checked )</code>
+               
+            </li>
+            
+            <li>
+               <code>if ( $(elem).prop("checked") )</code>
+               
+            </li>
+            
+            <li>
+               <code>if ( $(elem).is(":checked") )</code>
+               
+            </li>
+            
+         </ul>
+         
+         <p>如果使用 jQuery 1.6 的话,<code>if ( $(elem).attr("checked") )</code> 会返回 <em>attribute</em> 的实际内容并且不会改变 checkbox 的状态。这意味着它只是存储 checked 属性（property）的默认值或是初始值。出于向后兼容性的考虑，<code>.attr()</code> 方法从 jQuery 1.6.1+ 开始除了返回属性值外，还会更新 property 属性，因此 boolean attribute（布尔属性）不需要通过 <code>.prop()</code> 来改变其值。推荐使用上述方法之一，来取得 checked 的值。要想知道在最新的 jQuery 版本中,它们是如何工作的，请点击下例中的 check。
+         </p>
+         
+      </div>
+      <h3 id="notes-0">补充说明:</h3>
+      <div class="longdesc">
+         <ul>
+            <li>在 IE 9 之前,使用<code>
+                  <a href="http://api.jquery.com/prop/">.prop()</a>
+                  </code> 对一个 DOM 元素的属性进行赋值时，若所赋值的类型不是基本类型(number, string, 或 boolean)，而且也没有使用 <code><a href="http://api.jquery.com/removeProp/">
+                     .removeProp()</a></code> 方法在 DOM 元素从文档中被移除之前。为了安全的在 DOM 对象上进行赋值而不用担心内存泄露问题，请使用 <code><a href="http://api.jquery.com/data/">
+                     .data()</a></code> 方法
+               。
+            </li>
+         </ul>
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>当 checkbox 状态改变时，显示 checkbox 的 checked property（属性值）和 attribute（属性值）。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+  p { margin: 20px 0 0 }
+  b { color: blue; }
+&lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+
+&lt;input id="check1" type="checkbox" checked="checked"&gt;
+&lt;label for="check1"&gt;Check me&lt;/label&gt;
+&lt;p&gt;&lt;/p&gt;
+
+
+&lt;script&gt;
+
+
+$("input").change(function() {
+  var $input = $(this);
+  $("p").html(".attr('checked'): &lt;b&gt;" + $input.attr('checked') + "&lt;/b&gt;&lt;br&gt;"
+              + ".prop('checked'): &lt;b&gt;" + $input.prop('checked') + "&lt;/b&gt;&lt;br&gt;"
+              + ".is(':checked'): &lt;b&gt;" + $input.is(':checked') ) + "&lt;/b&gt;";
+}).change();
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe></div>
+</div>
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+   <h2><span>返回值:jQuery</span>prop(propertyName, value)<br></h2>
+   <div class="desc">
+      <p>为所有匹配的元素，设置一个或多个属性值（properties）。</p>
+      <ul class="signatures">
+         <li>
+            <h4><span>1.6 新增</span>prop(propertyName, value)
+               								
+            </h4>
+            <div class="arguement"><strong>propertyName</strong>
+               								(String)
+               								将要设置的 property 属性名。
+            </div>
+            <div class="arguement"><strong>value</strong>
+               								(String, Number, Boolean)
+               								将要设置的 property 属性值。
+            </div>
+         </li>
+         <li>
+            <h4><span>1.6 新增</span>prop(map)
+               								
+            </h4>
+            <div class="arguement"><strong>map</strong>
+               								(Map)
+               								由属性名及属性值组成的一个映射。 
+            </div>
+         </li>
+         <li>
+            <h4><span>1.6 新增</span>prop(propertyName, function(index, oldPropertyValue))
+               								
+            </h4>
+            <div class="arguement"><strong>propertyName</strong>
+               								(String)
+               								将要设置的 property 属性名。
+            </div>
+            <div class="arguement"><strong>function(index, oldPropertyValue)</strong>
+               								(Function)
+               								一个函数，返回将要被设置的值。index 参数表示集合中元素的索引位置。oldPropertyValue 参数表示原有的属性值。<code>this</code> 指向当前的元素。
+            </div>
+         </li>
+      </ul>
+      <div class="longdesc">
+         
+         <p>使用 <code>.prop()</code> 方法设置属性值非常的方便。特别是对于需要使用一个函数设置多个属性值或是一次性设置多个属性值的情况。它适用于设置如下属性： <code>selectedIndex</code>, <code>tagName</code>, <code>nodeName</code>, <code>nodeType</code>, <code>ownerDocument</code>, <code>defaultChecked</code>, 或 <code>defaultSelected</code>。从 jQuery 1.6 起,上述 property 属性不能再使用 <code>.attr()</code> 方法进行赋值。因为它们没有对应的 attributes，只是 properties 而已。 
+         </p>
+         
+         <p>Properties 属性一般影响 DOM 元素的动态状态并不会改变序列化的 HTML attribute 属性。例如，input 元素的 <code>value</code> 属性，input 和 按钮 元素的 <code>disabled</code> 属性, 以及 checkbox 的 <code>checked</code> 属性。应该使用 <code>.prop()</code> 方法设置 disabled 和 checked 属性，而不是使用 <code>
+               <a href="http://api.jquery.com/attr">.attr()</a>
+               </code> 方法。<code>
+               <a href="http://api.jquery.com/val">.val()</a>
+               </code> 方法应该用于存取 value 值。
+         </p>
+         <pre>
+$("input").prop("disabled", false);
+$("input").prop("checked", true);
+$("input").val("someValue");
+</pre>
+         <p>
+            <strong>特别注意:</strong> 不要认为使用 <code>
+               <a href="http://api.jquery.com/removeProp">.removeProp()</a>
+               </code> 方法将上述属性移除，就可以使其属性值就变成 false。一旦原生的属性被移除，就无法再被添加。参阅 <code>
+               <a href="http://api.jquery.com/removeProp">.removeProp()</a>
+               </code> 来获得更多帮助。
+         </p>
+         
+         
+         <h4 id="computed-prop-values">经过计算的属性值</h4>
+         
+         <p>当使用一个函数设置属性值时，可以根据该元素上的其它属性值返回最终所需的属性值。例如，根据各个 checkbox 的值，切换其状态:</p>
+         <pre>$("input[type='checkbox']").prop("checked", function( i, val ) {
+  return !val;
+});</pre>
+         <p>
+            <strong>注意: </strong> 如果给定的函数什么都没有返回(例如， <code>function(index, prop){})</code>, 或者返回的是 <code>undefined</code>，那么该属性的属性值不会被修改。适用于只有满足特定的条件时，有选择性的设置属性值的情况。
+         </p>
+         
+      </div>
+      <h3 id="notes-0">补充说明:</h3>
+      <div class="longdesc">
+         <ul>
+            <li>在 IE 9 之前,使用<code>
+                  <a href="http://api.jquery.com/prop/">.prop()</a>
+                  </code> 对一个 DOM 元素的属性进行赋值时，若所赋值的类型不是基本类型(number, string, 或 boolean)，而且也没有使用 <code><a href="http://api.jquery.com/removeProp/">
+                     .removeProp()</a></code> 方法在 DOM 元素从文档中被移除之前。为了安全的在 DOM 对象上进行赋值而不用担心内存泄露问题，请使用 <code><a href="http://api.jquery.com/data/">
+                     .data()</a></code> 方法
+               。
+            </li>
+         </ul>
+      </div>
+   </div>
+   <div class="example">
+      <h3>示例:</h3>
+      <p>禁用页面上的所有 checkbox。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+  img { padding:10px; }
+  div { color:red; font-size:24px; }
+&lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+
+  &lt;input type="checkbox" checked="checked" /&gt;
+  &lt;input type="checkbox" /&gt;
+  &lt;input type="checkbox" /&gt;
+  &lt;input type="checkbox"  checked="checked" /&gt;
+
+
+&lt;script&gt;
+
+
+$("input[type='checkbox']").prop({
+  disabled: true
+});
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe></div>
+</div>
