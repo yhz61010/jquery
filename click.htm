@@ -38,8 +38,7 @@
          <p>带有参数的该方法是 <code>.bind('click', handler)</code> 的快捷方式，不带参数的该方法是 <code>.trigger('click')</code> 的快捷方式。
          </p>
          
-         <p><code>click</code> event is sent to an element when the mouse pointer is over the element, and the mouse button is pressed and released. Any
-            HTML element can receive this event.
+         <p>当用户在元素上点击了鼠标，就会触发 <code>click</code> 事件。任何 HTML 元素都可以接收该事件。
          </p>
          <pre>举例来说，请看下面的HTML：
 &lt;div id="target"&gt;
@@ -54,44 +53,44 @@
             
          </p>
          
-         <p>The event handler can be bound to any <code>&lt;div&gt;</code>:
+         <p>可以将该事件绑定到任何 <code>&lt;div&gt;</code> 上：
          </p>
          <pre>$('#target').click(function() {
   alert('Handler for .click() called.');
 });</pre>
-         <p>Now if we click on this element, the alert is displayed:</p>
+         <p>现在，当你在该元素上点击鼠标时，就会显示提示框：</p>
          
          <p>
             <span class="output">Handler for .click() called.</span>
             
          </p>
          
-         <p>We can also trigger the event when a different element is clicked:</p>
+         <p>可以通过点击其它元素来手动触发另一个元素的该事件：</p>
          <pre>$('#other').click(function() {
   $('#target').click();
 });</pre>
          <p>在代码执行后，如果你点击 <span class="output">Trigger the handler</span> 将同样会弹出上面的消息。
          </p>
          
-         <p><code>click</code> event is only triggered after this exact series of events:
+         <p><code>click</code> 事件只有满足以下条件时，才能被触发：
          </p>
          
          <ul>
             
-            <li>The mouse button is depressed while the pointer is inside the element.</li>
+            <li>鼠标已经被按下，并且鼠标指针在目标元素的内部。</li>
             
-            <li>The mouse button is released while the pointer is inside the element.</li>
+            <li>鼠标松开时，鼠标指针依然在该元素的内部。</li>
             
          </ul>
          
-         <p>This is usually the desired sequence before taking an action. If this is not required, the <code>mousedown</code> or <code>mouseup</code> event may be more suitable.
+         <p>该事件通常用于处理目标元素内部的鼠标点击事件。如果只关心鼠标是否被点击，那么使用 <code>mousedown</code> 或 <code>mouseup</code> 事件可能更合适。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>To hide paragraphs on a page when they are clicked:</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>当在段落元素上点击时，隐藏所点击的段落：</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -123,6 +122,6 @@
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
-      <p>To trigger the click event on all of the paragraphs on the page:</p>
+      <p>触发页面上所有段落的 click 事件：</p>
       <h5>jQuery 代码:</h5><pre><code>$("p").click();</code></pre></div>
 </div>
