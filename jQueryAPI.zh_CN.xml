@@ -1855,22 +1855,21 @@ $.getScript("myplugin.js", function() {
          <category name="Version 1.6"/>
       </entry>
       <entry type="method" name="jQuery.hasData" return="Boolean">
-         <desc>Determine whether an element has any jQuery data associated with it.</desc>
+         <desc>判断一个元素是否含有 jQuery data。</desc>
          <signature>
             <added>1.5</added>
             <argument name="element" type="Element">
-               <desc>A DOM element to be checked for data.</desc>
+               <desc>用于检查是否含有 jQuery data 的元素。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p><code>jQuery.hasData()</code> method provides a way to determine if an element currently has any values that were set using <code>
+            <p><code>jQuery.hasData()</code> 方法用于检查某元素是否含有 jQuery data，该 jQuery data 是使用 <code>
                   <a href="jQuery.data.htm">jQuery.data()</a>
-               </code>. If no data is associated with an element (there is no data object at all or the data object is empty), the method returns <code>false</code>; otherwise it returns <code>true</code>.</p>
-            <p>The primary advantage of <code>jQuery.hasData(element)</code> is that it does not create and associate a data object with the element if none currently exists. In contrast, <code>jQuery.data(element)</code> always returns a data object to the caller, creating one if no data object previously existed.
-</p>
+               </code> 进行赋值的。如果某元素上没有关联任何 jQuery data（即，根本没有 data 对象，或 data 对象为空），该方法将返回 <code>false</code>; 否则返回 <code>true</code>。</p>
+            <p><code>jQuery.hasData(element)</code> 的主要优点是它并不创建 data 对象。如果元素上没有 data 对象，那么该方法也不会与元素上的 data 对象关联。相反，<code>jQuery.data(element)</code> 总是向调用者返回一个 data 对象，即使该元素上不含有 data 对象，它也会创建一个。</p>
          </longdesc>
          <example>
-            <desc>Set data on an element and see the results of hasData.</desc>
+            <desc>为一个元素设置 data，并使用 hasData 查看结果。</desc>
             <code>
 $(function(){
   var $p = jQuery("p"), p = $p[0];
@@ -1898,15 +1897,15 @@ $(function(){
          <category name="Version 1.4.3"/>
       </entry>
       <entry type="property" name="jquery" return="String">
-         <desc>A string containing the jQuery version number.</desc>
+         <desc>代表 jQuery 版本号的字符串。</desc>
          <signature>
             <added>1.0</added>
          </signature>
          <longdesc>
-            <p><code>.jquery</code> property is assigned to the jQuery prototype, commonly referred to by its alias <code>$.fn</code>. It is a string containing the version number of <code>jQuery</code>, such as "1.5.0" or "1.4.4".</p>
+            <p><code>.jquery</code> 属性是通过 jQuery 原型赋值的，通过使用它的别名 <code>$.fn</code> 进行引用。它是一个含有 <code>jQuery</code> 版本号的字符串，例如 "1.5.0" 或 "1.4.4".</p>
          </longdesc>
          <example>
-            <desc>Determine if an object is a jQuery object</desc>
+            <desc>判断一个对象是否是 jQuery 对象。</desc>
             <code>
 var a = { what: "A regular JS object" },
     b = $('body');
@@ -1921,7 +1920,7 @@ if ( b.jquery ) { // truthy, since it's a string
 </code>
          </example>
          <example>
-            <desc>Get the current version of jQuery running on the page</desc>
+            <desc>取得页面上当前使用的 jQuery 的版本号。</desc>
             <code>
 alert( 'You are running jQuery version: ' + $.fn.jquery );
 </code>
