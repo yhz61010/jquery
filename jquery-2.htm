@@ -4,7 +4,7 @@
    <h2><span>返回值:String</span>jquery
    </h2>
    <div class="desc">
-      <p>A string containing the jQuery version number.</p>
+      <p>代表 jQuery 版本号的字符串。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>jquery
@@ -13,14 +13,14 @@
       </ul>
       <div class="longdesc">
          
-         <p><code>.jquery</code> property is assigned to the jQuery prototype, commonly referred to by its alias <code>$.fn</code>. It is a string containing the version number of <code>jQuery</code>, such as "1.5.0" or "1.4.4".
+         <p><code>.jquery</code> 属性是通过 jQuery 原型赋值的，通过使用它的别名 <code>$.fn</code> 进行引用。它是一个含有 <code>jQuery</code> 版本号的字符串，例如 "1.5.0" 或 "1.4.4".
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Determine if an object is a jQuery object</p>
+      <p>判断一个对象是否是 jQuery 对象。</p>
       <h5>jQuery 代码:</h5><pre><code>
 var a = { what: "A regular JS object" },
     b = $('body');
@@ -33,7 +33,7 @@ if ( b.jquery ) { // truthy, since it's a string
     alert(' b is a jQuery object! ');
 }
 </code></pre><h3>示例:</h3>
-      <p>Get the current version of jQuery running on the page</p>
+      <p>取得页面上当前使用的 jQuery 的版本号。</p>
       <h5>jQuery 代码:</h5><pre><code>
 alert( 'You are running jQuery version: ' + $.fn.jquery );
 </code></pre></div>

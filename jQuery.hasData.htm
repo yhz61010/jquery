@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Boolean</span>jQuery.hasData(element)<br></h2>
    <div class="desc">
-      <p>Determine whether an element has any jQuery data associated with it.</p>
+      <p>判断一个元素是否含有 jQuery data。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.5 新增</span>jQuery.hasData(element)
@@ -11,27 +11,25 @@
             </h4>
             <div class="arguement"><strong>element</strong>
                								(Element)
-               								A DOM element to be checked for data.
+               								用于检查是否含有 jQuery data 的元素。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p><code>jQuery.hasData()</code> method provides a way to determine if an element currently has any values that were set using <code>
+         <p><code>jQuery.hasData()</code> 方法用于检查某元素是否含有 jQuery data，该 jQuery data 是使用 <code>
                <a href="jQuery.data.htm">jQuery.data()</a>
-               </code>. If no data is associated with an element (there is no data object at all or the data object is empty), the method returns
-            <code>false</code>; otherwise it returns <code>true</code>.
+               </code> 进行赋值的。如果某元素上没有关联任何 jQuery data（即，根本没有 data 对象，或 data 对象为空），该方法将返回 <code>false</code>; 否则返回 <code>true</code>。
          </p>
          
-         <p>The primary advantage of <code>jQuery.hasData(element)</code> is that it does not create and associate a data object with the element if none currently exists. In contrast, <code>jQuery.data(element)</code> always returns a data object to the caller, creating one if no data object previously existed.
-            
+         <p><code>jQuery.hasData(element)</code> 的主要优点是它并不创建 data 对象。如果元素上没有 data 对象，那么该方法也不会与元素上的 data 对象关联。相反，<code>jQuery.data(element)</code> 总是向调用者返回一个 data 对象，即使该元素上不含有 data 对象，它也会创建一个。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Set data on an element and see the results of hasData.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>为一个元素设置 data，并使用 hasData 查看结果。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;script src="jquery.min.js"&gt;&lt;/script&gt;
