@@ -38,7 +38,7 @@
          <p>带有参数的该方法是 <code>.bind('mouseup', handler)</code> 的快捷方式 variation, and <code>.trigger('mouseup')</code> in the second.
          </p>
          
-         <p><code>mouseup</code> event is sent to an element when the mouse pointer is over the element, and the mouse button is released. 任何 HTML 元素都可以接收该事件。
+         <p>当鼠标指针正处在某元素上，并且在该元素上松开了鼠标，就会触发 <code>mouseup</code> 事件。任何 HTML 元素都可以接收该事件。
          </p>
          
          <p>举例来说，请看下面的HTML：</p>
@@ -74,15 +74,14 @@
          <p>在代码执行后，如果你点击 <span class="output">Trigger the handler</span> 将同样会弹出上面的消息。
          </p>
          
-         <p>If the user clicks outside an element, drags onto it, and releases the button, this is still counted as a <code>mouseup</code> event. This sequence of actions is not treated as a button press in most user interfaces, so it is usually better to use
-            the <code>click</code> event unless we know that the <code>mouseup</code> event is preferable for a particular situation.
+         <p>如果用户在某元素外按下了鼠标，并且将鼠标指针移入到该元素上，此时再松开鼠标时，同样会触发 <code>mouseup</code> 事件。但是，这一系列操作对于大多数界面设计而言，并不作为 <code>click</code> 事件来看待。除非在特殊情况下，我们真正关注的是 <code>mouseup</code> 事件。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Show texts when mouseup and mousedown event triggering.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>当触发 mouseup 和 mousedown 事件时，显示一段文本。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;script src="jquery.min.js"&gt;&lt;/script&gt;

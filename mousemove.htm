@@ -38,7 +38,7 @@
          <p>带有参数的该方法是 <code>.bind('mousemove', handler)</code> 的快捷方式，不带参数的该方法是 <code>.trigger('mousemove')</code> 的快捷方式。
          </p>
          
-         <p><code>mousemove</code> event is sent to an element when the mouse pointer moves inside the element. 任何 HTML 元素都可以接收该事件。
+         <p>当鼠标指针在元素内部移动时，就会触发 <code>mousemove</code> 事件。任何 HTML 元素都可以接收该事件。
          </p>
          
          <p>举例来说，请看下面的HTML：</p>
@@ -50,13 +50,13 @@
 &lt;/div&gt;
 &lt;div id="log"&gt;&lt;/div&gt;</pre>
          
-         <p>The event handler can be bound to the target:</p>
+         <p>可以将事件绑定到 id 为 target 的元素上：</p>
          <pre>$("#target").mousemove(function(event) {
   var msg = "Handler for .mousemove() called at ";
   msg += event.pageX + ", " + event.pageY;
   $("#log").append("&lt;div&gt;" + msg + "&lt;/div&gt;");
 });</pre>
-         <p>Now when the mouse pointer moves within the target button, the messages are appended to &lt;div id="log"&gt;:</p>
+         <p>现在，当我们在 target 元素内移动鼠标时，就会向 &lt;div id="log"&gt; 中追加信息：</p>
          
          <p>
             <span class="output">Handler for .mousemove() called at (399, 48)</span>
@@ -75,33 +75,27 @@
          <pre>$("#other").click(function() {
   $("#target").mousemove();
 });</pre>
-         <p>After this code executes, clicks on the Trigger button will also append the message:</p>
+         <p>在执行完上述代码之后，点击 Trigger 按钮同样会追加如下信息：</p>
          
          <p>
             <span class="output">Handler for .mousemove() called at (undefined, undefined)</span>
             
          </p>
          
-         <p>When tracking mouse movement, you usually need to know the actual position of the mouse pointer. The event object that is
-            passed to the handler contains some information about the mouse coordinates. Properties such as <code>.clientX</code>, <code>.offsetX</code>, and <code>.pageX</code> are available, but support for them differs between browsers. Fortunately, jQuery normalizes the <code>.pageX</code> 和 <code>.pageY</code> properties so that they can be used in all browsers. These properties provide the X and Y coordinates of the mouse pointer
-            relative to the top-left corner of the document, as illustrated in the example output above.
+         <p>当追踪鼠标移动时，通常需要知道鼠标指针的实际位置。传递给该事件的 event 对象含有一些鼠标坐标信息。例如 <code>.clientX</code>, <code>.offsetX</code>, 和 <code>.pageX</code> 这些属性都是可以被使用的。不过，不同的浏览器对它们的支持情况不一样。幸运的时，jQuery 将 <code>.pageX</code> 和 <code>.pageY</code> 属性进行了标准化，以便于在所有的浏览器中都可以使用它们。这些属性提供了相对于文档左上角的鼠标指针的 X 和 Y 轴坐标。即，上例中输出显示的坐标值。
          </p>
          
-         <p>Keep in mind that the <code>mousemove</code> event is triggered whenever the mouse pointer moves, even for a pixel. This means that hundreds of events can be generated
-            over a very small amount of time. If the handler has to do any significant processing, or if multiple handlers for the event
-            exist, this can be a serious performance drain on the browser. It is important, therefore, to optimize <code>mousemove </code>handlers as much as possible, and to unbind them as soon as they are no longer needed.
+         <p>牢记，只要移动了鼠标指针，哪怕是只移动了一个像素，都会触发 <code>mousemove</code> 事件。这意味着，在很短的时间内，该事件会产生很多次。如果在该事件中，存在任何重大的处理或多个处理程序，都将会产生严重的性能问题，甚至会让浏览器失去响应。因此，重要的是要尽可能的优化 <code>mousemove </code> 事件，并且当不再需要该事件时，要及时将它解除绑定。
          </p>
          
-         <p>A common pattern is to bind the <code>mousemove</code> handler from within a <code>mousedown</code> hander, and to unbind it from a corresponding <code>mouseup</code> handler. If implementing this sequence of events, remember that the <code>mouseup</code> event might be sent to a different HTML element than the <code>mousemove</code> event was. To account for this, the <code>mouseup</code> handler should typically be bound to an element high up in the DOM tree, such as <code>&lt;body&gt;</code>.
+         <p>通常是在 <code>mousedown</code> 中绑定 <code>mousemove</code> 事件。并且在对应的 <code>mouseup</code> 事件中，解除绑定。要实现这一系列事件，请记住，与 <code>mousemove</code> 事件相比，<code>mouseup</code> 事件可能会被发送到不同的 HTML 元素上。由于这个原因，<code>mouseup</code> 事件通常应该绑定在更高的 DOM 树中，例如 <code>&lt;body&gt;</code>。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Show the mouse coordinates when the mouse is moved over the yellow div.  Coordinates are relative to the window, which in
-         this case is the iframe.
-      </p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>当在黄色的 div 移动鼠标时，显示鼠标指针的坐标。坐标是相对于窗口的，在该例中，窗口指的是 iframe。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;

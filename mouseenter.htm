@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>mouseenter(handler(eventObject))<br></h2>
    <div class="desc">
-      <p>绑定一个事件，该事件在鼠标移入到元素上时被触发。或者触发元素上的该事件。</p>
+      <p>绑定一个事件，该事件在鼠标移入到元素上时被触发。或者触发元素上的该事件。（不支持事件冒泡）</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>mouseenter(handler(eventObject))
@@ -62,8 +62,8 @@
          <pre>$('#outer').mouseenter(function() {
   $('#log').append('&lt;div&gt;Handler for .mouseenter() called.&lt;/div&gt;');
 });</pre>
-         <p>Now when the mouse pointer moves over the <span class="output">Outer</span> 
-            <code>&lt;div&gt;</code>, the message is appended to <code>&lt;div id="log"&gt;</code>. You can also trigger the event when another element is clicked:
+         <p>现在，当鼠标指针移入 <span class="output">Outer</span> 
+            <code>&lt;div&gt;</code> 时，就会向 <code>&lt;div id="log"&gt;</code> 中追加信息。我们也可以通过点击其它元素，手动触发另一个元素上的该事件： 
          </p>
          <pre>$('#other').click(function() {
   $('#outer').mouseenter();

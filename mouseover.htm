@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>mouseover(handler(eventObject))<br></h2>
    <div class="desc">
-      <p>为 JavaScript 的 "mouseover" 事件绑定一个处理函数，或者触发元素上的该事件。</p>
+      <p>为 JavaScript 的 "mouseover" 事件绑定一个处理函数，或者触发元素上的该事件。（支持事件冒泡）</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>mouseover(handler(eventObject))
@@ -38,7 +38,7 @@
          <p>带有参数的该方法是 <code>.bind('mouseover', handler)</code> 的快捷方式，不带参数的该方法是 <code>.trigger('mouseover')</code> 的快捷方式。
          </p>
          
-         <p><code>mouseover</code> event is sent to an element when the mouse pointer enters the element. 任何 HTML 元素都可以接收该事件。
+         <p>当鼠标指针移入元素时，就会触发 <code>mouseover</code> 事件。任何 HTML 元素都可以接收该事件。
          </p>
          
          <p>举例来说，请看下面的HTML：</p>
@@ -62,8 +62,8 @@
          <pre>$('#outer').mouseover(function() {
   $('#log').append('&lt;div&gt;Handler for .mouseover() called.&lt;/div&gt;');
 });</pre>
-         <p>Now when the mouse pointer moves over the <span class="output">Outer</span> 
-            <code>&lt;div&gt;</code>, the message is appended to <code>&lt;div id="log"&gt;</code>. We can also trigger the event when another element is clicked:
+         <p>现在，当鼠标指针移入 <span class="output">Outer</span> 
+            <code>&lt;div&gt;</code> 时，就会向 <code>&lt;div id="log"&gt;</code> 中添加信息。我们也可以通过点击其它元素，手动触发另一个元素上的该事件： 
          </p>
          <pre>$('#other').click(function() {
   $('#outer').mouseover();
@@ -71,17 +71,14 @@
          <p>在代码执行后，如果你点击 <span class="output">Trigger the handler</span> 将同样会追加上面的消息。
          </p>
          
-         <p>This event type can cause many headaches due to event bubbling. For instance, when the mouse pointer moves over the <span class="output">Inner</span> element in this example, a <code>mouseover</code> event will be sent to that, then trickle up to <span class="output">Outer</span>. This can trigger our bound <code>mouseover</code> handler at inopportune times. See the discussion for <code>.mouseenter()</code> for a useful alternative.
+         <p>由于事件冒泡，该事件可能会产生诸多问题。例如上例中，当鼠标指针移入 <span class="output">Inner</span> 元素时，会触发该元素上的 <code>mouseover</code> 事件，然后该事件又冒泡到 <span class="output">Outer</span> 元素上。这就导致了不合时机的 <code>mouseover</code> 事件被调用了。更多相关信息，可以参阅 <code>.<a href="mouseenter.htm">mouseenter</a>()</code>，作为一种更好的替代方法。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Show the number of times mouseover and mouseenter events are triggered.
-         mouseover fires when the pointer moves into the child element as well, while mouseenter fires only when the pointer moves
-         into the bound element.
-      </p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>当触发 mouseover 和 mouseenter 事件时，显示鼠标移出对象的次数。当鼠标移入绑定 mouseover 事件元素的子元素时，mouseover 事件同样会被触发。但是，只有在绑定 mouseenter 事件的元素上，将鼠标移入时，才会触发该事件。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
