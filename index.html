@@ -9,10 +9,10 @@
    <body id="api">
       <div id="header">
          <div id="headerMain">
-            <h1>jQuery 1.7 中文文档 Translated by <a href="http://www.ho1ho.com/">Michael Leo</a>, Thanks <a href="http://www.cn-cuckoo.com/">为之漫笔</a> for original version. Welcome to visit jQuery Cheatsheet from <a href="http://oscarotero.com/jquery/">Oscar Otero</a>.
+            <h1>jQuery 1.7 中文文档 Translated by <a href="http://www.ho1ho.com/" target="_blank">Michael Leo</a>, Thanks <a href="http://www.cn-cuckoo.com/" target="_blank">为之漫笔</a> for original version. Welcome to visit jQuery Cheatsheet from <a href="http://oscarotero.com/jquery/" target="_blank">Oscar Otero</a>.
             </h1>
          </div>
-         <div id="headerMain">Last update: 2012-03-12<span id="current_time">14:37:51</span> (Chinese Standard Time)
+         <div id="headerMain">Last update: 2012-03-14<span id="current_time">11:43:31</span> (Chinese Standard Time)
          </div>
       </div>
       <div id="wrapper">
@@ -973,7 +973,7 @@
 					}
 				});
 				$("#sidebar h2").click(function(){
-					$(this).next("div").toggle().siblings("div").hide();
+					$(this).next("div").slideToggle('fast').siblings("div").hide('fast');
 				});
 				$("#wrapper").click(function(e){
 					if($(e.target).is("a[href$='.htm']")){

@@ -3,7 +3,8 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>offsetParent()<br></h2>
    <div class="desc">
-      <p>Get the closest ancestor element that is positioned.</p>
+      <p>取得离指定元素最近的<em>含有定位信息</em>的祖先元素。<em>含有定位信息</em>的元素指的是，CSS 的 position 属性是 <code>relative</code>, <code>absolute</code>, 或 <code>fixed</code> 的元素。
+      </p>
       <ul class="signatures">
          <li>
             <h4><span>1.2.6 新增</span>offsetParent()
@@ -13,11 +14,11 @@
       </ul>
       <div class="longdesc">
          
-         <p>Given a jQuery object that represents a set of DOM elements, the <code>.offsetParent()</code> method allows us to search through the ancestors of these elements in the DOM tree and construct a new jQuery object wrapped
-            around the closest positioned ancestor. An element is said to be positioned if it has a CSS position attribute of <code>relative</code>, <code>absolute</code>, or <code>fixed</code>. This information is useful for calculating offsets for performing animations and placing objects on the page.
+         <p>如果通过 jQuery 选择器得到了一个 jQuery 对象，这个对象代表一组 DOM 元素，那么 <code>.offsetParent()</code> 方法会查找这些元素在 DOM 树中的祖先元素，并创建一个新的 jQuery 对象，其中含有取得的离指定元素最近的<em>含有定位信息</em>的祖先元素。<em>含有定位信息</em>的元素指的是，CSS 的 position 属性是 <code>relative</code>, <code>absolute</code>, 或 <code>fixed</code> 的元素。定位信息对于计算动画时的偏移并且在页面上放置元素时特别有用。
          </p>
          
-         <p>Consider a page with a basic nested list on it, with a positioned element:</p>
+         <p>例如，下面是一个含有嵌套列表的例子，其中具备<em>含有定位信息</em>的元素：
+         </p>
          <pre>
 &lt;ul class="level-1"&gt;
   &lt;li class="item-i"&gt;I&lt;/li&gt;
@@ -37,15 +38,16 @@
   &lt;li class="item-iii"&gt;III&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-         <p>If we begin at item A, we can find its positioned ancestor:</p>
+         <p>如果从 A 项目开始的话，我们可以向下面这样查找它的<em>含有定位信息</em>的祖先元素：
+         </p>
          <pre>$('li.item-a').offsetParent().css('background-color', 'red');</pre>
-         <p>This will change the color of list item II, which is positioned.</p>
+         <p>结果是打到了 II 项目列表，并改变了它的背景色。</p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Find the offsetParent of item "A."</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>查找 "A." 项目的 offsetParent。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;script src="jquery.min.js"&gt;&lt;/script&gt;

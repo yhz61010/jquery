@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Integer</span>scrollTop()<br></h2>
    <div class="desc">
-      <p>Get the current vertical position of the scroll bar for the first element in the set of matched elements.</p>
+      <p>得到第一个匹配元素的垂直滚动条的位置。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.2.6 新增</span>scrollTop()
@@ -13,15 +13,15 @@
       </ul>
       <div class="longdesc">
          
-         <p>The vertical scroll position is the same as the number of pixels that are hidden from view above the scrollable area. If the
-            scroll bar is at the very top, or if the element is not scrollable, this number will be <code>0</code>.
+         <p>垂直滚动条的位置与元素上可滚动区域隐藏的像素数是相同的。（原文如下：The vertical scroll position is the same as the number of pixels that are hidden from view
+            above the scrollable area.）如果滚动条处于最上边，或者元素是不可滚动的，那么该值是 <code>0</code>。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Get the scrollTop of a paragraph.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>取得段落的 scrollTop 值。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -47,7 +47,7 @@ $("p:last").text( "scrollTop:" + p.scrollTop() );
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>scrollTop(value)<br></h2>
    <div class="desc">
-      <p>Set the current vertical position of the scroll bar for each of the set of matched elements.</p>
+      <p>为每个匹配的元素设置垂直滚动条的位置。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.2.6 新增</span>scrollTop(value)
@@ -55,21 +55,21 @@ $("p:last").text( "scrollTop:" + p.scrollTop() );
             </h4>
             <div class="arguement"><strong>value</strong>
                								(Number)
-               								An integer indicating the new position to set the scroll bar to.
+               								代表新的垂直滚动条位置的整数。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p>The vertical scroll position is the same as the number of pixels that are hidden from view above the scrollable area. Setting
-            the <code>scrollTop</code> positions the vertical scroll of each matched element.
+         <p>垂直滚动条的位置与元素上可滚动区域隐藏的像素数是相同的。（原文如下：The vertical scroll position is the same as the number of pixels that are hidden from view
+            above the scrollable area.）该方法会为每个匹配的元素设置 <code>scrollTop</code>。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Set the scrollTop of a div.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>为 div 设置 scrollTop。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;

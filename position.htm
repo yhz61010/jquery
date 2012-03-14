@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Object</span>position()<br></h2>
    <div class="desc">
-      <p>Get the current coordinates of the first element in the set of matched elements, relative to the offset parent.</p>
+      <p>取得第一个匹配元素相对于父元素的偏移坐标。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.2 新增</span>position()
@@ -13,19 +13,19 @@
       </ul>
       <div class="longdesc">
          
-         <p><code>.position()</code> method allows us to retrieve the current position of an element <em>relative to the offset parent</em>. Contrast this with <code>
-               <a href="/offset">.offset()</a>
-               </code>, which retrieves the current position <em>relative to the document</em>. When positioning a new element near another one and within the same containing DOM element, <code>.position()</code> is the more useful.
+         <p><code>.position()</code> 方法允许我们取得元素<em>相对于父元素的偏移</em>位置。该方法与 <code>
+               <a href="offset.htm">.offset()</a>
+               </code> 相比，<code><a href="offset.htm">.offset()</a></code> 取得的是<em>相对于文档</em>的位置。如果某元素位于其它元素的边上，并且它们都位于相同的 DOM 元素中，那么 <code>.position()</code> 方法可能更有用。
          </p>
          
-         <p>Returns an object containing the properties <code>top</code> 和 <code>left</code>.
+         <p>该方法返回一个对象，包括 <code>top</code> 和 <code>left</code> 属性。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Access the position of the second paragraph:</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>取得第一个段落的位置：</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
