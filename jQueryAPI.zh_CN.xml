@@ -13037,13 +13037,13 @@ $("span").click(function () {
          <category name="Version 1.0"/>
       </entry>
       <entry type="method" name="offsetParent" return="jQuery">
-         <desc>Get the closest ancestor element that is positioned.</desc>
+         <desc>取得离指定元素最近的<em>含有定位信息</em>的祖先元素。<em>含有定位信息</em>的元素指的是，CSS 的 position 属性是 <code>relative</code>, <code>absolute</code>, 或 <code>fixed</code> 的元素。</desc>
          <signature>
             <added>1.2.6</added>
          </signature>
          <longdesc>
-            <p>Given a jQuery object that represents a set of DOM elements, the <code>.offsetParent()</code> method allows us to search through the ancestors of these elements in the DOM tree and construct a new jQuery object wrapped around the closest positioned ancestor. An element is said to be positioned if it has a CSS position attribute of <code>relative</code>, <code>absolute</code>, or <code>fixed</code>. This information is useful for calculating offsets for performing animations and placing objects on the page.</p>
-            <p>Consider a page with a basic nested list on it, with a positioned element:</p>
+            <p>如果通过 jQuery 选择器得到了一个 jQuery 对象，这个对象代表一组 DOM 元素，那么 <code>.offsetParent()</code> 方法会查找这些元素在 DOM 树中的祖先元素，并创建一个新的 jQuery 对象，其中含有取得的离指定元素最近的<em>含有定位信息</em>的祖先元素。<em>含有定位信息</em>的元素指的是，CSS 的 position 属性是 <code>relative</code>, <code>absolute</code>, 或 <code>fixed</code> 的元素。定位信息对于计算动画时的偏移并且在页面上放置元素时特别有用。</p>
+            <p>例如，下面是一个含有嵌套列表的例子，其中具备<em>含有定位信息</em>的元素：</p>
             <pre>
 &lt;ul class="level-1"&gt;
   &lt;li class="item-i"&gt;I&lt;/li&gt;
@@ -13063,12 +13063,12 @@ $("span").click(function () {
   &lt;li class="item-iii"&gt;III&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-            <p>If we begin at item A, we can find its positioned ancestor:</p>
+            <p>如果从 A 项目开始的话，我们可以向下面这样查找它的<em>含有定位信息</em>的祖先元素：</p>
             <pre>$('li.item-a').offsetParent().css('background-color', 'red');</pre>
-            <p>This will change the color of list item II, which is positioned.</p>
+            <p>结果是找到了 II 项目列表，并改变了它的背景色。</p>
          </longdesc>
          <example>
-            <desc>Find the offsetParent of item "A."</desc>
+            <desc>查找 "A." 项目的 offsetParent。</desc>
             <code>$('li.item-a').offsetParent().css('background-color', 'red');</code>
             <html>
     &lt;ul class="level-1"&gt;
@@ -16056,20 +16056,20 @@ $("form").submit(function () {
          <note type="additional">所有的 jQuery 动画, 包括 <code>.show()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="http://api.jquery.com/jquery.fx.off">jQuery.fx.off</a> 来获得更多信息。</note>
       </entry>
       <entry type="method" name="scrollLeft" return="Integer">
-         <desc>Get the current horizontal position of the scroll bar for the first element in the set of matched elements.</desc>
+         <desc>得到第一个匹配元素的水平滚动条的位置。</desc>
          <signature>
             <added>1.2.6</added>
          </signature>
          <longdesc>
-            <p>The horizontal scroll position is the same as the number of pixels that are hidden from view above the scrollable area. If the scroll bar is at the very left, or if the element is not scrollable, this number will be <code>0</code>.</p>
+            <p>水平滚动条的位置与元素上可滚动区域隐藏的像素数是相同的。（原文如下：The horizontal scroll position is the same as the number of pixels that are hidden from view above the scrollable area.）如果滚动条处于最左边，或者元素是不可滚动的，那么该值是 <code>0</code>。</p>
             <blockquote>
                <p>
                   <strong>注意:</strong> 
-                  <code>.scrollLeft()</code>, when called directly or animated as a property using <code>.animate()</code> will not work if the element(s) it is being applied to are hidden.</p>
+                  <code>.scrollLeft()</code> 无法直接使用在隐藏元素上。如果某些元素虽然不是隐藏的，但是使用了 <code>.animate()</code> 方法对动画属性应用动画后，导致该元素隐藏的，那么也元素在这样的元素上使用该方法。</p>
             </blockquote>
          </longdesc>
          <example>
-            <desc>Get the scrollLeft of a paragraph.</desc>
+            <desc>取得段落的 scrollLeft 值。</desc>
             <code>var p = $("p:first");
 			$("p:last").text( "scrollLeft:" + p.scrollLeft() );
 
@@ -16085,18 +16085,18 @@ $("form").submit(function () {
          <category name="Version 1.2.6"/>
       </entry>
       <entry type="method" name="scrollLeft" return="jQuery">
-         <desc>Set the current horizontal position of the scroll bar for each of the set of matched elements.</desc>
+         <desc>为每个匹配的元素设置水平滚动条的位置。</desc>
          <signature>
             <added>1.2.6</added>
             <argument name="value" type="Number">
-               <desc>An integer indicating the new position to set the scroll bar to.</desc>
+               <desc>代表新的水平滚动条位置的整数。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p>The horizontal scroll position is the same as the number of pixels that are hidden from view above the scrollable area. Setting the <code>scrollLeft</code> positions the horizontal scroll of each matched element.</p>
+            <p>水平滚动条的位置与元素上可滚动区域隐藏的像素数是相同的。（原文如下：The horizontal scroll position is the same as the number of pixels that are hidden from view above the scrollable area.）该方法会为每个匹配的元素设置 <code>scrollLeft</code>。</p>
          </longdesc>
          <example>
-            <desc>Set the scrollLeft of a div.</desc>
+            <desc>为 div 设置 scrollLeft 。</desc>
             <code>$("div.demo").scrollLeft(300);
 </code>
             <css>
@@ -16836,15 +16836,15 @@ $.each(map, function(key, value) {
          <category name="Version 1.0"/>
       </entry>
       <entry type="method" name="scrollTop" return="Integer">
-         <desc>Get the current vertical position of the scroll bar for the first element in the set of matched elements.</desc>
+         <desc>得到第一个匹配元素的垂直滚动条的位置。</desc>
          <signature>
             <added>1.2.6</added>
          </signature>
          <longdesc>
-            <p>The vertical scroll position is the same as the number of pixels that are hidden from view above the scrollable area. If the scroll bar is at the very top, or if the element is not scrollable, this number will be <code>0</code>.</p>
+            <p>垂直滚动条的位置与元素上可滚动区域隐藏的像素数是相同的。（原文如下：The vertical scroll position is the same as the number of pixels that are hidden from view above the scrollable area.）如果滚动条处于最上边，或者元素是不可滚动的，那么该值是 <code>0</code>。</p>
          </longdesc>
          <example>
-            <desc>Get the scrollTop of a paragraph.</desc>
+            <desc>取得段落的 scrollTop 值。</desc>
             <code>var p = $("p:first");
 $("p:last").text( "scrollTop:" + p.scrollTop() );
 
@@ -16860,18 +16860,18 @@ $("p:last").text( "scrollTop:" + p.scrollTop() );
          <category name="Version 1.2.6"/>
       </entry>
       <entry type="method" name="scrollTop" return="jQuery">
-         <desc>Set the current vertical position of the scroll bar for each of the set of matched elements.</desc>
+         <desc>为每个匹配的元素设置垂直滚动条的位置。</desc>
          <signature>
             <added>1.2.6</added>
             <argument name="value" type="Number">
-               <desc>An integer indicating the new position to set the scroll bar to.</desc>
+               <desc>代表新的垂直滚动条位置的整数。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p>The vertical scroll position is the same as the number of pixels that are hidden from view above the scrollable area. Setting the <code>scrollTop</code> positions the vertical scroll of each matched element.</p>
+            <p>垂直滚动条的位置与元素上可滚动区域隐藏的像素数是相同的。（原文如下：The vertical scroll position is the same as the number of pixels that are hidden from view above the scrollable area.）该方法会为每个匹配的元素设置 <code>scrollTop</code>。</p>
          </longdesc>
          <example>
-            <desc>Set the scrollTop of a div.</desc>
+            <desc>为 div 设置 scrollTop。</desc>
             <code>$("div.demo").scrollTop(300);
 </code>
             <css>
@@ -17023,18 +17023,18 @@ overflow:auto;
          <category name="Version 1.5.1"/>
       </entry>
       <entry type="method" name="position" return="Object">
-         <desc>Get the current coordinates of the first element in the set of matched elements, relative to the offset parent.</desc>
+         <desc>取得第一个匹配元素相对于父元素的偏移坐标。</desc>
          <signature>
             <added>1.2</added>
          </signature>
          <longdesc>
-            <p><code>.position()</code> method allows us to retrieve the current position of an element <em>relative to the offset parent</em>. Contrast this with <code>
-                  <a href="/offset">.offset()</a>
-               </code>, which retrieves the current position <em>relative to the document</em>. When positioning a new element near another one and within the same containing DOM element, <code>.position()</code> is the more useful.</p>
-            <p>Returns an object containing the properties <code>top</code> 和 <code>left</code>.</p>
+            <p><code>.position()</code> 方法允许我们取得元素<em>相对于父元素的偏移</em>位置。该方法与 <code>
+                  <a href="offset.htm">.offset()</a>
+               </code> 相比，<code><a href="offset.htm">.offset()</a></code> 取得的是<em>相对于文档</em>的位置。如果某元素位于其它元素的边上，并且它们都位于相同的 DOM 元素中，那么 <code>.position()</code> 方法可能更有用。</p>
+            <p>该方法返回一个对象，包括 <code>top</code> 和 <code>left</code> 属性。</p>
          </longdesc>
          <example>
-            <desc>Access the position of the second paragraph:</desc>
+            <desc>取得第一个段落的位置：</desc>
             <code>
 var p = $("p:first");
 var position = p.position();
