@@ -153,7 +153,10 @@
 					}
 				});
 				$("#sidebar h2").click(function(){
-					$(this).next("div").slideToggle('fast').siblings("div").hide('fast');
+					$(this).next("div").animate({
+						height: ['toggle', 'swing'],
+						opacity: 'toggle'
+					}, 'fast').siblings("div").slideUp('fast');
 				});
 				$("#wrapper").click(function(e){
 					if($(e.target).is("a[href$='.htm']")){

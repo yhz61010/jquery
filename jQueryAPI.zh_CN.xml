@@ -17058,22 +17058,22 @@ $("p:last").text( "left: " + position.left + ", top: " + position.top );
          <category name="Version 1.2"/>
       </entry>
       <entry type="method" name="offset" return="Object">
-         <desc>Get the current coordinates of the first element in the set of matched elements, relative to the document.</desc>
+         <desc>取得第一个匹配元素的相对于文档的坐标。</desc>
          <signature>
             <added>1.2</added>
          </signature>
          <longdesc>
-            <p><code>.offset()</code> method allows us to retrieve the current position of an element <em>relative to the document</em>. Contrast this with <code>.position()</code>, which retrieves the current position <em>relative to the offset parent</em>. When positioning a new element on top of an existing one for global manipulation (in particular, for implementing drag-and-drop), <code>.offset()</code> is the more useful.</p>
+            <p><code>.offset()</code> 方法允许我们取得某元素<em>相对于文档</em>的当前位置。与 <code>.position()</code> 不同，<code>.position()</code> 取得的位置是<em>相对于父元素</em>的。当通过全局操作（特别是通过拖拽操作）将一个新的元素放置到另一个已经存在的元素的上面时，若要取得这个新的元素的位置，那么使用 <code>.offset()</code> 更合适。</p>
 
             <p>
-               <code>.offset()</code> returns an object containing the properties <code>top</code> 和 <code>left</code>.</p>
+               <code>.offset()</code> 返回一个对象，包含 <code>top</code> 和 <code>left</code> 属性。</p>
             <blockquote>
                <p>
-                  <strong>注意:</strong> jQuery does not support getting the offset coordinates of hidden elements or accounting for borders, margins, or padding set on the body element.</p>
+                  <strong>注意:</strong> jQuery 无法取得隐藏元素的偏移坐标。同样的，也无法取得隐藏元素的 border, margin, 或 padding 信息。</p>
             </blockquote>    
          </longdesc>
          <example>
-            <desc>Access the offset of the second paragraph:</desc>
+            <desc>取得第二个段落的 offset：</desc>
             <code>var p = $("p:last");
 var offset = p.offset();
 p.html( "left: " + offset.left + ", top: " + offset.top );</code>
@@ -17083,7 +17083,7 @@ p { margin-left:10px; }
             <html>&lt;p&gt;Hello&lt;/p&gt;&lt;p&gt;2nd Paragraph&lt;/p&gt;</html>
          </example>
          <example>
-            <desc>Click to see the offset.</desc>
+            <desc>取得所点击元素的 offset。</desc>
             <code>
 $("*", document.body).click(function (e) {
   var offset = $(this).offset();
@@ -17117,24 +17117,24 @@ div.abs { width:50px; height:50px; position:absolute;
          <category name="Version 1.4"/>
       </entry>
       <entry type="method" name="offset" return="jQuery">
-         <desc>Set the current coordinates of every element in the set of matched elements, relative to the document.</desc>
+         <desc>为每个匹配的元素设置相对于文档的坐标。</desc>
          <signature>
             <added>1.4</added>
             <argument name="coordinates" type="Object">
-               <desc>An object containing the properties <code>top</code> 和 <code>left</code>, which are integers indicating the new top and left coordinates for the elements.</desc>
+               <desc>一个含有 <code>top</code> 和 <code>left</code> 属性的对象，属性的值是整数。代表将要设置的新位置。</desc>
             </argument>
          </signature>
          <signature>
             <added>1.4</added>
             <argument name="function(index, coords)" type="Function">
-               <desc>A function to return the coordinates to set. Receives the index of the element in the collection as the first argument and the current coordinates as the second argument. The function should return an object with the new <code>top</code> 和 <code>left</code> properties.</desc>
+               <desc>返回用于设置坐标的函数。index 参数表示匹配元素集合中的元素位置，coords 参数表示当前坐标。该函数返回一个对象，其中包含新的 <code>top</code> 和 <code>left</code> 属性。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p><code>.offset()</code> setter method allows us to reposition an element. The element's position is specified <em>relative to the document</em>. If the element's <code>position</code> style property is currently <code>static</code>, it will be set to <code>relative</code> to allow for this repositioning.</p>
+            <p><code>.offset()</code> 方法允许我们为元素重新设置位置。元素的位置是<em>相对于文档</em>的。如果元素的 <code>position</code> 属性是 <code>static</code>，那么调用该方法后，该属性值会被设置成 <code>relative</code>。</p>
          </longdesc>
          <example>
-            <desc>Set the offset of the second paragraph:</desc>
+            <desc>设置第二个段落的位置：</desc>
             <code>$("p:last").offset({ top: 10, left: 30 });</code>
             <css>p { margin-left:10px; } </css>
             <html>&lt;p&gt;Hello&lt;/p&gt;&lt;p&gt;2nd Paragraph&lt;/p&gt;</html>
