@@ -60,19 +60,19 @@ $(document).width(); // returns width of HTML document</pre>
 &lt;script&gt;
 
 
-    function showWidth(ele, w) {
-      $("div").text("The width for the " + ele + 
-                    " is " + w + "px.");
-    }
-    $("#getp").click(function () { 
-      showWidth("paragraph", $("p").width()); 
-    });
-    $("#getd").click(function () { 
-      showWidth("document", $(document).width()); 
-    });
-    $("#getw").click(function () { 
-      showWidth("window", $(window).width()); 
-    });
+function showWidth(ele, w) {
+  $("div").text("The width for the " + ele + 
+                " is " + w + "px.");
+}
+$("#getp").click(function () { 
+  showWidth("paragraph", $("p").width()); 
+});
+$("#getd").click(function () { 
+  showWidth("document", $(document).width()); 
+});
+$("#getw").click(function () { 
+  showWidth("window", $(window).width()); 
+});
 
 
 
@@ -112,7 +112,7 @@ $(document).width(); // returns width of HTML document</pre>
          </p>
          
          
-         <p>If no explicit unit was specified (like 'em' or '%') then "px" is concatenated to the value.</p>
+         <p>If no explicit unit is specified (like "em" or "%") then "px" is assumed.</p>
          
          
          <p>Note that <code>.width('value')</code> sets the width of the box in accordance with the CSS <code>box-sizing</code> property. Changing this property to <code>border-box</code> will cause this function to change the outerWidth of the box instead of the content width.
@@ -122,32 +122,36 @@ $(document).width(); // returns width of HTML document</pre>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>To set the width of each div on click to 30px plus a color change.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>Change the width of each div the first time it is clicked (and change its color).</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
-  div { width:70px; height:50px; float:left; margin:5px;
-        background:red; cursor:pointer; }
+div { width: 70px; height: 50px; float:left; margin: 5px;
+        background: red; cursor: pointer; }
+.mod { background: blue; cursor: default; }
   &lt;/style&gt;
 &lt;script src="jquery.min.js"&gt;&lt;/script&gt;
 &lt;/head&gt;
 &lt;body&gt;
 
-&lt;div&gt;&lt;/div&gt;
-  &lt;div&gt;d&lt;/div&gt;
 
   &lt;div&gt;d&lt;/div&gt;
   &lt;div&gt;d&lt;/div&gt;
   &lt;div&gt;d&lt;/div&gt;
+  &lt;div&gt;d&lt;/div&gt;
+  &lt;div&gt;d&lt;/div&gt;
+
 
 &lt;script&gt;
 
 
-
-    $("div").one('click', function () {
-      $(this).width(30)
-             .css({cursor:"auto", "background-color":"blue"});
-    });
+(function() {
+  var modWidth = 50;
+  $("div").one('click', function () {
+    $(this).width(modWidth).addClass("mod");
+  modWidth -= 8;
+  });
+})();
 
 
 &lt;/script&gt;

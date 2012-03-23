@@ -24,6 +24,9 @@
          
          <p><code>jQuery.hasData(element)</code> 的主要优点是它并不创建 data 对象。如果元素上没有 data 对象，那么该方法也不会与元素上的 data 对象关联。相反，<code>jQuery.data(element)</code> 总是向调用者返回一个 data 对象，即使该元素上不含有 data 对象，它也会创建一个。
          </p>
+         	    	
+         <p>注意，jQuery 的事件系统使用了 jQuery data API 来存储事件。因此，当使用 <code>.on()</code>, <code>.bind()</code>, <code>.live()</code>, <code>.delegate()</code> 或者使用速记的事件名为元素绑定事件时，也会在那个元素上关联一个 data 对象。
+         </p>
          
       </div>
    </div>
@@ -41,14 +44,21 @@
 &lt;script&gt;
 
 
-$(function(){
-  var $p = jQuery("p"), p = $p[0];
-  $p.append(jQuery.hasData(p)+" "); /* false */
-  jQuery.data(p, "testing", 123);
-  $p.append(jQuery.hasData(p)+" "); /* true*/
-  jQuery.removeData(p, "testing");
-  $p.append(jQuery.hasData(p)+" "); /* false */
-});
+var $p = jQuery("p"), p = $p[0];
+$p.append(jQuery.hasData(p)+" "); /* false */
+
+$.data(p, "testing", 123);
+$p.append(jQuery.hasData(p)+" "); /* true*/
+
+$.removeData(p, "testing");
+$p.append(jQuery.hasData(p)+" "); /* false */
+
+$p.on('click', function() {});
+$p.append(jQuery.hasData(p)+" "); /* true */
+
+$p.off('click');
+$p.append(jQuery.hasData(p)+" "); /* false */
+
 
 
 &lt;/script&gt;

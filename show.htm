@@ -123,11 +123,11 @@ $('#clickme').click(function() {
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
-      <p>把所有隐藏的 div 依次迅速显示出来，每个用时 200 毫秒。一个动画完成后立即开始下一个。</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>依次显示 div，每个用时 200 毫秒。一个动画完成后立即开始下一个。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
-  div { background:#def3ca; margin:3px; width:80px; 
+  div { background:#def3ca; margin:3px; width:80px;
   display:none; float:left; text-align:center; }
   &lt;/style&gt;
 &lt;script src="jquery.min.js"&gt;&lt;/script&gt;
@@ -147,15 +147,14 @@ $('#clickme').click(function() {
 
 
 $("#showr").click(function () {
-  $("div:eq(0)").show("fast", function () {
-    /* use callee so don't have to name the function */
-    $(this).next("div").show("fast", arguments.callee);
+  $("div").first().show("fast", function showNext() {
+    $(this).next("div").show("fast", showNext);
   });
 });
-$("#hidr").click(function () {
-  $("div").hide(2000);
-});
 
+$("#hidr").click(function () {
+  $("div").hide(1000);
+});
 
 
 &lt;/script&gt;
@@ -173,15 +172,16 @@ $("#hidr").click(function () {
 &lt;/head&gt;
 &lt;body&gt;
 
+
 &lt;button&gt;Do it!&lt;/button&gt;
-  &lt;span&gt;Are you sure? (type 'yes' if you are) &lt;/span&gt;
-  &lt;div&gt;
-    &lt;form&gt;
-      &lt;input type="text"  value="as;ldkfjalsdf"/&gt;
-    &lt;/form&gt;
-  &lt;/div&gt;
-  &lt;p style="display:none;"&gt;I'm hidden...&lt;/p&gt;
-  
+&lt;span&gt;Are you sure? (type 'yes' if you are) &lt;/span&gt;
+&lt;div&gt;
+  &lt;form&gt;
+    &lt;input type="text"  value="as;ldkfjalsdf"/&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+&lt;p style="display:none;"&gt;I'm hidden...&lt;/p&gt;
+
 
 &lt;script&gt;
 
@@ -200,7 +200,7 @@ $("form").submit(function () {
   }
   $("span,div").hide("fast");
   /* to stop the submit */
-  return false; 
+  return false;
 });
 
 

@@ -33,7 +33,8 @@
          <pre>$('.trigger').click(function() {
   $('.result').load('ajax/test.html');
 });</pre>
-         <p>当用户点击按钮时，在 Ajax 请求结束后，就会显示日志信息。</p>
+         <p>当用户点击含有 <code>trigger</code> 的元素时，在 Ajax 请求结束后，就会显示日志信息。
+         </p>
          	         
          <p>由于 <code>.ajaxStop()</code> 是作为一个 jQuery 对象实例的方法来实现的，所以我们在回调函数中可以通过 <code>this</code> 关键字来指向原先所选中的元素。
          </p>
@@ -45,5 +46,5 @@
       <p>当所有的 Ajax 请求结束后，隐藏加载提示信息。</p>
       <h5>jQuery 代码:</h5><pre><code>$("#loading").ajaxStop(function(){
       $(this).hide();
-      });</code></pre></div>
+});</code></pre></div>
 </div>

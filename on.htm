@@ -1,12 +1,12 @@
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
-   <h2><span>返回值:jQuery</span>on(events, <em class="optional">[selector]</em>, <em class="optional">[data]</em>, handler)<br></h2>
+   <h2><span>返回值:jQuery</span>on(events, <em class="optional">[selector]</em>, <em class="optional">[data]</em>, handler(eventObject))<br></h2>
    <div class="desc">
       <p>Attach an event handler function for one or more events to the selected elements.</p>
       <ul class="signatures">
          <li>
-            <h4><span>1.7 新增</span>on(events, <em class="optional">[selector]</em>, <em class="optional">[data]</em>, handler)
+            <h4><span>1.7 新增</span>on(events, <em class="optional">[selector]</em>, <em class="optional">[data]</em>, handler(eventObject))
                								
             </h4>
             <div class="arguement"><strong>events</strong>
@@ -21,7 +21,7 @@
                								(Anything)
                								 可选参数，Data to be passed to the handler in <code><a href="http://api.jquery.com/event.data/">event.data</a></code> when an event is triggered.
             </div>
-            <div class="arguement"><strong>handler</strong>
+            <div class="arguement"><strong>handler(eventObject)</strong>
                								(Function)
                								当事件被触发时，执行的函数。 The value <code>false</code> is also allowed as a shorthand for a function that simply does <code>return false</code>.
             </div>
@@ -208,9 +208,7 @@ $("button").on("click", { name: "Addy" }, greet);
          </p>
          
          
-         <p>Although not recommended, the pseudo-event-name <code>"hover"</code> can be used as a shorthand for <code>"mouseenter mouseleave"</code>. Do not confuse it with the <code><a href="http://api.jquery.com/hover/">
-                  .hover()</a></code>
-            method, which accepts <em>two</em> functions. There is only one handler function attached by the pseudo-event-name <code>"hover"</code>; the handler should examine <code>event.type</code> to determine whether the event is <code>mouseenter</code> or <code>mouseleave</code>.
+         <p>Although strongly discouraged for new code, you may see the pseudo-event-name <code>"hover"</code> used as a shorthand for the string <code>"mouseenter mouseleave"</code>. It attaches a <em>single event handler</em> for those two events, and the handler must examine <code>event.type</code> to determine whether the event is <code>mouseenter</code> or <code>mouseleave</code>. Do not confuse the "hover" pseudo-event-name with the <a href="http://api.jquery.com/hover/"><code>.hover()</code></a> method, which accepts <em>one or two</em> functions.
          </p>
          
          
@@ -288,10 +286,25 @@ $("button").click(function () {
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
-      <p>Attach multiple event handlers simultaneously using a map.</p>
-      <h5>jQuery 代码:</h5><pre><code>$("div.test").on({
+      <p>Attach multiple event handlers simultaneously using a map.</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+.test { color: #000; padding: .5em; border: 1px solid #444; }
+.active { color: #900;}
+.inside { background-color: aqua; }
+&lt;/style&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div class="test"&gt;test div&lt;/div&gt;
+
+&lt;script&gt;
+
+$("div.test").on({
   click: function(){
-    $(this).addClass("active");
+    $(this).toggleClass("active");
   },
   mouseenter: function(){
     $(this).addClass("inside");
@@ -299,7 +312,11 @@ $("button").click(function () {
   mouseleave: function(){
     $(this).removeClass("inside");
   }
-});</code></pre><h3>示例:</h3>
+});
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
       <p>Click any paragraph to add another after it. Note that .on() allows a click event on any paragraph--even new ones--since the
          event is handled by the ever-present body element after it bubbles to there.
       </p><pre><code>&lt;!DOCTYPE html&gt;

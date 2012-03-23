@@ -83,7 +83,8 @@
          <p>除了样式属性（style properties）外,还可以在一些非样式属性上（例如 <code>scrollTop</code> ， <code>scrollLeft</code> 和自定义属性）应用动画。
          </p>
          
-         <p>不支持简写的 CSS 属性 (例如， margin, background, border)。例如,如果你想返回 margin 值,可以使用: <code>$(elem).css('marginTop')</code> 或 <code>$(elem).css('marginRight')</code> 等。
+         <p>不完全支持简写的 CSS 属性 (例如， font, background, border)。例如，如果你想对边框的宽度应用动画，那么至少边框的样式和宽度应该是之前已经设置好了的，并且其值不能是 "auto"。或者，如果你想对文字大小应用动画，你应该使用
+            <code>fontSize</code> 或等价的 CSS <code>'font-size'</code>，而不是简单的使用 <code>'font'</code>。
          </p>
          
          <p>属性值除了可以是数值以外,还可以是 <code>'show'</code>, <code>'hide'</code>, 和 <code>'toggle'</code> 这样的字符串。这些简称字符串可以用于自定义隐藏和显示动画，控件元素的显示。
@@ -251,13 +252,12 @@
          <ul>
             <li>所有的 jQuery 动画, 包括 <code>.animate()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="http://api.jquery.com/jquery.fx.off">jQuery.fx.off</a> 来获得更多信息。
             </li>
-            <li>由于 <code><a href="https://developer.mozilla.org/en/DOM/window.mozRequestAnimationFrame">
-                     requestAnimationFrame()
-                     </a></code> 特性的原因，绝对不要在 <code>setInterval</code> 或 <code>setTimeout</code> 方法中设置动画队列。 为了保护CPU资源, 支持 <code>requestAnimationFrame</code> 的浏览器在当前窗口或标签失去焦点时，是不更新动画的。如果你通过 <code>setInterval</code> 或 <code>setTimeout</code> 方法在动画暂停时，持续向队列里添加动画，那么在窗口或标签重新获得焦点时，所有在队列中的动画都会被播放。 为了避免这个潜在的问题,可以在循环时,利用最后一个动画的回调函数，或者给元素添加 <code><a href="http://api.jquery.com/queue">
-                     .queue()
-                     </a></code> 方法来避免这个问题，实现动画的继续播放。
-               
-            </li>
+            <li><del>由于 <code><a href="https://developer.mozilla.org/en/DOM/window.mozRequestAnimationFrame">
+                        requestAnimationFrame()
+                        </a></code> 特性的原因，绝对不要在 <code>setInterval</code> 或 <code>setTimeout</code> 方法中设置动画队列。 为了保护CPU资源, 支持 <code>requestAnimationFrame</code> 的浏览器在当前窗口或标签失去焦点时，是不更新动画的。如果你通过 <code>setInterval</code> 或 <code>setTimeout</code> 方法在动画暂停时，持续向队列里添加动画，那么在窗口或标签重新获得焦点时，所有在队列中的动画都会被播放。 为了避免这个潜在的问题,可以在循环时,利用最后一个动画的回调函数，或者给元素添加 <code><a href="http://api.jquery.com/queue">
+                        .queue()
+                        </a></code> 方法来避免这个问题，实现动画的继续播放。
+                  </del></li>
          </ul>
       </div>
    </div>
@@ -442,32 +442,34 @@ $( "#go" ).click(function(){
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
       <p>对所有段落的高和透明度使用 toggle 动画，用时 600 毫秒。</p>
       <h5>jQuery 代码:</h5><pre><code>$( "p" ).animate({
-  "height": "toggle", "opacity": "toggle"
+  height: "toggle", opacity: "toggle"
 }, "slow" );</code></pre><h3>示例:</h3>
       <p>对所有段落应用动画，使其 left 属性变为 50，透明度变为 1（即，不透明，可见），用时 500 毫秒。</p>
       <h5>jQuery 代码:</h5><pre><code>$( "p" ).animate({
-  "left": "50", "opacity": 1
+  left: 50, opacity: 1
 }, 500 );
 </code></pre><h3>示例:</h3>
       <p>一个使用 'easing' 缓冲函数的例子，只要当你提供的插件中包含 easing 函数即可。注意，以下代码只能在处于隐藏的元素上才会看出效果。</p>
       <h5>jQuery 代码:</h5><pre><code>$( "p" ).animate({
-  "opacity": "show"
-}, "slow", "easein" );</code></pre><h3>示例:</h3>
-      <p>对所有段落的高和透明度使用 toggle 动画，用时 600 毫秒。</p>
-      <h5>jQuery 代码:</h5><pre><code>$( "p" ).animate({
-  "height": "toggle", "opacity": "toggle"
-}, { duration: "slow" });</code></pre><h3>示例:</h3>
-      <p>对所有段落应用动画，使其 left 属性变为 50，透明度变为 1（即，不透明，可见），用时 500 毫秒。它可以不受队列的限制，也就是说，动画会被立刻执行，而不需要等到动画队列轮到它的时候。</p>
-      <h5>jQuery 代码:</h5><pre><code>$( "p" ).animate({
   left: "50px", opacity: 1
 }, { duration: 500, queue: false });</code></pre><h3>示例:</h3>
+      <p>对所有段落的高和透明度使用 toggle 动画，用时 600 毫秒。</p>
+      <h5>jQuery 代码:</h5><pre><code>$( "p" ).animate({
+  opacity: "show"
+}, "slow", "easein" );</code></pre><h3>示例:</h3>
+      <p>对所有段落应用动画，使其 left 属性变为 50，透明度变为 1（即，不透明，可见），用时 500 毫秒。它可以不受队列的限制，也就是说，动画会被立刻执行，而不需要等到动画队列轮到它的时候。</p>
+      <h5>jQuery 代码:</h5><pre><code>$( "p" ).animate({
+  height: "toggle", opacity: "toggle"
+}, { duration: "slow" });</code></pre><h3>示例:</h3>
       <p>一个使用 'easing' 缓冲函数的例子，只要当你提供的插件中包含 easing 函数即可。</p>
       <h5>jQuery 代码:</h5><pre><code>$( "p" ).animate({
-  "opacity": "show"
-}, { "duration": "slow", "easing": "easein" });</code></pre><h3>示例:</h3>
+  opacity: "show"
+}, { duration: "slow", easing: "easein" });</code></pre><h3>示例:</h3>
       <p>一个使用回调函数的例子。第一个参数是一个 CSS 属性数组，第二个参数表示动画耗时 1000 毫秒，第三个参数说明使用的是 easing 缓冲效果, 第四个参数是一个匿名的回调函数。</p>
       <h5>jQuery 代码:</h5><pre><code>$( "p" ).animate({
-  height:200, width:400, opacity: .5
-}, 1000, "linear", function(){ alert("all done"); });
+  height: 200, width: 400, opacity: 0.5
+}, 1000, "linear", function() {
+  alert("all done");
+});
 </code></pre></div>
 </div>

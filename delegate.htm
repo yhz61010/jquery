@@ -1,14 +1,14 @@
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
-   <h2><span>返回值:jQuery</span>delegate(selector, eventType, handler)<br></h2>
+   <h2><span>返回值:jQuery</span>delegate(selector, eventType, handler(eventObject))<br></h2>
    <div class="desc">
       <p>Attach a handler to one or more events for all elements that match the selector, now or in the future, based on a specific
          set of root elements.
       </p>
       <ul class="signatures">
          <li>
-            <h4><span>1.4.2 新增</span>delegate(selector, eventType, handler)
+            <h4><span>1.4.2 新增</span>delegate(selector, eventType, handler(eventObject))
                								
             </h4>
             <div class="arguement"><strong>selector</strong>
@@ -19,13 +19,13 @@
                								(String)
                								含有 JavaScript 事件类型的字符串，字符串间使用空格分隔，例如："click" , "keydown," 或 自定义事件名称。
             </div>
-            <div class="arguement"><strong>handler</strong>
+            <div class="arguement"><strong>handler(eventObject)</strong>
                								(Function)
                								每当事件触发时执行的函数。
             </div>
          </li>
          <li>
-            <h4><span>1.4.2 新增</span>delegate(selector, eventType, eventData, handler)
+            <h4><span>1.4.2 新增</span>delegate(selector, eventType, eventData, handler(eventObject))
                								
             </h4>
             <div class="arguement"><strong>selector</strong>
@@ -40,7 +40,7 @@
                								(Object)
                								将要传递给事件处理函数的数据映射。
             </div>
-            <div class="arguement"><strong>handler</strong>
+            <div class="arguement"><strong>handler(eventObject)</strong>
                								(Function)
                								每当事件触发时执行的函数。
             </div>

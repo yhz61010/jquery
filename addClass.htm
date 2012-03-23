@@ -38,8 +38,8 @@
          
          <p>从 jQuery 1.4 开始，<code>.addClass()</code> 方法的参数可以是一个函数。
          </p>
-         <pre>$("ul li:last").addClass(function() {
-  return "item-" + $(this).index();
+         <pre>$("ul li:last").addClass(function(index) {
+  return "item-" + index;
 });</pre>
          <p>上面的例子中，会在一个含有 5 个 <code>&lt;li&gt;</code> 的无序列表中，为最后一个 <code>&lt;li&gt;</code> 添加 "item-4" 样式。
          </p>

@@ -1,12 +1,12 @@
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
-   <h2><span>返回值:jQuery</span>off(events, <em class="optional">[selector]</em>, <em class="optional">[handler]</em>)<br></h2>
+   <h2><span>返回值:jQuery</span>off(events, <em class="optional">[selector]</em>, <em class="optional">[handler(eventObject)]</em>)<br></h2>
    <div class="desc">
       <p>Remove an event handler.</p>
       <ul class="signatures">
          <li>
-            <h4><span>1.7 新增</span>off(events, <em class="optional">[selector]</em>, <em class="optional">[handler]</em>)
+            <h4><span>1.7 新增</span>off(events, <em class="optional">[selector]</em>, <em class="optional">[handler(eventObject)]</em>)
                								
             </h4>
             <div class="arguement"><strong>events</strong>
@@ -18,7 +18,7 @@
                								(String)
                								 可选参数，A selector which should match the one originally passed to <code>.on()</code> when attaching event handlers.
             </div>
-            <div class="arguement"><strong>handler</strong>
+            <div class="arguement"><strong>handler(eventObject)</strong>
                								(Function)
                								 可选参数，A handler function previously attached for the event(s), or the special value <code>false</code>.
             </div>

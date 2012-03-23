@@ -35,7 +35,7 @@
       </ul>
       <div class="longdesc">
          
-         <p>带有参数的该方法是 <code>.bind('click', handler)</code> 的快捷方式，不带参数的该方法是 <code>.trigger('click')</code> 的快捷方式。
+         <p>带有参数的该方法是 <code>.bind('click', handler)</code> 的快捷方式，并且，从 jQuery 1.7 开始，也是 <code>.on("click", handler)</code> 的快捷方式。不带参数的该方法是 <code>.trigger('click')</code> 的快捷方式。
          </p>
          
          <p>当用户在元素上点击了鼠标，就会触发 <code>click</code> 事件。任何 HTML 元素都可以接收该事件。
@@ -95,7 +95,7 @@
 &lt;head&gt;
 &lt;style&gt;
   p { color:red; margin:5px; cursor:pointer; }
-  p.hilite { background:yellow; }
+  p:hover { background:yellow; }
   &lt;/style&gt;
 &lt;script src="jquery.min.js"&gt;&lt;/script&gt;
 &lt;/head&gt;
@@ -109,13 +109,8 @@
 &lt;script&gt;
 
 
-    $("p").click(function () { 
-      $(this).slideUp(); 
-    });
-    $("p").hover(function () {
-      $(this).addClass("hilite");
-    }, function () {
-      $(this).removeClass("hilite");
+    $("p").click(function () {
+      $(this).slideUp();
     });
 
 

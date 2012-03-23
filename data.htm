@@ -72,7 +72,7 @@ $('body').data(); // {foo: 52, bar: { myType: 'test', count: 40 }}
 &lt;body&gt;
 
 &lt;div&gt;
-    The values stored were 
+    The values stored were
     &lt;span&gt;&lt;/span&gt;
     and
     &lt;span&gt;&lt;/span&gt;
@@ -125,10 +125,7 @@ alert( $("body").data("foo")); //undefined
 $("body").data("bar", "foobar");
 alert( $("body").data("bar")); //foobar
 </pre>
-         <p>
-            <strong>HTML 5 data- 属性</strong>
-            
-         </p>
+         	    <h4 id="data-html5"><a href="#data-html5">HTML 5 data-* 属性</a></h4>
          
          <p>从 jQuery 1.4.3 开始，<a href="http://ejohn.org/blog/html-5-data-attributes/">HTML 5 data- 属性</a> 会被自动放入到 jQuery 的 data 对象中。对这种内嵌破折号（即 “-”）的属性的处理方式，在 jQuery 1.6 中已经发生了改变，以符合 <a href="http://www.w3.org/TR/html5/elements.html#embedding-custom-non-visible-data-with-the-data-attributes">W3C HTML5 规范</a>.
          </p>

@@ -30,6 +30,12 @@ $(document).height(); // returns height of HTML document</pre>
          <p>Note that <code>.height()</code> will always return the content height, regardless of the value of the CSS <code>box-sizing</code> property.
          </p>
          
+         <blockquote>
+            <p><strong>Note:</strong> Although <code>style</code> and <code>script</code> tags will report a value for <code>.width()</code> or <code>height()</code> when absolutely positioned and given <code>display:block</code>, it is strongly discouraged to call those methods on these tags. In addition to being a bad practice, the results may also
+               prove unreliable.
+            </p>
+         </blockquote>
+         
       </div>
    </div>
    <div class="example">

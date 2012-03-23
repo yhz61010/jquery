@@ -126,7 +126,7 @@
   // Set cssHooks only for browsers that
   // support a vendor-prefixed border radius
   if ( borderRadius &amp;&amp; borderRadius !== "borderRadius" ) {
-    $.cssHook.borderRadius = {
+    $.cssHooks.borderRadius = {
       get: function( elem, computed, extra ) {
         return $.css( elem, borderRadius );
       },
@@ -159,7 +159,7 @@ $("#another").css("border-radius", "20px");
 
     // Set cssHooks for browsers that
     // support only a vendor-prefixed someCSSProp
-    $.cssHook.someCSSProp = {
+    $.cssHooks.someCSSProp = {
       get: function( elem, computed, extra ) {
         return $.css( elem, $.support.someCSSProp );
       },
@@ -168,7 +168,7 @@ $("#another").css("border-radius", "20px");
       }
     };
   } else if ( supportsProprietaryAlternative ) {
-    $.cssHook.someCSSProp = {
+    $.cssHooks.someCSSProp = {
       get: function( elem, computed, extra ) {
         // Handle crazy conversion from the proprietary alternative 
       },

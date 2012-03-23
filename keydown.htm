@@ -114,7 +114,7 @@ input { display: block; margin-bottom: .25em; }
 
 var xTriggered = 0;
 $('#target').keydown(function(event) {
-  if (event.keyCode == '13') {
+  if (event.which == 13) {
      event.preventDefault();
    }
    xTriggered++;

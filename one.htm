@@ -1,12 +1,12 @@
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
-   <h2><span>返回值:jQuery</span>one(events, <em class="optional">[data]</em>, handler)<br></h2>
+   <h2><span>返回值:jQuery</span>one(events, <em class="optional">[data]</em>, handler(eventObject))<br></h2>
    <div class="desc">
       <p>Attach a handler to an event for the elements. The handler is executed at most once per element.</p>
       <ul class="signatures">
          <li>
-            <h4><span>1.1 新增</span>one(events, <em class="optional">[data]</em>, handler)
+            <h4><span>1.1 新增</span>one(events, <em class="optional">[data]</em>, handler(eventObject))
                								
             </h4>
             <div class="arguement"><strong>events</strong>
@@ -17,13 +17,13 @@
                								(Object)
                								 可选参数，将要传递给事件处理函数的数据映射。
             </div>
-            <div class="arguement"><strong>handler</strong>
+            <div class="arguement"><strong>handler(eventObject)</strong>
                								(Function)
                								每当事件触发时执行的函数。
             </div>
          </li>
          <li>
-            <h4><span>1.7 新增</span>one(events, <em class="optional">[selector]</em>, <em class="optional">[data]</em>, handler)
+            <h4><span>1.7 新增</span>one(events, <em class="optional">[selector]</em>, <em class="optional">[data]</em>, handler(eventObject))
                								
             </h4>
             <div class="arguement"><strong>events</strong>
@@ -40,7 +40,7 @@
                      event.data</a></code>
                when an event is triggered.
             </div>
-            <div class="arguement"><strong>handler</strong>
+            <div class="arguement"><strong>handler(eventObject)</strong>
                								(Function)
                								当事件被触发时，执行的函数。 The value <code>false</code> is also allowed as a shorthand for a function that simply does <code>return false</code>.
             </div>
@@ -70,10 +70,14 @@
       <div class="longdesc">
          
          <p>The first form of this method is identical to <code>.bind()</code>, except that the handler is unbound after its first invocation. The second two forms, introduced in jQuery 1.7, are identical
-            to <code>.on()</code> except that the handler is removed after its first invocation. For example:
+            to <code>.on()</code> except that the handler is removed after the first time the event occurs at the delegated element, whether the selector matched
+            anything or not. For example:
          </p>
          <pre>$("#foo").one("click", function() {
   alert("This will be displayed only once.");
+});
+$("body").one("click", "#foo", function() {
+  alert("This displays if #foo is the first thing clicked in the body.");
 });
 </pre>
          <p>After the code is executed, a click on the element with ID <code>foo</code> will display the alert. Subsequent clicks will do nothing. This code is equivalent to:

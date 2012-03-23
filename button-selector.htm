@@ -10,7 +10,12 @@
             </h4>
          </li>
       </ul>
-      <div class="longdesc"></div>
+      <div class="longdesc">
+         	    
+         <p>与 <code>$(":button")</code> 等价的选择器可以使用有效的 CSS <code>$("button, input[type='button']")</code>。
+         </p>
+         	 
+      </div>
       <h3 id="notes-0">补充说明:</h3>
       <div class="longdesc">
          <ul>
@@ -23,17 +28,21 @@
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>查找所有按钮。</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>查找所有的按钮并标记出它们。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
-  textarea { height:45px; }
-  &lt;/style&gt;
+  textarea { height:35px; }
+  div { color: red; }
+  fieldset { margin: 0; padding: 0; border-width: 0; }
+  .marked { background-color: yellow; border: 3px red solid; }
+&lt;/style&gt;
 &lt;script src="jquery.min.js"&gt;&lt;/script&gt;
 &lt;/head&gt;
 &lt;body&gt;
 
 &lt;form&gt;
+  &lt;fieldset&gt;
     &lt;input type="button" value="Input Button"/&gt;
     &lt;input type="checkbox" /&gt;
 
@@ -51,19 +60,18 @@
 
     &lt;textarea&gt;&lt;/textarea&gt;
     &lt;button&gt;Button&lt;/button&gt;
-  &lt;/form&gt;
-  &lt;div&gt;
-  &lt;/div&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+
+&lt;div&gt;
+&lt;/div&gt;
 
 &lt;script&gt;
 
 
-
-    var input = $(":button").css({background:"yellow", border:"3px red solid"});
-    $("div").text("For this type jQuery found " + input.length + ".")
-            .css("color", "red");
-    $("form").submit(function () { return false; }); // so it won't submit
-
+  var input = $(":button").addClass("marked");
+  $("div").text( "For this type jQuery found " + input.length + "." );
+  $("form").submit(function () { return false; }); // so it won't submit
 
 
 &lt;/script&gt;

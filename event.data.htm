@@ -1,10 +1,9 @@
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
-   <h2><span>返回值:Anything</span>event.data
-   </h2>
+   <h2>event.data</h2>
    <div class="desc">
-      <p>在绑定事件时传给 jQuery.fn.bind 函数的可选数据。</p>
+      <p>在绑定事件时给事件传递一个可选的数据映射。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.1 新增</span>event.data
@@ -15,10 +14,42 @@
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>显示传入的数据。</p>
-      <h5>jQuery 代码:</h5><pre><code>$("a").each(function(i) {
-  $(this).bind('click', {index:i}, function(e){
-     alert('my index is ' + e.data.index);
+      <p>在一个 for 循环里，将迭代变量 i 的值传递给 .on() 方法，保留当前迭代的值。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+
+&lt;button&gt; 0 &lt;/button&gt;
+&lt;button&gt; 1 &lt;/button&gt;
+&lt;button&gt; 2 &lt;/button&gt;
+&lt;button&gt; 3 &lt;/button&gt;
+&lt;button&gt; 4 &lt;/button&gt;
+
+&lt;div id="log"&gt;&lt;/div&gt;
+
+
+&lt;script&gt;
+
+
+var logDiv = $("#log");
+
+/* Note: This code is for demonstration purposes only. */
+for (var i = 0; i &lt; 5; i++) {
+  $("button").eq(i).on("click", {value: i}, function(event) {
+    var msgs = [
+      "button = " + $(this).index(),
+      "event.data.value = " + event.data.value,
+      "i = " + i
+    ];
+    logDiv.append( msgs.join(", ") + "&lt;br&gt;" );
   });
-});   </code></pre></div>
+}
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe></div>
 </div>

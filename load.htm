@@ -128,20 +128,7 @@
          </li>
       </ul>
       <div class="longdesc">
-         
-         <p>该方法是从服务器获取数据的最简单方式。它基本上等同于 <code>$.get(url, data, success)</code>，只不过它是一个方法，而不是全局函数，并且它有一个隐式的回调函数。当检测到请求被成功返回时（比如，<code>textStatus</code> 等于 "success" 或 "notmodified"），<code>.load()</code> 会将返回的结果赋给匹配的元素。通常会像下面这样，很方便的使用该方法：
-         </p>
-         <pre>$('#result').load('ajax/test.html');</pre>
-         <p>如果需要的话，可以提供一个回调函数。当请求完成后，会执行这个回调函数：</p>
-         <pre>$('#result').load('ajax/test.html', function() {
-  alert('Load was performed.');
-});</pre>
-         <p>上面两个例子中，如果当前文档中不存在 ID 是 "result" 的元素的话，是不会执行 <code>.load()</code> 方法的。
-         </p>
-         
-         <p>如果提供的 data 参数是一个对象的话，那么请求时会使用 POST 方式,否则就使用 GET 方式。</p>
-         
-         
+         	     
          <blockquote>
             
             <p>注意: 在事件处理模块中，也有一个叫 <code>
@@ -150,6 +137,25 @@
             </p>
             
          </blockquote>
+         
+         <p>该方法是从服务器获取数据的最简单方式。它基本上等同于 <code>$.get(url, data, success)</code>，只不过它是一个方法，而不是全局函数，并且它有一个隐式的回调函数。当检测到请求被成功返回时（比如，<code>textStatus</code> 等于 "success" 或 "notmodified"），<code>.load()</code> 会将返回的结果赋给匹配的元素。通常会像下面这样，很方便的使用该方法：
+         </p>
+         <pre>$('#result').load('ajax/test.html');</pre>
+         	    <h4 id="callback-function">回调函数</h4>
+         	    
+         <p>如果提供了 "complete" 回调函数，它将在函数处理完之后，并且 HTML 已经被插入完时被调用。回调函数会在每个匹配的元素上被调用一次，并且 <code>this</code> 始终指向当前正在处理的 DOM 元素。
+         </p>
+         <pre>$('#result').load('ajax/test.html', function() {
+  alert('Load was performed.');
+});</pre>
+         <p>上面两个例子中，如果当前文档中不存在 ID 是 "result" 的元素的话，是不会执行 <code>.load()</code> 方法的。
+         </p>
+         
+         <h4 id="request-method">请求方式</h4>
+         	    
+         <p>如果提供的 data 参数是一个对象的话，那么请求时会使用 POST 方式,否则就使用 GET 方式。</p>
+         
+         
          
          <h4>加载页面片断</h4>
          
@@ -165,16 +171,13 @@
          
          <p>jQuery 使用浏览器的 <code>.innerHTML</code> 属性来解析返回的文档，并将它插入到当前文档中。在这个过程中，浏览器经常会从文档中过滤掉一些元素，例如： <code>&lt;html&gt;</code>, <code>&lt;title&gt;</code>, 和 <code>&lt;head&gt;</code> 等。最后的结果是，通过 <code>.load()</code> 方法返回的元素可能与从浏览器中直接获取到的文档内容不同。
          </p>
+         	    
+         <h4 id="script-execution">脚本的执行</h4>            
          
-         
-         <blockquote>
+         <p>
+            当调用 <code>.load()</code> 方法时，如果 url 参数中没有选择器表达式后缀的话，那么传递给 <code>.html()</code> 的返回内容中，是含有脚本的。在它们被丢弃之前，脚本是会被执行的。但如果调用 <code>.load()</code> 时，即使在 url 参数中添加了选择器表达式，但在 DOM 被更新之前，脚本会被删除。因此脚本<em>不会</em>被执行。下面的例子分别演示了这两种情况：
             
-            <p>
-               <strong>注意:</strong> 当调用 <code>.load()</code> 方法时，如果 url 参数中没有选择器表达式后缀的话，那么传递给 <code>.html()</code> 的返回内容中，是含有脚本的。在它们被丢弃之前，脚本是会被执行的。但如果调用 <code>.load()</code> 时，在 url 参数中添加了选择器表达式的话，那么在 DOM 被更新之前，脚本会被删除。这就是为什么脚本永远不会被执行的原因。下面的例子分别演示了这两种情况：
-               
-            </p>
-            
-         </blockquote>
+         </p>            
          
          <p>下面的例子中,任何加载到 <code>#a</code> 中的 JavaScript 脚本，将会作为文档的一部分而被执行。
          </p>

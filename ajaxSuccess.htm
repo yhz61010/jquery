@@ -33,7 +33,8 @@
          <pre>$('.trigger').click(function() {
   $('.result').load('ajax/test.html');
 });</pre>
-         		          <p>当用户点击按钮时，在 Ajax 请求成功后，就会显示日志信息。</p>
+         		          <p>当用户点击含有 <code>trigger</code> 的元素时，在 Ajax 请求成功后，就会显示日志信息。
+         </p>
          
          
          <p>
@@ -47,13 +48,13 @@
          
          
          <p>
-            <strong>注意:</strong> 可以通过 <code>xhr.responseXML</code> 或 <code>xhr.responseHTML</code> 属性，得到 ajax 返回的结果。
+            <strong>注意:</strong> 可以通过 <code>xhr.responseXML</code> 或 <code>xhr.responseText</code> 属性，得到 ajax 返回的结果。
          </p>
          
          	           <pre>$('.log').ajaxSuccess(function(e, xhr, settings) {
   if (settings.url == 'ajax/test.html') {
     $(this).text('Triggered ajaxSuccess handler. The ajax response was:' 
-                     + xhr.responseHTML );
+                     + xhr.responseText );
   }
 });</pre>
          </div>

@@ -60,23 +60,22 @@
                   <pre>
 $.ajax({
   url: "test.html",
-  context: document.body,
-  success: function(){
-    $(this).addClass("done");
-  }
+  context: document.body
+}).done(function() { 
+  $(this).addClass("done");
 });</pre>
                   </p>
                <h5 class="option">converters<span class="h5_added"> (1.5 新增)</span><span>Map</span></h5>
                <div><strong class="default-value">默认值: </strong>{"* text": window.String, "text html": true, "text json": jQuery.parseJSON, "text xml": jQuery.parseXML}
                </div>
                <p class="options_p">一个由dataType到dataType的转换器映射。每一个转换器的值是一个函数，这个函数返回经转换后的请求结果。</p>
-               <h5 class="option">crossDomain<span class="h5_added"> (1.5 新增)</span><span></span></h5>
+               <h5 class="option">crossDomain<span class="h5_added"> (1.5 新增)</span><span>Boolean</span></h5>
                <div><strong class="default-value">默认值: </strong>false for same-domain requests, true for cross-domain requests
                </div>
                <p class="options_p">如果你想在同一域中进行跨域请求（例如 JSONP）时，例如，想允许服务器端重新定向到另一个域，那么需要将 crossDomain 的值设置成 <code>true</code>。
                </p>
                <h5 class="option">data<span>Object, String</span></h5>
-               <p class="options_p">发送到服务器的数据。如果它不是字符串格式的话，将自动转换为请求字符串格式。它将被附加在 GET 请求 的 URL 之后。查看 processData 选项说明，以禁止此自动转换。对象必须是键值对，如果数据是一个数组，jQuery 会按照 <code>traditional</code> 参数的值(查看下面的说明)，自动将数据序列化成一个同名的多值查询字符串。
+               <p class="options_p">发送到服务器的数据。如果它不是字符串格式的话，将自动转换为请求字符串格式。它将被附加在 GET 请求 的 URL 之后。查看 <code>processData</code> 选项说明，以禁止此自动转换。对象必须是键值对，如果数据是一个数组，jQuery 会按照 <code>traditional</code> 参数的值(查看下面的说明)，自动将数据序列化成一个同名的多值查询字符串。
                </p>
                <h5 class="option">dataFilter(data, type)<span>Function</span></h5>
                <p class="options_p">对 XMLHttpRequest 返回的原始数据进行预处理的函数。必须返回处理后的数据。此方法接受 data 和 type 两个参数：data 是服务器返回的原始数据， type 是调用 $.ajax 时提供的 'dataType' 参数。</p>
@@ -247,13 +246,13 @@ $.ajax({
   url: 'http://fiddle.jshell.net/favicon.png',
   beforeSend: function( xhr ) {
     xhr.overrideMimeType( 'text/plain; charset=x-user-defined' );
-  },
-  success: function( data ) {
-    if (console &amp;&amp; console.log){
-      console.log( 'Sample of data:', data.slice(0,100) );
-    }
+  }
+}).done(function ( data ) {
+  if( console &amp;&amp; console.log ) {
+    console.log("Sample of data:", data.slice(0, 100));
   }
 });
+
 </pre>
          
          <p>从 jQuery 1.5 开始，<code>$.ajax()</code> 返回的 jqXHR 对象，实现了 Promise 接口, 使它拥有了 Promise 的所有属性，方法和行为。(详见 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a> 来获得更多信息)。为了让回调函数的名字统一，便于在 <code>$.ajax()</code> 里使用，jqXHR 同样也提供了 <code>.error()</code>, <code>.success()</code> 和 <code>.complete()</code> 方法。这些方法都带有一个参数，该参数是一个函数，此函数在 <code>$.ajax()</code> 请求结束时被调用,并且这个函数接收的参数，与调用 <code>$.ajax()</code> 函数时的参数是一致。这将允许你在一次请求时，对多个回调函数进行赋值，甚至允许你在请求已经完成后，对回调函数进行赋值(如果该请求已经完成，则回调函数会被立刻调用)。
@@ -514,17 +513,16 @@ jQuery.ajaxSettings.xhr = function () {
       <h5>jQuery 代码:</h5><pre><code>$.ajax({
   type: "POST",
   url: "some.php",
-  data: "name=John&amp;location=Boston",
+  data: "name=John&amp;location=Boston"
 }).done(function( msg ) {
   alert( "Data Saved: " + msg );
 });</code></pre><h3>示例:</h3>
       <p>装载一个 HTML 网页的最新版本。</p>
       <h5>jQuery 代码:</h5><pre><code>$.ajax({
   url: "test.html",
-  cache: false,
-  success: function(html){
-    $("#results").append(html);
-  }
+  cache: false
+}).done(function( html ) {
+  $("#results").append(html);
 });</code></pre><h3>示例:</h3>
       <p>发送 XML 数据至服务器。设置 processData 选项为 false，防止自动将数据格式转换成字符串。</p>
       <h5>jQuery 代码:</h5><pre><code>var xmlDocument = [create xml document];

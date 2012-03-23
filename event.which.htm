@@ -17,11 +17,14 @@
             <code>event.which</code> 将 <code>event.keyCode</code> 和 <code>event.charCode</code> 进行了标准化。推荐用 <code>event.which</code> 来监视键盘输入。更多细节请参阅： <a href="https://developer.mozilla.org/en/DOM/event.charCode#Notes">event.charCode on the MDC</a>。 
          </p> 
          
+         <p><code>event.which</code> 同样对鼠标按键进行了标准化 (<code>mousedown</code> 和 <code>mouseup</code> 事件), <code>1</code> 代表左键， <code>2</code> 代表中键， <code>3</code> 代表右键。请使用 <code>event.which</code> 替代 <code>event.button</code>。
+         </p>
+         
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>记录按键。</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>记录哪个键盘按键被按下。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;script src="jquery.min.js"&gt;&lt;/script&gt;
@@ -34,11 +37,33 @@
 
 &lt;script&gt;
 
-$('#whichkey').bind('keydown',function(e){ 
+$('#whichkey').bind('keydown',function(e){
   $('#log').html(e.type + ': ' +  e.which );
 });  
 
 &lt;/script&gt;
 &lt;/body&gt;
-&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h5>结果:</h5><pre><code>"keydown" 74  </code></pre></div>
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
+      <p>记录哪个鼠标键被按下。</p><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+
+&lt;input id="whichkey" value="type something"&gt;
+&lt;div id="log"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+
+
+$('#whichkey').bind('mousedown',function(e){
+  $('#log').html(e.type + ': ' +  e.which );
+});
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe></div>
 </div>

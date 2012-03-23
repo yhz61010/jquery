@@ -66,6 +66,9 @@
             these elements:
          </p>
          <pre>$('div.foo');</pre>
+         <p>If no elements match the provided selector, the new jQuery object is "empty"; that is, it contains no elements and has <code><a href="http://api.jquery.com/length/">.length</a></code> property of 0.
+         </p>
+         
          <h4 id="selector-context">Selector Context</h4>
          
          <p>By default, selectors perform their searches within the DOM starting at the document root. However, an alternate context can
@@ -79,7 +82,7 @@ $('div.foo').click(function() {
          <p>When the search for the span selector is restricted to the context of <code>this</code>, only spans within the clicked element will get the additional class.
          </p>
          
-         <p>Internally, selector context is implemented with the <code>.find()</code> method, so  <code>$('span', this)</code> 等价于  <code>$(this).find('span')</code>.
+         <p>Internally, selector context is implemented with the <code>.find()</code> method, so  <code>$('span', this)</code> is equivalent to  <code>$(this).find('span')</code>.
          </p>
          
          <h4 id="using-dom-elements">Using DOM elements</h4>
@@ -112,16 +115,14 @@ $.post('url.xml', function(data) {
          
          <h4 id="returning-empty-set">Returning an Empty Set</h4>
          
-         <p>As of jQuery 1.4, calling the <code>jQuery()</code> method with <em>no arguments</em> returns an empty jQuery set (with a <code>
-               <a href="http://api.jquery.com/length/">.length</a>
-               </code> property of 0). In previous versions of jQuery, this would return a set containing the document node.
+         <p>As of jQuery 1.4, calling the <code>jQuery()</code> method with <em>no arguments</em> returns an empty jQuery set (with a <code><a href="http://api.jquery.com/length/">.length</a></code> property of 0). In previous versions of jQuery, this would return a set containing the document node.
          </p>
          
          
          <h4 id="working-with-plain-objects">Working With Plain Objects</h4>
          
          
-         <p>At present, the only operations supported on plain JavaScript objects wrapped in jQuery are: <code>.data()</code>,<code>.prop()</code>,<code>.bind()</code>, <code>.unbind()</code>,<code>.trigger()</code> 和 <code>.triggerHandler()</code>. The use of <code>.data()</code> (or any method requiring <code>.data()</code>) on a plain object will result in a new property on the object called jQuery{randomNumber} (eg. jQuery123456789).
+         <p>At present, the only operations supported on plain JavaScript objects wrapped in jQuery are: <code>.data()</code>,<code>.prop()</code>,<code>.bind()</code>, <code>.unbind()</code>, <code>.trigger()</code> and <code>.triggerHandler()</code>. The use of <code>.data()</code> (or any method requiring <code>.data()</code>) on a plain object will result in a new property on the object called jQuery{randomNumber} (eg. jQuery123456789).
          </p>
          
          <pre>

@@ -127,6 +127,9 @@
          <p>该方法使用了浏览器的 <code>innerHTML</code> 属性。有些浏览器可能不会生成一个根据原始 HTML 源代码产生的 DOM 副本。例如，在 IE 8 之前,会将所有的 <code>href</code> 属性转换成绝对路径。IE 9 之前，如果不添加额外的 <a href="http://code.google.com/p/html5shiv/">compatibility layer（兼容层）</a>，IE 9 是无法正确处理 HTML 5 元素的。
          </p>
          
+         	    
+         <p><strong>注意：</strong> 在 Internet Explorer 中，包括 IE 9，设置 HTML 元素的文本内容，可能会破坏其子节点的文本节点，结果导致子节点的文本节点从文档中被删除。如果你想保留这些 DOM 元素的引用，并且不希望它们被改变，请使用 <code>.empty().append(string)</code> 来代替 <code>.html(string)</code>。这样的话，在字符串赋给元素之前，会先从文档中移除该元素的内容。
+         </p>
          
       </div>
    </div>

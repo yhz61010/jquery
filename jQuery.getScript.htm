@@ -1,19 +1,19 @@
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
-   <h2><span>返回值:jqXHR</span>jQuery.getScript(url, <em class="optional">[success(data, textStatus)]</em>)<br></h2>
+   <h2><span>返回值:jqXHR</span>jQuery.getScript(url, <em class="optional">[success(script, textStatus, jqXHR)]</em>)<br></h2>
    <div class="desc">
       <p>通过 HTTP GET 方式从服务器请求一个 JavaScript 文件，并执行它。</p>
       <ul class="signatures">
          <li>
-            <h4><span>1.0 新增</span>jQuery.getScript(url, <em class="optional">[success(data, textStatus)]</em>)
+            <h4><span>1.0 新增</span>jQuery.getScript(url, <em class="optional">[success(script, textStatus, jqXHR)]</em>)
                								
             </h4>
             <div class="arguement"><strong>url</strong>
                								(String)
                								将要被请求的 URL 字符串。
             </div>
-            <div class="arguement"><strong>success(data, textStatus)</strong>
+            <div class="arguement"><strong>success(script, textStatus, jqXHR)</strong>
                								(Function)
                								 可选参数，当请求成功后执行的回调函数。
             </div>
@@ -28,18 +28,38 @@
   success: <em>success</em>
 });
 </pre>
-         <p>这里的回调函数会传入返回的 JavaScript 文件。但这通常没什么用，因为此时脚本已经运行过了。</p>
-         
          <p>载入的脚本会以全局的上下文来执行，所以它可以访问页面上其它的变量，或者运行 jQuery 函数。即，被加载的脚本同样作用于当前页面，例如：</p>
+         
+         <h4 id="success-callback">
+            	          Success 回调函数
+            	    
+         </h4>
+         	    
+         <p>这里的回调函数会传入返回的 JavaScript 文件。但这通常没什么用，因为此时脚本已经运行过了。</p>
          <pre>$(".result").html("&lt;p&gt;Lorem ipsum dolor sit amet.&lt;/p&gt;");</pre>
          <p>通过文件名就可以动态载入并运行脚本了。例如：</p>
-         <pre>$.getScript('ajax/test.js', function(data, textStatus){
+         <pre>$.getScript('ajax/test.js', function(data, textStatus, jqxhr){
    console.log(data); //data returned
    console.log(textStatus); //success
+   console.log(jqxhr.status); //200
    console.log('Load was performed.');
 });</pre>
+         		
+         <h4 id="handling-errors">错误处理</h4>
+         
+         <p>从 jQuery 1.5 开始，你可以使用 <a href="deferred.fail.htm"><code>.fail()</code></a> 来处理错误：
+         </p>
+         	<pre>
+	$.getScript("ajax/test.js")
+	.done(function(script, textStatus) {
+	  console.log( textStatus );
+	})
+	.fail(function(jqxhr, settings, exception) {
+	  $( "div.log" ).text( "Triggered ajaxError handler." );
+	});  
+	</pre>
          <p>
-            <strong>注意:</strong> 当调用 <code>getScript()</code> 时，如果你想要添加一个错误处理的回调函数，可以使用全局的 <code>ajaxError()</code> 回调函数。例如：
+            在 jQuery 1.5 之前，需要使用全局的 <code>ajaxError()</code> 回调函数，来处理 <code>$.getScript()</code> 的错误。例如：
          </p>
          <pre>
 $( "div.log" ).ajaxError(function(e, jqxhr, settings, exception) {
@@ -48,10 +68,42 @@ $( "div.log" ).ajaxError(function(e, jqxhr, settings, exception) {
   }
 });
 </pre>
-         </div>
+         <h4 id="caching-requests">缓存响应</h4>
+         
+         <p>默认情况下，<code>$.getScript()</code> 将缓存设置成 <code>false</code>。这种情况下，会在请求的 URL 后添加一个时间戳的请求参数，保证每次请求时，浏览器每次都会重新下载脚本。你可以重写这个功能，通过设置 <a href="jquery.ajaxsetup.htm"><code>$.ajaxSetup()</code></a> 的 cache 属性:
+         </p>
+         <pre>
+$.ajaxSetup({
+  cache: true
+});
+</pre>
+         <p>Alternatively, you could define a new method that uses the more flexible <code>$.ajax()</code> method.
+         </p>
+         
+      </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
+      <p>定义一个 $.cachedScript() 方法，允许取得经过缓存的脚本：</p>
+      <h5>jQuery 代码:</h5><pre><code>jQuery.cachedScript = function(url, options) {
+
+  // allow user to set any option except for dataType, cache, and url
+  options = $.extend(options || {}, {
+    dataType: "script",
+    cache: true,
+    url: url
+  });
+
+  // Use $.ajax() since it is more flexible than $.getScript
+  // Return the jqXHR object so we can chain callbacks
+  return jQuery.ajax(options);
+};
+
+// Usage
+$.cachedScript("ajax/test.js").done(function(script, textStatus) {
+  console.log( textStatus );
+});
+</code></pre><h3>示例:</h3>
       <p>动态载入 jQuery 官方颜色插件，并且在载入成功后绑定一些色彩动画。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -75,7 +127,7 @@ $( "div.log" ).ajaxError(function(e, jqxhr, settings, exception) {
 &lt;script&gt;
 
 
-$.getScript("http://api.jquery.com/scripts/jquery.color.js", function() {
+$.getScript("jquery.color.js", function() {
   $("#go").click(function(){
     $(".block").animate( { backgroundColor: "pink" }, 1000)
       .delay(500)
