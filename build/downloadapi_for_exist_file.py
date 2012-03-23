@@ -13,4 +13,4 @@ fileread.close();
 fileok = open(filename,'w', encoding='utf-8');
 fileok.write(sub);
 fileok.close();
-print(filename,'替换成功!')
+print(filename,'Replace successful.')

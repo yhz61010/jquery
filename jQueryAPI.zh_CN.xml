@@ -1002,7 +1002,7 @@ $("form").off(".validator");</code>
             <argument name="data" type="Anything" optional="true">
       	      <desc>Data to be passed to the handler in <code><a href="http://api.jquery.com/event.data/">event.data</a></code> when an event is triggered.</desc>
             </argument>
-            <argument name="handler" type="Function">
+            <argument name="handler(eventObject)" type="Function">
                <desc>当事件被触发时，执行的函数。 The value <code>false</code> is also allowed as a shorthand for a function that simply does <code>return false</code>.</desc>
             </argument>
          </signature>
@@ -1100,9 +1100,7 @@ $("button").on("click", { name: "Addy" }, greet);
 
             <p>There are shorthand methods for some events such as <code><a href="http://api.jquery.com/click/">.click()</a></code> that can be used to attach or trigger event handlers. For a complete list of shorthand methods, see the <a href="http://api.jquery.com/category/events/">events category</a>.</p>
 
-            <p>Although not recommended, the pseudo-event-name <code>"hover"</code> can be used as a shorthand for <code>"mouseenter mouseleave"</code>. Do not confuse it with the <code><a href="http://api.jquery.com/hover/">
-                  .hover()</a></code>
-                method, which accepts <em>two</em> functions. There is only one handler function attached by the pseudo-event-name <code>"hover"</code>; the handler should examine <code>event.type</code> to determine whether the event is <code>mouseenter</code> or <code>mouseleave</code>.</p>
+            <p>Although strongly discouraged for new code, you may see the pseudo-event-name <code>"hover"</code> used as a shorthand for the string <code>"mouseenter mouseleave"</code>. It attaches a <em>single event handler</em> for those two events, and the handler must examine <code>event.type</code> to determine whether the event is <code>mouseenter</code> or <code>mouseleave</code>. Do not confuse the "hover" pseudo-event-name with the <a href="http://api.jquery.com/hover/"><code>.hover()</code></a> method, which accepts <em>one or two</em> functions.</p>
 
             <p>jQuery's event system requires that a DOM element allow attaching data via a property on the element, so that events can be tracked and delivered. The <code>object</code>, <code>embed</code>, and <code>applet</code> elements cannot attach data, and therefore cannot have jQuery events bound to them.</p>
 
@@ -1166,9 +1164,15 @@ span { color:blue; }
          </example>
          <example>
             <desc>Attach multiple event handlers simultaneously using a map.</desc>
-            <code>$("div.test").on({
+  <html><![CDATA[<div class="test">test div</div>]]></html>
+  <css><![CDATA[
+.test { color: #000; padding: .5em; border: 1px solid #444; }
+.active { color: #900;}
+.inside { background-color: aqua; }
+]]></css>
+  <code><![CDATA[$("div.test").on({
   click: function(){
-    $(this).addClass("active");
+    $(this).toggleClass("active");
   },
   mouseenter: function(){
     $(this).addClass("inside");
@@ -1176,40 +1180,39 @@ span { color:blue; }
   mouseleave: function(){
     $(this).removeClass("inside");
   }
-});</code>
+});]]></code>
          </example>
          <example>
             <desc>Click any paragraph to add another after it. Note that .on() allows a click event on any paragraph--even new ones--since the event is handled by the ever-present body element after it bubbles to there.</desc>
-            <code>
+    <code><![CDATA[
     var count = 0;
     $("body").on("click", "p", function(){
-      $(this).after("&lt;p&gt;Another paragraph! "+(++count)+"&lt;/p&gt;");
+      $(this).after("<p>Another paragraph! "+(++count)+"</p>");
     });
-</code>
-            <css>
+]]></code>
+  <css><![CDATA[
   p { background:yellow; font-weight:bold; cursor:pointer; 
       padding:5px; }
   p.over { background: #ccc; }
   span { color:red; }
-  </css>
-            <html>&lt;p&gt;Click me!&lt;/p&gt;
+  ]]></css>
+  <html><![CDATA[<p>Click me!</p>
 
-  &lt;span&gt;&lt;/span&gt;</html>
+  <span></span>]]></html>
          </example>
          <example>
             <desc>Display each paragraph's text in an alert box whenever it is clicked:</desc>
-            <code>$("body").on("click", "p", function(){
+    <code><![CDATA[$("body").on("click", "p", function(){
   alert( $(this).text() );
-});</code>
+});]]></code>
          </example>
          <example>
             <desc>Cancel a link's default action using the preventDefault method.</desc>
-            <code>$("body").on("click", "a", function(event){
+    <code><![CDATA[$("body").on("click", "a", function(event){
   event.preventDefault();
-});</code>
+});]]></code>
          </example>
          <category name="Event Handler Attachment"/>
-         <category name="Events"/>
          <category name="Version 1.7"/>
       </entry>
       <entry type="method" name="jQuery.isNumeric" return="Boolean">
@@ -1225,7 +1228,7 @@ span { color:blue; }
          </longdesc>
          <example>
             <desc>Sample return values of $.isNumeric with various inputs.</desc>
-            <code>
+    <code><![CDATA[
 $.isNumeric("-10");  // true
 $.isNumeric(16);     // true
 $.isNumeric(0xFF);   // true
@@ -1241,7 +1244,7 @@ $.isNumeric(null);   // false
 $.isNumeric(true);   // false
 $.isNumeric(Infinity); // false
 $.isNumeric(undefined); // false
-</code>
+]]></code>
          </example>
          <category name="Utilities"/>
          <category name="Version 1.7"/>
@@ -1315,7 +1318,7 @@ $( "#content" ).delegate( "*", "focus blur", function( event ) {
             </argument>
             <argument name="progressFilter" type="Function" optional="true">
                <desc>
-        An optional function that is called when the Deferred is rejected.
+        An optional function that is called when progress notifications are sent to the Deferred.
       </desc>
             </argument>
          </signature>
@@ -1867,20 +1870,24 @@ $.getScript("myplugin.js", function() {
                   <a href="jQuery.data.htm">jQuery.data()</a>
                </code> 进行赋值的。如果某元素上没有关联任何 jQuery data（即，根本没有 data 对象，或 data 对象为空），该方法将返回 <code>false</code>; 否则返回 <code>true</code>。</p>
             <p><code>jQuery.hasData(element)</code> 的主要优点是它并不创建 data 对象。如果元素上没有 data 对象，那么该方法也不会与元素上的 data 对象关联。相反，<code>jQuery.data(element)</code> 总是向调用者返回一个 data 对象，即使该元素上不含有 data 对象，它也会创建一个。</p>
+	    	<p>注意，jQuery 的事件系统使用了 jQuery data API 来存储事件。因此，当使用 <code>.on()</code>, <code>.bind()</code>, <code>.live()</code>, <code>.delegate()</code> 或者使用速记的事件名为元素绑定事件时，也会在那个元素上关联一个 data 对象。</p>
          </longdesc>
          <example>
             <desc>为一个元素设置 data，并使用 hasData 查看结果。</desc>
-            <code>
-$(function(){
+            <code><![CDATA[
   var $p = jQuery("p"), p = $p[0];
   $p.append(jQuery.hasData(p)+" "); /* false */
-  jQuery.data(p, "testing", 123);
+$.data(p, "testing", 123);
   $p.append(jQuery.hasData(p)+" "); /* true*/
-  jQuery.removeData(p, "testing");
+$.removeData(p, "testing");
   $p.append(jQuery.hasData(p)+" "); /* false */
-});
-</code>
-            <html>&lt;p&gt;Results: &lt;/p&gt;</html>
+
+$p.on('click', function() {});
+$p.append(jQuery.hasData(p)+" "); /* true */
+$p.off('click');
+$p.append(jQuery.hasData(p)+" "); /* false */
+]]></code>
+	<html><![CDATA[<p>Results: </p>]]></html>
          </example>
          <category name="Data"/>
          <category name="Version 1.5"/>
@@ -1937,7 +1944,7 @@ alert( 'You are running jQuery version: ' + $.fn.jquery );
             </argument>
          </signature>
          <longdesc> 
-            <p><code>deferred.promise()</code> method allows an asynchronous function to prevent other code from interfering with the progress or status of its internal request. The Promise exposes only the Deferred methods needed to attach additional handlers or determine the state (<code>then</code>, <code>done</code>, <code>fail</code>, <code>always</code>,<code>pipe</code>, <code>progress</code>, and <code>state</code>), but not ones that change the state (<code>resolve</code>, <code>reject</code>, <code>progress</code>, <code>resolveWith</code>, <code>rejectWith</code>, and <code>progressWith</code>).</p>
+            <p><code>deferred.promise()</code> method allows an asynchronous function to prevent other code from interfering with the progress or status of its internal request. The Promise exposes only the Deferred methods needed to attach additional handlers or determine the state (<code>then</code>, <code>done</code>, <code>fail</code>, <code>always</code>,<code>pipe</code>, <code>progress</code>, and <code>state</code>), but not ones that change the state (<code>resolve</code>, <code>reject</code>, <code>notify</code>, <code>resolveWith</code>, <code>rejectWith</code>, and <code>notifyWith</code>).</p>
 
             <p>If <code>target</code> is provided, <code>deferred.promise()</code> will attach the methods onto it and then return this object rather than create a new one. This can be useful to attach the Promise behavior to an object that already exists.</p>
 
@@ -1946,7 +1953,7 @@ alert( 'You are running jQuery version: ' + $.fn.jquery );
          </longdesc>
          <example>
             <desc>Create a Deferred and set two timer-based functions to either resolve or reject the Deferred after a random interval. Whichever one fires first "wins" and will call one of the callbacks. The second timeout has no effect since the Deferred is already complete (in a resolved or rejected state) from the first timeout action. Also set a timer-based progress notification function, and call a progress handler that adds "working..." to the document body.</desc>
-            <code>
+        <code><![CDATA[
 function asyncEvent(){
     var dfd = new jQuery.Deferred();
 
@@ -1984,11 +1991,11 @@ $.when( asyncEvent() ).then(
         $("body").append(status);
     }
 );
-</code>
+]]></code>
          </example>
          <example>
             <desc>Use the target argument to promote an existing object to a Promise:</desc>
-            <code>
+  <code><![CDATA[
 // Existing object
 var obj = {
   hello: function( name ) {
@@ -2008,7 +2015,7 @@ defer.resolve( "John" );
 obj.done(function( name ) {
   obj.hello( name ); // will alert "Hello John"
 }).hello( "Karl" ); // will alert "Hello Karl"
-</code>
+]]></code>
          </example>
          <category name="Deferred Object"/>
          <category name="Version 1.5"/>
@@ -2117,7 +2124,7 @@ obj.done(function( name ) {
   // Set cssHooks only for browsers that
   // support a vendor-prefixed border radius
   if ( borderRadius &amp;&amp; borderRadius !== "borderRadius" ) {
-    $.cssHook.borderRadius = {
+    $.cssHooks.borderRadius = {
       get: function( elem, computed, extra ) {
         return $.css( elem, borderRadius );
       },
@@ -2146,7 +2153,7 @@ $("#another").css("border-radius", "20px");
 
     // Set cssHooks for browsers that
     // support only a vendor-prefixed someCSSProp
-    $.cssHook.someCSSProp = {
+    $.cssHooks.someCSSProp = {
       get: function( elem, computed, extra ) {
         return $.css( elem, $.support.someCSSProp );
       },
@@ -2155,7 +2162,7 @@ $("#another").css("border-radius", "20px");
       }
     };
   } else if ( supportsProprietaryAlternative ) {
-    $.cssHook.someCSSProp = {
+    $.cssHooks.someCSSProp = {
       get: function( elem, computed, extra ) {
         // Handle crazy conversion from the proprietary alternative 
       },
@@ -2572,8 +2579,10 @@ $.get("test.php").then(
          <desc>Creates a new copy of jQuery whose properties and methods can be modified without affecting the original jQuery object.</desc>
          <signature>
             <added>1.5</added>
+            <deprecated>1.7</deprecated>
          </signature>
          <longdesc>
+	    <p><strong>This method is deprecated as of jQuery 1.7 and will be moved to a plugin in jQuery 1.8.</strong></p>
             <p>There are two specific use cases for which jQuery.sub() was created. The first was for providing a painless way of overriding jQuery methods without completely destroying the original methods and another was for helping to do encapsulation and basic namespacing for jQuery plugins.</p>
             <p>Note that jQuery.sub() doesn't attempt to do any sort of isolation - that's not its intention. All the methods on the sub'd version of jQuery will still point to the original jQuery (events bound and triggered will still be through the main jQuery, data will be bound to elements through the main jQuery, Ajax queries and events will run through the main jQuery, etc.).</p>
             <p>Note that if you're looking to use this for plugin development you should first <i>strongly</i> consider using something like the jQuery UI widget factory which manages both state and plugin sub-methods. <a href="http://blog.nemikor.com/2010/05/15/building-stateful-jquery-plugins/">Some examples of using the jQuery UI widget factory</a> to build a plugin.</p>
@@ -2581,7 +2590,7 @@ $.get("test.php").then(
          </longdesc>
          <example>
             <desc>Adding a method to a jQuery sub so that it isn't exposed externally:</desc>
-            <code>  (function(){
+        <code><![CDATA[  (function(){
     var sub$ = jQuery.sub();
 
     sub$.fn.myCustomMethod = function(){
@@ -2593,11 +2602,11 @@ $.get("test.php").then(
     });
   })();
   
-  typeof jQuery('body').myCustomMethod // undefined</code>
+  typeof jQuery('body').myCustomMethod // undefined]]></code>
          </example>
          <example>
             <desc>Override some jQuery methods to provide new functionality.</desc>
-            <code>
+        <code><![CDATA[
 (function() {
   var myjQuery = jQuery.sub();
 
@@ -2622,11 +2631,11 @@ $.get("test.php").then(
 })();
 
 // Regular jQuery doesn't trigger a remove event when removing an element
-// This functionality is only contained within the modified 'myjQuery'.</code>
+// This functionality is only contained within the modified 'myjQuery'.]]></code>
          </example>
          <example>
             <desc>Create a plugin that returns plugin-specific methods.</desc>
-            <code>
+        <code><![CDATA[
 (function() {
   // Create a new copy of jQuery using sub()
   var plugin = jQuery.sub();
@@ -2655,9 +2664,10 @@ $(document).ready(function() {
   $('#main').myplugin().open();
 
   // Note: Calling just $("#main").open() won't work as open doesn't exist!
-});</code>
+});]]></code>
          </example>
          <category name="Core"/>
+<category name="Deprecated"/>
          <category name="Version 1.5"/>
       </entry>
       <entry type="method" name="fadeToggle" return="jQuery">
@@ -2714,12 +2724,6 @@ $("button:last").click(function () {
          <category name="Fading"/>
          <category name="Version 1.4.4"/>
          <note type="additional">所有的 jQuery 动画, 包括 <code>.fadeToggle()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="http://api.jquery.com/jquery.fx.off">jQuery.fx.off</a> 来获得更多信息。</note>
-         <note type="additional">由于 <code><a href="https://developer.mozilla.org/en/DOM/window.mozRequestAnimationFrame">
-               requestAnimationFrame()
-            </a></code> 特性的原因，绝对不要在 <code>setInterval</code> 或 <code>setTimeout</code> 方法中设置动画队列。 为了保护CPU资源, 支持 <code>requestAnimationFrame</code> 的浏览器在当前窗口或标签失去焦点时，是不更新动画的。如果你通过 <code>setInterval</code> 或 <code>setTimeout</code> 方法在动画暂停时，持续向队列里添加动画，那么在窗口或标签重新获得焦点时，所有在队列中的动画都会被播放。 为了避免这个潜在的问题,可以在循环时,利用最后一个动画的回调函数，或者给元素添加 <code><a href="http://api.jquery.com/queue">
-               .queue()
-            </a></code> 方法来避免这个问题，实现动画的继续播放。
-</note>
       </entry>
       <entry type="method" name="jQuery.type" return="String">
          <desc>Determine the internal JavaScript [[Class]] of an object.</desc>
@@ -2732,7 +2736,14 @@ $("button:last").click(function () {
          <longdesc>
             <p>A number of techniques are used to determine the exact return value for an object. The [[Class]] is determined as follows:</p>
             <ul>
-               <li>If the object is undefined or null, then "undefined" or "null" is returned accordingly.</li>
+	       <li>If the object is undefined or null, then "undefined" or "null" is returned accordingly.
+		  <ul>
+		    <li>jQuery.type(undefined) === "undefined"</li>
+		    <li>jQuery.type() === "undefined"</li>
+		    <li>jQuery.type(window.notDefined) === "undefined"</li>
+		    <li>jQuery.type(null) === "null"</li>
+	    	  </ul>
+	       </li>
                <li>If the object has an internal [[Class]] equivalent to one of the browser's built-in objects, the associated name is returned. (<a href="http://perfectionkills.com/instanceof-considered-harmful-or-how-to-write-a-robust-isarray/">More details about this technique.</a>)<ul>
                      <li>jQuery.type(true) === "boolean"</li>
                      <li>jQuery.type(3) === "number"</li>
@@ -2944,7 +2955,7 @@ $("button").click(function(event) {
             <argument name="eventType" type="String">
                <desc>A string containing a JavaScript event type, such as "click" or "keydown"</desc>
             </argument>
-            <argument name="handler" type="Function">
+            <argument name="handler(eventObject)" type="Function">
                <desc>每当事件触发时执行的函数。</desc>
             </argument>
          </signature>
@@ -3047,7 +3058,7 @@ $("form").undelegate(".whatever");</code>
             <argument name="eventType" type="String">
                <desc>含有 JavaScript 事件类型的字符串，字符串间使用空格分隔，例如："click" , "keydown," 或 自定义事件名称。</desc>
             </argument>
-            <argument name="handler" type="Function">
+            <argument name="handler(eventObject)" type="Function">
                <desc>每当事件触发时执行的函数。</desc>
             </argument>
          </signature>
@@ -3062,7 +3073,7 @@ $("form").undelegate(".whatever");</code>
             <argument name="eventData" type="Object">
                <desc>将要传递给事件处理函数的数据映射。</desc>
             </argument>
-            <argument name="handler" type="Function">
+            <argument name="handler(eventObject)" type="Function">
                <desc>每当事件触发时执行的函数。</desc>
             </argument>
          </signature>
@@ -3957,17 +3968,28 @@ $("button").click(function(event) {
          <longdesc>
             <p>
                <code>event.which</code> 将 <code>event.keyCode</code> 和 <code>event.charCode</code> 进行了标准化。推荐用 <code>event.which</code> 来监视键盘输入。更多细节请参阅： <a href="https://developer.mozilla.org/en/DOM/event.charCode#Notes">event.charCode on the MDC</a>。 </p> 
+            <p><code>event.which</code> 同样对鼠标按键进行了标准化 (<code>mousedown</code> 和 <code>mouseup</code> 事件), <code>1</code> 代表左键， <code>2</code> 代表中键， <code>3</code> 代表右键。请使用 <code>event.which</code> 替代 <code>event.button</code>。</p>
          </longdesc>
          <example>
-            <desc>记录按键。</desc>
-            <code>$('#whichkey').bind('keydown',function(e){ 
+        	<desc>记录哪个键盘按键被按下。</desc>
+       		<code><![CDATA[$('#whichkey').bind('keydown',function(e){
   $('#log').html(e.type + ': ' +  e.which );
-});  </code>
-            <html>
-&lt;input id="whichkey" value="type something"&gt;
-&lt;div id="log"&gt;&lt;/div&gt;</html>
-            <results>"keydown" 74  </results>
-         </example>
+});  ]]></code>
+        <html><![CDATA[
+<input id="whichkey" value="type something">
+<div id="log"></div>]]></html>
+	    </example>
+	    <example>
+	        <desc>记录哪个鼠标键被按下。</desc>
+	        <code><![CDATA[
+	$('#whichkey').bind('mousedown',function(e){
+	  $('#log').html(e.type + ': ' +  e.which );
+	});
+	]]></code>
+	        <html><![CDATA[
+	<input id="whichkey" value="type something">
+	<div id="log"></div>]]></html>
+	</example>
          <category name="Event Object"/>
          <category name="Version 1.1.3"/>
       </entry>
@@ -4045,19 +4067,36 @@ div { padding: 20px; }</css>
          <category name="Event Object"/>
          <category name="Version 1.1.4"/>
       </entry>
-      <entry type="property" name="event.data" return="Anything">
-         <desc>在绑定事件时传给 jQuery.fn.bind 函数的可选数据。</desc>
+      <entry type="property" name="event.data">
+         <desc>在绑定事件时给事件传递一个可选的数据映射。</desc>
          <signature>
             <added>1.1</added>
          </signature>
          <longdesc>   </longdesc>
          <example>
-            <desc>显示传入的数据。</desc>
-            <code>$("a").each(function(i) {
-  $(this).bind('click', {index:i}, function(e){
-     alert('my index is ' + e.data.index);
+  <desc>在一个 <code>for</code> 循环里，将迭代变量 <code>i</code> 的值传递给 <code>.on()</code> 方法，保留当前迭代的值。</desc>
+<html><![CDATA[
+<button> 0 </button>
+<button> 1 </button>
+<button> 2 </button>
+<button> 3 </button>
+<button> 4 </button>
+<div id="log"></div>
+]]></html>
+<code><![CDATA[
+var logDiv = $("#log");
+/* Note: This code is for demonstration purposes only. */
+for (var i = 0; i < 5; i++) {
+  $("button").eq(i).on("click", {value: i}, function(event) {
+    var msgs = [
+      "button = " + $(this).index(),
+      "event.data.value = " + event.data.value,
+      "i = " + i
+    ];
+    logDiv.append( msgs.join(", ") + "<br>" );
   });
-});   </code>
+}
+]]></code>
          </example>
          <category name="Event Object"/>
          <category name="Version 1.1"/>
@@ -4899,10 +4938,10 @@ jQuery.isPlainObject("test") // false</code>
          </longdesc>
          <example>
             <desc>当按键按下时，显示传递给 keydown 事件处理函数的 event 对象。</desc>
-            <code>
+            <code><![CDATA[
 var xTriggered = 0;
 $('#target').keydown(function(event) {
-  if (event.keyCode == '13') {
+  if (event.which == 13) {
      event.preventDefault();
    }
    xTriggered++;
@@ -4913,8 +4952,8 @@ $('#target').keydown(function(event) {
 
 $('#other').click(function() {
   $('#target').keydown();
-});</code>
-            <css>
+});]]></code>
+    <css><![CDATA[
 fieldset { margin-bottom: 1em; }
 input { display: block; margin-bottom: .25em; }
 #print-output {
@@ -4927,17 +4966,18 @@ input { display: block; margin-bottom: .25em; }
   font-size: .7em;
 }
 
-</css>
-            <html>&lt;form&gt;
-  &lt;fieldset&gt;
-    &lt;label for="target"&gt;Type Something:&lt;/label&gt;
-    &lt;input id="target" type="text" /&gt;
-  &lt;/fieldset&gt;
-&lt;/form&gt;
-&lt;button id="other"&gt;
+]]></css>
+    <height>460</height>
+    <html><![CDATA[<form>
+  <fieldset>
+    <label for="target">Type Something:</label>
+    <input id="target" type="text" />
+  </fieldset>
+</form>
+<button id="other">
   Trigger the handler
-&lt;/button&gt;
-&lt;script type="text/javascript" src="events.js"&gt;&lt;/script&gt;</html>
+</button>
+<script type="text/javascript" src="/scripts/events.js"></script>]]></html>
          </example>
          <category name="Keyboard Events"/>
          <category name="Version 1.0"/>
@@ -5116,7 +5156,8 @@ $('div').html('Index: ' + foobar);</code>
          </signature>
          <longdesc>
             <p><code>.removeData()</code> 方法允许我们移除先前用 <code>.data()</code> 方法设置的数据。如果提供了 name 参数，则 <code>.removeData()</code> 删除那个指定的值，如果不带参数，则删除所有数据。该方法无法移除 HTML5 <code>data-</code> 属性数据。若要移除 <code>data-</code> 属性数据，请使用 <code>.removeAttr()</code> 方法。</p>
-            <p>
+            <p>当使用 <code>.removeData("name")</code> 时，如果在内部 data 缓存中找不到该属性时，jQuery 会尝试查找该元素上的 <code>data-</code> 属性。为了避免重新查找 <code>data-</code> 属性，可以将该属性的值设置成 <code>null</code> 或 <code>undefined</code> (例如： <code>.data("name", undefined)</code>)，而不是使用 <code>.removeData()</code>。</p>
+	    <p>
                <strong>从 jQuery 1.7 起</strong>,调用 <code>.removeData()</code> 方法时，可以传入一个数组或用空格分隔的字符串数据键名作为参数，这样就可以一次性删除一组存储在某一元素上的数据。</p>
             <p><strong>从 jQuery 1.4.3 起</strong>，调用 <code>.removeData()</code> 方法会让这个将要被移除的属性值恢复成 DOM 中同名的 data- 属性值，而不是将它设置成 <code>undefined</code>。</p>
               
@@ -5228,9 +5269,7 @@ alert( $("body").data("foo")); //undefined
 $("body").data("bar", "foobar");
 alert( $("body").data("bar")); //foobar
 </pre>
-            <p>
-               <strong>HTML 5 data- 属性</strong>
-            </p>
+	    <h4 id="data-html5"><a href="#data-html5">HTML 5 data-* 属性</a></h4>
             <p>从 jQuery 1.4.3 开始，<a href="http://ejohn.org/blog/html-5-data-attributes/">HTML 5 data- 属性</a> 会被自动放入到 jQuery 的 data 对象中。对这种内嵌破折号（即 “-”）的属性的处理方式，在 jQuery 1.6 中已经发生了改变，以符合 <a href="http://www.w3.org/TR/html5/elements.html#embedding-custom-non-visible-data-with-the-data-attributes">W3C HTML5 规范</a>.</p>
 
             <p>例如，有如下的 HTML:</p>
@@ -5724,41 +5763,47 @@ input, label { line-height: 1.5em; }
          <signature>
             <added>1.0</added>
          </signature>
-         <longdesc/>
+         <longdesc>
+	    <p>与 <code>$(":button")</code> 等价的选择器可以使用有效的 CSS <code>$("button, input[type='button']")</code>。</p>
+	 </longdesc>
          <example>
-            <desc>查找所有按钮。</desc>
-            <code>
+            <desc>查找所有的按钮并标记出它们。</desc>
+            <code><![CDATA[
 
-    var input = $(":button").css({background:"yellow", border:"3px red solid"});
-    $("div").text("For this type jQuery found " + input.length + ".")
-            .css("color", "red");
+  var input = $(":button").addClass("marked");
+  $("div").text( "For this type jQuery found " + input.length + "." );
     $("form").submit(function () { return false; }); // so it won't submit
 
-</code>
-            <css>
-  textarea { height:45px; }
-  </css>
-            <html>&lt;form&gt;
-    &lt;input type="button" value="Input Button"/&gt;
-    &lt;input type="checkbox" /&gt;
+]]></code>
+<css><![CDATA[
+  textarea { height:35px; }
+  div { color: red; }
+  fieldset { margin: 0; padding: 0; border-width: 0; }
+  .marked { background-color: yellow; border: 3px red solid; }
+]]></css>
+<html><![CDATA[<form>
+  <fieldset>
+    <input type="button" value="Input Button"/>
+    <input type="checkbox" />
 
-    &lt;input type="file" /&gt;
-    &lt;input type="hidden" /&gt;
-    &lt;input type="image" /&gt;
+    <input type="file" />
+    <input type="hidden" />
+    <input type="image" />
 
-    &lt;input type="password" /&gt;
-    &lt;input type="radio" /&gt;
-    &lt;input type="reset" /&gt;
+    <input type="password" />
+    <input type="radio" />
+    <input type="reset" />
 
-    &lt;input type="submit" /&gt;
-    &lt;input type="text" /&gt;
-    &lt;select&gt;&lt;option&gt;Option&lt;option/&gt;&lt;/select&gt;
+    <input type="submit" />
+    <input type="text" />
+    <select><option>Option<option/></select>
 
-    &lt;textarea&gt;&lt;/textarea&gt;
-    &lt;button&gt;Button&lt;/button&gt;
-  &lt;/form&gt;
-  &lt;div&gt;
-  &lt;/div&gt;</html>
+    <textarea></textarea>
+    <button>Button</button>
+  </fieldset>
+</form>
+<div>
+</div>]]></html>
          </example>
          <category name="Form"/>
          <category name="jQuery Extensions"/>
@@ -6499,7 +6544,7 @@ input, label { line-height: 1.5em; }
                <desc>属性名。</desc>
             </argument>
             <argument name="value" type="String">
-               <desc>属性值。引号是强制性的。</desc>
+               <desc>使用单引号或双引号包裹的字符串形式的属性值。</desc>
             </argument>
          </signature>
          <longdesc>
@@ -6532,7 +6577,7 @@ a { display: inline-block; }
                <desc>属性名。</desc>
             </argument>
             <argument name="value" type="String">
-               <desc>属性值。引号是强制性的。</desc>
+               <desc>使用单引号或双引号包裹的字符串形式的属性值。</desc>
             </argument>
          </signature>
          <longdesc>
@@ -6585,7 +6630,7 @@ a { display: inline-block; }
                <desc>属性名。</desc>
             </argument>
             <argument name="value" type="String">
-               <desc>属性值。引号是强制性的。</desc>
+               <desc>使用单引号或双引号包裹的字符串形式的属性值。</desc>
             </argument>
          </signature>
          <longdesc>
@@ -6611,7 +6656,7 @@ a { display: inline-block; }
                <desc>属性名。</desc>
             </argument>
             <argument name="value" type="String">
-               <desc>属性值。引号是强制性的。</desc>
+               <desc>使用单引号或双引号包裹的字符串形式的属性值。</desc>
             </argument>
          </signature>
          <longdesc/>
@@ -6634,7 +6679,7 @@ a { display: inline-block; }
                <desc>属性名。</desc>
             </argument>
             <argument name="value" type="String">
-               <desc>属性值。引号是强制性的。</desc>
+               <desc>使用单引号或双引号包裹的字符串形式的属性值。</desc>
             </argument>
          </signature>
          <longdesc>
@@ -6659,7 +6704,7 @@ a { display: inline-block; }
                <desc>属性名。</desc>
             </argument>
             <argument name="value" type="String">
-               <desc>属性值。引号是强制性的。</desc>
+               <desc>使用单引号或双引号包裹的字符串形式的属性值。</desc>
             </argument>
          </signature>
          <longdesc>
@@ -6761,13 +6806,7 @@ a { display: inline-block; }
             <added>1.0</added>
          </signature>
          <longdesc> 
-            <p>元素可能出于以下几个理由而被隐藏：</p>
-            <ul>
-               <li>它们的 CSS 属性 <code>display</code> 的值为 <code>none</code>。</li>
-               <li>它们是表单元素，带有 <code>type="hidden"</code> 属性。</li>
-               <li>它们的宽和高被设置成 0。</li>
-               <li>它们的祖先元素被隐藏了，所以它们也没有在页面中显示。</li>
-            </ul> 
+            <p>如果元素在文档中占有一定的空间，那么元素就被认为是可见的。可见元素的高或宽是大于 0 的。</p>
             <p><code>visibility: hidden</code> 或者 <code>opacity: 0</code> 的元素被认为是可见的，因为实际上，它们在页面布局中占据了一定的空间。在执行隐藏效果动画的元素也被认为是可见的，直到动画结束为止。在执行显示效果动画的元素，从动画的一开始就被认为是可见的。</p>
             <p>从 jQuery 1.3.2 起，<code>:visible</code> 的计算方式发生了变动。可以访问 <a href="http://docs.jquery.com/Release:jQuery_1.3.2#:visible.2F:hidden_Overhauled">jQuery 1.3.2 更新信息</a> 来获取更多内容。</p>
          </longdesc>
@@ -7178,6 +7217,7 @@ $("ul.nav li:nth-child(2)").css( "color", "red" );
          <note type="additional">由于 <code>:odd</code> 是 jQuery 扩展出来的，它并不是 CSS 规范中的一部分。当使用 <code>:odd</code> 时，并不会比使用原生的 DOM 方法 <code>querySelectorAll()</code> 性能好。为了达到高效的 <code>:odd</code> 元素选择，请优先使用纯 CSS 选择器 <code><a href="http://api.jquery.com/filter/">
                .filter(":odd")</a></code>
             。</note>
+	 <note type="additional">被选中元素的顺序和它们在文档中出现的顺序是一致的。</note>
       </entry>
       <entry type="selector" name="even" return="">
          <desc>选择索引值是偶数的元素。索引值从 0 开始计数。同时可以参考 <a href="odd-selector.htm">odd</a>。</desc>
@@ -7210,6 +7250,7 @@ $("ul.nav li:nth-child(2)").css( "color", "red" );
          <note type="additional">由于 <code>:even</code> 是 jQuery 扩展出来的，它并不是 CSS 规范中的一部分。当使用 <code>:even</code> 时，并不会比使用原生的 DOM 方法 <code>querySelectorAll()</code> 性能好。为了达到高效的 <code>:even</code> 元素选择，请优先使用纯 CSS 选择器 <code><a href="http://api.jquery.com/filter/">
                .filter(":even")</a></code>
             。</note>
+	 <note type="additional">被选中元素的顺序和它们在文档中出现的顺序是一致的。</note>
       </entry>
       <entry type="selector" name="not" return="">
          <desc>选择所有与给定选择器不匹配的元素。</desc>
@@ -7304,6 +7345,7 @@ $("ul.nav li:nth-child(2)").css( "color", "red" );
          <note type="additional">由于 <code>:first</code> 是 jQuery 扩展出来的，它并不是 CSS 规范中的一部分。当使用 <code>:first</code> 时，并不会比使用原生的 DOM 方法 <code>querySelectorAll()</code> 性能好。为了达到高效的 <code>:first</code> 元素选择，请优先使用纯 CSS 选择器 <code><a href="http://api.jquery.com/filter/">
                .filter(":first")</a></code>
             。</note>
+  	 <note type="additional">被选中元素的顺序和它们在文档中出现的顺序是一致的。</note>
       </entry>
       <entry type="selector" name="next siblings" return="">
          <desc>选择跟在 "prev" 元素后面，有共同的父元素，且与 "siblings" 中的选择器相匹配的元素。</desc>
@@ -8564,6 +8606,9 @@ $('#target').blur(function() {
                <li>当元素获得焦点时，就会触发 <code>focus</code> 事件。虽然此事件起初只能应用于有限的元素上，例如，表单元素（<code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, 等。) 和链接 (<code>&lt;a href&gt;</code>)，但是在最近的浏览器版本中，除了上述元素外，该事件的应用范围被扩大到任何元素，只要这个元素指定了 <code>tabindex</code> 属性（上述元素不需要指定此属性）。元素可以通过键盘命令来获得焦点，例如 Tab 键，或在元素上点击了鼠标。</li>
                <li>当元素获得焦点时，浏览器一般会以某种高亮方式来显示，例如，在元素周围显示点线。该事件通常用于判断哪个元素是最先接收键盘相关事件的元素。</li>
             </ul>
+	    <blockquote>
+               <p>在 IE 中，如果尝试将焦点设置到 hidden 元素上的话，会导致出错。需要注意的是，只能对可见元素使用 <code>.focus()</code>。若要执行元素上的 focus 事件却又不想让该元素获得焦点的话，请使用 <code>.triggerHandler("focus")</code> 来代替 <code>.focus()</code>。</p>
+            </blockquote>
             <p>举例来说，请看下面的HTML：</p>
             <pre>&lt;form&gt;
   &lt;input id="target" type="text" value="Field 1" /&gt;
@@ -8591,9 +8636,6 @@ $('#target').blur(function() {
                 和 <code><a href="delegate.htm">
                   .delegate()</a></code> 事件代理中使用该方法，解决了跨浏览器的问题。
                </p>
-            <blockquote>
-               <p>在 IE 中，如果尝试将焦点设置到 hidden 元素上的话，会导致出错。需要注意的是，只能对可见元素使用 <code>.focus()</code>。若要执行元素上的 focus 事件却又不想让该元素获得焦点的话，请使用 <code>.triggerHandler("focus")</code> 来代替 <code>.focus()</code>。</p>
-            </blockquote>
          </longdesc>
          <example>
             <desc>触发 focus 事件的例子。</desc>
@@ -8687,30 +8729,30 @@ $('#target').blur(function() {
          </longdesc>
          <example>
             <desc>当在黄色的 div 移动鼠标时，显示鼠标指针的坐标。坐标是相对于窗口的，在该例中，窗口指的是 iframe。</desc>
-            <code>
+            <code><![CDATA[
     $("div").mousemove(function(e){
       var pageCoords = "( " + e.pageX + ", " + e.pageY + " )";
       var clientCoords = "( " + e.clientX + ", " + e.clientY + " )";
-      $("span:first").text("( e.pageX, e.pageY ) - " + pageCoords);
-      $("span:last").text("( e.clientX, e.clientY ) - " + clientCoords);
+      $("span:first").text("( e.pageX, e.pageY ) : " + pageCoords);
+      $("span:last").text("( e.clientX, e.clientY ) : " + clientCoords);
     });
 
-</code>
-            <css>
-  div { width:220px; height:170px; margin;10px; margin-right:50px;
+]]></code>
+                    <height>300</height>
+                    <css><![CDATA[
+  div { width:220px; height:170px; margin: 10px 50px 10px 10px;
         background:yellow; border:2px groove; float:right; }
   p { margin:0; margin-left:10px; color:red; width:220px;
       height:120px; padding-top:70px;
       float:left; font-size:14px; }
   span { display:block; }
-  </css>
-            <html>&lt;p&gt;   
-    Try scrolling too.
-    &lt;span&gt;Move the mouse over the div.&lt;/span&gt;
-    &lt;span&gt;&amp;nbsp;&lt;/span&gt;
-  &lt;/p&gt;
+  ]]></css>
+                    <html><![CDATA[<p>
+    <span>Move the mouse over the div.</span>
+    <span>&nbsp;</span>
+  </p>
 
-  &lt;div&gt;&lt;/div&gt;</html>
+  <div></div>]]></html>
          </example>
          <category name="Mouse Events"/>
          <category name="Version 1.0"/>
@@ -9343,7 +9385,7 @@ p { line-height:1em; margin:0; padding:0; }
             <added>1.0</added>
          </signature>
          <longdesc>
-            <p>带有参数的该方法是 <code>.bind('click', handler)</code> 的快捷方式，不带参数的该方法是 <code>.trigger('click')</code> 的快捷方式。</p>
+            <p>带有参数的该方法是 <code>.bind('click', handler)</code> 的快捷方式，并且，从 jQuery 1.7 开始，也是 <code>.on("click", handler)</code> 的快捷方式。不带参数的该方法是 <code>.trigger('click')</code> 的快捷方式。</p>
             <p>当用户在元素上点击了鼠标，就会触发 <code>click</code> 事件。任何 HTML 元素都可以接收该事件。</p>
             <pre>举例来说，请看下面的HTML：
 &lt;div id="target"&gt;
@@ -9382,15 +9424,10 @@ p { line-height:1em; margin:0; padding:0; }
     $("p").click(function () { 
       $(this).slideUp(); 
     });
-    $("p").hover(function () {
-      $(this).addClass("hilite");
-    }, function () {
-      $(this).removeClass("hilite");
-    });
 </code>
             <css>
   p { color:red; margin:5px; cursor:pointer; }
-  p.hilite { background:yellow; }
+  p:hover { background:yellow; }
   </css>
             <html>&lt;p&gt;First Paragraph&lt;/p&gt;
 
@@ -9760,6 +9797,7 @@ p { line-height:1em; margin:0; padding:0; }
          <category name="Version 1.0"/>
       </entry>
       <entry type="method" name="die" return="jQuery">
+	 <deprecated>1.7</deprecated>
          <desc>Remove all event handlers previously attached using <code>.live()</code> from the elements.</desc>
          <signature>
             <added>1.4.1</added>
@@ -9777,12 +9815,14 @@ See the discussions of <code>.live()</code> 和 <code>.unbind()</code> for furth
             <p>
                <strong>注意:</strong> In order for .die() to function correctly, the selector used with it must match exactly the selector initially used with .live().</p>
          </longdesc>
+	 <category name="Deprecated"/>
          <category name="Event Handler Attachment"/>
          <category name="Version 1.3"/>
          <category name="Version 1.4.1"/>
          <category name="Version 1.4.3"/>
       </entry>
       <entry type="method" name="die" return="jQuery">
+	 <deprecated>1.7</deprecated>
          <desc>Remove an event handler previously attached using <code>.live()</code> from the elements.</desc>
          <signature>
             <added>1.3</added>
@@ -9850,6 +9890,7 @@ $("p").live("click", foo); // ... now foo will be called when paragraphs are cli
 
 $("p").die("click", foo); // ... foo will no longer be called.</code>
          </example>
+	 <category name="Deprecated"/>
          <category name="Event Handler Attachment"/>
          <category name="Version 1.3"/>
          <category name="Version 1.4.1"/>
@@ -9986,13 +10027,14 @@ if ( $.browser.msie ) {
          <category name="Version 1.1.3"/>
       </entry>
       <entry type="method" name="live" return="jQuery">
+	 <deprecated>1.7</deprecated>
          <desc>Attach an event handler for all elements which match the current selector, now and in the future.</desc>
          <signature>
             <added>1.3</added>
             <argument name="events" type="String">
                <desc>A string containing a JavaScript event type, such as "click" or "keydown." As of jQuery 1.4 the string can contain multiple, space-separated event types or custom event names.</desc>
             </argument>
-            <argument name="handler" type="Function">
+            <argument name="handler(eventObject)" type="Function">
                <desc>每当事件触发时执行的函数。</desc>
             </argument>
          </signature>
@@ -10004,7 +10046,7 @@ if ( $.browser.msie ) {
             <argument name="data" type="Object">
                <desc>将要传递给事件处理函数的数据映射。</desc>
             </argument>
-            <argument name="handler" type="Function">
+            <argument name="handler(eventObject)" type="Function">
                <desc>每当事件触发时执行的函数。</desc>
             </argument>
          </signature>
@@ -10046,7 +10088,14 @@ $(document).on("click", "a.offsite", function(){ alert("Goodbye!"); });        /
                <li>jQuery attempts to retrieve the elements specified by the selector before calling the <code>.live()</code> method, which may be time-consuming on large documents.</li>
                <li>Chaining methods is not supported. For example, <code>$("a").find(".offsite, .external").live( ... ); </code> is <em>not</em> valid and does not work as expected.</li>
                <li>Since all <code>.live()</code> events are attached at the <code>document</code> element, events take the longest and slowest possible path before they are handled.</li>
-               <li>Calling <code><a href="http://api.jquery.com/event.stopPropagation">
+               <li>On mobile iOS (iPhone, iPad and iPod Touch) the <code>click</code> event does not bubble to the document body for most elements and cannot be used with <code>.live()</code> without applying one of the following workarounds:
+<ol>
+    <li>Use natively clickable elements such as <code>a</code> or <code>button</code>, as both of these do bubble to <code>document</code>.</li>
+    <li>Use <code>.on()</code> or <code>.delegate()</code> attached to an element below the level of <code>document.body</code>, since mobile iOS does bubble within the body.</li>
+    <li>Apply the CSS style <code>cursor:pointer</code> to the element that needs to bubble clicks (or a parent including <code>document.documentElement</code>). Note however, this will disable copy\paste on the element and cause it to be highlighted when touched.</li>
+</ol>
+</li>
+	       <li>Calling <code><a href="http://api.jquery.com/event.stopPropagation">
                      event.stopPropagation()</a></code>
                    in the event handler is ineffective in stopping event handlers attached lower in the document; the event has already propagated to <code>document</code>.</li>
                <li>The <code>.live()</code> method interacts with other event methods in ways that can be surprising, e.g., <code>$(document).unbind("click")</code> removes all click handlers attached by any call to <code>.live()</code>!</li>
@@ -10134,6 +10183,7 @@ $("p").live({
   &lt;span&gt;&lt;/span&gt;
   </html>
          </example>
+<category name="Deprecated"/>
          <category name="Event Handler Attachment"/>
          <category name="Version 1.3"/>
       </entry>
@@ -10144,7 +10194,7 @@ $("p").live({
             <argument name="eventType" type="String">
                <desc>A string containing a JavaScript event type, such as <code>click</code> or <code>submit</code>.</desc>
             </argument>
-            <argument name="extraParameters" type="Array">
+	    <argument name="extraParameters" optional="true" type="Array">
                <desc>An array of additional parameters to pass along to the event handler.</desc>
             </argument>
          </signature>
@@ -10191,7 +10241,7 @@ $("&lt;span&gt;Focused!&lt;/span&gt;").appendTo("body").fadeOut(1000);
             <argument name="eventType" type="String">
                <desc>A string containing a JavaScript event type, such as <code>click</code> or <code>submit</code>.</desc>
             </argument>
-            <argument name="extraParameters" type="Object">
+    <argument name="extraParameters" optional="true" type="Object">
                <desc>Additional parameters to pass along to the event handler.</desc>
             </argument>
          </signature>
@@ -10222,8 +10272,9 @@ $("&lt;span&gt;Focused!&lt;/span&gt;").appendTo("body").fadeOut(1000);
 $('#foo').trigger('custom', ['Custom', 'Event']);
 </pre>
             <p>The event object is always passed as the first parameter to an event handler, but if additional parameters are specified during a <code>.trigger()</code> call, these parameters will be passed along to the handler as well. To pass more than one parameter, use an array as shown here. As of jQuery 1.6.2, a single parameter can be passed without using an array.</p>
-            <p>Note the difference between the extra parameters we're passing here and the <code>eventData</code> parameter to the <a href="bind.htm">.bind()</a> method. Both are mechanisms for passing information to an event handler, but the <code>extraParameters</code> argument to <code>.trigger()</code> allows information to be determined at the time the event is triggered, while the <code>eventData</code> argument to <code>.bind()</code> requires the information to be already computed at the time the handler is bound.</p>    
-	    <p><code>.trigger()</code> method can be used on jQuery collections that wrap plain JavaScript objects similar to a pub/sub mechanism; any event handlers bound to the object will be called when the event is triggered. Note that if a triggered event name matches the name of a property on the object, jQuery will attempt to invoke the property as a method if no event handler calls <code>event.preventDefault()</code>. If this behavior is not desired, use <code>.triggerHandler()</code> 来代替。</p>
+    <p>Note the difference between the extra parameters we're passing here and the <code>eventData</code> parameter to the <a href="/bind/">.bind()</a> method. Both are mechanisms for passing information to an event handler, but the <code>extraParameters</code> argument to <code>.trigger()</code> allows information to be determined at the time the event is triggered, while the <code>eventData</code> argument to <code>.bind()</code> requires the information to be already computed at the time the handler is bound.</p>
+   <p>The <code>.trigger()</code> method can be used on jQuery collections that wrap plain JavaScript objects similar to a pub/sub mechanism; any event handlers bound to the object will be called when the event is triggered. </p>
+<blockquote><strong>Note:</strong> For both plain objects and DOM objects, if a triggered event name matches the name of a property on the object, jQuery will attempt to invoke the property as a method if no event handler calls <code>event.preventDefault()</code>. If this behavior is not desired, use <code>.triggerHandler()</code> instead.</blockquote>
          </longdesc>
          <example>
             <desc>Clicks to button #2 also trigger a click for button #1.</desc>
@@ -10317,7 +10368,7 @@ pass:"bar"
 				        <pre>$('.trigger').click(function() {
   $('.result').load('ajax/test.html');
 });</pre>
-				        <p>当用户点击按钮时，在 Ajax 请求结束后，就会显示日志信息。</p>
+				        <p>当用户点击含有 <code>trigger</code> 样式的元素时，在 Ajax 请求结束后，就会显示日志信息。</p>
 
 				        <p>
                <strong>注意:</strong> 由于 <code>.ajaxComplete()</code> 是作为一个 jQuery 对象实例的方法来实现的，所以我们在回调函数中可以通过 <code>this</code> 关键字来指向原先所选中的元素。</p>
@@ -10353,7 +10404,7 @@ pass:"bar"
             <argument name="data" type="Object" optional="true">
                <desc>将要传递给事件处理函数的数据映射。</desc>
             </argument>
-            <argument name="handler" type="Function">
+            <argument name="handler(eventObject)" type="Function">
                <desc>每当事件触发时执行的函数。</desc>
             </argument>
          </signature>
@@ -10370,7 +10421,7 @@ pass:"bar"
                      event.data</a></code>
                    when an event is triggered.</desc>
             </argument>
-            <argument name="handler" type="Function">
+            <argument name="handler(eventObject)" type="Function">
                <desc>当事件被触发时，执行的函数。 The value <code>false</code> is also allowed as a shorthand for a function that simply does <code>return false</code>.</desc>
             </argument>
          </signature>
@@ -10389,9 +10440,12 @@ pass:"bar"
             </argument>
          </signature>
          <longdesc>
-            <p>The first form of this method is identical to <code>.bind()</code>, except that the handler is unbound after its first invocation. The second two forms, introduced in jQuery 1.7, are identical to <code>.on()</code> except that the handler is removed after its first invocation. For example:</p>
+<p>The first form of this method is identical to <code>.bind()</code>, except that the handler is unbound after its first invocation. The second two forms, introduced in jQuery 1.7, are identical to <code>.on()</code> except that the handler is removed after the first time the event occurs at the delegated element, whether the selector matched anything or not. For example:</p>
             <pre>$("#foo").one("click", function() {
   alert("This will be displayed only once.");
+});
+$("body").one("click", "#foo", function() {
+  alert("This displays if #foo is the first thing clicked in the body.");
 });
 </pre>
             <p>After the code is executed, a click on the element with ID <code>foo</code> will display the alert. Subsequent clicks will do nothing. This code is equivalent to:</p>
@@ -10716,7 +10770,7 @@ alert( $(this).text() );
             <pre>$('.trigger').click(function() {
   $('.result').load('ajax/test.html');
 });</pre>
-		          <p>当用户点击按钮时，在 Ajax 请求成功后，就会显示日志信息。</p>
+		          <p>当用户点击含有 <code>trigger</code> 的元素时，在 Ajax 请求成功后，就会显示日志信息。</p>
 
             <p>
                <strong>注意:</strong> 由于 <code>.ajaxSuccess()</code> 是作为一个 jQuery 对象实例的方法来实现的，所以我们在回调函数中可以通过 <code>this</code> 关键字来指向原先所选中的元素。</p>
@@ -10724,12 +10778,12 @@ alert( $(this).text() );
 		          <p>无论是哪一个 Ajax 请求成功了，所有的 <code>ajaxSuccess</code> 处理函数都会被执行。如果有时必须区分出不同的请求，我们可以使用传递给事件处理函数的参数来识别不同的请求。每次 <code>ajaxSuccess</code> 事件处理函数执行时，都会传递一个事件对象，一个 <code>jqXHR</code> 对象(在 jQuery 1.5 之前, 是 <code><abbr title="XMLHttpRequest">XHR</abbr></code> object)，以及一个在请求创建时用的 settings 参数对象。<del>其中 settings 参数对象就是调用 Ajax 请求时，传递给 $.ajax 方法的 settings 对象(有时候是在 jQuery 内部传递的，比如用 load 方法时，jQuery 内部也会调用 $.ajax 方法，并且构造并传递一个 settings 参数)。通过 settings 对象，我们就可以用来确定这是哪一个请求。</del>比如说，我们可以限定某个回调函数仅仅处理某个特定的 URL：</p>
 
             <p>
-               <strong>注意:</strong> 可以通过 <code>xhr.responseXML</code> 或 <code>xhr.responseHTML</code> 属性，得到 ajax 返回的结果。</p>
+               <strong>注意:</strong> 可以通过 <code>xhr.responseXML</code> 或 <code>xhr.responseText</code> 属性，得到 ajax 返回的结果。</p>
 
 	           <pre>$('.log').ajaxSuccess(function(e, xhr, settings) {
   if (settings.url == 'ajax/test.html') {
     $(this).text('Triggered ajaxSuccess handler. The ajax response was:' 
-                     + xhr.responseHTML );
+                     + xhr.responseText );
   }
 });</pre>
          </longdesc>
@@ -10764,7 +10818,7 @@ alert( $(this).text() );
             <pre>$('.trigger').click(function() {
   $('.result').load('ajax/test.html');
 });</pre>
-            <p>当用户点击按钮时，在 Ajax 请求结束后，就会显示日志信息。</p>
+            <p>当用户点击含有 <code>trigger</code> 的元素时，在 Ajax 请求结束后，就会显示日志信息。</p>
   	         <p>由于 <code>.ajaxStop()</code> 是作为一个 jQuery 对象实例的方法来实现的，所以我们在回调函数中可以通过 <code>this</code> 关键字来指向原先所选中的元素。</p>
          </longdesc>
          <example>
@@ -10798,7 +10852,7 @@ alert( $(this).text() );
 				        <pre>$('.trigger').click(function() {
   $('.result').load('ajax/test.html');
 });</pre>
-				        <p>当用户点击按钮时，在 Ajax 请求将要被发送前，会显示日志信息。</p>
+				        <p>当用户点击含有 <code>trigger</code> 的元素时，在 Ajax 请求将要被发送前，会显示日志信息。</p>
 
 				        <p>
                <strong>注意:</strong> 由于 <code>.ajaxStart()</code> 是作为一个 jQuery 对象实例的方法来实现的，所以我们在回调函数中可以通过 <code>this</code> 关键字来指向原先所选中的元素。</p>
@@ -10834,7 +10888,7 @@ alert( $(this).text() );
             <pre>$('.trigger').click(function() {
   $('.result').load('ajax/test.html');
 });</pre>
-            <p>当用户点击按钮时，在 Ajax 请求将要开始前，会显示日志信息。</p>
+            <p>当用户点击含有 <code>trigger</code> 的元素时，在 Ajax 请求将要开始前，会显示日志信息。</p>
 
             <p>
                <strong>注意：</strong> 由于 <code>.ajaxSend()</code> 是作为一个 jQuery 对象实例的方法来实现的，所以我们在回调函数中可以通过 <code>this</code> 关键字来指向原先所选中的元素。</p>
@@ -11466,8 +11520,9 @@ span { color:blue; }
             <added>1.4</added>
          </signature>
          <longdesc>
-            <p>In the first formulation listed above,  <code>jQuery()</code> — which can also be written as <code>$()</code> — searches through the DOM for any elements that match the provided selector and creates a new jQuery object that references these elements:</p>
+      <p>In the first formulation listed above,  <code>jQuery()</code> &#8212; which can also be written as <code>$()</code> &#8212; searches through the DOM for any elements that match the provided selector and creates a new jQuery object that references these elements:</p>
             <pre>$('div.foo');</pre>
+<p>If no elements match the provided selector, the new jQuery object is "empty"; that is, it contains no elements and has <code><a href="http://api.jquery.com/length/">.length</a></code> property of 0.</p>
             <h4 id="selector-context">Selector Context</h4>
             <p>By default, selectors perform their searches within the DOM starting at the document root. However, an alternate context can be given for the search by using the optional second parameter to the  <code>$()</code> function. For example, to do a search within an event handler, the search can be restricted like so:</p>
             <pre>
@@ -11476,7 +11531,7 @@ $('div.foo').click(function() {
 });
 </pre>
             <p>When the search for the span selector is restricted to the context of <code>this</code>, only spans within the clicked element will get the additional class.</p>
-            <p>Internally, selector context is implemented with the <code>.find()</code> method, so  <code>$('span', this)</code> 等价于  <code>$(this).find('span')</code>.</p>
+<p>Internally, selector context is implemented with the <code>.find()</code> method, so  <code>$('span', this)</code> is equivalent to  <code>$(this).find('span')</code>.</p>
             <h4 id="using-dom-elements">Using DOM elements</h4>
             <p>The second and third formulations of this function create a jQuery object using one or more DOM elements that were already selected in some other way. A common use of this facility is to call jQuery methods on an element that has been passed to a callback function through the keyword <code>this</code>:</p>
             <pre>
@@ -11495,38 +11550,36 @@ $.post('url.xml', function(data) {
             <h4 id="cloning-jquery-objects">Cloning jQuery Objects</h4>
             <p>When a jQuery object is passed to the <code>$()</code> function, a clone of the object is created. This new jQuery object references the same DOM elements as the initial one.</p>
             <h4 id="returning-empty-set">Returning an Empty Set</h4>
-            <p>As of jQuery 1.4, calling the <code>jQuery()</code> method with <em>no arguments</em> returns an empty jQuery set (with a <code>
-                  <a href="http://api.jquery.com/length/">.length</a>
-               </code> property of 0). In previous versions of jQuery, this would return a set containing the document node.</p>
+<p>As of jQuery 1.4, calling the <code>jQuery()</code> method with <em>no arguments</em> returns an empty jQuery set (with a <code><a href="http://api.jquery.com/length/">.length</a></code> property of 0). In previous versions of jQuery, this would return a set containing the document node.</p>
 
             <h4 id="working-with-plain-objects">Working With Plain Objects</h4>
 
-            <p>At present, the only operations supported on plain JavaScript objects wrapped in jQuery are: <code>.data()</code>,<code>.prop()</code>,<code>.bind()</code>, <code>.unbind()</code>,<code>.trigger()</code> 和 <code>.triggerHandler()</code>. The use of <code>.data()</code> (or any method requiring <code>.data()</code>) on a plain object will result in a new property on the object called jQuery{randomNumber} (eg. jQuery123456789).</p>
+<p>At present, the only operations supported on plain JavaScript objects wrapped in jQuery are: <code>.data()</code>,<code>.prop()</code>,<code>.bind()</code>, <code>.unbind()</code>, <code>.trigger()</code> and <code>.triggerHandler()</code>. The use of <code>.data()</code> (or any method requiring <code>.data()</code>) on a plain object will result in a new property on the object called jQuery{randomNumber} (eg. jQuery123456789).</p>
 
             <pre>
 // define a plain object
-var foo = {foo:'bar', hello:'world'};
+var foo = {foo:&#39;bar&#39;, hello:&#39;world&#39;};
 
 // wrap this with jQuery
 var $foo = $(foo);
 
 // test accessing property values
-var test1 = $foo.prop('foo'); // bar
+var test1 = $foo.prop(&#39;foo&#39;); // bar
 
 // test setting property values
-$foo.prop('foo', 'foobar');
-var test2 = $foo.prop('foo'); // foobar
+$foo.prop(&#39;foo&#39;, &#39;foobar&#39;);
+var test2 = $foo.prop(&#39;foo&#39;); // foobar
 
 // test using .data() as summarized above
-$foo.data('keyName', 'someValue');
+$foo.data(&#39;keyName&#39;, &#39;someValue&#39;);
 console.log($foo); // will now contain a jQuery{randomNumber} property
 
 // test binding an event name and triggering
-$foo.bind('eventName', function (){
-        console.log('eventName was called');
+$foo.bind(&#39;eventName&#39;, function (){
+        console.log(&#39;eventName was called&#39;);
 });
 
-$foo.trigger('eventName'); // logs 'eventName was called'
+$foo.trigger(&#39;eventName&#39;); // logs 'eventName was called'
 </pre>
 
             <p>Should <code>.trigger('eventName')</code> be used, it will search for an 'eventName' property on the object and attempt to execute it after any attached jQuery handlers are executed. It does not check whether the property is a function or not. To avoid this behavior, <code>.triggerHandler('eventName')</code> should be used instead.</p>
@@ -11538,26 +11591,26 @@ $foo.triggerHandler('eventName'); // also logs 'eventName was called'
          </longdesc>
          <example>
             <desc>Find all p elements that are children of a div element and apply a border to them.</desc>
-            <code>
-  $("div &gt; p").css("border", "1px solid gray");
-</code>
-            <html>&lt;p&gt;one&lt;/p&gt; &lt;div&gt;&lt;p&gt;two&lt;/p&gt;&lt;/div&gt; &lt;p&gt;three&lt;/p&gt;</html>
+      <code><![CDATA[
+  $("div > p").css("border", "1px solid gray");
+]]></code>
+      <html><![CDATA[<p>one</p> <div><p>two</p></div> <p>three</p>]]></html>
          </example>
          <example>
             <desc>Find all inputs of type radio within the first form in the document.</desc>
-            <code>$("input:radio", document.forms[0]);</code>
+      <code><![CDATA[$("input:radio", document.forms[0]);]]></code>
          </example>
          <example>
             <desc>Find all div elements within an XML document from an Ajax response.</desc>
-            <code>$("div", xml.responseXML);</code>
+      <code><![CDATA[$("div", xml.responseXML);]]></code>
          </example>
          <example>
             <desc>Set the background color of the page to black.</desc>
-            <code>$(document.body).css( "background", "black" );</code>
+      <code><![CDATA[$(document.body).css( "background", "black" );]]></code>
          </example>
          <example>
             <desc>Hide all the input elements within a form.</desc>
-            <code>$(myForm.elements).hide()</code>
+      <code><![CDATA[$(myForm.elements).hide()]]></code>
          </example>
          <category name="Core"/>
          <category name="Version 1.0"/>
@@ -12041,7 +12094,7 @@ $('ul.first').find('.foo')
             <h4 id="animation-properties">动画属性和属性值</h4>
             <p>所有动画属性，应该是在 <em>单一数值</em> 上运行的，除了以下提到的一些例外情况。大多数非数值属性是不能利用基本的 jQuery 功能来执行动画的(例如, <code>width</code>, <code>height</code>, 或 <code>left</code> 是可以使用动画的，但是不能的 <code>background-color</code> 上应用动画，除非是使用了 <a href="https://github.com/jquery/jquery-color">jQuery.Color()</a> 插件)。默认情况下，属性值的单位是像素，除非指定了其它的单位。可以指定的单位包括 <code>em</code> 和 <code>%</code>。</p>
             <p>除了样式属性（style properties）外,还可以在一些非样式属性上（例如 <code>scrollTop</code> ， <code>scrollLeft</code> 和自定义属性）应用动画。</p>
-            <p>不支持简写的 CSS 属性 (例如， margin, background, border)。例如,如果你想返回 margin 值,可以使用: <code>$(elem).css('marginTop')</code> 或 <code>$(elem).css('marginRight')</code> 等。</p>
+            <p>不完全支持简写的 CSS 属性 (例如， font, background, border)。例如，如果你想对边框的宽度应用动画，那么至少边框的样式和宽度应该是之前已经设置好了的，并且其值不能是 "auto"。或者，如果你想对文字大小应用动画，你应该使用 <code>fontSize</code> 或等价的 CSS <code>'font-size'</code>，而不是简单的使用 <code>'font'</code>。</p>
             <p>属性值除了可以是数值以外,还可以是 <code>'show'</code>, <code>'hide'</code>, 和 <code>'toggle'</code> 这样的字符串。这些简称字符串可以用于自定义隐藏和显示动画，控件元素的显示。</p>
             <p>动画的属性值可以是一个相对值。如果一个值是以 <code>+=</code> 或 <code>-=</code> 开头的字符串，那么目标值会在当前值的基本上进行加减。</p>
             <blockquote>
@@ -12327,12 +12380,12 @@ div {
          <category name="Custom"/>
          <category name="Version 1.0"/>
          <note type="additional">所有的 jQuery 动画, 包括 <code>.animate()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="http://api.jquery.com/jquery.fx.off">jQuery.fx.off</a> 来获得更多信息。</note>
-         <note type="additional">由于 <code><a  href="https://developer.mozilla.org/en/DOM/window.mozRequestAnimationFrame">
+         <note type="additional"><del>由于 <code><a  href="https://developer.mozilla.org/en/DOM/window.mozRequestAnimationFrame">
                requestAnimationFrame()
             </a></code> 特性的原因，绝对不要在 <code>setInterval</code> 或 <code>setTimeout</code> 方法中设置动画队列。 为了保护CPU资源, 支持 <code>requestAnimationFrame</code> 的浏览器在当前窗口或标签失去焦点时，是不更新动画的。如果你通过 <code>setInterval</code> 或 <code>setTimeout</code> 方法在动画暂停时，持续向队列里添加动画，那么在窗口或标签重新获得焦点时，所有在队列中的动画都会被播放。 为了避免这个潜在的问题,可以在循环时,利用最后一个动画的回调函数，或者给元素添加 <code><a href="http://api.jquery.com/queue">
                .queue()
             </a></code> 方法来避免这个问题，实现动画的继续播放。
-</note>
+</del></note>
       </entry>
       <entry type="method" name="prevAll" return="jQuery">
          <desc>Get all preceding siblings of each element in the set of matched elements, optionally filtered by a selector.</desc>
@@ -12577,12 +12630,12 @@ div { background:blue; }
          <category name="Version 1.0"/>
          <category name="Version 1.4.3"/>
          <note type="additional">所有的 jQuery 动画, 包括 <code>.fadeTo()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="http://api.jquery.com/jquery.fx.off">jQuery.fx.off</a> 来获得更多信息。</note>
-         <note type="additional">由于 <code><a  href="https://developer.mozilla.org/en/DOM/window.mozRequestAnimationFrame">
+         <note type="additional"><del>由于 <code><a  href="https://developer.mozilla.org/en/DOM/window.mozRequestAnimationFrame">
                requestAnimationFrame()
             </a></code> 特性的原因，绝对不要在 <code>setInterval</code> 或 <code>setTimeout</code> 方法中设置动画队列。 为了保护CPU资源, 支持 <code>requestAnimationFrame</code> 的浏览器在当前窗口或标签失去焦点时，是不更新动画的。如果你通过 <code>setInterval</code> 或 <code>setTimeout</code> 方法在动画暂停时，持续向队列里添加动画，那么在窗口或标签重新获得焦点时，所有在队列中的动画都会被播放。 为了避免这个潜在的问题,可以在循环时,利用最后一个动画的回调函数，或者给元素添加 <code><a href="http://api.jquery.com/queue">
                .queue()
             </a></code> 方法来避免这个问题，实现动画的继续播放。
-</note>
+</del></note>
       </entry>
       <entry type="method" name="fadeOut" return="jQuery">
          <desc>通过改变透明度将匹配的元素淡出隐藏。</desc>
@@ -12727,12 +12780,12 @@ button { float:left; margin:5px 10px 5px 0; }
          <category name="Version 1.0"/>
          <category name="Version 1.4.3"/>
          <note type="additional">所有的 jQuery 动画, 包括 <code>.fadeOut()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="http://api.jquery.com/jquery.fx.off">jQuery.fx.off</a> 来获得更多信息。</note>
-         <note type="additional">由于 <code><a  href="https://developer.mozilla.org/en/DOM/window.mozRequestAnimationFrame">
+         <note type="additional"><del>由于 <code><a  href="https://developer.mozilla.org/en/DOM/window.mozRequestAnimationFrame">
                requestAnimationFrame()
             </a></code> 特性的原因，绝对不要在 <code>setInterval</code> 或 <code>setTimeout</code> 方法中设置动画队列。 为了保护CPU资源, 支持 <code>requestAnimationFrame</code> 的浏览器在当前窗口或标签失去焦点时，是不更新动画的。如果你通过 <code>setInterval</code> 或 <code>setTimeout</code> 方法在动画暂停时，持续向队列里添加动画，那么在窗口或标签重新获得焦点时，所有在队列中的动画都会被播放。 为了避免这个潜在的问题,可以在循环时,利用最后一个动画的回调函数，或者给元素添加 <code><a href="http://api.jquery.com/queue">
                .queue()
             </a></code> 方法来避免这个问题，实现动画的继续播放。
-</note>
+</del></note>
       </entry>
       <entry type="method" name="parents" return="jQuery">
          <desc>Get the ancestors of each element in the current set of matched elements, optionally filtered by a selector.</desc>
@@ -12948,12 +13001,12 @@ $("span").click(function () {
          <category name="Version 1.0"/>
          <category name="Version 1.4.3"/>
          <note type="additional">所有的 jQuery 动画, 包括 <code>.fadeIn()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="http://api.jquery.com/jquery.fx.off">jQuery.fx.off</a> 来获得更多信息。</note>
-         <note type="additional">由于 <code><a  href="https://developer.mozilla.org/en/DOM/window.mozRequestAnimationFrame">
+         <note type="additional"><del>由于 <code><a  href="https://developer.mozilla.org/en/DOM/window.mozRequestAnimationFrame">
                requestAnimationFrame()
             </a></code> 特性的原因，绝对不要在 <code>setInterval</code> 或 <code>setTimeout</code> 方法中设置动画队列。 为了保护CPU资源, 支持 <code>requestAnimationFrame</code> 的浏览器在当前窗口或标签失去焦点时，是不更新动画的。如果你通过 <code>setInterval</code> 或 <code>setTimeout</code> 方法在动画暂停时，持续向队列里添加动画，那么在窗口或标签重新获得焦点时，所有在队列中的动画都会被播放。 为了避免这个潜在的问题,可以在循环时,利用最后一个动画的回调函数，或者给元素添加 <code><a href="http://api.jquery.com/queue">
                .queue()
             </a></code> 方法来避免这个问题，实现动画的继续播放。
-</note>
+</del></note>
       </entry>
       <entry type="method" name="parent" return="jQuery">
          <desc>Get the parent of each element in the current set of matched elements, optionally filtered by a selector.</desc>
@@ -13210,12 +13263,12 @@ $("span").click(function () {
          <category name="Version 1.0"/>
          <category name="Version 1.4.3"/>
          <note type="additional">所有的 jQuery 动画, 包括 <code>.slideToggle()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="http://api.jquery.com/jquery.fx.off">jQuery.fx.off</a> 来获得更多信息。</note>
-         <note type="additional">由于 <code><a  href="https://developer.mozilla.org/en/DOM/window.mozRequestAnimationFrame">
+         <note type="additional"><del>由于 <code><a  href="https://developer.mozilla.org/en/DOM/window.mozRequestAnimationFrame">
                requestAnimationFrame()
             </a></code> 特性的原因，绝对不要在 <code>setInterval</code> 或 <code>setTimeout</code> 方法中设置动画队列。 为了保护CPU资源, 支持 <code>requestAnimationFrame</code> 的浏览器在当前窗口或标签失去焦点时，是不更新动画的。如果你通过 <code>setInterval</code> 或 <code>setTimeout</code> 方法在动画暂停时，持续向队列里添加动画，那么在窗口或标签重新获得焦点时，所有在队列中的动画都会被播放。 为了避免这个潜在的问题,可以在循环时,利用最后一个动画的回调函数，或者给元素添加 <code><a href="http://api.jquery.com/queue">
                .queue()
             </a></code> 方法来避免这个问题，实现动画的继续播放。
-</note>
+</del></note>
       </entry>
       <entry type="method" name="jQuery.post" return="jqXHR">
          <desc>通过 HTTP POST 方式从服务器载入数据。</desc>
@@ -13231,7 +13284,7 @@ $("span").click(function () {
                <desc>当请求成功后执行的回调函数。</desc>
             </argument>
             <argument name="dataType" type="String" optional="true">
-               <desc>预计从服务器返回的数据类型。默认值：智能匹配 (xml, json, script, 或 html)。</desc>
+               <desc>预计从服务器返回的数据类型。默认值：智能匹配 (xml, json, script, text 或 html)。</desc>
             </argument>
          </signature>
          <longdesc>
@@ -13471,12 +13524,12 @@ $("span").click(function () {
          <category name="Version 1.0"/>
          <category name="Version 1.4.3"/>
          <note type="additional">所有的 jQuery 动画, 包括 <code>.slideUp()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="http://api.jquery.com/jquery.fx.off">jQuery.fx.off</a> 来获得更多信息。</note>
-         <note type="additional">由于 <code><a  href="https://developer.mozilla.org/en/DOM/window.mozRequestAnimationFrame">
+         <note type="additional"><del>由于 <code><a  href="https://developer.mozilla.org/en/DOM/window.mozRequestAnimationFrame">
                requestAnimationFrame()
             </a></code> 特性的原因，绝对不要在 <code>setInterval</code> 或 <code>setTimeout</code> 方法中设置动画队列。 为了保护CPU资源, 支持 <code>requestAnimationFrame</code> 的浏览器在当前窗口或标签失去焦点时，是不更新动画的。如果你通过 <code>setInterval</code> 或 <code>setTimeout</code> 方法在动画暂停时，持续向队列里添加动画，那么在窗口或标签重新获得焦点时，所有在队列中的动画都会被播放。 为了避免这个潜在的问题,可以在循环时,利用最后一个动画的回调函数，或者给元素添加 <code><a href="http://api.jquery.com/queue">
                .queue()
             </a></code> 方法来避免这个问题，实现动画的继续播放。
-</note>
+</del></note>
       </entry>
       <entry type="method" name="nextAll" return="jQuery">
          <desc>Get all following siblings of each element in the set of matched elements, optionally filtered by a selector.</desc>
@@ -13697,12 +13750,12 @@ margin:10px; }
          <category name="Version 1.0"/>
          <category name="Version 1.4.3"/>
          <note type="additional">所有的 jQuery 动画, 包括 <code>.slideDown()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="http://api.jquery.com/jquery.fx.off">jQuery.fx.off</a> 来获得更多信息。</note>
-         <note type="additional">由于 <code><a  href="https://developer.mozilla.org/en/DOM/window.mozRequestAnimationFrame">
+         <note type="additional"><del>由于 <code><a  href="https://developer.mozilla.org/en/DOM/window.mozRequestAnimationFrame">
                requestAnimationFrame()
             </a></code> 特性的原因，绝对不要在 <code>setInterval</code> 或 <code>setTimeout</code> 方法中设置动画队列。 为了保护CPU资源, 支持 <code>requestAnimationFrame</code> 的浏览器在当前窗口或标签失去焦点时，是不更新动画的。如果你通过 <code>setInterval</code> 或 <code>setTimeout</code> 方法在动画暂停时，持续向队列里添加动画，那么在窗口或标签重新获得焦点时，所有在队列中的动画都会被播放。 为了避免这个潜在的问题,可以在循环时,利用最后一个动画的回调函数，或者给元素添加 <code><a href="http://api.jquery.com/queue">
                .queue()
             </a></code> 方法来避免这个问题，实现动画的继续播放。
-</note>
+</del></note>
       </entry>
       <entry type="method" name="find" return="jQuery">
          <desc>Get the descendants of each element in the current set of matched elements, filtered by a selector, jQuery object, or element.</desc>
@@ -13830,7 +13883,7 @@ $('li.item-ii').find( item1 ).css('background-color', 'red');
             <argument name="url" type="String">
                <desc>将要被请求的 URL 字符串。</desc>
             </argument>
-            <argument name="success(data, textStatus)" type="Function" optional="true">
+            <argument name="success(script, textStatus, jqXHR)" type="Function" optional="true">
                <desc>当请求成功后执行的回调函数。</desc>
             </argument>
          </signature>
@@ -13842,17 +13895,33 @@ $('li.item-ii').find( item1 ).css('background-color', 'red');
   success: <em>success</em>
 });
 </pre>
-            <p>这里的回调函数会传入返回的 JavaScript 文件。但这通常没什么用，因为此时脚本已经运行过了。</p>
             <p>载入的脚本会以全局的上下文来执行，所以它可以访问页面上其它的变量，或者运行 jQuery 函数。即，被加载的脚本同样作用于当前页面，例如：</p>
+            <h4 id="success-callback">
+	          Success 回调函数
+	    </h4>
+	    <p>这里的回调函数会传入返回的 JavaScript 文件。但这通常没什么用，因为此时脚本已经运行过了。</p>
             <pre>$(".result").html("&lt;p&gt;Lorem ipsum dolor sit amet.&lt;/p&gt;");</pre>
             <p>通过文件名就可以动态载入并运行脚本了。例如：</p>
-            <pre>$.getScript('ajax/test.js', function(data, textStatus){
+            <pre>$.getScript('ajax/test.js', function(data, textStatus, jqxhr){
    console.log(data); //data returned
    console.log(textStatus); //success
+   console.log(jqxhr.status); //200
    console.log('Load was performed.');
 });</pre>
+		
+        <h4 id="handling-errors">错误处理</h4>
+        <p>从 jQuery 1.5 开始，你可以使用 <a href="deferred.fail.htm"><code>.fail()</code></a> 来处理错误：</p>
+	<pre>
+	$.getScript("ajax/test.js")
+	.done(function(script, textStatus) {
+	  console.log( textStatus );
+	})
+	.fail(function(jqxhr, settings, exception) {
+	  $( "div.log" ).text( "Triggered ajaxError handler." );
+	});  
+	</pre>
             <p>
-               <strong>注意:</strong> 当调用 <code>getScript()</code> 时，如果你想要添加一个错误处理的回调函数，可以使用全局的 <code>ajaxError()</code> 回调函数。例如：</p>
+               在 jQuery 1.5 之前，需要使用全局的 <code>ajaxError()</code> 回调函数，来处理 <code>$.getScript()</code> 的错误。例如：</p>
             <pre>
 $( "div.log" ).ajaxError(function(e, jqxhr, settings, exception) {
   if (settings.dataType=='script') {
@@ -13860,7 +13929,37 @@ $( "div.log" ).ajaxError(function(e, jqxhr, settings, exception) {
   }
 });
 </pre>
+        <h4 id="caching-requests">缓存响应</h4>
+        <p>默认情况下，<code>$.getScript()</code> 将缓存设置成 <code>false</code>。这种情况下，会在请求的 URL 后添加一个时间戳的请求参数，保证每次请求时，浏览器每次都会重新下载脚本。你可以重写这个功能，通过设置 <a href="jquery.ajaxsetup.htm"><code>$.ajaxSetup()</code></a> 的 cache 属性:</p>
+<pre>
+$.ajaxSetup({
+  cache: true
+});
+</pre>
+        <p>Alternatively, you could define a new method that uses the more flexible <code>$.ajax()</code> method.</p>
          </longdesc>
+	 <example>
+	  <desc>定义一个 $.cachedScript() 方法，允许取得经过缓存的脚本：</desc>
+	  <code>jQuery.cachedScript = function(url, options) {
+
+	  // allow user to set any option except for dataType, cache, and url
+	  options = $.extend(options || {}, {
+	    dataType: "script",
+	    cache: true,
+	    url: url
+	  });
+
+	  // Use $.ajax() since it is more flexible than $.getScript
+	  // Return the jqXHR object so we can chain callbacks
+	  return jQuery.ajax(options);
+	};
+
+	// Usage
+	$.cachedScript("ajax/test.js").done(function(script, textStatus) {
+	  console.log( textStatus );
+	});
+	</code>
+	</example>
          <example>
             <desc>动态载入 <a href="http://github.com/jquery/jquery-color">jQuery 官方颜色插件</a>，并且在载入成功后绑定一些色彩动画。</desc>
             <code>
@@ -14071,6 +14170,7 @@ $('li.item-a').closest('#one', listItemII)
          <desc>Gets an array of all the elements and selectors matched against the current element up through the DOM tree.</desc>
          <signature>
             <added>1.4</added>
+	    <deprecated>1.7</deprecated>
             <argument name="selectors" type="Array">
                <desc>An array or string containing a selector expression to match elements against (can also be a jQuery object).</desc>
             </argument>
@@ -14079,7 +14179,7 @@ $('li.item-a').closest('#one', listItemII)
             </argument>
          </signature>
          <longdesc>
-            <p>This method is primarily meant to be used internally or by plugin authors.</p>
+            <p><strong>This signature (only!) is deprecated as of jQuery 1.7.</strong> This method is primarily meant to be used internally or by plugin authors.</p>
          </longdesc>
          <example>
             <desc>Show how event delegation can be done with closest.</desc>
@@ -14326,20 +14426,23 @@ alert("Data Loaded: " + data);
             </argument>
          </signature>
          <longdesc>
-            <p>该方法是从服务器获取数据的最简单方式。它基本上等同于 <code>$.get(url, data, success)</code>，只不过它是一个方法，而不是全局函数，并且它有一个隐式的回调函数。当检测到请求被成功返回时（比如，<code>textStatus</code> 等于 "success" 或 "notmodified"），<code>.load()</code> 会将返回的结果赋给匹配的元素。通常会像下面这样，很方便的使用该方法：</p>
-            <pre>$('#result').load('ajax/test.html');</pre>
-            <p>如果需要的话，可以提供一个回调函数。当请求完成后，会执行这个回调函数：</p>
-            <pre>$('#result').load('ajax/test.html', function() {
-  alert('Load was performed.');
-});</pre>
-            <p>上面两个例子中，如果当前文档中不存在 ID 是 "result" 的元素的话，是不会执行 <code>.load()</code> 方法的。</p>
-            <p>如果提供的 data 参数是一个对象的话，那么请求时会使用 POST 方式,否则就使用 GET 方式。</p>
-
-            <blockquote>
+	     <blockquote>
                <p>注意: 在事件处理模块中，也有一个叫 <code>
                      <a href="load-event.htm">.load()</a>
                   </code> 的方法。但哪一个会被执行，取决于传递的参数设置。</p>
             </blockquote>
+            <p>该方法是从服务器获取数据的最简单方式。它基本上等同于 <code>$.get(url, data, success)</code>，只不过它是一个方法，而不是全局函数，并且它有一个隐式的回调函数。当检测到请求被成功返回时（比如，<code>textStatus</code> 等于 "success" 或 "notmodified"），<code>.load()</code> 会将返回的结果赋给匹配的元素。通常会像下面这样，很方便的使用该方法：</p>
+            <pre>$('#result').load('ajax/test.html');</pre>
+   	    <h4 id="callback-function">回调函数</h4>
+    	    <p>如果提供了 "complete" 回调函数，它将在函数处理完之后，并且 HTML 已经被插入完时被调用。回调函数会在每个匹配的元素上被调用一次，并且 <code>this</code> 始终指向当前正在处理的 DOM 元素。</p>
+            <pre>$('#result').load('ajax/test.html', function() {
+  alert('Load was performed.');
+});</pre>
+            <p>上面两个例子中，如果当前文档中不存在 ID 是 "result" 的元素的话，是不会执行 <code>.load()</code> 方法的。</p>
+            <h4 id="request-method">请求方式</h4>
+	    <p>如果提供的 data 参数是一个对象的话，那么请求时会使用 POST 方式,否则就使用 GET 方式。</p>
+
+           
             <h4>加载页面片断</h4>
             <p><code>.load()</code> 方法, 不像 <code>
                   <a href="jQuery.get.htm">$.get()</a>
@@ -14348,12 +14451,10 @@ alert("Data Loaded: " + data);
             <pre>$('#result').load('ajax/test.html #container');</pre>
             <p>当上面的方法执行时，它首先会返回 <code>ajax/test.html</code> 的所有内容，然后 jQuery 解析返回的文档内容，找到 ID 是 <code>container</code> 的元素。该元素及其内容会被插入到 ID 是 <code>result</code> 元素中，而其余的返回结果会被丢弃。</p>
             <p>jQuery 使用浏览器的 <code>.innerHTML</code> 属性来解析返回的文档，并将它插入到当前文档中。在这个过程中，浏览器经常会从文档中过滤掉一些元素，例如： <code>&lt;html&gt;</code>, <code>&lt;title&gt;</code>, 和 <code>&lt;head&gt;</code> 等。最后的结果是，通过 <code>.load()</code> 方法返回的元素可能与从浏览器中直接获取到的文档内容不同。</p>
-
-            <blockquote>
+	    <h4 id="script-execution">脚本的执行</h4>            
                <p>
-                  <strong>注意:</strong> 当调用 <code>.load()</code> 方法时，如果 url 参数中没有选择器表达式后缀的话，那么传递给 <code>.html()</code> 的返回内容中，是含有脚本的。在它们被丢弃之前，脚本是会被执行的。但如果调用 <code>.load()</code> 时，在 url 参数中添加了选择器表达式的话，那么在 DOM 被更新之前，脚本会被删除。这就是为什么脚本永远不会被执行的原因。下面的例子分别演示了这两种情况：
-</p>
-            </blockquote>
+                  当调用 <code>.load()</code> 方法时，如果 url 参数中没有选择器表达式后缀的话，那么传递给 <code>.html()</code> 的返回内容中，是含有脚本的。在它们被丢弃之前，脚本是会被执行的。但如果调用 <code>.load()</code> 时，即使在 url 参数中添加了选择器表达式，但在 DOM 被更新之前，脚本会被删除。因此脚本<em>不会</em>被执行。下面的例子分别演示了这两种情况：
+</p>            
             <p>下面的例子中,任何加载到 <code>#a</code> 中的 JavaScript 脚本，将会作为文档的一部分而被执行。</p>
             <pre>
 $('#a').load('article.html');
@@ -14459,25 +14560,24 @@ alert("The last 25 entries in the feed have been loaded");
 <pre>
 $.ajax({
   url: "test.html",
-  context: document.body,
-  success: function(){
-    $(this).addClass("done");
-  }
+  context: document.body
+}).done(function() { 
+  $(this).addClass("done");
 });</pre>
-               </desc>
+                 </desc>
                </option>
                <option name="converters" type="Map"
                        default="{&#34;* text&#34;: window.String, &#34;text html&#34;: true, &#34;text json&#34;: jQuery.parseJSON, &#34;text xml&#34;: jQuery.parseXML}"
                        added="1.5">
                   <desc>一个由dataType到dataType的转换器映射。每一个转换器的值是一个函数，这个函数返回经转换后的请求结果。</desc>
                </option>
-               <option name="crossDomain"
+               <option name="crossDomain" type="Boolean"
                        default="false for same-domain requests, true for cross-domain requests"
                        added="1.5">
                   <desc>如果你想在同一域中进行跨域请求（例如 JSONP）时，例如，想允许服务器端重新定向到另一个域，那么需要将 crossDomain 的值设置成 <code>true</code>。</desc>
                </option>
                <option name="data" type="Object, String">
-                  <desc>发送到服务器的数据。如果它不是字符串格式的话，将自动转换为请求字符串格式。它将被附加在 GET 请求 的 URL 之后。查看 processData 选项说明，以禁止此自动转换。对象必须是键值对，如果数据是一个数组，jQuery 会按照 <code>traditional</code> 参数的值(查看下面的说明)，自动将数据序列化成一个同名的多值查询字符串。</desc>
+                  <desc>发送到服务器的数据。如果它不是字符串格式的话，将自动转换为请求字符串格式。它将被附加在 GET 请求 的 URL 之后。查看 <code>processData</code> 选项说明，以禁止此自动转换。对象必须是键值对，如果数据是一个数组，jQuery 会按照 <code>traditional</code> 参数的值(查看下面的说明)，自动将数据序列化成一个同名的多值查询字符串。</desc>
                </option>
                <option name="dataFilter(data, type)" type="Function">
                   <desc>对 XMLHttpRequest 返回的原始数据进行预处理的函数。必须返回处理后的数据。此方法接受 data 和 type 两个参数：data 是服务器返回的原始数据， type 是调用 $.ajax 时提供的 'dataType' 参数。</desc>
@@ -14608,13 +14708,13 @@ $.ajax({
   url: 'http://fiddle.jshell.net/favicon.png',
   beforeSend: function( xhr ) {
     xhr.overrideMimeType( 'text/plain; charset=x-user-defined' );
-  },
-  success: function( data ) {
-    if (console &amp;&amp; console.log){
-      console.log( 'Sample of data:', data.slice(0,100) );
-    }
+  }
+}).done(function ( data ) {
+  if( console &amp;&amp; console.log ) {
+    console.log("Sample of data:", data.slice(0, 100));
   }
 });
+
 </pre>
 
             <p>从 jQuery 1.5 开始，<code>$.ajax()</code> 返回的 jqXHR 对象，实现了 Promise 接口, 使它拥有了 Promise 的所有属性，方法和行为。(详见 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a> 来获得更多信息)。为了让回调函数的名字统一，便于在 <code>$.ajax()</code> 里使用，jqXHR 同样也提供了 <code>.error()</code>, <code>.success()</code> 和 <code>.complete()</code> 方法。这些方法都带有一个参数，该参数是一个函数，此函数在 <code>$.ajax()</code> 请求结束时被调用,并且这个函数接收的参数，与调用 <code>$.ajax()</code> 函数时的参数是一致。这将允许你在一次请求时，对多个回调函数进行赋值，甚至允许你在请求已经完成后，对回调函数进行赋值(如果该请求已经完成，则回调函数会被立刻调用)。</p>
@@ -14766,7 +14866,7 @@ jQuery.ajaxSettings.xhr = function () {
             <code>$.ajax({
   type: "POST",
   url: "some.php",
-  data: "name=John&amp;location=Boston",
+  data: "name=John&amp;location=Boston"
 }).done(function( msg ) {
   alert( "Data Saved: " + msg );
 });</code>
@@ -14775,11 +14875,11 @@ jQuery.ajaxSettings.xhr = function () {
             <desc>装载一个 HTML 网页的最新版本。</desc>
             <code>$.ajax({
   url: "test.html",
-  cache: false,
-  success: function(html){
-    $("#results").append(html);
-  }
-});</code>
+  cache: false
+}).done(function( html ) {
+  $("#results").append(html);
+});
+</code>
          </example>
          <example>
             <desc>发送 XML 数据至服务器。设置 processData 选项为 <code>false</code>，防止自动将数据格式转换成字符串。</desc>
@@ -14863,11 +14963,11 @@ request.fail(function(jqXHR, textStatus) {
                <desc>用于匹配元素的选择器表达式字符串。</desc>
             </argument>
          </signature>
-         <longdesc>
-            <p>Given a jQuery object that represents a set of DOM elements, the <code>.children()</code> method allows us to search through the immediate children of these elements in the DOM tree and construct a new jQuery object from the matching elements. The <code>.find()</code> 和 <code>.children()</code> methods are similar, except that the latter only travels a single level down the DOM tree. Note also that like most jQuery methods, <code>.children()</code> does not return text nodes; to get <em>all</em> children including text and comment nodes, use <code>.contents()</code>.</p>
-            <p>The method optionally accepts a selector expression of the same type that we can pass to the <code>$()</code> function. If the selector is supplied, the elements will be filtered by testing whether they match it.</p>
-            <p>Consider a page with a basic nested list on it:</p>
-            <pre>
+         <longdesc>            
+                 <p>Given a jQuery object that represents a set of DOM elements, the <code>.children()</code> method allows us to search through the children of these elements in the DOM tree and construct a new jQuery object from the matching elements. The <code>.children()</code> method differs from <code><a href="http://api.jquery.com/find/">.find()</a></code> in that <code>.children()</code> only travels a single level down the DOM tree while <code>.find()</code> can traverse down multiple levels to select descendant elements (grandchildren, etc.) as well. Note also that like most jQuery methods, <code>.children()</code> does not return text nodes; to get <em>all</em> children including text and comment nodes, use <code><a href="http://api.jquery.com/contents">.contents()</a></code>.</p>
+	         <p>The <code>.children()</code> method optionally accepts a selector expression of the same type that we can pass to the <code>$()</code> function. If the selector is supplied, the elements will be filtered by testing whether they match it.</p>
+		 <p>Consider a page with a basic nested list on it:</p>
+		 <pre>
 &lt;ul class="level-1"&gt;
   &lt;li class="item-i"&gt;I&lt;/li&gt;
   &lt;li class="item-ii"&gt;II
@@ -15152,8 +15252,14 @@ collection.css("background", "yellow");</code>
                <desc>A function used as a test for each element in the set. <code>this</code> is the current DOM element.</desc>
             </argument>
          </signature>
-         <longdesc>
-            <p>Given a jQuery object that represents a set of DOM elements, the <code>.not()</code> method constructs a new jQuery object from a subset of the matching elements. The supplied selector is tested against each element; the elements that don't match the selector will be included in the result.</p>
+              <signature>
+                <added>1.4</added>
+                <argument name="jQuery object" type="Object">
+                  <desc>An existing jQuery object to match the current set of elements against.</desc>
+                </argument>
+              </signature>
+              <desc>Remove elements from the set of matched elements.</desc>
+                <longdesc><p>Given a jQuery object that represents a set of DOM elements, the <code>.not()</code> method constructs a new jQuery object from a subset of the matching elements. The supplied selector is tested against each element; the elements that don't match the selector will be included in the result.</p>
             <p>Consider a page with a simple list on it:</p>
             <pre>
 &lt;ul&gt;
@@ -15788,29 +15894,33 @@ $(document).width(); // returns width of HTML document</pre>
          <longdesc>
             <p>When calling <code>.width('value')</code>, the value can be either a string (number and unit) or a number. If only a number is provided for the value, jQuery assumes a pixel unit. If a string is provided, however, any valid CSS measurement may be used for the width (such as <code>100px</code>, <code>50%</code>, or <code>auto</code>). Note that in modern browsers, the CSS width property does not include padding, border, or margin, unless the <code>box-sizing</code> CSS property is used.</p>
 
-            <p>If no explicit unit was specified (like 'em' or '%') then "px" is concatenated to the value.</p>
+    <p>If no explicit unit is specified (like "em" or "%") then "px" is assumed.</p>
 
             <p>Note that <code>.width('value')</code> sets the width of the box in accordance with the CSS <code>box-sizing</code> property. Changing this property to <code>border-box</code> will cause this function to change the outerWidth of the box instead of the content width.</p>
          </longdesc>
          <example>
-            <desc>To set the width of each div on click to 30px plus a color change.</desc>
-            <code>
-
+<desc>Change the width of each div the first time it is clicked (and change its color).</desc>
+<code><![CDATA[
+(function() {
+  var modWidth = 50;
     $("div").one('click', function () {
-      $(this).width(30)
-             .css({cursor:"auto", "background-color":"blue"});
+    $(this).width(modWidth).addClass("mod");
+  modWidth -= 8;
     });
-</code>
-            <css>
+})();
+]]></code>
+<css><![CDATA[
   div { width:70px; height:50px; float:left; margin:5px;
         background:red; cursor:pointer; }
-  </css>
-            <html>&lt;div&gt;&lt;/div&gt;
-  &lt;div&gt;d&lt;/div&gt;
-
-  &lt;div&gt;d&lt;/div&gt;
-  &lt;div&gt;d&lt;/div&gt;
-  &lt;div&gt;d&lt;/div&gt;</html>
+.mod { background: blue; cursor: default; }
+  ]]></css>
+<html><![CDATA[
+  <div>d</div>
+  <div>d</div>
+  <div>d</div>
+  <div>d</div>
+  <div>d</div>
+]]></html>
          </example>
          <category name="CSS"/>
          <category name="Dimensions"/>
@@ -15835,6 +15945,7 @@ $(document).width(); // returns width of HTML document</pre>
 $(document).height(); // returns height of HTML document</pre>
 
             <p>Note that <code>.height()</code> will always return the content height, regardless of the value of the CSS <code>box-sizing</code> property.</p>
+<blockquote><p><strong>Note:</strong> Although <code>style</code> and <code>script</code> tags will report a value for <code>.width()</code> or <code>height()</code> when absolutely positioned and given <code>display:block</code>, it is strongly discouraged to call those methods on these tags. In addition to being a bad practice, the results may also prove unreliable.</p></blockquote>
          </longdesc>
          <example>
             <desc>Show various heights.  Note the values are from the iframe so might be smaller than you expected.  The yellow highlight shows the iframe body.</desc>
@@ -15988,19 +16099,18 @@ $('#clickme').click(function() {
       &lt;p style="display: none"&gt;Hello  2&lt;/p&gt;</html>
          </example>
          <example>
-            <desc>把所有隐藏的 div 依次迅速显示出来，每个用时 200 毫秒。一个动画完成后立即开始下一个。</desc>
-            <code>
+	      <desc>依次显示 div，每个用时 200 毫秒。一个动画完成后立即开始下一个。</desc>
+	      <code><![CDATA[
 $("#showr").click(function () {
-  $("div:eq(0)").show("fast", function () {
-    /* use callee so don't have to name the function */
-    $(this).next("div").show("fast", arguments.callee);
+  $("div").first().show("fast", function showNext() {
+    $(this).next("div").show("fast", showNext);
   });
 });
 $("#hidr").click(function () {
-  $("div").hide(2000);
+  $("div").hide(1000);
 });
 
-</code>
+]]></code>
             <css>
   div { background:#def3ca; margin:3px; width:80px; 
   display:none; float:left; text-align:center; }
@@ -16619,17 +16729,16 @@ $("span").text(arr.join(", "));
             <p>Keep in mind that the target object (first argument) will be modified, and will also be returned from <code>$.extend()</code>. If, however, we want to preserve both of the original objects, we can do so by passing an empty object as the target:</p>
             <pre>var object = $.extend({}, object1, object2);</pre>
 
-            <p>The merge performed by <code>$.extend()</code> is not recursive by default; if a property of the first object is itself an object or array, it will be completely overwritten by a property with the same key in the second object. The values are not merged. This can be seen in the example below by examining the value of banana. However, by passing <code>true</code> for the first function argument, objects will be recursively merged.</p>
+  <p>The merge performed by <code>$.extend()</code> is not recursive by default; if a property of the first object is itself an object or array, it will be completely overwritten by a property with the same key in the second object. The values are not merged. This can be seen in the example below by examining the value of banana. However, by passing <code>true</code> for the first function argument, objects will be recursively merged. (Passing <code>false</code> for the first argument is not supported.)</p>
             <p>Undefined properties are not copied. However, properties inherited from the object's prototype <em>will</em> be copied over. For performance reasons, properties that have values of built-in JavaScript types such as Date or RegExp are not re-constructed, and will appear as plain Objects in the resulting object or array.</p>
             <blockquote>
-               <p>
-                  <strong>注意:</strong> When performing a deep extend, Object and Array are extended, however primitive types such string, boolean and number are not. For specific needs that fall outside of this behaviour, it is recommended to write a custom extend method as this will be significantly faster from a performance perspective. </p>
+<p><strong>Note:</strong> When performing a deep extend, Object and Array are extended, but primitive types such as String, Boolean, and Number are not. For specific needs that fall outside of this behavior, you may prefer to write a custom extend method instead. </p>
             </blockquote>
 
          </longdesc>
          <example>
             <desc>Merge two objects, modifying the first.</desc>
-            <code>
+    <code><![CDATA[
 var object1 = {
   apple: 0,
   banana: {weight: 52, price: 100},
@@ -16643,7 +16752,7 @@ var object2 = {
 /* merge object2 into object1 */
 $.extend(object1, object2);
 
-var printObj = function(obj) {
+var printObj = typeof JSON != "undefined" ? JSON.stringify : function(obj) {
   var arr = [];
   $.each(obj, function(key, val) {
     var next = key + ": ";
@@ -16654,14 +16763,14 @@ var printObj = function(obj) {
 };
 
 $("#log").append( printObj(object1) );
-</code>
-            <html>
-&lt;div id="log"&gt;&lt;/div&gt;
-</html>
+]]></code>
+<html><![CDATA[
+<div id="log"></div>
+]]></html>
          </example>
          <example>
             <desc>Merge two objects recursively, modifying the first.</desc>
-            <code>
+<code><![CDATA[
 var object1 = {
   apple: 0,
   banana: {weight: 52, price: 100},
@@ -16675,7 +16784,7 @@ var object2 = {
 /* merge object2 into object1, recursively */
 $.extend(true, object1, object2);
 
-var printObj = function(obj) {
+var printObj = typeof JSON != "undefined" ? JSON.stringify : function(obj) {
   var arr = [];
   $.each(obj, function(key, val) {
     var next = key + ": ";
@@ -16686,21 +16795,21 @@ var printObj = function(obj) {
 };
 
 $("#log").append( printObj(object1) );
-</code>
-            <html>
-&lt;div id="log"&gt;&lt;/div&gt;
-</html>
+]]></code>
+<html><![CDATA[
+<div id="log"></div>
+]]></html>
          </example>
          <example>
             <desc>Merge defaults and options, without modifying the defaults. This is a common plugin development pattern.</desc>
-            <code>
+<code><![CDATA[
 var defaults = { validate: false, limit: 5, name: "foo" };
 var options = { validate: true, name: "bar" };
 
 /* merge defaults and options, without modifying defaults */
 var settings = $.extend({}, defaults, options);
 
-var printObj = function(obj) {
+var printObj = typeof JSON != "undefined" ? JSON.stringify : function(obj) {
   var arr = [];
   $.each(obj, function(key, val) {
     var next = key + ": ";
@@ -16711,13 +16820,14 @@ var printObj = function(obj) {
 };
 
 
-$("#log").append( "&lt;div&gt;&lt;b&gt;settings -- &lt;/b&gt;" + printObj(settings) + "&lt;/div&gt;" );
-$("#log").append( "&lt;div&gt;&lt;b&gt;options -- &lt;/b&gt;" + printObj(options) + "&lt;/div&gt;" );
+$("#log").append( "<div><b>defaults -- </b>" + printObj(defaults) + "</div>" );
+$("#log").append( "<div><b>options -- </b>" + printObj(options) + "</div>" );
+$("#log").append( "<div><b>settings -- </b>" + printObj(settings) + "</div>" );
 
-</code>
-            <html>
-&lt;div id="log"&gt;&lt;/div&gt;
-</html>
+]]></code>
+<html><![CDATA[
+<div id="log"></div>
+]]></html>
          </example>
          <category name="Utilities"/>
          <category name="Version 1.0"/>
@@ -16894,7 +17004,7 @@ overflow:auto;
          <category name="Version 1.2.6"/>
       </entry>
       <entry type="property" name="jQuery.support" return="Object">
-         <desc>代表不同浏览器的功能或 bug 的属性集合。</desc>
+         <desc>代表不同浏览器的功能或 bug 的属性集合。主要用于 jQuery 内部; 当 jQuery 内部不再需要改善页面启动性能时，特定的参数可能被移除。</desc>
          <signature>
             <added>1.3</added>
          </signature>
@@ -17031,6 +17141,7 @@ overflow:auto;
                   <a href="offset.htm">.offset()</a>
                </code> 相比，<code><a href="offset.htm">.offset()</a></code> 取得的是<em>相对于文档</em>的位置。如果某元素位于其它元素的边上，并且它们都位于相同的 DOM 元素中，那么 <code>.position()</code> 方法可能更有用。</p>
             <p>该方法返回一个对象，包括 <code>top</code> 和 <code>left</code> 属性。</p>
+	    <p>注意， jQuery 不支持取得隐藏元素的坐标。</p>
          </longdesc>
          <example>
             <desc>取得第一个段落的位置：</desc>
@@ -17599,6 +17710,7 @@ $('#copy-correct')
 &lt;/div&gt;</pre>
             <p>If we had any number of nested elements inside <code>&lt;div class="hello"&gt;</code>, they would be removed, too. </p>
             <p>To avoid memory leaks, jQuery removes other constructs such as data and event handlers from the child elements before removing the elements themselves.</p>
+	    <p>If you want to remove elements without destroying their data or event handlers (so they can be re-added later), use .detach() instead.</p>
          </longdesc>
          <example>
             <desc>Removes all child nodes (including text nodes) from all paragraphs</desc>
@@ -18688,7 +18800,7 @@ $('body').append($newdiv1, [newdiv2, existingdiv1]);
             <added>1.0</added>
          </signature>
          <longdesc>
-            <p><code>.val()</code> 方法主要用于取表单元素的值，例如 <code>input</code>, <code>select</code> 和 <code>textarea</code>。像 <code>&lt;select multiple="multiple"&gt;</code> 这样含有多个值的元素,<code>.val()</code> 方法会数组形式，返回每个被选中的选项的值。</p>
+            <p><code>.val()</code> 方法主要用于取表单元素的值，例如 <code>input</code>, <code>select</code> 和 <code>textarea</code>。像 <code>&lt;select multiple="multiple"&gt;</code> 这样含有多个值的元素,<code>.val()</code> 方法会数组形式，返回每个被选中的选项的值。如果没有选中任何选项，则返回 <code>null</code>。</p>
 
             <p>对于 select 和 checkbox, 可以使用 <a href="selected.htm">:selected</a> 和 <a href="checked.htm">:checked</a> 选择器来取值。例如：</p>
             <pre>$('select.foo option:selected').val();    // get the value from a dropdown select
@@ -19040,6 +19152,7 @@ $.valHooks.textarea = {
 
             <p>该方法使用了浏览器的 <code>innerHTML</code> 属性。有些浏览器可能不会生成一个根据原始 HTML 源代码产生的 DOM 副本。例如，在 IE 8 之前,会将所有的 <code>href</code> 属性转换成绝对路径。IE 9 之前，如果不添加额外的 <a href="http://code.google.com/p/html5shiv/">compatibility layer（兼容层）</a>，IE 9 是无法正确处理 HTML 5 元素的。</p>
 
+	    <p><strong>注意：</strong> 在 Internet Explorer 中，包括 IE 9，设置 HTML 元素的文本内容，可能会破坏其子节点的文本节点，结果导致子节点的文本节点从文档中被删除。如果你想保留这些 DOM 元素的引用，并且不希望它们被改变，请使用 <code>.empty().append(string)</code> 来代替 <code>.html(string)</code>。这样的话，在字符串赋给元素之前，会先从文档中移除该元素的内容。</p>
          </longdesc>
          <example>
             <desc>为每个 div 添加一些 html。</desc>
@@ -20106,8 +20219,8 @@ $("img").attr("src", function() {
             <pre>$("p").removeClass("myClass noClass").addClass("yourClass");</pre>
             <p>在这里,所有段落标签中的 <code>myClass</code> 和 <code>noClass</code> 样式会被移除，取而代之的是 <code>yourClass</code> 样式。</p>
             <p>从 jQuery 1.4 开始，<code>.addClass()</code> 方法的参数可以是一个函数。</p>
-            <pre>$("ul li:last").addClass(function() {
-  return "item-" + $(this).index();
+            <pre>$("ul li:last").addClass(function(index) {
+  return "item-" + index;
 });</pre>
             <p>上面的例子中，会在一个含有 5 个 <code>&lt;li&gt;</code> 的无序列表中，为最后一个 <code>&lt;li&gt;</code> 添加 "item-4" 样式。</p>
 
