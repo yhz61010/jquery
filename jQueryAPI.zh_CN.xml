@@ -15333,17 +15333,17 @@ $('li').not(document.getElementById('notli'))
          <category name="Version 1.4"/>
       </entry>
       <entry type="method" name="outerWidth" return="Integer">
-         <desc>Get the current computed width for the first element in the set of matched elements, including padding and border.</desc>
+         <desc>取得匹配集合中第一个元素经过计算的宽度，包括填充，边框和可选的边距。返回一个整数值(不带 "px")，如果在一个空集合上调用该方法，则会返回 null。</desc>
          <signature>
             <added>1.2.6</added>
             <argument name="includeMargin" type="Boolean" optional="true">
-               <desc>A Boolean indicating whether to include the element's margin in the calculation.</desc>
+               <desc>布尔值，代表计算时是否要包含元素的边距。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p>Returns the width of the element, along with left and right padding, border, and optionally margin, in pixels.</p>
-				        <p>If <code>includeMargin</code> is omitted or <code>false</code>, the padding and border are included in the calculation; if <code>true</code>, the margin is also included.</p>
-				        <p>This method is not applicable to <code>window</code> 和 <code>document</code> objects; for these, use <code>
+            <p>返回的元素宽度，是包括左右填充，边框和可选的边距的，单位是像素。</p>
+				        <p>如果忽略 <code>includeMargin</code> 参数，或将其设置成 <code>false</code>，则计算时，只包括填充和边框，如果将其设置成 <code>true</code>，则计算时边距也包括在内。</p>
+				        <p>该方法不能应用于 <code>window</code> 和 <code>document</code> 对象。若要取得这些对象的高度，请使用 <code>
                   <a href="width.htm">.width()</a>
                </code> 来代替。</p>
 				        <p class="image">
@@ -15351,7 +15351,7 @@ $('li').not(document.getElementById('notli'))
             </p>
          </longdesc>
          <example>
-            <desc>Get the outerWidth of a paragraph.</desc>
+            <desc>取得段落的 outerWidth。</desc>
             <code>var p = $("p:first");
 $("p:last").text( "outerWidth:" + p.outerWidth()+ " , outerWidth(true):" + p.outerWidth(true) );
 
@@ -15367,16 +15367,16 @@ $("p:last").text( "outerWidth:" + p.outerWidth()+ " , outerWidth(true):" + p.out
          <category name="Version 1.2.6"/>
       </entry>
       <entry type="method" name="outerHeight" return="Integer">
-         <desc>Get the current computed height for the first element in the set of matched elements, including padding, border, and optionally margin. Returns an integer (without "px") representation of the value or null if called on an empty set of elements.</desc>
+         <desc>取得匹配集合中第一个元素经过计算的高度，包括填充，边框和可选的边距。返回一个整数值(不带 "px")，如果在一个空集合上调用该方法，则会返回 null。</desc>
          <signature>
             <added>1.2.6</added>
             <argument name="includeMargin" type="Boolean" optional="true">
-               <desc>A Boolean indicating whether to include the element's margin in the calculation.</desc>
+               <desc>布尔值，代表计算时是否要包含元素的边距。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p>The top and bottom padding and border are always included in the <code>.outerHeight()</code> calculation; if the <code>includeMargin</code> argument is set to <code>true</code>, the margin (top and bottom) is also included.</p>
-				        <p>This method is not applicable to <code>window</code> 和 <code>document</code> objects; for these, use <code>
+            <p><code>.outerHeight()</code> 在计算时，总是包括上下的填充和边框。如果 <code>includeMargin</code> 参数是 <code>true</code>，则也包括上下的边距。</p>
+				        <p>该方法不能应用于 <code>window</code> 和 <code>document</code> 对象。若要取得这些对象的高度，请使用 <code>
                   <a href="height.htm">.height()</a>
                </code> 来代替。</p>
 				        <p class="image">
@@ -15384,7 +15384,7 @@ $("p:last").text( "outerWidth:" + p.outerWidth()+ " , outerWidth(true):" + p.out
             </p>
          </longdesc>
          <example>
-            <desc>Get the outerHeight of a paragraph.</desc>
+            <desc>取得段落的 outerHeight。</desc>
             <code>var p = $("p:first");
 $("p:last").text( "outerHeight:" + p.outerHeight() + " , outerHeight(true):" + p.outerHeight(true) );</code>
             <css>p { margin:10px;padding:5px;border:2px solid #666; } </css>
@@ -15524,13 +15524,13 @@ $("p").toggle( flip++ % 2 == 0 );
          <note type="additional">所有的 jQuery 动画, 包括 <code>.toggle()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="http://api.jquery.com/jquery.fx.off">jQuery.fx.off</a> 来获得更多信息。</note>
       </entry>
       <entry type="method" name="innerWidth" return="Integer">
-         <desc>Get the current computed width for the first element in the set of matched elements, including padding but not border.</desc>
+         <desc>取得匹配集合中第一个元素经过计算的宽度，包括填充，但是不包括边框。</desc>
          <signature>
             <added>1.2.6</added>
          </signature>
          <longdesc>
-            <p>This method returns the width of the element, including left and right padding, in pixels.</p>
-            <p>This method is not applicable to <code>window</code> 和 <code>document</code> objects; for these, use <code>
+            <p>该方法返回元素的宽度，包括左填充和右填充，单位是像素。</p>
+            <p>该方法不能应用于 <code>window</code> 和 <code>document</code> 对象。象。若要取得这些对象的宽度，请使用 <code>
                   <a href="width.htm">.width()</a>
                </code> 来代替。</p>
             <p class="image">
@@ -15538,7 +15538,7 @@ $("p").toggle( flip++ % 2 == 0 );
             </p>
          </longdesc>
          <example>
-            <desc>Get the innerWidth of a paragraph.</desc>
+            <desc>取得段落的 innerWidth。</desc>
             <code>var p = $("p:first");
 $("p:last").text( "innerWidth:" + p.innerWidth() );</code>
             <css>p { margin:10px;padding:5px;border:2px solid #666; } </css>
@@ -15550,13 +15550,13 @@ $("p:last").text( "innerWidth:" + p.innerWidth() );</code>
          <category name="Version 1.2.6"/>
       </entry>
       <entry type="method" name="innerHeight" return="Integer">
-         <desc>Get the current computed height for the first element in the set of matched elements, including padding but not border.</desc>
+         <desc>取得匹配集合中第一个元素经过计算的高度，包括填充，但是不包括边框。</desc>
          <signature>
             <added>1.2.6</added>
          </signature>
          <longdesc>
-            <p>This method returns the height of the element, including top and bottom padding, in pixels.</p>
-            <p>This method is not applicable to <code>window</code> 和 <code>document</code> objects; for these, use <code>
+            <p>该方法返回元素的高度，包括上填充和下填充，单位是像素。</p>
+            <p>该方法不能应用于 <code>window</code> 和 <code>document</code> 对象。若要取得这些对象的高度，请使用 <code>
                   <a href="height.htm">.height()</a>
                </code> 来代替。</p>
             <p class="image">
@@ -15564,7 +15564,7 @@ $("p:last").text( "innerWidth:" + p.innerWidth() );</code>
             </p>
          </longdesc>
          <example>
-            <desc>Get the innerHeight of a paragraph.</desc>
+            <desc>取得段落的 innerHeight。</desc>
             <code>var p = $("p:first");
 $("p:last").text( "innerHeight:" + p.innerHeight() );</code>
             <css>p { margin:10px;padding:5px;border:2px solid #666; }</css>
@@ -15822,24 +15822,24 @@ $('#clickme').click(function() {
          <note type="additional">所有的 jQuery 动画, 包括 <code>.hide()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="http://api.jquery.com/jquery.fx.off">jQuery.fx.off</a> 来获得更多信息。</note>
       </entry>
       <entry type="method" name="width" return="Integer">
-         <desc>Get the current computed width for the first element in the set of matched elements.</desc>
+         <desc>取得匹配集合中第一个元素经过计算后的宽度。</desc>
          <signature>
             <added>1.0</added>
          </signature>
          <longdesc>
-            <p>The difference between <code>.css(width)</code> 和 <code>.width()</code> is that the latter returns a unit-less pixel value (for example, <code>400</code>) while the former returns a value with units intact (for example, <code>400px</code>). The <code>.width()</code> method is recommended when an element's width needs to be used in a mathematical calculation.</p>
+            <p><code>.css(width)</code> 和 <code>.width()</code> 的区别在于，后者返回的是不带单位的像素值(例如， <code>400</code>)。然而，前者返回的是带单位的值(例如，<code>400px</code>)。建议在需要对元素的宽度进行数学计算的场合使用 <code>.width()</code> 方法。</p>
             <p class="image">
                <img src="images/0042_04_04.png"/>
             </p>
-            <p>This method is also able to find the width of the window and document.</p>
+            <p>该方法同样可以取得 window 和 document 的宽度。</p>
 
             <pre>$(window).width();   // returns width of browser viewport
 $(document).width(); // returns width of HTML document</pre>
 
-            <p>Note that <code>.width()</code> will always return the content width, regardless of the value of the CSS <code>box-sizing</code> property.</p>
+            <p>注意，<code>.width()</code> 总是返回内容的宽度，而不考虑 CSS 属性 <code>box-sizing</code> 的值。</p>
          </longdesc>
          <example>
-            <desc>Show various widths.  Note the values are from the iframe so might be smaller than you expected.  The yellow highlight shows the iframe body.</desc>
+            <desc>显示不同元素的宽度。注意，由于例子中的宽度值是来自 iframe 的，因此可能比实际值小。以黄色高亮形式显示的就是 iframe 的内主体。</desc>
             <code>
     function showWidth(ele, w) {
       $("div").text("The width for the " + ele + 
@@ -15878,28 +15878,28 @@ $(document).width(); // returns width of HTML document</pre>
          <category name="Version 1.4.1"/>
       </entry>
       <entry type="method" name="width" return="jQuery">
-         <desc>Set the CSS width of each element in the set of matched elements.</desc>
+         <desc>为每个匹配的元素设置 CSS 宽度。</desc>
          <signature>
             <added>1.0</added>
             <argument name="value" type="String, Number">
-               <desc>An integer representing the number of pixels, or an integer along with an optional unit of measure appended (as a string).</desc>
+               <desc>设置宽度用的像素值，可以是不带单位的整数值，也可以是整数带单位的字符串。</desc>
             </argument>
          </signature>
          <signature>
             <added>1.4.1</added>
             <argument name="function(index, width)" type="Function">
-               <desc>A function returning the width to set. Receives the index position of the element in the set and the old width as arguments. Within the function, <code>this</code> refers to the current element in the set.</desc>
+               <desc>一个函数，返回用于设置的宽度。该函数接受两个参数，index 参数表示元素在集合中的位置，height 参数表示原来的宽度。在函数内，<code>this</code> 指向集合中当前的元素。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p>When calling <code>.width('value')</code>, the value can be either a string (number and unit) or a number. If only a number is provided for the value, jQuery assumes a pixel unit. If a string is provided, however, any valid CSS measurement may be used for the width (such as <code>100px</code>, <code>50%</code>, or <code>auto</code>). Note that in modern browsers, the CSS width property does not include padding, border, or margin, unless the <code>box-sizing</code> CSS property is used.</p>
+            <p>当调用 <code>.width(value)</code> 时，value 参数既可以是字符串(数字和单位),也可以是数字。如果是数字的话，jQuery 会假定其单位是像素。如果是字符串的话，则必须使用有效的 CSS 宽度单位(例如 <code>100px</code>, <code>50%</code>, 或 <code>auto</code>)。注意，在主流的浏览器中，CSS 宽度属性不包含 padding, border, 或 margin。</p>
 
-    <p>If no explicit unit is specified (like "em" or "%") then "px" is assumed.</p>
+    <p>如果不显式的指定单位(像 'em' 或 '%')，那么会使用 "px" 连接数值。</p>
 
-            <p>Note that <code>.width('value')</code> sets the width of the box in accordance with the CSS <code>box-sizing</code> property. Changing this property to <code>border-box</code> will cause this function to change the outerWidth of the box instead of the content width.</p>
+            <p>注意，使用 <code>.width(value)</code> 设置盒子的宽度与 CSS 属性 <code>box-sizing</code> 是一致的。如果将这个属性换成 <code>border-box</code>，则会导致该函数将改变盒子的 outerWidth 而不是内容的宽度。</p>
          </longdesc>
          <example>
-<desc>Change the width of each div the first time it is clicked (and change its color).</desc>
+<desc>第一次点击 div 时，改变它的宽度和颜色。</desc>
 <code><![CDATA[
 (function() {
   var modWidth = 50;
@@ -15929,26 +15929,26 @@ $(document).width(); // returns width of HTML document</pre>
          <category name="Version 1.4.1"/>
       </entry>
       <entry type="method" name="height" return="Integer">
-         <desc>Get the current computed height for the first element in the set of matched elements.</desc>
+         <desc>取得匹配集合中第一个元素经过计算后的高度。</desc>
          <signature>
             <added>1.0</added>
          </signature>
          <longdesc>
-            <p>The difference between <code>.css('height')</code> 和 <code>.height()</code> is that the latter returns a unit-less pixel value (for example, <code>400</code>) while the former returns a value with units intact (for example, <code>400px</code>). The <code>.height()</code> method is recommended when an element's height needs to be used in a mathematical calculation.</p>
+            <p><code>.css('height')</code> 和 <code>.height()</code> 的区别在于，后者返回的是不带单位的像素值(例如，<code>400</code>)。然而，前者返回的是带单位的值(例如，<code>400px</code>)。建议在需要对元素的高度进行数学计算的场合使用 <code>.height()</code> 方法。</p>
             <p class="image">
                <img src="images/0042_04_01.png"/>
             </p>
 
-            <p>This method is also able to find the height of the window and document.</p>
+            <p>该方法同样可以取得 window 和 document 的高度。</p>
 
             <pre>$(window).height();   // returns height of browser viewport
 $(document).height(); // returns height of HTML document</pre>
 
-            <p>Note that <code>.height()</code> will always return the content height, regardless of the value of the CSS <code>box-sizing</code> property.</p>
-<blockquote><p><strong>Note:</strong> Although <code>style</code> and <code>script</code> tags will report a value for <code>.width()</code> or <code>height()</code> when absolutely positioned and given <code>display:block</code>, it is strongly discouraged to call those methods on these tags. In addition to being a bad practice, the results may also prove unreliable.</p></blockquote>
+            <p>注意，<code>.height()</code> 总是返回内容的高度，而不考虑 CSS 属性 <code>box-sizing</code> 的值。</p>
+<blockquote><p><strong>注意:</strong> 尽管 <code>style</code> 和 <code>script</code> 标签也有 <code>.width()</code> 和 <code>height()</code> 值，但是当绝对定义并给定 <code>display:block</code> 时，强烈不赞成在这些标签上调用上述方法。因为这种作法不但不好，而且其结果也被证明是不可靠的。</p></blockquote>
          </longdesc>
          <example>
-            <desc>Show various heights.  Note the values are from the iframe so might be smaller than you expected.  The yellow highlight shows the iframe body.</desc>
+            <desc>显示不同元素的高度。注意，由于例子中的高度值是来自 iframe 的，因此可能比实际值小。以黄色高亮形式显示的就是 iframe 的内主体。</desc>
             <code>
     function showHeight(ele, h) {
       $("div").text("The height for the " + ele + 
@@ -15987,26 +15987,26 @@ $(document).height(); // returns height of HTML document</pre>
          <category name="Version 1.4.1"/>
       </entry>
       <entry type="method" name="height" return="jQuery">
-         <desc>Set the CSS height of every matched element.</desc>
+         <desc>为每个匹配的元素设置 CSS 高度。</desc>
          <signature>
             <added>1.0</added>
             <argument name="value" type="String, Number">
-               <desc>An integer representing the number of pixels, or an integer with an optional unit of measure appended (as a string).</desc>
+               <desc>设置高度用的像素值，可以是不带单位的整数值，也可以是整数带单位的字符串。</desc>
             </argument>
          </signature>
          <signature>
             <added>1.4.1</added>
             <argument name="function(index, height)" type="Function">
-               <desc>A function returning the height to set. Receives the index position of the element in the set and the old height as arguments. Within the function, <code>this</code> refers to the current element in the set.</desc>
+               <desc>一个函数，返回用于设置的高度。该函数接受两个参数，index 参数表示元素在集合中的位置，height 参数表示原来的高度。在函数内，<code>this</code> 指向集合中当前的元素。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p>When calling <code>.height(value)</code>, the value can be either a string (number and unit) or a number. If only a number is provided for the value, jQuery assumes a pixel unit. If a string is provided, however, a valid CSS measurement must be provided for the height (such as <code>100px</code>, <code>50%</code>, or <code>auto</code>). Note that in modern browsers, the CSS height property does not include padding, border, or margin.</p>
-            <p>If no explicit unit was specified (like 'em' or '%') then "px" is concatenated to the value.</p>
-            <p>Note that <code>.height(value)</code> sets the height of the box in accordance with the CSS <code>box-sizing</code> property. Changing this property to <code>border-box</code> will cause this function to change the outerHeight of the box instead of the content height.</p>
+            <p>当调用 <code>.height(value)</code> 时，value 参数既可以是字符串(数字和单位),也可以是数字。如果是数字的话，jQuery 会假定其单位是像素。如果是字符串的话，则必须使用有效的 CSS 高度单位(例如 <code>100px</code>, <code>50%</code>, 或 <code>auto</code>)。注意，在主流的浏览器中，CSS 高度属性不包含 padding, border, 或 margin。</p>
+            <p>如果不显式的指定单位(像 'em' 或 '%')，那么会使用 "px" 连接数值。</p>
+            <p>注意，使用 <code>.height(value)</code> 设置盒子的高度与 CSS 属性 <code>box-sizing</code> 是一致的。如果将这个属性换成 <code>border-box</code>，则会导致该函数将改变盒子的 outerHeight 而不是内容的高度。</p>
          </longdesc>
          <example>
-            <desc>To set the height of each div on click to 30px plus a color change.</desc>
+            <desc>点击 div 时，将其高度变成 30px 并改变它的颜色。</desc>
             <code>$("div").one('click', function () {
       $(this).height(30)
              .css({cursor:"auto", backgroundColor:"green"});
