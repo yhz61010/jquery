@@ -3,9 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Integer</span>outerHeight(<em class="optional">[includeMargin]</em>)<br></h2>
    <div class="desc">
-      <p>Get the current computed height for the first element in the set of matched elements, including padding, border, and optionally
-         margin. Returns an integer (without "px") representation of the value or null if called on an empty set of elements.
-      </p>
+      <p>取得匹配集合中第一个元素经过计算的高度，包括填充，边框和可选的边距。返回一个整数值(不带 "px")，如果在一个空集合上调用该方法，则会返回 null。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.2.6 新增</span>outerHeight(<em class="optional">[includeMargin]</em>)
@@ -13,16 +11,16 @@
             </h4>
             <div class="arguement"><strong>includeMargin</strong>
                								(Boolean)
-               								 可选参数，A Boolean indicating whether to include the element's margin in the calculation.
+               								 可选参数，布尔值，代表计算时是否要包含元素的边距。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p>The top and bottom padding and border are always included in the <code>.outerHeight()</code> calculation; if the <code>includeMargin</code> argument is set to <code>true</code>, the margin (top and bottom) is also included.
+         <p><code>.outerHeight()</code> 在计算时，总是包括上下的填充和边框。如果 <code>includeMargin</code> 参数是 <code>true</code>，则也包括上下的边距。
          </p>
          				        
-         <p>This method is not applicable to <code>window</code> 和 <code>document</code> objects; for these, use <code>
+         <p>该方法不能应用于 <code>window</code> 和 <code>document</code> 对象。若要取得这些对象的高度，请使用 <code>
                <a href="height.htm">.height()</a>
                </code> 来代替。
          </p>
@@ -36,7 +34,7 @@
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Get the outerHeight of a paragraph.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>取得段落的 outerHeight。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;p { margin:10px;padding:5px;border:2px solid #666; } &lt;/style&gt;
