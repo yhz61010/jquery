@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:undefined</span>callbacks.fire(arguments)<br></h2>
    <div class="desc">
-      <p>Call all of the callbacks with the given arguments</p>
+      <p>调用所有的回调函数，并传入指定的参数。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.7 新增</span>callbacks.fire(arguments)
@@ -11,15 +11,15 @@
             </h4>
             <div class="arguement"><strong>arguments</strong>
                								()
-               								The argument or list of arguments to pass back to the callback list.
+               								将要传入到回调函数列表中的参数或参数列表。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <h2 id="example-1">Example</h2>
+         <h2 id="example-1">示例</h2>
          
-         <p>Using <code>callbacks.fire()</code> to invoke the callbacks in a list with any arguments that have been passed:
+         <p>使用 <code>callbacks.fire()</code> 在回调函数列表中调用回调函数，并传入指定的参数：
          </p>
          <pre>
 // a sample logging function to be added to a callbacks list

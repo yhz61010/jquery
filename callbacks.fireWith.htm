@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:undefined</span>callbacks.fireWith(<em class="optional">[context]</em>, <em class="optional">[args]</em>)<br></h2>
    <div class="desc">
-      <p>Call all callbacks in a list with the given context and arguments.</p>
+      <p>调用回调函数列表中的所有回调函数，并传入指定的上下文和参数。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.7 新增</span>callbacks.fireWith(<em class="optional">[context]</em>, <em class="optional">[args]</em>)
@@ -11,19 +11,19 @@
             </h4>
             <div class="arguement"><strong>context</strong>
                								()
-               								 可选参数，A reference to the context in which the callbacks in the list should be fired.
+               								 可选参数，指向在回调函数列表中，应该被调用的回调函数的上下文引用。
             </div>
             <div class="arguement"><strong>args</strong>
                								()
-               								 可选参数，An argument, or array of arguments, to pass to the callbacks in the list.
+               								 可选参数，向回调函数中传入的单个参数或参数数组。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <h2 id="example-1">Example</h2>
+         <h2 id="example-1">示例</h2>
          
-         <p>Using <code>callbacks.fireWith()</code> to fire a list of callbacks with a specific context and an array of arguments:
+         <p>使用 <code>callbacks.fireWith()</code> 调用回调函数，并传入指定的上下文及一个参数数组：
          </p>
          <pre>
 // a sample logging function to be added to a callbacks list

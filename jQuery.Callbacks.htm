@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2>jQuery.Callbacks(flags)<br></h2>
    <div class="desc">
-      <p>A multi-purpose callbacks list object that provides a powerful way to manage callback lists.</p>
+      <p>一个多用途的回调函数列表对象，提供一种强大的方式来管理回调函数列表。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.7 新增</span>jQuery.Callbacks(flags)
@@ -11,18 +11,18 @@
             </h4>
             <div class="arguement"><strong>flags</strong>
                								(String)
-               								An optional list of space-separated flags that change how the callback list behaves.
+               								一个可选的列表标记字符串，字符串之间使用空格分隔。代表如何改变回调函数列表的行为。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
          
-         <p><code>$.Callbacks()</code> function is internally used to provide the base functionality behind the jQuery <code>$.ajax()</code> 和 <code>$.Deferred()</code> components. It can be used as a similar base to define functionality for new components.
+         <p>jQuery <code>$.ajax()</code> 和 <code>$.Deferred()</code> 组件的内部会使用 <code>$.Callbacks()</code> 函数，来提供基本的功能。它可以用作定义新组件功能的简易基础。
          </p>
          
          <p>
-            <code>$.Callbacks()</code> support a number of methods including <code>
+            <code>$.Callbacks()</code> 支持的方法包括 <code>
                <a href="callbacks.add.htm">callbacks.add()</a>
                </code>,<code>
                <a href="callbacks.remove.htm">callbacks.remove()</a>
@@ -33,10 +33,10 @@
                </code>.
          </p>
          
-         <h3 id="getting-started">Getting started</h3>
+         <h3 id="getting-started">开始学习</h3>
          
          
-         <p>The following are two sample methods named <code>fn1</code> 和 <code>fn2</code>:
+         <p>例如，有如下两个方法，分别叫做 <code>fn1</code> 和 <code>fn2</code>:
          </p>
          <pre>
 function fn1( value ){
@@ -48,7 +48,7 @@ function fn2( value ){
     return false;
 }
 </pre>
-         <p>These can be added as callbacks to a <code>$.Callbacks</code> list and invoked follows:
+         <p>可以将上述两个方法作为回调函数，并添加到 <code>$.Callbacks</code> 列表中，并按下面的顺序调用它们：
          </p>
          <pre>
 var callbacks = $.Callbacks();
@@ -59,16 +59,12 @@ callbacks.add( fn2 );
 callbacks.fire( "bar!" ); // outputs: bar!, fn2 says: bar!
 </pre>
          
-         <p>The result of this is that it becomes simple to construct complex lists of callbacks where input values can be passed through
-            to as many functions as needed with ease.
+         <p>这样做的结果是，当构造复杂的回调函数列表时，将会变更很简单。可以根据需要，很方面的就可以向这些回调函数中传入所需的参数。</p>
+         
+         <p>上面的例子中，我们使用了 <code>$.Callbacks()</code> 的两个方法: <code>.add()</code> 和 <code>.fire()</code>。 .add() 可以向回调函数列表中添加新的回调函数，fire() 可以向回调函数中传递参数，并执行回调函数。
          </p>
          
-         <p>Two specific methods were being used above: <code>.add()</code> 和 <code>.fire()</code> .add() supports adding new callbacks to the callback list, whilst fire() provides a way to pass arguments to be processed
-            by the callbacks in the same list.
-         </p>
-         
-         <p>Another method supported by <code>$.Callbacks</code> is remove(), which has the ability to remove a particular callback from the callback list. Here"s a practical example of
-            .remove() being used:
+         <p><code>$.Callbacks</code> 支持的另一个方法是 remove()，它可以从回调函数列表中移除指定的回调函数。下面是使用 .remove() 的例子：
          </p>
          <pre>
 var callbacks = $.Callbacks();
@@ -84,40 +80,39 @@ callbacks.fire( "foobar" );
 // only outputs foobar, as fn2 has been removed.
 </pre>
          
-         <h3 id="supported-flags">Supported Flags</h3>
+         <h3 id="supported-flags">支持的标识</h3>
          
          
-         <p><code>flags</code> argument is an optional argument to <code>$.Callbacks()</code>, structured as a list of space-separated strings that change how the callback list behaves (eg. <code>$.Callbacks( 'unique stopOnFalse' )</code>).
+         <p><code>flags</code> 参数是 <code>$.Callbacks()</code> 的可选参数，该参数是一个以空格分隔的字符串列表，代表如何改变回调函数列表的行为(例如，<code>$.Callbacks( 'unique stopOnFalse' )</code>)。
          </p>
          
          
-         <h2>Possible flags:</h2>
+         <h2>可用的标识:</h2>
          
          <ul>
             
             <li>
-               <code>once</code>: Ensures the callback list can only be fired once (like a Deferred).
+               <code>once</code>: 保证回调函数列表只能被 .fire() 一次。(就像延迟对象一样)
             </li>
             
             <li>
-               <code>memory</code>: Keep track of previous values and will call any callback added after the list has been fired right away with the latest
-               "memorized" values (like a Deferred).
+               <code>memory</code>: 持续保留前一个值，在执行完 .fire() 之后添加的任何回调函数，当再次遇到 .fire() 时，会将“最新保持”的值作为参数，立刻调用最近添加的所有函数，然后再执行回调函数列表中的函数(就像延迟对象一样)。
             </li>
             
             <li>
-               <code>unique</code>: Ensures a callback can only be added once (so there are no duplicates in the list).
+               <code>unique</code>: 保证一个回调函数只能被添加一次(也就是说，在回调函数列表中，没有重复的回调函数)。
             </li>
             
             <li>
-               <code>stopOnFalse</code>: Interrupts callings when a callback returns false.
+               <code>stopOnFalse</code>: 当回调函数返回 false 时，中断调用。
             </li>
             
          </ul>
          
-         <p>By default a callback list will act like an event callback list and can be "fired" multiple times.</p>
+         <p>默认情况下，一个回调函数列表就像一个事件回调列表，可以被“调用”多次。</p>
          
          
-         <p>For examples of how <code>flags</code> should ideally be used, see below:
+         <p>下面是一些理想情况下，使用 <code>flags</code> 的范例：
          </p>
          
          
@@ -215,8 +210,7 @@ foobar
 </pre>
          
          
-         <p>Because $.Callbacks() supports a list of flags rather than just one, setting several flags has a cumulative effect similar
-            to "&amp;&amp;". This means it's possible to combine flags to create callback lists that are say, both <i>unique</i> and <i>ensure if list was already fired, adding more callbacks will have it called with the latest fired value</i> (i.e. <code>$.Callbacks("unique memory")</code>).
+         <p>由于 $.Callbacks() 可以同时使用多个标识，因此，设置多个标识时，有累积的效果，相当于 "&amp;&amp;"。这意味着，在创建回调函数列表时，可以使用组合标识，例如，同时使用 <i>unique</i> 和 <i>memory</i>（<code>$.Callbacks("unique memory")</code>），既保证回调函数列表中函数的唯一性，也可以保证在执行完函数后再添加的函数被调用时，可以使用上次调用时使用的参数。
          </p>
          
          
@@ -258,10 +252,10 @@ foobar
 */
 </pre>
          
-         <p>Flag combinations are internally used with <code>$.Callbacks()</code> in jQuery for the <code>.done()</code> 和 <code>.fail()</code> buckets on a Deferred - both of which use <code>$.Callbacks('memory once')</code>.
+         <p>jQuery 在延迟对象的 <code>.done()</code> 和 <code>.fail()</code> 中应用 <code>$.Callbacks()</code> 时也使用了标识组合，同时使用了 <code>$.Callbacks('memory once')</code>。
          </p>
          
-         <p>$.Callbacks methods can also be detached, should there be a need to define short-hand versions for convenience:</p>
+         <p>$.Callbacks 方法同样可以被分离出来，这样就可以很方便的创建简单的别名：</p>
          
          <pre>
 var callbacks = $.Callbacks(),
@@ -275,17 +269,15 @@ remove( fn1 );
 </pre>
          
          
-         <h3 id="pubsub">$.Callbacks, $.Deferred and Pub/Sub</h3>
+         <h3 id="pubsub">$.Callbacks, $.Deferred 和 Pub/Sub(观察者模式)</h3>
          
          
          
-         <p>The general idea behind pub/sub (the Observer pattern) is the promotion of loose coupling in applications. Rather than single
-            objects calling on the methods of other objects, an object instead subscribes to a specific task or activity of another object
-            and is notified when it occurs. Observers are also called Subscribers and we refer to the object being observed as the Publisher
-            (or the subject). Publishers notify subscribers when events occur
+         <p>pub/sub (观察者模式) 的背后，总的想法是在应用程序中增强松耦合性。并非是在其它对象的方法上的单个对象调用。一个对象作为特定任务或是另一对象的活动的观察者，并且在这个任务或活动发生时，通知观察者。观察者也被叫作订阅者（Subscriber），它指向被观察的对象，既被观察者（Publisher
+            或 subject)。当事件发生时，被观察者（Publisher）就会通知观察者（subscriber）
          </p>
          
-         <p>As a demonstration of the component-creation capabilities of <code>$.Callbacks()</code>, it's possible to implement a Pub/Sub system using only callback lists. Using <code>$.Callbacks</code> as a topics queue, a system for publishing and subscribing to topics can be implemented as follows:
+         <p>作为 <code>$.Callbacks()</code> 的创建组件的一个演示，只使用回调函数列表，就可以实现 Pub/Sub 系统。将 <code>$.Callbacks</code> 作为一个文章队列，可以向下面这样，实现文章的发布和订阅：
          </p>
          
          <pre>var topics = {};
@@ -310,7 +302,7 @@ jQuery.Topic = function( id ) {
 </pre>
          
          
-         <p>This can then be used by parts of your application to publish and subscribe to events of interest quite easily:</p>
+         <p>下面的代码可以作为你应用程序的一部分，可以相当简单的完成对感兴趣的文章的发布和订阅事件：</p>
          
          <pre>// Subscribers
 $.Topic( "mailArrived" ).subscribe( fn1 );
@@ -335,8 +327,7 @@ woo! mail!
 </pre>
          
          
-         <p>Whilst this is useful, the implementation can be taken further. Using <code>$.Deferreds</code>,  it's possible to ensure publishers only publish notifications for subscribers once particular tasks have been completed
-            (resolved). See the below code sample for some further comments on how this could be used in practice:
+         <p>尽管上面的代码很有用，但是可以进一步改进其实现。使用 <code>$.Deferreds</code>，可以保证当特定的任务被完成（或被解决）时，发布者只能向订阅者发布通知。参见下面的示例代码，进一步讨论如何在实践中使用这种情况：
          </p>
          
          <pre>// subscribe to the mailArrived notification
