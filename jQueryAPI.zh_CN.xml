@@ -882,7 +882,7 @@ callbacks.fireWith( window, ['foo','bar']);
             </argument>
          </signature>
          <longdesc>
-            <p><code>off()</code> method removes event handlers that were attached with <code><a href="http://api.jquery.com/on">
+            <p><code>off()</code> method removes event handlers that were attached with <code><a href="on.htm">
                   .on()</a></code>
                . See the discussion of delegated and directly bound events on that page for more information. Specific event handlers can be removed on elements by providing combinations of event names, namespaces, selectors, or handler function names. <strong>When multiple filtering arguments are given, all of the arguments provided must match for the event handler to be removed.</strong>
             </p>
@@ -891,7 +891,7 @@ callbacks.fireWith( window, ['foo','bar']);
   
             <p>To remove specific delegated event handlers, provide a <code>selector</code> argument. The selector string must exactly match the one passed to <code>.on()</code> when the event handler was attached. To remove all delegated events from an element without removing non-delegated events, use the special value <code>"**"</code>.</p>
 
-            <p>A handler can also be removed by specifying the function name in the <code>handler</code> argument. When jQuery attaches an event handler, it assigns a unique id to the handler function. Handlers proxied by <code><a href="http://api.jquery.com/jQuery.proxy">
+            <p>A handler can also be removed by specifying the function name in the <code>handler</code> argument. When jQuery attaches an event handler, it assigns a unique id to the handler function. Handlers proxied by <code><a href="jQuery.proxy.htm">
                   jQuery.proxy()</a></code>
                 or a similar mechanism will all have the same unique id (the proxy function), so passing proxied handlers to <code>.off</code> may remove more handlers than intended. In those situations it is better to attach and remove event handlers using namespaces.</p>
   
@@ -1064,7 +1064,7 @@ function notify() { alert("clicked"); }
 $("button").on("click", notify);
 </pre>
 
-            <p>When the browser triggers an event or other JavaScript calls jQuery's <code>.trigger()</code> method, jQuery passes the handler an <code><a href="http://api.jquery.com/category/event-object/">event object</a></code> it can use to analyze and change the status of the event. This object is a <em>normalized subset</em> of data provided by the browser; the browser's unmodified native event object is available in <code>event.originalEvent</code>. For example, <code><a href="http://api.jquery.com/event.type">event.type</a></code> contains the event name (e.g., "resize") and <code><a href="http://api.jquery.com/event.target">event.target</a></code> indicates the deepest (innermost) element where the event occurred.</p>
+            <p>When the browser triggers an event or other JavaScript calls jQuery's <code>.trigger()</code> method, jQuery passes the handler an <code><a href="http://api.jquery.com/category/event-object/">event object</a></code> it can use to analyze and change the status of the event. This object is a <em>normalized subset</em> of data provided by the browser; the browser's unmodified native event object is available in <code>event.originalEvent</code>. For example, <code><a href="event.type.htm">event.type</a></code> contains the event name (e.g., "resize") and <code><a href="event.target.htm">event.target</a></code> indicates the deepest (innermost) element where the event occurred.</p>
 
             <p>By default, most events bubble up from the original event target to the <code>document</code> element. At each element along the way, jQuery calls any matching event handlers that have been attached. A handler can prevent the event from bubbling further up the document tree (and thus prevent handlers on those elements from running) by calling <code>event.stopPropagation()</code>. Any other handlers attached on the current element <em>will</em> run however. To prevent that, call <code>event.stopImmediatePropagation()</code>. (Event handlers bound to an element are called in the same order that they were bound.)</p>
 
@@ -1520,12 +1520,12 @@ div {
          </signature>
          <longdesc>
             <p><code>.removeProp()</code> 方法会移除使用 <code>
-                  <a href="http://api.jquery.com/prop">.prop()</a>
+                  <a href="prop.htm">.prop()</a>
                </code> 方法设置的属性。</p>
             <p>若尝试移除 DOM 元素或 <code>window</code> 对象上一些内建的 property 属性，浏览器可能会产生错误。如果真的那么做了，那么 jQuery 首先会将 property 属性设置成 <code>undefined</code>，然后忽略任何浏览器产生的错误。一般来说,只需要移除自定义的 property 属性，而不是移除内建的（原生的） property 属性。</p>
             <p>
                <strong>注意:</strong> 不要使用该方法来移除原生的 property 属性，例如：checked, disabled, 或 selected 属性。因为这样会完全移除该 property 属性，它们一旦被删除，就不能再被添加。请使用 <code>
-                  <a href="http://api.jquery.com/prop">.prop()</a>
+                  <a href="prop.htm">.prop()</a>
                </code> 来将这些 property 属性的值设置成 <code>false</code>。</p>
          </longdesc>
          <example>
@@ -1697,9 +1697,9 @@ $("input").change(function() {
          <longdesc>
             <p>使用 <code>.prop()</code> 方法设置属性值非常的方便。特别是对于需要使用一个函数设置多个属性值或是一次性设置多个属性值的情况。它适用于设置如下属性： <code>selectedIndex</code>, <code>tagName</code>, <code>nodeName</code>, <code>nodeType</code>, <code>ownerDocument</code>, <code>defaultChecked</code>, 或 <code>defaultSelected</code>。从 jQuery 1.6 起,上述 property 属性不能再使用 <code>.attr()</code> 方法进行赋值。因为它们没有对应的 attributes，只是 properties 而已。 </p>
             <p>Properties 属性一般影响 DOM 元素的动态状态并不会改变序列化的 HTML attribute 属性。例如，input 元素的 <code>value</code> 属性，input 和 按钮 元素的 <code>disabled</code> 属性, 以及 checkbox 的 <code>checked</code> 属性。应该使用 <code>.prop()</code> 方法设置 disabled 和 checked 属性，而不是使用 <code>
-                  <a href="http://api.jquery.com/attr">.attr()</a>
+                  <a href="attr.htm">.attr()</a>
                </code> 方法。<code>
-                  <a href="http://api.jquery.com/val">.val()</a>
+                  <a href="val.htm">.val()</a>
                </code> 方法应该用于存取 value 值。</p>
             <pre>
 $("input").prop("disabled", false);
@@ -1708,9 +1708,9 @@ $("input").val("someValue");
 </pre>
             <p>
                <strong>特别注意:</strong> 不要认为使用 <code>
-                  <a href="http://api.jquery.com/removeProp">.removeProp()</a>
+                  <a href="removeProp.htm">.removeProp()</a>
                </code> 方法将上述属性移除，就可以使其属性值就变成 false。一旦原生的属性被移除，就无法再被添加。参阅 <code>
-                  <a href="http://api.jquery.com/removeProp">.removeProp()</a>
+                  <a href="removeProp.htm">.removeProp()</a>
                </code> 来获得更多帮助。</p>
 
             <h4 id="computed-prop-values">经过计算的属性值</h4>
@@ -2517,7 +2517,7 @@ $.get("test.php").then(
             <added>1.5</added>
          </signature>
          <longdesc> 
-            <p>As of jQuery 1.7 this API has been deprecated; please use <code><a href="http://api.jquery.com/deferred.state">
+            <p>As of jQuery 1.7 this API has been deprecated; please use <code><a href="deferred.state.htm">
                   deferred.state()</a></code>
                 instead.</p>
             <p>Returns <code>true</code> if the Deferred object is in the rejected state, meaning that either <code><a href="http://api.jquery.com/deferred.reject/">
@@ -2539,7 +2539,7 @@ $.get("test.php").then(
             <added>1.5</added>
          </signature>
          <longdesc> 
-            <p>As of jQuery 1.7 this API has been deprecated; please use <code><a href="http://api.jquery.com/deferred.state">
+            <p>As of jQuery 1.7 this API has been deprecated; please use <code><a href="deferred.state.htm">
                   deferred.state()</a></code>
                 instead.</p>
             <p>Returns <code>true</code> if the Deferred object is in the resolved state, meaning that either <code><a href="http://api.jquery.com/deferred.resolve/">
@@ -2723,7 +2723,7 @@ $("button:last").click(function () {
          <category name="Effects"/>
          <category name="Fading"/>
          <category name="Version 1.4.4"/>
-         <note type="additional">所有的 jQuery 动画, 包括 <code>.fadeToggle()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="http://api.jquery.com/jquery.fx.off">jQuery.fx.off</a> 来获得更多信息。</note>
+         <note type="additional">所有的 jQuery 动画, 包括 <code>.fadeToggle()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="jquery.fx.off.htm">jQuery.fx.off</a> 来获得更多信息。</note>
       </entry>
       <entry type="method" name="jQuery.type" return="String">
          <desc>Determine the internal JavaScript [[Class]] of an object.</desc>
@@ -2977,9 +2977,9 @@ $("button").click(function(event) {
          <longdesc>
             <p><code>.undelegate()</code> method is a way of removing event handlers that have been bound using <code><a href="delegate.htm">
                   .delegate()</a></code>
-               . <strong>As of jQuery 1.7</strong>, the <code><a href="http://api.jquery.com/on">
+               . <strong>As of jQuery 1.7</strong>, the <code><a href="on.htm">
                   .on()</a></code>
-                and <code><a href="http://api.jquery.com/off">
+                and <code><a href="off.htm">
                   .off()</a></code>
                 methods are preferred for attaching and removing event handlers.</p>
          </longdesc>
@@ -3087,7 +3087,7 @@ $("form").undelegate(".whatever");</code>
             </argument>
          </signature>
          <longdesc>
-            <p>As of jQuery 1.7, <code>.delegate()</code> has been superseded by the <a href="http://api.jquery.com/on">.on()</a> method. For earlier versions, however, it remains the most effective means to use event delegation. More information on event binding and delegation is in the <a href="http://api.jquery.com/on">.on()</a> method. In general, these are the equivalent templates for the two methods:</p>
+            <p>As of jQuery 1.7, <code>.delegate()</code> has been superseded by the <a href="on.htm">.on()</a> method. For earlier versions, however, it remains the most effective means to use event delegation. More information on event binding and delegation is in the <a href="on.htm">.on()</a> method. In general, these are the equivalent templates for the two methods:</p>
             <pre>
 $(elements).delegate(<em>selector</em>, <em>events</em>, <em>data</em>, <em>handler</em>);  // jQuery 1.4.3+
 $(elements).on(<em>events</em>, <em>selector</em>, <em>data</em>, <em>handler</em>);        // jQuery 1.7+
@@ -3104,7 +3104,7 @@ $(elements).on(<em>events</em>, <em>selector</em>, <em>data</em>, <em>handler</e
   $(this).toggleClass("chosen");
 });</pre>
 
-            <p>To remove events attached with <code>delegate()</code>, see  the <a href="http://api.jquery.com/undelegate">.undelegate()</a> method.</p>
+            <p>To remove events attached with <code>delegate()</code>, see  the <a href="undelegate.htm">.undelegate()</a> method.</p>
             <p>Passing and handling event data works the same way as it does for <code>.on()</code>.</p>
          </longdesc>
          <example>
@@ -3166,7 +3166,7 @@ $(elements).on(<em>events</em>, <em>selector</em>, <em>data</em>, <em>handler</e
          <category name="Event Handler Attachment"/>
          <category name="Version 1.4.2"/>
          <category name="Version 1.4.3"/>
-         <note type="additional">因为 <code><a href="http://api.jquery.com/live">
+         <note type="additional">因为 <code><a href="live.htm">
                .live()</a></code>
              事件一旦被传播到文档顶部，就不可能再阻止 live 事件的传播。类似的，通过 <code>
                <a href="http://api.jquery.com/delegate/">.delegate()</a>
@@ -3786,7 +3786,7 @@ div {height: 30px; width: 150px; background-color: #cfc; }
          </example>
          <category name="Event Object"/>
          <category name="Version 1.3"/>
-         <note type="additional">因为 <code><a href="http://api.jquery.com/live">
+         <note type="additional">因为 <code><a href="live.htm">
                .live()</a></code>
              事件一旦被传播到文档顶部，就不可能再阻止 live 事件的传播。类似的，通过 <code>
                <a href="http://api.jquery.com/delegate/">.delegate()</a>
@@ -3850,7 +3850,7 @@ $("button").click(function(event) {
          </example>
          <category name="Event Object"/>
          <category name="Version 1.0"/>
-         <note type="additional">因为 <code><a href="http://api.jquery.com/live">
+         <note type="additional">因为 <code><a href="live.htm">
                .live()</a></code>
              事件一旦被传播到文档顶部，就不可能再阻止 live 事件的传播。类似的，通过 <code>
                <a href="http://api.jquery.com/delegate/">.delegate()</a>
@@ -4852,7 +4852,7 @@ div.newcolor { background:blue; }
             </argument>
          </signature>
          <longdesc>
-            <p>从 jQuery 1.4 开始，这个方法既检测对象本身的属性，也检测从原型继承过来的属性(因为没有使用 hasOwnProperty)。该方法的参数应该是一个普通的 JavaScript <code>Object</code>，如果传入其它类型的对象（如 DOM 元素，基本类型 string/number, 或 宿主对象（host objects））可能会在跨浏览器时返回不一致的结果。要判断哪些对象是普通的 JavaScript 对象，请使用 <code><a href="http://api.jquery.com/jQuery.isPlainObject">
+            <p>从 jQuery 1.4 开始，这个方法既检测对象本身的属性，也检测从原型继承过来的属性(因为没有使用 hasOwnProperty)。该方法的参数应该是一个普通的 JavaScript <code>Object</code>，如果传入其它类型的对象（如 DOM 元素，基本类型 string/number, 或 宿主对象（host objects））可能会在跨浏览器时返回不一致的结果。要判断哪些对象是普通的 JavaScript 对象，请使用 <code><a href="jQuery.isPlainObject.htm">
                   $.isPlainObject()
                </a></code> 方法。
             </p>
@@ -10095,7 +10095,7 @@ $(document).on("click", "a.offsite", function(){ alert("Goodbye!"); });        /
     <li>Apply the CSS style <code>cursor:pointer</code> to the element that needs to bubble clicks (or a parent including <code>document.documentElement</code>). Note however, this will disable copy\paste on the element and cause it to be highlighted when touched.</li>
 </ol>
 </li>
-	       <li>Calling <code><a href="http://api.jquery.com/event.stopPropagation">
+	       <li>Calling <code><a href="event.stopPropagation.htm">
                      event.stopPropagation()</a></code>
                    in the event handler is ineffective in stopping event handlers attached lower in the document; the event has already propagated to <code>document</code>.</li>
                <li>The <code>.live()</code> method interacts with other event methods in ways that can be surprising, e.g., <code>$(document).unbind("click")</code> removes all click handlers attached by any call to <code>.live()</code>!</li>
@@ -10434,7 +10434,7 @@ pass:"bar"
                <desc>A selector string to filter the descendants of the selected elements that will call the handler. If the selector is null or omitted, the handler is always called when it reaches the selected element.</desc>
             </argument>
             <argument name="data" type="Anything" optional="true">
-               <desc>Data to be passed to the handler in <code><a href="http://api.jquery.com/event.data">
+               <desc>Data to be passed to the handler in <code><a href="event.data.htm">
                      event.data</a></code>
                    when an event occurs.</desc>
             </argument>
@@ -10980,9 +10980,9 @@ alert( $(this).text() );
             </argument>
          </signature>
          <longdesc>
-            <p>Event handlers attached with <code>.bind()</code> can be removed with <code>.unbind()</code>. (As of jQuery 1.7, the <code><a href="http://api.jquery.com/on">
+            <p>Event handlers attached with <code>.bind()</code> can be removed with <code>.unbind()</code>. (As of jQuery 1.7, the <code><a href="on.htm">
                   .on()</a></code>
-                and <code><a href="http://api.jquery.com/off">
+                and <code><a href="off.htm">
                   .off()</a></code>
                 methods are preferred to attach and remove event handlers on elements.) In the simplest case, with no arguments, <code>.unbind()</code> removes all handlers attached to the elements:</p>
             <pre>$('#foo').unbind();</pre>
@@ -11116,11 +11116,11 @@ $("p").unbind("click", foo); // ... foo will no longer be called.</code>
             </argument>
          </signature>
          <longdesc>
-            <p>As of jQuery 1.7, the <code><a href="http://api.jquery.com/on">
+            <p>As of jQuery 1.7, the <code><a href="on.htm">
                   .on()</a></code>
-                method is the preferred method for attaching event handlers to a document. For earlier versions, the <code>.bind()</code> method is used for attaching an event handler directly to elements. Handlers are attached to the currently selected elements in the jQuery object, so those elements <em>must exist</em> at the point the call to <code>.bind()</code> occurs. For more flexible event binding, see the discussion of event delegation in <code><a href="http://api.jquery.com/on">
+                method is the preferred method for attaching event handlers to a document. For earlier versions, the <code>.bind()</code> method is used for attaching an event handler directly to elements. Handlers are attached to the currently selected elements in the jQuery object, so those elements <em>must exist</em> at the point the call to <code>.bind()</code> occurs. For more flexible event binding, see the discussion of event delegation in <code><a href="on.htm">
                   .on()</a></code>
-                or <code><a href="http://api.jquery.com/delegate">
+                or <code><a href="delegate.htm">
                   .delegate()</a></code>
                .</p>
 
@@ -12379,10 +12379,10 @@ div {
          </example>
          <category name="Custom"/>
          <category name="Version 1.0"/>
-         <note type="additional">所有的 jQuery 动画, 包括 <code>.animate()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="http://api.jquery.com/jquery.fx.off">jQuery.fx.off</a> 来获得更多信息。</note>
+         <note type="additional">所有的 jQuery 动画, 包括 <code>.animate()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="jquery.fx.off.htm">jQuery.fx.off</a> 来获得更多信息。</note>
          <note type="additional"><del>由于 <code><a  href="https://developer.mozilla.org/en/DOM/window.mozRequestAnimationFrame">
                requestAnimationFrame()
-            </a></code> 特性的原因，绝对不要在 <code>setInterval</code> 或 <code>setTimeout</code> 方法中设置动画队列。 为了保护CPU资源, 支持 <code>requestAnimationFrame</code> 的浏览器在当前窗口或标签失去焦点时，是不更新动画的。如果你通过 <code>setInterval</code> 或 <code>setTimeout</code> 方法在动画暂停时，持续向队列里添加动画，那么在窗口或标签重新获得焦点时，所有在队列中的动画都会被播放。 为了避免这个潜在的问题,可以在循环时,利用最后一个动画的回调函数，或者给元素添加 <code><a href="http://api.jquery.com/queue">
+            </a></code> 特性的原因，绝对不要在 <code>setInterval</code> 或 <code>setTimeout</code> 方法中设置动画队列。 为了保护CPU资源, 支持 <code>requestAnimationFrame</code> 的浏览器在当前窗口或标签失去焦点时，是不更新动画的。如果你通过 <code>setInterval</code> 或 <code>setTimeout</code> 方法在动画暂停时，持续向队列里添加动画，那么在窗口或标签重新获得焦点时，所有在队列中的动画都会被播放。 为了避免这个潜在的问题,可以在循环时,利用最后一个动画的回调函数，或者给元素添加 <code><a href="queue.htm">
                .queue()
             </a></code> 方法来避免这个问题，实现动画的继续播放。
 </del></note>
@@ -12629,10 +12629,10 @@ div { background:blue; }
          <category name="Fading"/>
          <category name="Version 1.0"/>
          <category name="Version 1.4.3"/>
-         <note type="additional">所有的 jQuery 动画, 包括 <code>.fadeTo()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="http://api.jquery.com/jquery.fx.off">jQuery.fx.off</a> 来获得更多信息。</note>
+         <note type="additional">所有的 jQuery 动画, 包括 <code>.fadeTo()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="jquery.fx.off.htm">jQuery.fx.off</a> 来获得更多信息。</note>
          <note type="additional"><del>由于 <code><a  href="https://developer.mozilla.org/en/DOM/window.mozRequestAnimationFrame">
                requestAnimationFrame()
-            </a></code> 特性的原因，绝对不要在 <code>setInterval</code> 或 <code>setTimeout</code> 方法中设置动画队列。 为了保护CPU资源, 支持 <code>requestAnimationFrame</code> 的浏览器在当前窗口或标签失去焦点时，是不更新动画的。如果你通过 <code>setInterval</code> 或 <code>setTimeout</code> 方法在动画暂停时，持续向队列里添加动画，那么在窗口或标签重新获得焦点时，所有在队列中的动画都会被播放。 为了避免这个潜在的问题,可以在循环时,利用最后一个动画的回调函数，或者给元素添加 <code><a href="http://api.jquery.com/queue">
+            </a></code> 特性的原因，绝对不要在 <code>setInterval</code> 或 <code>setTimeout</code> 方法中设置动画队列。 为了保护CPU资源, 支持 <code>requestAnimationFrame</code> 的浏览器在当前窗口或标签失去焦点时，是不更新动画的。如果你通过 <code>setInterval</code> 或 <code>setTimeout</code> 方法在动画暂停时，持续向队列里添加动画，那么在窗口或标签重新获得焦点时，所有在队列中的动画都会被播放。 为了避免这个潜在的问题,可以在循环时,利用最后一个动画的回调函数，或者给元素添加 <code><a href="queue.htm">
                .queue()
             </a></code> 方法来避免这个问题，实现动画的继续播放。
 </del></note>
@@ -12682,7 +12682,7 @@ div { background:blue; }
             </p>
             <blockquote>
                <p>
-                  <strong>注意: </strong>为了避免不必要的 DOM 操作，<code>.fadeOut()</code> 不会作用于一个已经被认为是隐藏的元素。 至于哪些元素被 jQuery 认为是隐藏的，请参阅 <a href="http://api.jquery.com/hidden-selector"> :hidden Selector</a>。</p>
+                  <strong>注意: </strong>为了避免不必要的 DOM 操作，<code>.fadeOut()</code> 不会作用于一个已经被认为是隐藏的元素。 至于哪些元素被 jQuery 认为是隐藏的，请参阅 <a href="hidden-selector.htm"> :hidden Selector</a>。</p>
             </blockquote>
             <h4 id="easing">缓冲函数</h4>
             <p>
@@ -12779,10 +12779,10 @@ button { float:left; margin:5px 10px 5px 0; }
          <category name="Fading"/>
          <category name="Version 1.0"/>
          <category name="Version 1.4.3"/>
-         <note type="additional">所有的 jQuery 动画, 包括 <code>.fadeOut()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="http://api.jquery.com/jquery.fx.off">jQuery.fx.off</a> 来获得更多信息。</note>
+         <note type="additional">所有的 jQuery 动画, 包括 <code>.fadeOut()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="jquery.fx.off.htm">jQuery.fx.off</a> 来获得更多信息。</note>
          <note type="additional"><del>由于 <code><a  href="https://developer.mozilla.org/en/DOM/window.mozRequestAnimationFrame">
                requestAnimationFrame()
-            </a></code> 特性的原因，绝对不要在 <code>setInterval</code> 或 <code>setTimeout</code> 方法中设置动画队列。 为了保护CPU资源, 支持 <code>requestAnimationFrame</code> 的浏览器在当前窗口或标签失去焦点时，是不更新动画的。如果你通过 <code>setInterval</code> 或 <code>setTimeout</code> 方法在动画暂停时，持续向队列里添加动画，那么在窗口或标签重新获得焦点时，所有在队列中的动画都会被播放。 为了避免这个潜在的问题,可以在循环时,利用最后一个动画的回调函数，或者给元素添加 <code><a href="http://api.jquery.com/queue">
+            </a></code> 特性的原因，绝对不要在 <code>setInterval</code> 或 <code>setTimeout</code> 方法中设置动画队列。 为了保护CPU资源, 支持 <code>requestAnimationFrame</code> 的浏览器在当前窗口或标签失去焦点时，是不更新动画的。如果你通过 <code>setInterval</code> 或 <code>setTimeout</code> 方法在动画暂停时，持续向队列里添加动画，那么在窗口或标签重新获得焦点时，所有在队列中的动画都会被播放。 为了避免这个潜在的问题,可以在循环时,利用最后一个动画的回调函数，或者给元素添加 <code><a href="queue.htm">
                .queue()
             </a></code> 方法来避免这个问题，实现动画的继续播放。
 </del></note>
@@ -13000,10 +13000,10 @@ $("span").click(function () {
          <category name="Fading"/>
          <category name="Version 1.0"/>
          <category name="Version 1.4.3"/>
-         <note type="additional">所有的 jQuery 动画, 包括 <code>.fadeIn()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="http://api.jquery.com/jquery.fx.off">jQuery.fx.off</a> 来获得更多信息。</note>
+         <note type="additional">所有的 jQuery 动画, 包括 <code>.fadeIn()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="jquery.fx.off.htm">jQuery.fx.off</a> 来获得更多信息。</note>
          <note type="additional"><del>由于 <code><a  href="https://developer.mozilla.org/en/DOM/window.mozRequestAnimationFrame">
                requestAnimationFrame()
-            </a></code> 特性的原因，绝对不要在 <code>setInterval</code> 或 <code>setTimeout</code> 方法中设置动画队列。 为了保护CPU资源, 支持 <code>requestAnimationFrame</code> 的浏览器在当前窗口或标签失去焦点时，是不更新动画的。如果你通过 <code>setInterval</code> 或 <code>setTimeout</code> 方法在动画暂停时，持续向队列里添加动画，那么在窗口或标签重新获得焦点时，所有在队列中的动画都会被播放。 为了避免这个潜在的问题,可以在循环时,利用最后一个动画的回调函数，或者给元素添加 <code><a href="http://api.jquery.com/queue">
+            </a></code> 特性的原因，绝对不要在 <code>setInterval</code> 或 <code>setTimeout</code> 方法中设置动画队列。 为了保护CPU资源, 支持 <code>requestAnimationFrame</code> 的浏览器在当前窗口或标签失去焦点时，是不更新动画的。如果你通过 <code>setInterval</code> 或 <code>setTimeout</code> 方法在动画暂停时，持续向队列里添加动画，那么在窗口或标签重新获得焦点时，所有在队列中的动画都会被播放。 为了避免这个潜在的问题,可以在循环时,利用最后一个动画的回调函数，或者给元素添加 <code><a href="queue.htm">
                .queue()
             </a></code> 方法来避免这个问题，实现动画的继续播放。
 </del></note>
@@ -13262,10 +13262,10 @@ $("span").click(function () {
          <category name="Sliding"/>
          <category name="Version 1.0"/>
          <category name="Version 1.4.3"/>
-         <note type="additional">所有的 jQuery 动画, 包括 <code>.slideToggle()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="http://api.jquery.com/jquery.fx.off">jQuery.fx.off</a> 来获得更多信息。</note>
+         <note type="additional">所有的 jQuery 动画, 包括 <code>.slideToggle()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="jquery.fx.off.htm">jQuery.fx.off</a> 来获得更多信息。</note>
          <note type="additional"><del>由于 <code><a  href="https://developer.mozilla.org/en/DOM/window.mozRequestAnimationFrame">
                requestAnimationFrame()
-            </a></code> 特性的原因，绝对不要在 <code>setInterval</code> 或 <code>setTimeout</code> 方法中设置动画队列。 为了保护CPU资源, 支持 <code>requestAnimationFrame</code> 的浏览器在当前窗口或标签失去焦点时，是不更新动画的。如果你通过 <code>setInterval</code> 或 <code>setTimeout</code> 方法在动画暂停时，持续向队列里添加动画，那么在窗口或标签重新获得焦点时，所有在队列中的动画都会被播放。 为了避免这个潜在的问题,可以在循环时,利用最后一个动画的回调函数，或者给元素添加 <code><a href="http://api.jquery.com/queue">
+            </a></code> 特性的原因，绝对不要在 <code>setInterval</code> 或 <code>setTimeout</code> 方法中设置动画队列。 为了保护CPU资源, 支持 <code>requestAnimationFrame</code> 的浏览器在当前窗口或标签失去焦点时，是不更新动画的。如果你通过 <code>setInterval</code> 或 <code>setTimeout</code> 方法在动画暂停时，持续向队列里添加动画，那么在窗口或标签重新获得焦点时，所有在队列中的动画都会被播放。 为了避免这个潜在的问题,可以在循环时,利用最后一个动画的回调函数，或者给元素添加 <code><a href="queue.htm">
                .queue()
             </a></code> 方法来避免这个问题，实现动画的继续播放。
 </del></note>
@@ -13523,10 +13523,10 @@ $("span").click(function () {
          <category name="Sliding"/>
          <category name="Version 1.0"/>
          <category name="Version 1.4.3"/>
-         <note type="additional">所有的 jQuery 动画, 包括 <code>.slideUp()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="http://api.jquery.com/jquery.fx.off">jQuery.fx.off</a> 来获得更多信息。</note>
+         <note type="additional">所有的 jQuery 动画, 包括 <code>.slideUp()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="jquery.fx.off.htm">jQuery.fx.off</a> 来获得更多信息。</note>
          <note type="additional"><del>由于 <code><a  href="https://developer.mozilla.org/en/DOM/window.mozRequestAnimationFrame">
                requestAnimationFrame()
-            </a></code> 特性的原因，绝对不要在 <code>setInterval</code> 或 <code>setTimeout</code> 方法中设置动画队列。 为了保护CPU资源, 支持 <code>requestAnimationFrame</code> 的浏览器在当前窗口或标签失去焦点时，是不更新动画的。如果你通过 <code>setInterval</code> 或 <code>setTimeout</code> 方法在动画暂停时，持续向队列里添加动画，那么在窗口或标签重新获得焦点时，所有在队列中的动画都会被播放。 为了避免这个潜在的问题,可以在循环时,利用最后一个动画的回调函数，或者给元素添加 <code><a href="http://api.jquery.com/queue">
+            </a></code> 特性的原因，绝对不要在 <code>setInterval</code> 或 <code>setTimeout</code> 方法中设置动画队列。 为了保护CPU资源, 支持 <code>requestAnimationFrame</code> 的浏览器在当前窗口或标签失去焦点时，是不更新动画的。如果你通过 <code>setInterval</code> 或 <code>setTimeout</code> 方法在动画暂停时，持续向队列里添加动画，那么在窗口或标签重新获得焦点时，所有在队列中的动画都会被播放。 为了避免这个潜在的问题,可以在循环时,利用最后一个动画的回调函数，或者给元素添加 <code><a href="queue.htm">
                .queue()
             </a></code> 方法来避免这个问题，实现动画的继续播放。
 </del></note>
@@ -13749,10 +13749,10 @@ margin:10px; }
          <category name="Sliding"/>
          <category name="Version 1.0"/>
          <category name="Version 1.4.3"/>
-         <note type="additional">所有的 jQuery 动画, 包括 <code>.slideDown()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="http://api.jquery.com/jquery.fx.off">jQuery.fx.off</a> 来获得更多信息。</note>
+         <note type="additional">所有的 jQuery 动画, 包括 <code>.slideDown()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="jquery.fx.off.htm">jQuery.fx.off</a> 来获得更多信息。</note>
          <note type="additional"><del>由于 <code><a  href="https://developer.mozilla.org/en/DOM/window.mozRequestAnimationFrame">
                requestAnimationFrame()
-            </a></code> 特性的原因，绝对不要在 <code>setInterval</code> 或 <code>setTimeout</code> 方法中设置动画队列。 为了保护CPU资源, 支持 <code>requestAnimationFrame</code> 的浏览器在当前窗口或标签失去焦点时，是不更新动画的。如果你通过 <code>setInterval</code> 或 <code>setTimeout</code> 方法在动画暂停时，持续向队列里添加动画，那么在窗口或标签重新获得焦点时，所有在队列中的动画都会被播放。 为了避免这个潜在的问题,可以在循环时,利用最后一个动画的回调函数，或者给元素添加 <code><a href="http://api.jquery.com/queue">
+            </a></code> 特性的原因，绝对不要在 <code>setInterval</code> 或 <code>setTimeout</code> 方法中设置动画队列。 为了保护CPU资源, 支持 <code>requestAnimationFrame</code> 的浏览器在当前窗口或标签失去焦点时，是不更新动画的。如果你通过 <code>setInterval</code> 或 <code>setTimeout</code> 方法在动画暂停时，持续向队列里添加动画，那么在窗口或标签重新获得焦点时，所有在队列中的动画都会被播放。 为了避免这个潜在的问题,可以在循环时,利用最后一个动画的回调函数，或者给元素添加 <code><a href="queue.htm">
                .queue()
             </a></code> 方法来避免这个问题，实现动画的继续播放。
 </del></note>
@@ -14964,7 +14964,7 @@ request.fail(function(jqXHR, textStatus) {
             </argument>
          </signature>
          <longdesc>            
-                 <p>Given a jQuery object that represents a set of DOM elements, the <code>.children()</code> method allows us to search through the children of these elements in the DOM tree and construct a new jQuery object from the matching elements. The <code>.children()</code> method differs from <code><a href="http://api.jquery.com/find/">.find()</a></code> in that <code>.children()</code> only travels a single level down the DOM tree while <code>.find()</code> can traverse down multiple levels to select descendant elements (grandchildren, etc.) as well. Note also that like most jQuery methods, <code>.children()</code> does not return text nodes; to get <em>all</em> children including text and comment nodes, use <code><a href="http://api.jquery.com/contents">.contents()</a></code>.</p>
+                 <p>Given a jQuery object that represents a set of DOM elements, the <code>.children()</code> method allows us to search through the children of these elements in the DOM tree and construct a new jQuery object from the matching elements. The <code>.children()</code> method differs from <code><a href="http://api.jquery.com/find/">.find()</a></code> in that <code>.children()</code> only travels a single level down the DOM tree while <code>.find()</code> can traverse down multiple levels to select descendant elements (grandchildren, etc.) as well. Note also that like most jQuery methods, <code>.children()</code> does not return text nodes; to get <em>all</em> children including text and comment nodes, use <code><a href="contents.htm">.contents()</a></code>.</p>
 	         <p>The <code>.children()</code> method optionally accepts a selector expression of the same type that we can pass to the <code>$()</code> function. If the selector is supplied, the elements will be filtered by testing whether they match it.</p>
 		 <p>Consider a page with a basic nested list on it:</p>
 		 <pre>
@@ -15146,9 +15146,9 @@ Using an HTML snippet as the <code>.add()</code> method's argument (as in the th
             <p>Although the new paragraph has been created and its background color changed, it still does not appear on the page. To place it on the page, we could add one of the insertion methods to the chain.</p>
             <p>As of jQuery 1.4 the results from .add() will always be returned in document order (rather than a simple concatenation).</p>
             <p>
-               <strong>注意:</strong> To reverse the <code>.add()</code> you can use <code><a href="http://api.jquery.com/not">
+               <strong>注意:</strong> To reverse the <code>.add()</code> you can use <code><a href="not.htm">
                   .not( elements | selector )</a></code>
-                to remove elements from the jQuery results, or <code><a href="http://api.jquery.com/end">
+                to remove elements from the jQuery results, or <code><a href="end.htm">
                   .end()</a></code>
                 to return to the selection before you added.</p>
          </longdesc>
@@ -15521,7 +15521,7 @@ $("p").toggle( flip++ % 2 == 0 );
          <category name="Version 1.0"/>
          <category name="Version 1.3"/>
          <category name="Version 1.4.3"/>
-         <note type="additional">所有的 jQuery 动画, 包括 <code>.toggle()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="http://api.jquery.com/jquery.fx.off">jQuery.fx.off</a> 来获得更多信息。</note>
+         <note type="additional">所有的 jQuery 动画, 包括 <code>.toggle()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="jquery.fx.off.htm">jQuery.fx.off</a> 来获得更多信息。</note>
       </entry>
       <entry type="method" name="innerWidth" return="Integer">
          <desc>取得匹配集合中第一个元素经过计算的宽度，包括填充，但是不包括边框。</desc>
@@ -15819,7 +15819,7 @@ $('#clickme').click(function() {
          <category name="Basics"/>
          <category name="Version 1.0"/>
          <category name="Version 1.4.3"/>
-         <note type="additional">所有的 jQuery 动画, 包括 <code>.hide()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="http://api.jquery.com/jquery.fx.off">jQuery.fx.off</a> 来获得更多信息。</note>
+         <note type="additional">所有的 jQuery 动画, 包括 <code>.hide()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="jquery.fx.off.htm">jQuery.fx.off</a> 来获得更多信息。</note>
       </entry>
       <entry type="method" name="width" return="Integer">
          <desc>取得匹配集合中第一个元素经过计算后的宽度。</desc>
@@ -16162,7 +16162,7 @@ $("form").submit(function () {
          <category name="Basics"/>
          <category name="Version 1.0"/>
          <category name="Version 1.4.3"/>
-         <note type="additional">所有的 jQuery 动画, 包括 <code>.show()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="http://api.jquery.com/jquery.fx.off">jQuery.fx.off</a> 来获得更多信息。</note>
+         <note type="additional">所有的 jQuery 动画, 包括 <code>.show()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="jquery.fx.off.htm">jQuery.fx.off</a> 来获得更多信息。</note>
       </entry>
       <entry type="method" name="scrollLeft" return="Integer">
          <desc>得到第一个匹配元素的水平滚动条的位置。</desc>
