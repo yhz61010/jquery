@@ -39,13 +39,13 @@
       alert($(this).text());
     });
     $('#foo').trigger('click');</pre>
-         <p>As of jQuery 1.3, <code>.trigger()</code>ed events bubble up the DOM tree; an event handler can stop the bubbling by returning <code>false</code> from the handler or calling the <code><a href="http://api.jquery.com/event.stopPropagation/">
+         <p>As of jQuery 1.3, <code>.trigger()</code>ed events bubble up the DOM tree; an event handler can stop the bubbling by returning <code>false</code> from the handler or calling the <code><a href="event.stopPropagation.htm">
                   .stopPropagation()</a></code>
             method on the event object passed into the event. Although <code>.trigger()</code> simulates an event activation, complete with a synthesized event object, it does not perfectly replicate a naturally-occurring
             event.
          </p>
          
-         <p>To trigger handlers bound via jQuery without also triggering the native event, use <code><a href="http://api.jquery.com/triggerHandler/">
+         <p>To trigger handlers bound via jQuery without also triggering the native event, use <code><a href="triggerHandler.htm">
                   .triggerHandler()</a></code>
             instead. 
          </p>

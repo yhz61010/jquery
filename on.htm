@@ -19,7 +19,7 @@
             </div>
             <div class="arguement"><strong>data</strong>
                								(Anything)
-               								 可选参数，Data to be passed to the handler in <code><a href="http://api.jquery.com/event.data/">event.data</a></code> when an event is triggered.
+               								 可选参数，Data to be passed to the handler in <code><a href="event.data.htm">event.data</a></code> when an event is triggered.
             </div>
             <div class="arguement"><strong>handler(eventObject)</strong>
                								(Function)
@@ -42,7 +42,7 @@
             </div>
             <div class="arguement"><strong>data</strong>
                								(Anything)
-               								 可选参数，Data to be passed to the handler in <code><a href="http://api.jquery.com/event.data/">event.data</a></code> when an event occurs.
+               								 可选参数，Data to be passed to the handler in <code><a href="event.data.htm">event.data</a></code> when an event occurs.
             </div>
          </li>
       </ul>
@@ -50,13 +50,13 @@
          
          
          <p><code>.on()</code> method attaches event handlers to the currently selected set of elements in the jQuery object. As of jQuery 1.7, the <code>.on()</code> method provides all functionality required for attaching event handlers. For help in converting from older jQuery event methods,
-            see <code><a href="http://api.jquery.com/bind/">.bind()</a></code>,  <code><a href="http://api.jquery.com/delegate/">.delegate()</a></code>, and <code><a href="http://api.jquery.com/live/">.live()</a></code>. To remove events bound with <code>.on()</code>, see <code><a href="http://api.jquery.com/off/">.off()</a></code>. To attach an event that runs only once and then removes itself, see <code><a href="http://api.jquery.com/one/">.one()</a></code></p>
+            see <code><a href="bind.htm">.bind()</a></code>,  <code><a href="delegate.htm">.delegate()</a></code>, and <code><a href="live.htm">.live()</a></code>. To remove events bound with <code>.on()</code>, see <code><a href="off.htm">.off()</a></code>. To attach an event that runs only once and then removes itself, see <code><a href="one.htm">.one()</a></code></p>
          
          
          <h2 id="event-names">Event names and namespaces</h2>
          
          
-         <p>Any event names can be used for the <code>events</code> argument. jQuery will pass through the browser's standard JavaScript event types, calling the <code>handler</code> function when the browser generates events due to user actions such as <code>click</code>. In addition, the <code><a href="http://api.jquery.com/trigger/">.trigger()</a></code> method can trigger both standard browser event names and custom event names to call attached handlers.
+         <p>Any event names can be used for the <code>events</code> argument. jQuery will pass through the browser's standard JavaScript event types, calling the <code>handler</code> function when the browser generates events due to user actions such as <code>click</code>. In addition, the <code><a href="trigger.htm">.trigger()</a></code> method can trigger both standard browser event names and custom event names to call attached handlers.
          </p>
          
          
@@ -131,7 +131,7 @@ function notify() { alert("clicked"); }
 $("button").on("click", notify);
 </pre>
          
-         <p>When the browser triggers an event or other JavaScript calls jQuery's <code>.trigger()</code> method, jQuery passes the handler an <code><a href="http://api.jquery.com/category/event-object/">event object</a></code> it can use to analyze and change the status of the event. This object is a <em>normalized subset</em> of data provided by the browser; the browser's unmodified native event object is available in <code>event.originalEvent</code>. For example, <code><a href="http://api.jquery.com/event.type">event.type</a></code> contains the event name (e.g., "resize") and <code><a href="http://api.jquery.com/event.target">event.target</a></code> indicates the deepest (innermost) element where the event occurred.
+         <p>When the browser triggers an event or other JavaScript calls jQuery's <code>.trigger()</code> method, jQuery passes the handler an <code><a href="http://api.jquery.com/category/event-object/">event object</a></code> it can use to analyze and change the status of the event. This object is a <em>normalized subset</em> of data provided by the browser; the browser's unmodified native event object is available in <code>event.originalEvent</code>. For example, <code><a href="event.type.htm">event.type</a></code> contains the event name (e.g., "resize") and <code><a href="event.target.htm">event.target</a></code> indicates the deepest (innermost) element where the event occurred.
          </p>
          
          
@@ -160,7 +160,7 @@ $("button").on("click", notify);
          <h2 id="passing-data">Passing data to the handler</h2>
          
          
-         <p>If a <code>data</code> argument is provided to <code>.on()</code> and is not <code>null</code> or <code>undefined</code>, it is passed to the handler in the <code><a href="http://api.jquery.com/event.data/">event.data</a></code> property each time an event is triggered. The <code>data</code> argument can be any type, but if a string is used the <code>selector</code> must either be provided or explicitly passed as <code>null</code> so that the data is not mistaken for a selector. Best practice is to use an object (map) so that multiple values can be passed
+         <p>If a <code>data</code> argument is provided to <code>.on()</code> and is not <code>null</code> or <code>undefined</code>, it is passed to the handler in the <code><a href="event.data.htm">event.data</a></code> property each time an event is triggered. The <code>data</code> argument can be any type, but if a string is used the <code>selector</code> must either be provided or explicitly passed as <code>null</code> so that the data is not mistaken for a selector. Best practice is to use an object (map) so that multiple values can be passed
             as properties.
          </p>
          
@@ -175,7 +175,7 @@ $("button").on("click", { name: "Addy" }, greet);
          <p>The above code will generate two different alerts when the button is clicked.</p>
          
          
-         <p>As an alternative or in addition to the <code>data</code> argument provided to the <code>.on()</code> method, you can also pass data to an event handler using a second argument to <a href="http://api.jquery.com/trigger/">.trigger()</a> or <a href="http://api.jquery.com/triggerHandler/">.triggerHandler()</a>.
+         <p>As an alternative or in addition to the <code>data</code> argument provided to the <code>.on()</code> method, you can also pass data to an event handler using a second argument to <a href="trigger.htm">.trigger()</a> or <a href="triggerHandler.htm">.triggerHandler()</a>.
          </p>
          
          
@@ -204,11 +204,11 @@ $("button").on("click", { name: "Addy" }, greet);
          <h2 id="additional-notes">Additional notes</h2>
          
          
-         <p>There are shorthand methods for some events such as <code><a href="http://api.jquery.com/click/">.click()</a></code> that can be used to attach or trigger event handlers. For a complete list of shorthand methods, see the <a href="http://api.jquery.com/category/events/">events category</a>.
+         <p>There are shorthand methods for some events such as <code><a href="click.htm">.click()</a></code> that can be used to attach or trigger event handlers. For a complete list of shorthand methods, see the <a href="http://api.jquery.com/category/events/">events category</a>.
          </p>
          
          
-         <p>Although strongly discouraged for new code, you may see the pseudo-event-name <code>"hover"</code> used as a shorthand for the string <code>"mouseenter mouseleave"</code>. It attaches a <em>single event handler</em> for those two events, and the handler must examine <code>event.type</code> to determine whether the event is <code>mouseenter</code> or <code>mouseleave</code>. Do not confuse the "hover" pseudo-event-name with the <a href="http://api.jquery.com/hover/"><code>.hover()</code></a> method, which accepts <em>one or two</em> functions.
+         <p>Although strongly discouraged for new code, you may see the pseudo-event-name <code>"hover"</code> used as a shorthand for the string <code>"mouseenter mouseleave"</code>. It attaches a <em>single event handler</em> for those two events, and the handler must examine <code>event.type</code> to determine whether the event is <code>mouseenter</code> or <code>mouseleave</code>. Do not confuse the "hover" pseudo-event-name with the <a href="hover.htm"><code>.hover()</code></a> method, which accepts <em>one or two</em> functions.
          </p>
          
          

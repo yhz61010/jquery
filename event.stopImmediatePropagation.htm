@@ -23,12 +23,12 @@
       <h3 id="notes-0">补充说明:</h3>
       <div class="longdesc">
          <ul>
-            <li>因为 <code><a href="http://api.jquery.com/live">
+            <li>因为 <code><a href="live.htm">
                      .live()</a></code>
                事件一旦被传播到文档顶部，就不可能再阻止 live 事件的传播。类似的，通过 <code>
-                  <a href="http://api.jquery.com/delegate/">.delegate()</a>
+                  <a href="delegate.htm">.delegate()</a>
                   </code> 执行的事件，也会传播到调用它们的元素上。同时，任何在 DOM 树中，比这些元素低的元素上绑定的相同事件，在 <code>.delegate()</code> 事件被调用的时候，也会被触发。因此，如果要在事件中阻止委托事件被触发，可以通过调用 <code>
-                  <a href="http://api.jquery.com/event.stopPropagation/">event.stopPropagation()</a>
+                  <a href="event.stopPropagation.htm">event.stopPropagation()</a>
                   </code> 方法，或返回 <code>false</code> 的方式来实现。
             </li>
          </ul>

@@ -42,7 +42,7 @@
          </p>
          
          
-         <p>无论在哪一个 Ajax 请求将要被发送前，所有的 <code>ajaxSend</code> 处理函数都会被执行。如果有时必须区分出不同的请求，我们可以使用传递给事件处理函数的参数来识别不同的请求。每次 <code>ajaxSend</code> 事件处理函数执行时，都会传递一个事件对象，一个 <code>jqXHR</code> 对象(在 jQuery 1.5 之前, 是 <code><abbr title="XMLHttpRequest">XHR</abbr></code> 对象)，以及一个在请求创建时用的 <a href="http://api.jquery.com/jQuery.ajax/">参数对象</a>。<del>其中 settings 参数对象就是调用 Ajax 请求时，传递给 $.ajax 方法的 settings 对象(有时候是在 jQuery 内部传递的，比如用 load 方法时，jQuery 内部也会调用 $.ajax 方法，并且构造并传递一个
+         <p>无论在哪一个 Ajax 请求将要被发送前，所有的 <code>ajaxSend</code> 处理函数都会被执行。如果有时必须区分出不同的请求，我们可以使用传递给事件处理函数的参数来识别不同的请求。每次 <code>ajaxSend</code> 事件处理函数执行时，都会传递一个事件对象，一个 <code>jqXHR</code> 对象(在 jQuery 1.5 之前, 是 <code><abbr title="XMLHttpRequest">XHR</abbr></code> 对象)，以及一个在请求创建时用的 <a href="jQuery.ajax.htm">参数对象</a>。<del>其中 settings 参数对象就是调用 Ajax 请求时，传递给 $.ajax 方法的 settings 对象(有时候是在 jQuery 内部传递的，比如用 load 方法时，jQuery 内部也会调用 $.ajax 方法，并且构造并传递一个
                settings 参数)。通过 settings 对象，我们就可以用来确定这是哪一个请求。</del>比如说，我们可以限定某个回调函数，仅仅处理某个特定的 URL：
          </p>
          <pre>$('.log').ajaxSend(function(e, jqxhr, settings) {

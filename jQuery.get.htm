@@ -56,7 +56,7 @@
          
          <p>
             <strong>从 jQuery 1.5 开始</strong>,所有 jQuery 的 Ajax 方法都返回一个 <code>XMLHTTPRequest</code> 对象的超集。由 <code>$.get()</code> 方法返回的 jQuery XHR 对象（也可叫做 "jqXHR") 实现了 Promise 接口，使它拥有 Promise 的所有属性，方法和行为。(详见 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a> 来获得更多信息)。为了让回调函数的名字统一，便于在 <code>
-               <a href="http://api.jquery.com/jQuery.ajax/">$.ajax()</a>
+               <a href="jQuery.ajax.htm">$.ajax()</a>
                </code> 里使用, jQuery XHR 对象（也可叫做 "jqXHR")同样也提供了 <code>.error()</code>, <code>.success()</code> 和 <code>.complete()</code> 方法。这些方法都带有一个参数，该参数是一个函数，此函数在 <code>$.ajax()</code> 请求结束时被调用,并且这个函数接收的参数，与调用 <code>$.ajax()</code> 函数时的参数是一致。
          </p>
          
@@ -82,7 +82,7 @@
          <ul>
             <li>由于浏览器的安全限制，大多数 "Ajax" 请求都服从 <a title="Same Origin Policy on Wikipedia" href="http://en.wikipedia.org/wiki/Same_origin_policy">同源策略(same origin policy)</a>。即无法从不同的域，子域或协议中正确接收数据。
             </li>
-            <li>如果 jQuery.get() 返回一个错误代码,除非在脚本中调用了全局的 <a href="http://api.jquery.com/ajaxError/">.ajaxError() </a> 方法，否则错误将被忽略。或者利用 jQuery 1.5 中 <code>jqXHR</code> 对象的 <code>.error()</code> 方法进行捕获，<code>jqXHR</code> 对象由 jQuery.get() 返回。
+            <li>如果 jQuery.get() 返回一个错误代码,除非在脚本中调用了全局的 <a href="ajaxError.htm">.ajaxError() </a> 方法，否则错误将被忽略。或者利用 jQuery 1.5 中 <code>jqXHR</code> 对象的 <code>.error()</code> 方法进行捕获，<code>jqXHR</code> 对象由 jQuery.get() 返回。
             </li>
             <li>Script 和 JSONP 请求没有同源策略(same origin policy)的限制。</li>
          </ul>

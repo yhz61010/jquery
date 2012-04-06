@@ -61,8 +61,8 @@
       </ul>
       <div class="longdesc">
          
-         <p>As of jQuery 1.7, <code>.delegate()</code> has been superseded by the <a href="http://api.jquery.com/on">.on()</a> method. For earlier versions, however, it remains the most effective means to use event delegation. More information on event
-            binding and delegation is in the <a href="http://api.jquery.com/on">.on()</a> method. In general, these are the equivalent templates for the two methods:
+         <p>As of jQuery 1.7, <code>.delegate()</code> has been superseded by the <a href="on.htm">.on()</a> method. For earlier versions, however, it remains the most effective means to use event delegation. More information on event
+            binding and delegation is in the <a href="on.htm">.on()</a> method. In general, these are the equivalent templates for the two methods:
          </p>
          <pre>
 $(elements).delegate(<em>selector</em>, <em>events</em>, <em>data</em>, <em>handler</em>);  // jQuery 1.4.3+
@@ -82,7 +82,7 @@ $(elements).on(<em>events</em>, <em>selector</em>, <em>data</em>, <em>handler</e
   $(this).toggleClass("chosen");
 });</pre>
          
-         <p>To remove events attached with <code>delegate()</code>, see  the <a href="http://api.jquery.com/undelegate">.undelegate()</a> method.
+         <p>To remove events attached with <code>delegate()</code>, see  the <a href="undelegate.htm">.undelegate()</a> method.
          </p>
          
          <p>Passing and handling event data works the same way as it does for <code>.on()</code>.
@@ -92,12 +92,12 @@ $(elements).on(<em>events</em>, <em>selector</em>, <em>data</em>, <em>handler</e
       <h3 id="notes-0">补充说明:</h3>
       <div class="longdesc">
          <ul>
-            <li>因为 <code><a href="http://api.jquery.com/live">
+            <li>因为 <code><a href="live.htm">
                      .live()</a></code>
                事件一旦被传播到文档顶部，就不可能再阻止 live 事件的传播。类似的，通过 <code>
-                  <a href="http://api.jquery.com/delegate/">.delegate()</a>
+                  <a href="delegate.htm">.delegate()</a>
                   </code> 执行的事件，也会传播到调用它们的元素上。同时，任何在 DOM 树中，比这些元素低的元素上绑定的相同事件，在 <code>.delegate()</code> 事件被调用的时候，也会被触发。因此，如果要在事件中阻止委托事件被触发，可以通过调用 <code>
-                  <a href="http://api.jquery.com/event.stopPropagation/">event.stopPropagation()</a>
+                  <a href="event.stopPropagation.htm">event.stopPropagation()</a>
                   </code> 方法，或返回 <code>false</code> 的方式来实现。
             </li>
          </ul>

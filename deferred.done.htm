@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Deferred</span>deferred.done(doneCallbacks, <em class="optional">[doneCallbacks]</em>)<br></h2>
    <div class="desc">
-      <p> Add handlers to be called when the Deferred object is resolved. </p>
+      <p>添加延迟对象被受理时执行的处理程序。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.5 新增</span>deferred.done(doneCallbacks, <em class="optional">[doneCallbacks]</em>)
@@ -12,42 +12,40 @@
             <div class="arguement"><strong>doneCallbacks</strong>
                								(Function)
                								
-               A function, or array of functions, that are called when the Deferred is resolved.
+               单个函数或函数数组，当延迟对象被受理时调用。
                
             </div>
             <div class="arguement"><strong>doneCallbacks</strong>
                								(Function)
                								 可选参数，
-               Optional additional functions, or arrays of functions, that are called when the Deferred is resolved.
+               可选的额外的函数或函数数组，当延迟对象被受理时调用。
                
             </div>
          </li>
       </ul>
       <div class="longdesc"> 
          
-         <p><code>deferred.done()</code> method accepts one or more arguments, all of which can be either a single function or an array of functions. When the Deferred
-            is resolved, the doneCallbacks are called. Callbacks are executed in the order they were added. Since <code>deferred.done()</code> returns the deferred object, other methods of the deferred object can be chained to this one, including additional <code>.done()</code> methods. When the Deferred is resolved, doneCallbacks are executed using the arguments provided to the <code><a href="deferred.resolve.htm">
+         <p><code>deferred.done()</code> 方法可以接受一个或多个参数，每个参数既可以是单个函数，也可以是一个函数数组。当延迟对象被受理时，doneCallbacks 就会被调用。回调函数的执行顺序和它们被添加的顺序是一样的。由于 <code>deferred.done()</code> 返回的是延迟对象，所以可以链接其它的延迟对象，包括额外的 <code>.done()</code> 方法。当延迟对象被受理时，doneCallbacks 就会被调用，并且可以使用传递给 <code><a href="deferred.resolve.htm">
                   resolve</a></code>
-            or <code><a href="deferred.resolveWith.htm">
+            或 <code><a href="deferred.resolveWith.htm">
                   resolveWith</a></code>
-            method call in the order they were added. For more information, see the documentation for <a href="/category/deferred-object/">Deferred object</a>.
+            方法的参数，按照它们被添加的顺序。了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>。
          </p>  
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Since the 
+      <p>由于 
          jQuery.get
-         method returns a jqXHR object, which is derived from a Deferred object, we can attach a success callback using the .done()
-         method.
+         方法返回 jqXHR 对象，该对象继承自延迟对象，所以我们可以使用 .done() 方法，添加一个成功时调用的回调函数。
       </p>
       <h5>jQuery 代码:</h5><pre><code>
 $.get("test.php").done(function() { 
   alert("$.get succeeded"); 
 });
 </code></pre><h3>示例:</h3>
-      <p>Resolve a Deferred object when the user clicks a button, triggering a number of callback functions:</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>当用户点击按钮时，受理延迟对象，触发一系列回调函数：</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;script src="jquery.min.js"&gt;&lt;/script&gt;

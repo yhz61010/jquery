@@ -21,17 +21,17 @@
       <div class="longdesc"> 
          
          <p>Normally, only the creator of a Deferred should call this method; you can prevent other code from changing the Deferred's
-            state by returning a restricted Promise object through <code><a href="http://api.jquery.com/deferred.promise/">
+            state by returning a restricted Promise object through <code><a href="deferred.promise.htm">
                   deferred.promise()</a></code>
             .
          </p>
          
-         <p>When the Deferred is rejected, any failCallbacks added by <code><a href="http://api.jquery.com/deferred.then/">
+         <p>When the Deferred is rejected, any failCallbacks added by <code><a href="deferred.then.htm">
                   deferred.then</a></code>
-            or <code><a href="http://api.jquery.com/deferred.fail/">
+            or <code><a href="deferred.fail.htm">
                   deferred.fail</a></code>
             are called. Callbacks are executed in the order they were added. Each callback is passed the <code>args</code> from the <code>deferred.reject()</code> call. Any failCallbacks added after the Deferred enters the rejected state are executed immediately when they are added,
-            using the arguments that were passed to the <code>.reject()</code> call. For more information, see the documentation for <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.
+            using the arguments that were passed to the <code>.reject()</code> call.了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.
          </p>  
          
       </div>

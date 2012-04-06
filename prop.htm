@@ -21,7 +21,7 @@
          </p>
          
          <p>在特定的场合，要注意留意 <em>attributes</em> 和 <em>properties</em> 之间的区别。<strong>在 jQuery 1.6 之前</strong>,<code>
-               <a href="http://api.jquery.com/attr/">.attr()</a>
+               <a href="attr.htm">.attr()</a>
                </code> 方法在取某些 attribute 的值时，会返回 property 的值，这就导致了结果的不一致。<strong>从 jQuery 1.6 开始</strong>, <code>.prop()</code> 方法返回 property 的值,而 <code>.attr()</code> 方法返回 attributes 的值。
          </p>
          
@@ -151,9 +151,9 @@
       <div class="longdesc">
          <ul>
             <li>在 IE 9 之前,使用<code>
-                  <a href="http://api.jquery.com/prop/">.prop()</a>
-                  </code> 对一个 DOM 元素的属性进行赋值时，若所赋值的类型不是基本类型(number, string, 或 boolean)，而且也没有使用 <code><a href="http://api.jquery.com/removeProp/">
-                     .removeProp()</a></code> 方法在 DOM 元素从文档中被移除之前。为了安全的在 DOM 对象上进行赋值而不用担心内存泄露问题，请使用 <code><a href="http://api.jquery.com/data/">
+                  <a href="prop.htm">.prop()</a>
+                  </code> 对一个 DOM 元素的属性进行赋值时，若所赋值的类型不是基本类型(number, string, 或 boolean)，而且也没有使用 <code><a href="removeProp.htm">
+                     .removeProp()</a></code> 方法在 DOM 元素从文档中被移除之前。为了安全的在 DOM 对象上进行赋值而不用担心内存泄露问题，请使用 <code><a href="data.htm">
                      .data()</a></code> 方法
                。
             </li>
@@ -241,9 +241,9 @@ $("input").change(function() {
          </p>
          
          <p>Properties 属性一般影响 DOM 元素的动态状态并不会改变序列化的 HTML attribute 属性。例如，input 元素的 <code>value</code> 属性，input 和 按钮 元素的 <code>disabled</code> 属性, 以及 checkbox 的 <code>checked</code> 属性。应该使用 <code>.prop()</code> 方法设置 disabled 和 checked 属性，而不是使用 <code>
-               <a href="http://api.jquery.com/attr">.attr()</a>
+               <a href="attr.htm">.attr()</a>
                </code> 方法。<code>
-               <a href="http://api.jquery.com/val">.val()</a>
+               <a href="val.htm">.val()</a>
                </code> 方法应该用于存取 value 值。
          </p>
          <pre>
@@ -253,9 +253,9 @@ $("input").val("someValue");
 </pre>
          <p>
             <strong>特别注意:</strong> 不要认为使用 <code>
-               <a href="http://api.jquery.com/removeProp">.removeProp()</a>
+               <a href="removeProp.htm">.removeProp()</a>
                </code> 方法将上述属性移除，就可以使其属性值就变成 false。一旦原生的属性被移除，就无法再被添加。参阅 <code>
-               <a href="http://api.jquery.com/removeProp">.removeProp()</a>
+               <a href="removeProp.htm">.removeProp()</a>
                </code> 来获得更多帮助。
          </p>
          
@@ -275,9 +275,9 @@ $("input").val("someValue");
       <div class="longdesc">
          <ul>
             <li>在 IE 9 之前,使用<code>
-                  <a href="http://api.jquery.com/prop/">.prop()</a>
-                  </code> 对一个 DOM 元素的属性进行赋值时，若所赋值的类型不是基本类型(number, string, 或 boolean)，而且也没有使用 <code><a href="http://api.jquery.com/removeProp/">
-                     .removeProp()</a></code> 方法在 DOM 元素从文档中被移除之前。为了安全的在 DOM 对象上进行赋值而不用担心内存泄露问题，请使用 <code><a href="http://api.jquery.com/data/">
+                  <a href="prop.htm">.prop()</a>
+                  </code> 对一个 DOM 元素的属性进行赋值时，若所赋值的类型不是基本类型(number, string, 或 boolean)，而且也没有使用 <code><a href="removeProp.htm">
+                     .removeProp()</a></code> 方法在 DOM 元素从文档中被移除之前。为了安全的在 DOM 对象上进行赋值而不用担心内存泄露问题，请使用 <code><a href="data.htm">
                      .data()</a></code> 方法
                。
             </li>

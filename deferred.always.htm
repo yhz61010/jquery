@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Deferred</span>deferred.always(alwaysCallbacks, <em class="optional">[alwaysCallbacks]</em>)<br></h2>
    <div class="desc">
-      <p> Add handlers to be called when the Deferred object is either resolved or rejected. </p>
+      <p>添加处理程序，无论延迟对象被受理（done）还是被拒绝(fail)，处理程序都会被执行。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.6 新增</span>deferred.always(alwaysCallbacks, <em class="optional">[alwaysCallbacks]</em>)
@@ -11,40 +11,36 @@
             </h4>
             <div class="arguement"><strong>alwaysCallbacks</strong>
                								(Function)
-               								
-               A function, or array of functions, that is called when the Deferred is resolved or rejected.
-               
+               								单个函数或函数数组，无论延迟对象被受理（done）还是被拒绝(fail)，这些函数始终都会被执行。
             </div>
             <div class="arguement"><strong>alwaysCallbacks</strong>
                								(Function)
                								 可选参数，
-               Optional additional functions, or arrays of functions, that are called when the Deferred is resolved or rejected.
+               可选的额外的函数或函数数组，无论延迟对象被受理（done）还是被拒绝(fail)，这些函数始终都会被执行。
                
             </div>
          </li>
       </ul>
       <div class="longdesc"> 
          
-         <p>The argument can be either a single function or an array of functions. When the Deferred is resolved or rejected, the <code>alwaysCallbacks</code> are called. Since <code>deferred.always()</code> returns the Deferred object, other methods of the Deferred object can be chained to this one, including additional <code>.always()</code> methods. When the Deferred is resolved or rejected, callbacks are executed in the order they were added, using the arguments
-            provided to the <code><a href="deferred.resolve.htm">
+         <p>参数可以是单个函数，也可以是函数数组。无论延迟对象被受理（done）还是被拒绝(fail)，<code>alwaysCallbacks</code> 始终都会被执行。由于 <code>deferred.always()</code> 返回的是延迟对象，所以可以链接其它的延迟对象，包括额外的 <code>.always()</code> 方法。无论延迟对象被受理（done）还是被拒绝(fail)，所添加的处理程序都会按照它们被添加的顺序被执行，并且可以使用传递给如下方法的参数： <code><a href="deferred.resolve.htm">
                   resolve</a></code>
             , <code><a href="deferred.reject.htm">
                   reject</a></code>
             , <code><a href="deferred.resolveWith.htm">
                   resolveWith</a></code>
-            or <code><a href="deferred.rejectWith.htm">
+            和 <code><a href="deferred.rejectWith.htm">
                   rejectWith</a></code>
-            method calls. For more information, see the documentation for <a href="/category/deferred-object/">Deferred object</a>.
+            。了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>。
          </p>  
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Since the 
+      <p>由于 
          jQuery.get()
-         method returns a jqXHR object, which is derived from a Deferred object, we can attach a callback for both success and error
-         using the deferred.always() method.
+         方法返回 jqXHR 对象，该对象继承自延迟对象，所以我们可以使用 deferred.always() 添加回调函数，无论延迟对象被受理（done）还是被拒绝(fail)，该回调函数都会被调用。
       </p>
       <h5>jQuery 代码:</h5><pre><code>
 $.get("test.php").always( function() { 
