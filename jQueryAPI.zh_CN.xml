@@ -2551,7 +2551,7 @@ $.get("test.php").then(
          <category name="Version 1.5"/>
       </entry>
       <entry type="method" name="deferred.resolve" return="Deferred">
-         <desc>拒绝（Resolve）一个延迟对象，调用所有的 doneCallbacks，并且带上指定的 <code>args</code> 参数。</desc>
+         <desc>受理（Resolve）一个延迟对象，调用所有的 doneCallbacks，并且带上指定的 <code>args</code> 参数。</desc>
          <signature>
             <added>1.5</added>
             <argument name="args" type="Object">
