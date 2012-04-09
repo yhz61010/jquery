@@ -794,65 +794,65 @@ callbacks.fireWith( window, ['foo','bar']);
          <category name="Version 1.7"/>
       </entry>
       <entry type="method" name="deferred.progress" return="Deferred">
-         <desc> Add handlers to be called when the Deferred object generates progress notifications.</desc>
+         <desc>添加延迟对象产生进度（progress）通知时的处理程序。</desc>
          <signature>
             <added>1.7</added>
             <argument name="progressCallbacks" type="Function">
                <desc>
-        A function, or array of functions, that is called when the Deferred generates progress notifications.
+        单个函数或函数数组，当延迟对象产生进度通知时被调用。
       </desc>
             </argument>
          </signature>
          <longdesc> 
-            <p>参数可以是单个函数，也可以是函数数组。 When the Deferred generates progress notifications by calling <code>notify</code> or <code>notifyWith</code>, the <code>progressCallbacks</code> are called. Since <code>deferred.progress()</code> returns the Deferred object, other methods of the Deferred object can be chained to this one. When the Deferred is resolved or rejected, progress callbacks will no longer be called.了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.</p>  
+            <p>参数可以是单个函数，也可以是函数数组。当通过调用 <code>notify</code> 或 <code>notifyWith</code> 使延迟对象产生进度通知时，<code>progressCallbacks</code> 就会被调用。由于 <code>deferred.progress()</code> 返回的是延迟对象，所以其它延迟对象方法可以链接到该对象上。当延迟对象被 resolved 或 rejected 时，进度回调函数将不再被调用。了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.</p>  
          </longdesc>
          <category name="Deferred Object"/>
          <category name="Version 1.7"/>
       </entry>
       <entry type="method" name="deferred.notifyWith" return="Deferred">
-         <desc> Call the progressCallbacks on a Deferred object with the given context and <code>args</code>. </desc>
+         <desc>调用延迟对象上的 progressCallbacks，并且带上给定的上下文及 <code>args</code> 参数。</desc>
          <signature>
             <added>1.7</added>
             <argument name="context" type="Object">
                <desc>
-             Context passed to the progressCallbacks as the <code>this</code> object.
+             传递给 progressCallbacks 的，作为 <code>this</code> 对象的上下文。
            </desc>
             </argument>
             <argument name="args" type="Object" optional="true">
                <desc>
-             Optional arguments that are passed to the progressCallbacks.
+             传递给 progressCallbacks 的可选参数。
            </desc>
             </argument>
          </signature>
          <longdesc>
-            <p>Normally, only the creator of a Deferred should call this method; you can prevent other code from changing the Deferred's state or reporting status by returning a restricted Promise object through deferred.promise().</p>
-            <p>When <code>deferred.notifyWith</code> is called, any progressCallbacks added by <code><a href="deferred.then.htm">
+            <p>通常只有延迟对象的创建者才可以调用该方法。你可以通过调用 deferred.promise()，返回一个受限的 Promise 对象，来阻止其它代码改变延迟对象的状态或报告它的状态。</p>
+            <p>当 <code>deferred.notifyWith</code> 被调用时，任何通过 <code><a href="deferred.then.htm">
                   deferred.then</a></code>
-                or <code><a href="deferred.progress.htm">
+                或 <code><a href="deferred.progress.htm">
                   deferred.progress</a></code>
-                are called. Callbacks are executed in the order they were added. Each callback is passed the <code>args</code> from the <code>.notifyWith()</code>. Any calls to <code>.notifyWith()</code> after a Deferred is resolved or rejected (or any progressCallbacks added after that) are ignored.了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.</p>
+                添加的 progressCallbacks，都会被调用。回调函数的执行顺序和它们被添加的顺序是一样的。传递给 <code>.notifyWith()</code> 的 <code>args</code> 参数，会传到每个回调函数中。当迟延对象已经被 resolved 或被 rejected 之后，再调用任何 <code>.notifyWith()</code> (或者添加 progressCallbacks) 都会被忽略。了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.</p>
 
          </longdesc>
          <category name="Deferred Object"/>
          <category name="Version 1.7"/>
       </entry>
       <entry type="method" name="deferred.notify" return="Deferred">
-         <desc> Call the progressCallbacks on a Deferred object with the given <code>args</code>. </desc>
+         <desc>调用延迟对象上的 progressCallbacks，并且带上给定的 <code>args</code> 参数。</desc>
          <signature>
             <added>1.7</added>
             <argument name="args" type="Object">
                <desc>
-             Optional arguments that are passed to the progressCallbacks.
+             传递给 progressCallbacks 的可选参数。
            </desc>
             </argument>
          </signature>
          <longdesc>
-            <p>Normally, only the creator of a Deferred should call this method; you can prevent other code from changing the Deferred's state or reporting status by returning a restricted Promise object through deferred.promise().</p>
-            <p>When <code>deferred.notify</code> is called, any progressCallbacks added by <code><a href="deferred.then.htm">
+            <p>通常只有延迟对象的创建者才可以调用该方法。你可以通过调用 deferred.promise()，返回一个受限的 Promise 对象，来阻止其它代码改变延迟对象的状态或报告它的状态。</p>
+            <p>当 <code>deferred.notify</code> 被调用时，任何通过 <code><a href="deferred.then.htm">
                   deferred.then</a></code>
-                or <code><a href="deferred.progress.htm">
+                或 <code><a href="deferred.progress.htm">
                   deferred.progress</a></code>
-                are called. Callbacks are executed in the order they were added. Each callback is passed the <code>args</code> from the <code>.notify()</code>. Any calls to <code>.notify()</code> after a Deferred is resolved or rejected (or any progressCallbacks added after that) are ignored.了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.</p>
+                添加的 progressCallbacks，都会被调用。回调函数的执行顺序和它们被添加的顺序是一样的。传递给 <code>.notify()</code> 的 <code>args</code> 参数，会传到每个回调函数中。当迟延对象已经被 resolved 或被 rejected 之后，再调用任何 <code>.notify()</code> (或者添加 progressCallbacks) 都会被忽略。了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.</p>
 
          </longdesc>
          <category name="Deferred Object"/>
@@ -962,29 +962,29 @@ $("form").off(".validator");</code>
          <category name="Version 1.7"/>
       </entry>
       <entry type="method" name="deferred.state" return="String">
-         <desc>Determine the current state of a Deferred object. </desc>
+         <desc>判断当前延迟对象的状态。</desc>
          <signature>
             <added>1.7</added>
          </signature>
          <longdesc>
-            <p>The deferred.state() method returns a string representing the current state of the Deferred object. The Deferred object can be in one of three states:</p>
+            <p>deferred.state() 方法返回一个字符串，代表当前延迟对象的状态。延迟对象可以处于以下三种状态之一：</p>
             <ul>
                <li>
-                  <strong>"pending"</strong>: The Deferred object is not yet in a completed state (neither "rejected" nor "resolved").</li>
+                  <strong>"pending"</strong>: 延迟对象处于未完成的状态(既不是 "rejected" 状态，也不是 "resolved" 状态)。</li>
                <li>
-                  <strong>"resolved"</strong>: The Deferred object is in the resolved state, meaning that either <code><a href="deferred.resolve.htm">
+                  <strong>"resolved"</strong>: 延迟对象处于 resolved 状态，意味着 <code><a href="deferred.resolve.htm">
                      deferred.resolve()</a></code>
-                   or <code><a href="deferred.resolveWith.htm">
+                   或 <code><a href="deferred.resolveWith.htm">
                      deferred.resolveWith()</a></code>
-                   has been called for the object and the doneCallbacks have been called (or are in the process of being called). </li>
+                   已经在对象上被调用，并且 doneCallbacks 已经被调用(或者处于被调用的阶段)。</li>
                <li>
-                  <strong>"rejected"</strong>: The Deferred object is in the rejected state, meaning that either <code><a href="deferred.reject.htm">
+                  <strong>"rejected"</strong>: 延迟对象处于 rejected 状态，意味着 <code><a href="deferred.reject.htm">
                      deferred.reject()</a></code>
-                   or <code><a href="deferred.rejectWith.htm">
+                   或 <code><a href="deferred.rejectWith.htm">
                      deferred.rejectWith()</a></code>
-                   has been called for the object and the failCallbacks have been called (or are in the process of being called).</li>
+                   已经在对象上被调用，并且 failCallbacks 已经被调用(或者处于被调用的阶段)。</li>
             </ul>
-            <p>This method is primarily useful for debugging to determine, for example, whether a Deferred has already been resolved even though you are inside code that intended to reject it.</p>
+            <p>该方法主要用于调试，例如，在准备拒绝（reject）一个延迟对象前，判断它是否已经处于 resolved 状态。</p>
          </longdesc>
          <category name="Deferred Object"/>
          <category name="Version 1.7"/>
@@ -2272,87 +2272,85 @@ $( "#anotherElement" ).append( $title.text() );
          <category name="Version 1.5"/>
       </entry>
       <entry type="method" name="deferred.resolveWith" return="Deferred">
-         <desc> Resolve a Deferred object and call any doneCallbacks with the given <code>context</code> 和 <code>args</code>. </desc>
+         <desc>受理（Resolve）一个延迟对象，调用所有的 doneCallbacks，并且带上指定的 <code>context</code> 和 <code>args</code> 参数。</desc>
          <signature>
             <added>1.5</added>
             <argument name="context" type="Object">
                <desc>
-             Context passed to the doneCallbacks as the <code>this</code> object.
+             传递给 doneCallbacks 的，作为 <code>this</code> 对象的上下文。
            </desc>
             </argument>
             <argument name="args" type="Array" optional="true">
                <desc>
-             An optional array of arguments that are passed to the doneCallbacks.
+             传递给 doneCallbacks 的，可选的参数数组。
            </desc>
             </argument>
          </signature>
          <longdesc> 
-            <p>Normally, only the creator of a Deferred should call this method; you can prevent other code from changing the Deferred's state by returning a restricted Promise object through <code><a href="deferred.promise.htm">
-                  deferred.promise()</a></code>
-               .</p>
-            <p>When the Deferred is resolved, any doneCallbacks added by <code><a href="deferred.then.htm">
+            <p>通常只有延迟对象的创建者才可以调用该方法。你可以通过调用 <code><a href="deferred.promise.htm">
+                  deferred.promise()</a></code>，返回一个受限的 Promise 对象，来阻止其它代码改变延迟对象的状态或报告它的状态。</p>
+            <p>当延迟对象被 resolved 时，任何通过 <code><a href="deferred.then.htm">
                   deferred.then</a></code>
-                or <code><a href="deferred.done.htm">
+                或 <code><a href="deferred.done.htm">
                   deferred.done</a></code>
-                are called. Callbacks are executed in the order they were added. Each callback is passed the <code>args</code> from the <code>.resolve()</code>. Any doneCallbacks added after the Deferred enters the resolved state are executed immediately when they are added, using the arguments that were passed to the <code>.resolve()</code> call.了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.</p>  
+                添加的 doneCallbacks，都会被调用。回调函数的执行顺序和它们被添加的顺序是一样的。传递给 <code>.resolve()</code> 的 <code>args</code> 参数，会传给每个回调函数。当延迟对象进入 resolved 状态后，再添加的任何 doneCallbacks，当它们被添加时，就会被立刻执行，并带上传入给 <code>.resolve()</code> 的参数。了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>。</p>  
          </longdesc>
          <category name="Deferred Object"/>
          <category name="Version 1.5"/>
       </entry>
       <entry type="method" name="deferred.rejectWith" return="Deferred">
-         <desc> Reject a Deferred object and call any failCallbacks with the given <code>context</code> 和 <code>args</code>. </desc>
+         <desc>拒绝（Reject）一个延迟对象，调用所有的 failCallbacks，并且带上指定的 <code>context</code> 和 <code>args</code> 参数。</desc>
          <signature>
             <added>1.5</added>
             <argument name="context" type="Object">
                <desc>
-             Context passed to the failCallbacks as the <code>this</code> object.
+             传递给 failCallbacks 的，作为 <code>this</code> 对象的上下文。
            </desc>
             </argument>
             <argument name="args" type="Array" optional="true">
                <desc>
-             An optional array of arguments that are passed to the failCallbacks.
+             传递给 failCallbacks 的，可选的参数数组。
            </desc>
             </argument>
          </signature>
          <longdesc> 
-            <p>Normally, only the creator of a Deferred should call this method; you can prevent other code from changing the Deferred's state by returning a restricted Promise object through <code><a href="deferred.promise.htm">
-                  deferred.promise()</a></code>
-               .</p>
-            <p>When the Deferred is rejected, any failCallbacks added by <code><a href="deferred.then.htm">
+            <p>通常只有延迟对象的创建者才可以调用该方法。你可以通过调用 <code><a href="deferred.promise.htm">
+                  deferred.promise()</a></code>，返回一个受限的 Promise 对象，来阻止其它代码改变延迟对象的状态或报告它的状态。</p>
+            <p>当延迟对象被 rejected 时，任何通过 <code><a href="deferred.then.htm">
                   deferred.then</a></code>
-                or <code><a href="deferred.fail.htm">
+                或 <code><a href="deferred.fail.htm">
                   deferred.fail</a></code>
-                are called. Callbacks are executed in the order they were added. Each callback is passed the <code>args</code> from the <code>deferred.reject()</code> call. Any failCallbacks added after the Deferred enters the rejected state are executed immediately when they are added, using the arguments that were passed to the <code>.reject()</code> call.了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.</p>  
+                添加的 failCallbacks，都会被调用。回调函数的执行顺序和它们被添加的顺序是一样的。传递给 <code>.reject()</code> 的 <code>args</code> 参数，会传给每个回调函数。当延迟对象进入 rejected 状态后，再添加的任何 failCallbacks，当它们被添加时，就会被立刻执行，并带上传入给 <code>.reject()</code> 的参数。了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>。</p>  
          </longdesc>
          <category name="Deferred Object"/>
          <category name="Version 1.5"/>
       </entry>
       <entry type="method" name="deferred.fail" return="Deferred">
-         <desc> Add handlers to be called when the Deferred object is rejected. </desc>
+         <desc>添加延迟对象被拒绝（fail）时执行的处理程序。</desc>
          <signature>
             <added>1.5</added>
             <argument name="failCallbacks" type="Function">
                <desc>
-             A function, or array of functions, that are called when the Deferred is rejected.
+             单个函数或函数数组，当延迟对象被拒绝（fail）时调用。
            </desc>
             </argument>
             <argument name="failCallbacks" type="Function" optional="true">
                <desc>
-             Optional additional functions, or arrays of functions, that are called when the Deferred is rejected.
+             可选的额外的函数或函数数组，当延迟对象被拒绝（fail）时调用。 
            </desc>
             </argument>
          </signature>
          <longdesc> 
-            <p><code>deferred.fail()</code> method accepts one or more arguments, all of which can be either a single function or an array of functions. When the Deferred is rejected, the failCallbacks are called. Callbacks are executed in the order they were added. Since <code>deferred.fail()</code> returns the deferred object, other methods of the deferred object can be chained to this one, including additional <code>deferred.fail()</code> methods. The failCallbacks are executed using the arguments provided to the <code><a href="deferred.reject">
+            <p><code>deferred.fail()</code> 方法可以接受一个或多个参数，每个参数既可以是单个函数，也可以是一个函数数组。当延迟对象被拒绝（fail）时，就会被调用。回调函数的执行顺序和它们被添加的顺序是一样的。由于 <code>deferred.fail()</code> 返回的是延迟对象，所以可以链接其它的延迟对象，包括额外的 <code>deferred.fail()</code> 方法。当延迟对象被拒绝（fail）时，failCallbacks 就会被调用，并且可以使用传递给 <code><a href="deferred.reject">
                   deferred.reject()</a></code>
-                or <code><a href="deferred.rejectWith">
+                或 <code><a href="deferred.rejectWith">
                   deferred.rejectWith()</a></code>
-                method call in the order they were added.了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.</p>  
+                方法的参数，按照它们被添加的顺序。了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.</p>  
          </longdesc>
          <example>
-            <desc>Since the <code><a href="jQuery.get.htm">
+            <desc>由于 <code><a href="jQuery.get.htm">
                   jQuery.get</a></code>
-                method returns a jqXHR object, which is derived from a Deferred, you can attach a success and failure callback using the <code>deferred.done()</code> 和 <code>deferred.fail()</code> methods.</desc>
+                方法返回 jqXHR 对象，该对象继承自延迟对象，所以我们可以使用 <code>deferred.done()</code> 和 <code>deferred.fail()</code> 方法，添加一个成功和失败时调用的回调函数。 </desc>
             <code>
 $.get("test.php")
   .done(function(){ alert("$.get succeeded"); })
@@ -2363,22 +2361,22 @@ $.get("test.php")
          <category name="Version 1.5"/>
       </entry>
       <entry type="method" name="deferred.done" return="Deferred">
-         <desc>添加延迟对象被受理时执行的处理程序。</desc>
+         <desc>添加延迟对象被受理(done)时执行的处理程序。</desc>
          <signature>
             <added>1.5</added>
             <argument name="doneCallbacks" type="Function">
                <desc>
-              单个函数或函数数组，当延迟对象被受理时调用。
+              单个函数或函数数组，当延迟对象被受理(done)时调用。
            </desc>
             </argument>
             <argument name="doneCallbacks" type="Function" optional="true">
                <desc>
-             可选的额外的函数或函数数组，当延迟对象被受理时调用。
+             可选的额外的函数或函数数组，当延迟对象被受理(done)时调用。
            </desc>
             </argument>
          </signature>
          <longdesc> 
-            <p><code>deferred.done()</code> 方法可以接受一个或多个参数，每个参数既可以是单个函数，也可以是一个函数数组。当延迟对象被受理时，doneCallbacks 就会被调用。回调函数的执行顺序和它们被添加的顺序是一样的。由于 <code>deferred.done()</code> 返回的是延迟对象，所以可以链接其它的延迟对象，包括额外的 <code>.done()</code> 方法。当延迟对象被受理时，doneCallbacks 就会被调用，并且可以使用传递给 <code><a href="deferred.resolve.htm">
+            <p><code>deferred.done()</code> 方法可以接受一个或多个参数，每个参数既可以是单个函数，也可以是一个函数数组。当延迟对象被受理(done)时，doneCallbacks 就会被调用。回调函数的执行顺序和它们被添加的顺序是一样的。由于 <code>deferred.done()</code> 返回的是延迟对象，所以可以链接其它的延迟对象，包括额外的 <code>.done()</code> 方法。当延迟对象被受理(done)时，doneCallbacks 就会被调用，并且可以使用传递给 <code><a href="deferred.resolve.htm">
                   resolve</a></code>
                 或 <code><a href="deferred.resolveWith.htm">
                   resolveWith</a></code>
@@ -2469,7 +2467,7 @@ $("button").bind("click", function() {
          <longdesc> 
             <p>All three arguments (including progressCallbacks, as of jQuery 1.7) can be either a single function or an array of functions. The arguments can also be <code>null</code> if no callback of that type is desired. Alternatively, use <code>.done()</code>, <code>.fail()</code> or <code>.progress()</code> to set only one type of callback. </p>
             <p>When the Deferred is resolved, the doneCallbacks are called. If the Deferred is instead rejected, the failCallbacks are called. As of jQuery 1.7, the <code>deferred.notify()</code> or <code>deferred.notifyWith()</code> methods can be called to invoke the progressCallbacks as many times as desired before the Deferred is resolved or rejected.</p>
-            <p>Callbacks are executed in the order they were added. Since <code>deferred.then</code> returns the deferred object, other methods of the deferred object can be chained to this one, including additional <code>.then()</code> methods.了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.</p> 
+            <p>回调函数的执行顺序和它们被添加的顺序是一样的。 Since <code>deferred.then</code> returns the deferred object, other methods of the deferred object can be chained to this one, including additional <code>.then()</code> methods.了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.</p> 
          </longdesc>
          <example>
             <desc>Since the <code><a href="jQuery.get.htm">
@@ -2487,88 +2485,87 @@ $.get("test.php").then(
          <category name="Version 1.7"/>
       </entry>
       <entry type="method" name="deferred.reject" return="Deferred">
-         <desc> Reject a Deferred object and call any failCallbacks with the given <code>args</code>. </desc>
+         <desc>拒绝（Reject）一个延迟对象，调用所有的 failCallbacks，并且带上指定的 <code>args</code> 参数。</desc>
          <signature>
             <added>1.5</added>
             <argument name="args" type="Object">
                <desc>
-             Optional arguments that are passed to the failCallbacks.
+             传递给 failCallbacks 的可选参数。
            </desc>
             </argument>
          </signature>
          <longdesc> 
-            <p>Normally, only the creator of a Deferred should call this method; you can prevent other code from changing the Deferred's state by returning a restricted Promise object through <code><a href="deferred.promise.htm">
-                  deferred.promise()</a></code>
-               .</p>
-            <p>When the Deferred is rejected, any failCallbacks added by <code><a href="deferred.then.htm">
+            <p>通常只有延迟对象的创建者才可以调用该方法。你可以通过调用 <code><a href="deferred.promise.htm">
+                  deferred.promise()</a></code>，返回一个受限的 Promise 对象，来阻止其它代码改变延迟对象的状态或报告它的状态。</p>
+            <p>当延迟对象被 rejected 时，任何通过 <code><a href="deferred.then.htm">
                   deferred.then</a></code>
-                or <code><a href="deferred.fail.htm">
+                或 <code><a href="deferred.fail.htm">
                   deferred.fail</a></code>
-                are called. Callbacks are executed in the order they were added. Each callback is passed the <code>args</code> from the <code>deferred.reject()</code> call. Any failCallbacks added after the Deferred enters the rejected state are executed immediately when they are added, using the arguments that were passed to the <code>.reject()</code> call.了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.</p>  
+                添加的 failCallbacks，都会被调用。回调函数的执行顺序和它们被添加的顺序是一样的。传递给 <code>deferred.reject()</code> 的 <code>args</code> 参数，会传给每个回调函数。当延迟对象进入 rejected 状态后，再添加的任何 failCallbacks，当它们被添加时，就会被立刻执行，并带上传入给 <code>.reject()</code> 的参数。了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>。</p>  
          </longdesc>
          <category name="Deferred Object"/>
          <category name="Version 1.5"/>
       </entry>
       <entry type="method" name="deferred.isRejected" return="Boolean">
-         <desc> Determine whether a Deferred object has been rejected. </desc>
+         <desc>判断一个延迟对象是否已经被拒绝（rejected）。</desc>
          <signature>
             <added>1.5</added>
          </signature>
          <longdesc> 
-            <p>As of jQuery 1.7 this API has been deprecated; please use <code><a href="deferred.state.htm">
+            <p>从 jQuery 1.7 开始，已经不建议使用此 API。请使用 <code><a href="deferred.state.htm">
                   deferred.state()</a></code>
-                instead.</p>
-            <p>Returns <code>true</code> if the Deferred object is in the rejected state, meaning that either <code><a href="deferred.reject.htm">
+                来代替。</p>
+            <p>如果延迟对象处于被拒绝（rejected）的状态，则返回 <code>true</code>，这意味着 <code><a href="deferred.reject.htm">
                   deferred.reject()</a></code>
-                or <code><a href="deferred.rejectWith.htm">
+                或 <code><a href="deferred.rejectWith.htm">
                   deferred.rejectWith()</a></code>
-                has been called for the object and the failCallbacks have been called (or are in the process of being called).</p>
-            <p>Note that a Deferred object can be in one of three states: pending, resolved, or rejected; use <code><a href="deferred.isResolved.htm">
+                已经在对象上被调用过，并且 failCallbacks 已经被调用过(或者正处于被调用的阶段)。</p>
+            <p>注意，延迟对象有三种状态：pending, resolved, 和 rejected。使用 <code><a href="deferred.isResolved.htm">
                   deferred.isResolved()</a></code>
-                to determine whether the Deferred object is in the resolved state. These methods are primarily useful for debugging, for example to determine whether a Deferred has already been resolved even though you are inside code that intended to reject it.</p>  
+                可以判断延迟对象是否处于 resolved 状态。这些方法主要用于调试，例如，在准备拒绝（reject）一个延迟对象前，判断它是否已经处于 resolved 状态。</p>  
          </longdesc>
          <category name="Deferred Object"/>
          <category name="Deprecated"/>
          <category name="Version 1.5"/>
       </entry>
       <entry type="method" name="deferred.isResolved" return="Boolean">
-         <desc> Determine whether a Deferred object has been resolved. </desc>
+         <desc>判断一个延迟对象是否已经被受理（resolved）。</desc>
          <signature>
             <added>1.5</added>
          </signature>
          <longdesc> 
-            <p>As of jQuery 1.7 this API has been deprecated; please use <code><a href="deferred.state.htm">
+            <p>从 jQuery 1.7 开始，已经不建议使用此 API。请使用 <code><a href="deferred.state.htm">
                   deferred.state()</a></code>
-                instead.</p>
-            <p>Returns <code>true</code> if the Deferred object is in the resolved state, meaning that either <code><a href="deferred.resolve.htm">
+                来代替。</p>
+            <p>如果延迟对象处于被受理（resolved）的状态，则返回 <code>true</code> 这意味着 <code><a href="deferred.resolve.htm">
                   deferred.resolve()</a></code>
-                or <code><a href="deferred.resolveWith.htm">
+                或 <code><a href="deferred.resolveWith.htm">
                   deferred.resolveWith()</a></code>
-                has been called for the object and the doneCallbacks have been called (or are in the process of being called).</p>
-            <p>Note that a Deferred object can be in one of three states: pending, resolved, or rejected; use <code><a href="deferred.isRejected.htm">
+                已经在对象上被调用过，并且 doneCallbacks 已经被调用过(或者正处于被调用的阶段)。</p>
+            <p>注意，延迟对象有三种状态：pending, resolved, 和 rejected。使用 <code><a href="deferred.isRejected.htm">
                   deferred.isRejected()</a></code>
-                to determine whether the Deferred object is in the rejected state. These methods are primarily useful for debugging, for example to determine whether a Deferred has already been resolved even though you are inside code that intended to reject it.</p>  
+                可以判断延迟对象是否处于 rejected 状态。这些方法主要用于调试，例如，在准备拒绝（reject）一个延迟对象前，判断它是否已经处于 resolved 状态。</p>
          </longdesc>
          <category name="Deferred Object"/>
          <category name="Deprecated"/>
          <category name="Version 1.5"/>
       </entry>
       <entry type="method" name="deferred.resolve" return="Deferred">
-         <desc> Resolve a Deferred object and call any doneCallbacks with the given <code>args</code>. </desc>
+         <desc>拒绝（Resolve）一个延迟对象，调用所有的 doneCallbacks，并且带上指定的 <code>args</code> 参数。</desc>
          <signature>
             <added>1.5</added>
             <argument name="args" type="Object">
                <desc>
-             Optional arguments that are passed to the doneCallbacks.
+             传递给 doneCallbacks 的可选参数。
            </desc>
             </argument>
          </signature>
          <longdesc> 
-            <p>When the Deferred is resolved, any doneCallbacks added by <code><a href="deferred.then.htm">
+            <p>当延迟对象被 resolved 时，任何通过 <code><a href="deferred.then.htm">
                   deferred.then</a></code>
-                or <code><a href="deferred.done.htm">
+                或 <code><a href="deferred.done.htm">
                   deferred.done</a></code>
-                are called. Callbacks are executed in the order they were added. Each callback is passed the <code>args</code> from the <code>.resolve()</code>. Any doneCallbacks added after the Deferred enters the resolved state are executed immediately when they are added, using the arguments that were passed to the <code>.resolve()</code> call.了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.</p>  
+                添加的 doneCallbacks，都会被调用。回调函数的执行顺序和它们被添加的顺序是一样的。传递给 <code>.resolve()</code> 的 <code>args</code> 参数，会传给每个回调函数。当延迟对象进入 resolved 状态后，再添加的任何 doneCallbacks，当它们被添加时，就会被立刻执行，并带上传入给 <code>.resolve()</code> 的参数。了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.</p>  
          </longdesc>
          <category name="Deferred Object"/>
          <category name="Version 1.5"/>
