@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Deferred</span>deferred.progress(progressCallbacks)<br></h2>
    <div class="desc">
-      <p> Add handlers to be called when the Deferred object generates progress notifications.</p>
+      <p>添加延迟对象产生进度（progress）通知时的处理程序。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.7 新增</span>deferred.progress(progressCallbacks)
@@ -12,15 +12,14 @@
             <div class="arguement"><strong>progressCallbacks</strong>
                								(Function)
                								
-               A function, or array of functions, that is called when the Deferred generates progress notifications.
+               单个函数或函数数组，当延迟对象产生进度通知时被调用。
                
             </div>
          </li>
       </ul>
       <div class="longdesc"> 
          
-         <p>参数可以是单个函数，也可以是函数数组。 When the Deferred generates progress notifications by calling <code>notify</code> or <code>notifyWith</code>, the <code>progressCallbacks</code> are called. Since <code>deferred.progress()</code> returns the Deferred object, other methods of the Deferred object can be chained to this one. When the Deferred is resolved
-            or rejected, progress callbacks will no longer be called.了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.
+         <p>参数可以是单个函数，也可以是函数数组。当通过调用 <code>notify</code> 或 <code>notifyWith</code> 使延迟对象产生进度通知时，<code>progressCallbacks</code> 就会被调用。由于 <code>deferred.progress()</code> 返回的是延迟对象，所以其它延迟对象方法可以链接到该对象上。当延迟对象被 resolved 或 rejected 时，进度回调函数将不再被调用。了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.
          </p>  
          
       </div>

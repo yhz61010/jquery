@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Deferred</span>deferred.resolveWith(context, <em class="optional">[args]</em>)<br></h2>
    <div class="desc">
-      <p> Resolve a Deferred object and call any doneCallbacks with the given <code>context</code> 和 <code>args</code>. 
+      <p>受理（Resolve）一个延迟对象，调用所有的 doneCallbacks，并且带上指定的 <code>context</code> 和 <code>args</code> 参数。
       </p>
       <ul class="signatures">
          <li>
@@ -13,31 +13,28 @@
             <div class="arguement"><strong>context</strong>
                								(Object)
                								
-               Context passed to the doneCallbacks as the <code>this</code> object.
+               传递给 doneCallbacks 的，作为 <code>this</code> 对象的上下文。
                
             </div>
             <div class="arguement"><strong>args</strong>
                								(Array)
                								 可选参数，
-               An optional array of arguments that are passed to the doneCallbacks.
+               传递给 doneCallbacks 的，可选的参数数组。
                
             </div>
          </li>
       </ul>
       <div class="longdesc"> 
          
-         <p>Normally, only the creator of a Deferred should call this method; you can prevent other code from changing the Deferred's
-            state by returning a restricted Promise object through <code><a href="deferred.promise.htm">
-                  deferred.promise()</a></code>
-            .
+         <p>通常只有延迟对象的创建者才可以调用该方法。你可以通过调用 <code><a href="deferred.promise.htm">
+                  deferred.promise()</a></code>，返回一个受限的 Promise 对象，来阻止其它代码改变延迟对象的状态或报告它的状态。
          </p>
          
-         <p>When the Deferred is resolved, any doneCallbacks added by <code><a href="deferred.then.htm">
+         <p>当延迟对象被 resolved 时，任何通过 <code><a href="deferred.then.htm">
                   deferred.then</a></code>
-            or <code><a href="deferred.done.htm">
+            或 <code><a href="deferred.done.htm">
                   deferred.done</a></code>
-            are called. Callbacks are executed in the order they were added. Each callback is passed the <code>args</code> from the <code>.resolve()</code>. Any doneCallbacks added after the Deferred enters the resolved state are executed immediately when they are added, using
-            the arguments that were passed to the <code>.resolve()</code> call.了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.
+            添加的 doneCallbacks，都会被调用。回调函数的执行顺序和它们被添加的顺序是一样的。传递给 <code>.resolve()</code> 的 <code>args</code> 参数，会传给每个回调函数。当延迟对象进入 resolved 状态后，再添加的任何 doneCallbacks，当它们被添加时，就会被立刻执行，并带上传入给 <code>.resolve()</code> 的参数。了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>。
          </p>  
          
       </div>

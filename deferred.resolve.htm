@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Deferred</span>deferred.resolve(args)<br></h2>
    <div class="desc">
-      <p> Resolve a Deferred object and call any doneCallbacks with the given <code>args</code>. 
+      <p>拒绝（Resolve）一个延迟对象，调用所有的 doneCallbacks，并且带上指定的 <code>args</code> 参数。
       </p>
       <ul class="signatures">
          <li>
@@ -13,19 +13,18 @@
             <div class="arguement"><strong>args</strong>
                								(Object)
                								
-               Optional arguments that are passed to the doneCallbacks.
+               传递给 doneCallbacks 的可选参数。
                
             </div>
          </li>
       </ul>
       <div class="longdesc"> 
          
-         <p>When the Deferred is resolved, any doneCallbacks added by <code><a href="deferred.then.htm">
+         <p>当延迟对象被 resolved 时，任何通过 <code><a href="deferred.then.htm">
                   deferred.then</a></code>
-            or <code><a href="deferred.done.htm">
+            或 <code><a href="deferred.done.htm">
                   deferred.done</a></code>
-            are called. Callbacks are executed in the order they were added. Each callback is passed the <code>args</code> from the <code>.resolve()</code>. Any doneCallbacks added after the Deferred enters the resolved state are executed immediately when they are added, using
-            the arguments that were passed to the <code>.resolve()</code> call.了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.
+            添加的 doneCallbacks，都会被调用。回调函数的执行顺序和它们被添加的顺序是一样的。传递给 <code>.resolve()</code> 的 <code>args</code> 参数，会传给每个回调函数。当延迟对象进入 resolved 状态后，再添加的任何 doneCallbacks，当它们被添加时，就会被立刻执行，并带上传入给 <code>.resolve()</code> 的参数。了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.
          </p>  
          
       </div>

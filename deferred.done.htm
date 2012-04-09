@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Deferred</span>deferred.done(doneCallbacks, <em class="optional">[doneCallbacks]</em>)<br></h2>
    <div class="desc">
-      <p>添加延迟对象被受理时执行的处理程序。</p>
+      <p>添加延迟对象被受理(done)时执行的处理程序。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.5 新增</span>deferred.done(doneCallbacks, <em class="optional">[doneCallbacks]</em>)
@@ -12,20 +12,20 @@
             <div class="arguement"><strong>doneCallbacks</strong>
                								(Function)
                								
-               单个函数或函数数组，当延迟对象被受理时调用。
+               单个函数或函数数组，当延迟对象被受理(done)时调用。
                
             </div>
             <div class="arguement"><strong>doneCallbacks</strong>
                								(Function)
                								 可选参数，
-               可选的额外的函数或函数数组，当延迟对象被受理时调用。
+               可选的额外的函数或函数数组，当延迟对象被受理(done)时调用。
                
             </div>
          </li>
       </ul>
       <div class="longdesc"> 
          
-         <p><code>deferred.done()</code> 方法可以接受一个或多个参数，每个参数既可以是单个函数，也可以是一个函数数组。当延迟对象被受理时，doneCallbacks 就会被调用。回调函数的执行顺序和它们被添加的顺序是一样的。由于 <code>deferred.done()</code> 返回的是延迟对象，所以可以链接其它的延迟对象，包括额外的 <code>.done()</code> 方法。当延迟对象被受理时，doneCallbacks 就会被调用，并且可以使用传递给 <code><a href="deferred.resolve.htm">
+         <p><code>deferred.done()</code> 方法可以接受一个或多个参数，每个参数既可以是单个函数，也可以是一个函数数组。当延迟对象被受理(done)时，doneCallbacks 就会被调用。回调函数的执行顺序和它们被添加的顺序是一样的。由于 <code>deferred.done()</code> 返回的是延迟对象，所以可以链接其它的延迟对象，包括额外的 <code>.done()</code> 方法。当延迟对象被受理(done)时，doneCallbacks 就会被调用，并且可以使用传递给 <code><a href="deferred.resolve.htm">
                   resolve</a></code>
             或 <code><a href="deferred.resolveWith.htm">
                   resolveWith</a></code>

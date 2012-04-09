@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Deferred</span>deferred.notify(args)<br></h2>
    <div class="desc">
-      <p> Call the progressCallbacks on a Deferred object with the given <code>args</code>. 
+      <p>调用延迟对象上的 progressCallbacks，并且带上给定的 <code>args</code> 参数。
       </p>
       <ul class="signatures">
          <li>
@@ -13,22 +13,20 @@
             <div class="arguement"><strong>args</strong>
                								(Object)
                								
-               Optional arguments that are passed to the progressCallbacks.
+               传递给 progressCallbacks 的可选参数。
                
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p>Normally, only the creator of a Deferred should call this method; you can prevent other code from changing the Deferred's
-            state or reporting status by returning a restricted Promise object through deferred.promise().
-         </p>
+         <p>通常只有延迟对象的创建者才可以调用该方法。你可以通过调用 deferred.promise()，返回一个受限的 Promise 对象，来阻止其它代码改变延迟对象的状态或报告它的状态。</p>
          
-         <p>When <code>deferred.notify</code> is called, any progressCallbacks added by <code><a href="deferred.then.htm">
+         <p>当 <code>deferred.notify</code> 被调用时，任何通过 <code><a href="deferred.then.htm">
                   deferred.then</a></code>
-            or <code><a href="deferred.progress.htm">
+            或 <code><a href="deferred.progress.htm">
                   deferred.progress</a></code>
-            are called. Callbacks are executed in the order they were added. Each callback is passed the <code>args</code> from the <code>.notify()</code>. Any calls to <code>.notify()</code> after a Deferred is resolved or rejected (or any progressCallbacks added after that) are ignored.了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.
+            添加的 progressCallbacks，都会被调用。回调函数的执行顺序和它们被添加的顺序是一样的。传递给 <code>.notify()</code> 的 <code>args</code> 参数，会传到每个回调函数中。当迟延对象已经被 resolved 或被 rejected 之后，再调用任何 <code>.notify()</code> (或者添加 progressCallbacks) 都会被忽略。了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.
          </p>
          
          

@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Deferred</span>deferred.fail(failCallbacks, <em class="optional">[failCallbacks]</em>)<br></h2>
    <div class="desc">
-      <p> Add handlers to be called when the Deferred object is rejected. </p>
+      <p>添加延迟对象被拒绝（fail）时执行的处理程序。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.5 新增</span>deferred.fail(failCallbacks, <em class="optional">[failCallbacks]</em>)
@@ -12,35 +12,33 @@
             <div class="arguement"><strong>failCallbacks</strong>
                								(Function)
                								
-               A function, or array of functions, that are called when the Deferred is rejected.
+               单个函数或函数数组，当延迟对象被拒绝（fail）时调用。
                
             </div>
             <div class="arguement"><strong>failCallbacks</strong>
                								(Function)
                								 可选参数，
-               Optional additional functions, or arrays of functions, that are called when the Deferred is rejected.
+               可选的额外的函数或函数数组，当延迟对象被拒绝（fail）时调用。 
                
             </div>
          </li>
       </ul>
       <div class="longdesc"> 
          
-         <p><code>deferred.fail()</code> method accepts one or more arguments, all of which can be either a single function or an array of functions. When the Deferred
-            is rejected, the failCallbacks are called. Callbacks are executed in the order they were added. Since <code>deferred.fail()</code> returns the deferred object, other methods of the deferred object can be chained to this one, including additional <code>deferred.fail()</code> methods. The failCallbacks are executed using the arguments provided to the <code><a href="deferred.reject">
+         <p><code>deferred.fail()</code> 方法可以接受一个或多个参数，每个参数既可以是单个函数，也可以是一个函数数组。当延迟对象被拒绝（fail）时，就会被调用。回调函数的执行顺序和它们被添加的顺序是一样的。由于 <code>deferred.fail()</code> 返回的是延迟对象，所以可以链接其它的延迟对象，包括额外的 <code>deferred.fail()</code> 方法。当延迟对象被拒绝（fail）时，failCallbacks 就会被调用，并且可以使用传递给 <code><a href="deferred.reject">
                   deferred.reject()</a></code>
-            or <code><a href="deferred.rejectWith">
+            或 <code><a href="deferred.rejectWith">
                   deferred.rejectWith()</a></code>
-            method call in the order they were added.了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.
+            方法的参数，按照它们被添加的顺序。了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.
          </p>  
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Since the 
+      <p>由于 
          jQuery.get
-         method returns a jqXHR object, which is derived from a Deferred, you can attach a success and failure callback using the deferred.done()
-         和 deferred.fail() methods.
+         方法返回 jqXHR 对象，该对象继承自延迟对象，所以我们可以使用 deferred.done() 和 deferred.fail() 方法，添加一个成功和失败时调用的回调函数。 
       </p>
       <h5>jQuery 代码:</h5><pre><code>
 $.get("test.php")
