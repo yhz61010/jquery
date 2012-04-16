@@ -1290,17 +1290,17 @@ $( "#content" ).delegate( "*", "focus blur", function( event ) {
          <category name="Version 1.6"/>
       </entry>
       <entry type="method" name="deferred.pipe" return="Promise">
-         <desc> Utility method to filter and/or chain Deferreds.  </desc>
+         <desc>用于过滤 and/or 链式延迟对象的工具方法。</desc>
          <signature>
             <added>1.6</added>
             <argument name="doneFilter" type="Function" optional="true">
                <desc>
-        An optional function that is called when the Deferred is resolved.
+        可选的函数，当延迟对象被受理(resolve)时调用。
       </desc>
             </argument>
             <argument name="failFilter" type="Function" optional="true">
                <desc>
-        An optional function that is called when the Deferred is rejected.
+        可选的函数，当延迟对象被拒绝(reject)时调用。
       </desc>
             </argument>
          </signature>
@@ -1308,25 +1308,25 @@ $( "#content" ).delegate( "*", "focus blur", function( event ) {
             <added>1.7</added>
             <argument name="doneFilter" type="Function" optional="true">
                <desc>
-        An optional function that is called when the Deferred is resolved.
+        可选的函数，当延迟对象被受理(resolve)时调用。
       </desc>
             </argument>
             <argument name="failFilter" type="Function" optional="true">
                <desc>
-        An optional function that is called when the Deferred is rejected.
+        可选的函数，当延迟对象被拒绝(reject)时调用。
       </desc>
             </argument>
             <argument name="progressFilter" type="Function" optional="true">
                <desc>
-        An optional function that is called when progress notifications are sent to the Deferred.
+        可选的函数，当进度（progress）通知发送到延迟对象上时被调用。
       </desc>
             </argument>
          </signature>
          <longdesc>
-            <p><code>deferred.pipe()</code> method returns a new promise that filters the status and values of a deferred through a function.  The <code>doneFilter</code> 和 <code>failFilter</code> functions filter the original deferred's resolved / rejected status and values. <strong>As of jQuery 1.7</strong>, the method also accepts a <code>progressFilter</code> function to filter any calls to the original deferred's <code>notify</code> or <code>notifyWith</code> methods. These filter functions can return a new value to be passed along to the piped promise's <code>done()</code> or <code>fail()</code> callbacks, or they can return another observable object (Deferred, Promise, etc) which will pass its resolved / rejected status and values to the piped promise's callbacks. If the filter function used is <code>null</code>, or not specified, the piped promise will be resolved or rejected with the same values as the original.</p>
+            <p><code>deferred.pipe()</code> 方法返回一个新的 promise，用于过滤状态或通过函数返回的延迟对象的值。<code>doneFilter</code> 和 <code>failFilter</code> 函数过滤原始的延迟对象的受理（resolve) / 拒绝(reject)状态和值。<strong>从 jQuery 1.7 开始</strong>，该方法可以接受 <code>progressFilter</code> 函数，用于过滤任何原始延迟对象上的 <code>notify</code> 或 <code>notifyWith</code> 调用。这些过滤器可以随着 pipe promise 的 <code>done()</code> 或 <code>fail()</code> 回调函数的调用，返回一个新值，或返回其它可见对象(Deferred, Promise, 等等)，这些可见对象传递了自身的受理（resolve) / 拒绝(reject)状态和传递给 pipe promise 回调函数的值。如果将 <code>null</code> 作为过滤函数，或者不指定过滤函数，那么 pipe promise 被受理（resolve)或被拒绝(reject)时，会使用相同的值作为原始值。</p>
          </longdesc>
          <example>
-            <desc>Filter resolve value:</desc>
+            <desc>过滤 resolve 的值:</desc>
             <code>
 var defer = $.Deferred(),
     filtered = defer.pipe(function( value ) {
@@ -1340,7 +1340,7 @@ filtered.done(function( value ) {
 </code>
          </example>
          <example>
-            <desc>Filter reject value:</desc>
+            <desc>过滤 reject 的值:</desc>
             <code>
 var defer = $.Deferred(),
     filtered = defer.pipe( null, function( value ) {
@@ -1354,7 +1354,7 @@ filtered.fail(function( value ) {
 </code>
          </example>
          <example>
-            <desc>Chain tasks:</desc>
+            <desc>链式任务:</desc>
             <code>
 var request = $.ajax( url, { dataType: "json" } ),
     chained = request.pipe(function( data ) {
@@ -1934,23 +1934,23 @@ alert( 'You are running jQuery version: ' + $.fn.jquery );
          <category name="Properties of jQuery Object Instances"/>
       </entry>
       <entry type="method" name="deferred.promise" return="Promise">
-         <desc> Return a Deferred's Promise object. </desc>
+         <desc>返回延迟对象的 Promise 对象。</desc>
          <signature>
             <added>1.5</added>
             <argument name="target" type="Object" optional="true">
-               <desc>Object onto which the promise methods have to be attached</desc>
+               <desc>绑定 promise 方法的对象。</desc>
             </argument>
          </signature>
          <longdesc> 
-            <p><code>deferred.promise()</code> method allows an asynchronous function to prevent other code from interfering with the progress or status of its internal request. The Promise exposes only the Deferred methods needed to attach additional handlers or determine the state (<code>then</code>, <code>done</code>, <code>fail</code>, <code>always</code>,<code>pipe</code>, <code>progress</code>, and <code>state</code>), but not ones that change the state (<code>resolve</code>, <code>reject</code>, <code>notify</code>, <code>resolveWith</code>, <code>rejectWith</code>, and <code>notifyWith</code>).</p>
+            <p><code>deferred.promise()</code> 方法允许一个异步函数阻止那些干涉其内部请求的进度（progress）或状态（status）的其它代码。只有当延迟对象需要绑定额外的处理或判断状态(<code>then</code>, <code>done</code>, <code>fail</code>, <code>always</code>,<code>pipe</code>, <code>progress</code>, 和 <code>state</code>)时，才需要暴露 Promise 方法。如果是用于改变状态(<code>resolve</code>, <code>reject</code>, <code>notify</code>, <code>resolveWith</code>, <code>rejectWith</code>, 和 <code>notifyWith</code>)的话，不需要暴露 Promise 方法。</p>
 
-            <p>If <code>target</code> is provided, <code>deferred.promise()</code> will attach the methods onto it and then return this object rather than create a new one. This can be useful to attach the Promise behavior to an object that already exists.</p>
+            <p>如果提供了 <code>target</code> 参数，<code>deferred.promise()</code> 会将事件绑定到该参数上，并返回这个对象，而不是创建一个新的对象。这个方法可以用于在已经存在的对象上绑定 Promise 行为的情况。</p>
 
-            <p>If you are creating a Deferred, keep a reference to the Deferred so that it can be resolved or rejected at some point. Return <em>only</em> the Promise object via <code>deferred.promise()</code> so other code can register callbacks or inspect the current state.</p>
-            <p>For more information, see the documentation for <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.</p>  
+            <p>如果你正在创建一个延迟对象，并保留了指向这个对象的引用，这样的话，在需要的时候，我们就可以受理（resolve）或拒绝（reject）这个对象。<em>只需</em>通过 <code>deferred.promise()</code>，返回 Promise 对象即可。这样的话，其它的代码就可以注册回调函数或检查当前状态。</p>
+            <p>若要了解更多内容，请参阅如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>。</p>
          </longdesc>
          <example>
-            <desc>Create a Deferred and set two timer-based functions to either resolve or reject the Deferred after a random interval. Whichever one fires first "wins" and will call one of the callbacks. The second timeout has no effect since the Deferred is already complete (in a resolved or rejected state) from the first timeout action. Also set a timer-based progress notification function, and call a progress handler that adds "working..." to the document body.</desc>
+            <desc>创建一个延迟对象，并设定两个延时时间是随机的定时器，分别用于受理（resolve）和拒绝（reject）延迟对象。无论哪一个先执行，都会调用其中一个回调函数。而另一个定时器则不会产生任何效果，因为在最先调用的那个定时器处理中，延迟对象已经处于完成状态(resolved 或 rejected 状态)。同时，还会设定一个定时器进度（progress）通知函数，用于进度通知处理，并在文档的 "body" 中显示 "working..."。</desc>
         <code><![CDATA[
 function asyncEvent(){
     var dfd = new jQuery.Deferred();
@@ -1992,7 +1992,7 @@ $.when( asyncEvent() ).then(
 ]]></code>
          </example>
          <example>
-            <desc>Use the target argument to promote an existing object to a Promise:</desc>
+            <desc>使用 target 参数，在已经存在的对象上绑定 Promise:</desc>
   <code><![CDATA[
 // Existing object
 var obj = {
@@ -2432,17 +2432,17 @@ $("button").bind("click", function() {
          <category name="Version 1.5"/>
       </entry>
       <entry type="method" name="deferred.then" return="Deferred">
-         <desc> Add handlers to be called when the Deferred object is resolved or rejected. </desc>
+         <desc>添加当延迟对象被受理（resolve）或被拒绝（reject）时调用的处理程序。</desc>
          <signature>
             <added>1.5</added>
             <argument name="doneCallbacks" type="Function">
                <desc>
-             A function, or array of functions, called when the Deferred is resolved.
+             单个函数或函数数组，当延迟对象被受理(resolve)时调用。
            </desc>
             </argument>
             <argument name="failCallbacks" type="Function">
                <desc>
-             A function, or array of functions, called when the Deferred is rejected.
+             单个函数或函数数组，当延迟对象被拒绝(reject)时调用。
            </desc>
             </argument>
          </signature>
@@ -2450,29 +2450,29 @@ $("button").bind("click", function() {
             <added>1.7</added>
             <argument name="doneCallbacks" type="Function">
                <desc>
-             A function, or array of functions, called when the Deferred is resolved.
+             单个函数或函数数组，当延迟对象被受理(resolve)时调用。
            </desc>
             </argument>
             <argument name="failCallbacks" type="Function">
                <desc>
-             A function, or array of functions, called when the Deferred is rejected.
+             单个函数或函数数组，当延迟对象被拒绝(reject)时调用。
            </desc>
             </argument>
             <argument name="progressCallbacks" type="Function" optional="true">
                <desc>
-             A function, or array of functions, called when the Deferred notifies progress.
+             单个函数或函数数组，当延迟对象通知进度（progress）时被调用。
            </desc>
             </argument>
          </signature>
          <longdesc> 
-            <p>All three arguments (including progressCallbacks, as of jQuery 1.7) can be either a single function or an array of functions. The arguments can also be <code>null</code> if no callback of that type is desired. Alternatively, use <code>.done()</code>, <code>.fail()</code> or <code>.progress()</code> to set only one type of callback. </p>
-            <p>When the Deferred is resolved, the doneCallbacks are called. If the Deferred is instead rejected, the failCallbacks are called. As of jQuery 1.7, the <code>deferred.notify()</code> or <code>deferred.notifyWith()</code> methods can be called to invoke the progressCallbacks as many times as desired before the Deferred is resolved or rejected.</p>
-            <p>回调函数的执行顺序和它们被添加的顺序是一样的。 Since <code>deferred.then</code> returns the deferred object, other methods of the deferred object can be chained to this one, including additional <code>.then()</code> methods.了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.</p> 
+            <p>所有的参数(包括从 jQuery 1.7 开始提供的 progressCallbacks)都可以是单个函数或是一个函数数组。不需要使用的参数，可以将其设置成 <code>null</code>。或者使用 <code>.done()</code>, <code>.fail()</code> 或 <code>.progress()</code> 来设定单一类型的回调函数。</p>
+            <p>当延迟对象被受理（resolve）时，doneCallbacks 会被调用。如果延迟对象被拒绝（reject），failCallbacksare 会被调用。从 jQuery 1.7 开始，在迟延对象被受理（resolve）或被拒绝（reject）之前，<code>deferred.notify()</code> 或 <code>deferred.notifyWith()</code> 方法会一直调用 progressCallbacks。</p>
+            <p>回调函数的执行顺序和它们被添加的顺序是一样的。由于 <code>deferred.then</code> 返回的是延迟对象，所以可以链接其它的延迟对象，包括额外的 <code>.then()</code> 方法。了解更多内容，请参见如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>。</p> 
          </longdesc>
          <example>
-            <desc>Since the <code><a href="jQuery.get.htm">
+            <desc>由于 <code><a href="jQuery.get.htm">
                   jQuery.get</a></code>
-                method returns a jqXHR object, which is derived from a Deferred object, we can attach handlers using the <code>.then</code> method.</desc>
+                方法返回 jqXHR 对象，该对象继承自延迟对象，所以我们可以添加 <code>.then</code> 方法。</desc>
             <code>
 $.get("test.php").then(
     function(){ alert("$.get succeeded"); },
