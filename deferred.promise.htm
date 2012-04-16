@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Promise</span>deferred.promise(<em class="optional">[target]</em>)<br></h2>
    <div class="desc">
-      <p> Return a Deferred's Promise object. </p>
+      <p>返回延迟对象的 Promise 对象。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.5 新增</span>deferred.promise(<em class="optional">[target]</em>)
@@ -11,37 +11,32 @@
             </h4>
             <div class="arguement"><strong>target</strong>
                								(Object)
-               								 可选参数，Object onto which the promise methods have to be attached
+               								 可选参数，绑定 promise 方法的对象。
             </div>
          </li>
       </ul>
       <div class="longdesc"> 
          
-         <p><code>deferred.promise()</code> method allows an asynchronous function to prevent other code from interfering with the progress or status of its internal
-            request. The Promise exposes only the Deferred methods needed to attach additional handlers or determine the state (<code>then</code>, <code>done</code>, <code>fail</code>, <code>always</code>,<code>pipe</code>, <code>progress</code>, and <code>state</code>), but not ones that change the state (<code>resolve</code>, <code>reject</code>, <code>notify</code>, <code>resolveWith</code>, <code>rejectWith</code>, and <code>notifyWith</code>).
+         <p><code>deferred.promise()</code> 方法允许一个异步函数阻止那些干涉其内部请求的进度（progress）或状态（status）的其它代码。只有当延迟对象需要绑定额外的处理或判断状态(<code>then</code>, <code>done</code>, <code>fail</code>, <code>always</code>,<code>pipe</code>, <code>progress</code>, 和 <code>state</code>)时，才需要暴露 Promise 方法。如果是用于改变状态(<code>resolve</code>, <code>reject</code>, <code>notify</code>, <code>resolveWith</code>, <code>rejectWith</code>, 和 <code>notifyWith</code>)的话，不需要暴露 Promise 方法。
          </p>
          
          
-         <p>If <code>target</code> is provided, <code>deferred.promise()</code> will attach the methods onto it and then return this object rather than create a new one. This can be useful to attach the
-            Promise behavior to an object that already exists.
+         <p>如果提供了 <code>target</code> 参数，<code>deferred.promise()</code> 会将事件绑定到该参数上，并返回这个对象，而不是创建一个新的对象。这个方法可以用于在已经存在的对象上绑定 Promise 行为的情况。
          </p>
          
          
-         <p>If you are creating a Deferred, keep a reference to the Deferred so that it can be resolved or rejected at some point. Return
-            <em>only</em> the Promise object via <code>deferred.promise()</code> so other code can register callbacks or inspect the current state.
+         <p>如果你正在创建一个延迟对象，并保留了指向这个对象的引用，这样的话，在需要的时候，我们就可以受理（resolve）或拒绝（reject）这个对象。<em>只需</em>通过 <code>deferred.promise()</code>，返回 Promise 对象即可。这样的话，其它的代码就可以注册回调函数或检查当前状态。
          </p>
          
-         <p>For more information, see the documentation for <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>.
-         </p>  
+         <p>若要了解更多内容，请参阅如下文档 <a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>。
+         </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Create a Deferred and set two timer-based functions to either resolve or reject the Deferred after a random interval. Whichever
-         one fires first "wins" and will call one of the callbacks. The second timeout has no effect since the Deferred is already
-         complete (in a resolved or rejected state) from the first timeout action. Also set a timer-based progress notification function,
-         and call a progress handler that adds "working..." to the document body.
+      <p>创建一个延迟对象，并设定两个延时时间是随机的定时器，分别用于受理（resolve）和拒绝（reject）延迟对象。无论哪一个先执行，都会调用其中一个回调函数。而另一个定时器则不会产生任何效果，因为在最先调用的那个定时器处理中，延迟对象已经处于完成状态(resolved
+         或 rejected 状态)。同时，还会设定一个定时器进度（progress）通知函数，用于进度通知处理，并在文档的 "body" 中显示 "working..."。
       </p>
       <h5>jQuery 代码:</h5><pre><code>
 function asyncEvent(){
@@ -82,7 +77,7 @@ $.when( asyncEvent() ).then(
     }
 );
 </code></pre><h3>示例:</h3>
-      <p>Use the target argument to promote an existing object to a Promise:</p>
+      <p>使用 target 参数，在已经存在的对象上绑定 Promise:</p>
       <h5>jQuery 代码:</h5><pre><code>
 // Existing object
 var obj = {

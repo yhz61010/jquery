@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Promise</span>deferred.pipe(<em class="optional">[doneFilter]</em>, <em class="optional">[failFilter]</em>)<br></h2>
    <div class="desc">
-      <p> Utility method to filter and/or chain Deferreds.  </p>
+      <p>用于过滤 and/or 链式延迟对象的工具方法。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.6 新增</span>deferred.pipe(<em class="optional">[doneFilter]</em>, <em class="optional">[failFilter]</em>)
@@ -12,13 +12,13 @@
             <div class="arguement"><strong>doneFilter</strong>
                								(Function)
                								 可选参数，
-               An optional function that is called when the Deferred is resolved.
+               可选的函数，当延迟对象被受理(resolve)时调用。
                
             </div>
             <div class="arguement"><strong>failFilter</strong>
                								(Function)
                								 可选参数，
-               An optional function that is called when the Deferred is rejected.
+               可选的函数，当延迟对象被拒绝(reject)时调用。
                
             </div>
          </li>
@@ -29,34 +29,33 @@
             <div class="arguement"><strong>doneFilter</strong>
                								(Function)
                								 可选参数，
-               An optional function that is called when the Deferred is resolved.
+               可选的函数，当延迟对象被受理(resolve)时调用。
                
             </div>
             <div class="arguement"><strong>failFilter</strong>
                								(Function)
                								 可选参数，
-               An optional function that is called when the Deferred is rejected.
+               可选的函数，当延迟对象被拒绝(reject)时调用。
                
             </div>
             <div class="arguement"><strong>progressFilter</strong>
                								(Function)
                								 可选参数，
-               An optional function that is called when progress notifications are sent to the Deferred.
+               可选的函数，当进度（progress）通知发送到延迟对象上时被调用。
                
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p><code>deferred.pipe()</code> method returns a new promise that filters the status and values of a deferred through a function.  The <code>doneFilter</code> 和 <code>failFilter</code> functions filter the original deferred's resolved / rejected status and values. <strong>As of jQuery 1.7</strong>, the method also accepts a <code>progressFilter</code> function to filter any calls to the original deferred's <code>notify</code> or <code>notifyWith</code> methods. These filter functions can return a new value to be passed along to the piped promise's <code>done()</code> or <code>fail()</code> callbacks, or they can return another observable object (Deferred, Promise, etc) which will pass its resolved / rejected
-            status and values to the piped promise's callbacks. If the filter function used is <code>null</code>, or not specified, the piped promise will be resolved or rejected with the same values as the original.
+         <p><code>deferred.pipe()</code> 方法返回一个新的 promise，用于过滤状态或通过函数返回的延迟对象的值。<code>doneFilter</code> 和 <code>failFilter</code> 函数过滤原始的延迟对象的受理（resolve) / 拒绝(reject)状态和值。<strong>从 jQuery 1.7 开始</strong>，该方法可以接受 <code>progressFilter</code> 函数，用于过滤任何原始延迟对象上的 <code>notify</code> 或 <code>notifyWith</code> 调用。这些过滤器可以随着 pipe promise 的 <code>done()</code> 或 <code>fail()</code> 回调函数的调用，返回一个新值，或返回其它可见对象(Deferred, Promise, 等等)，这些可见对象传递了自身的受理（resolve) / 拒绝(reject)状态和传递给 pipe promise 回调函数的值。如果将 <code>null</code> 作为过滤函数，或者不指定过滤函数，那么 pipe promise 被受理（resolve)或被拒绝(reject)时，会使用相同的值作为原始值。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Filter resolve value:</p>
+      <p>过滤 resolve 的值:</p>
       <h5>jQuery 代码:</h5><pre><code>
 var defer = $.Deferred(),
     filtered = defer.pipe(function( value ) {
@@ -68,7 +67,7 @@ filtered.done(function( value ) {
   alert( "Value is ( 2*5 = ) 10: " + value );
 });
 </code></pre><h3>示例:</h3>
-      <p>Filter reject value:</p>
+      <p>过滤 reject 的值:</p>
       <h5>jQuery 代码:</h5><pre><code>
 var defer = $.Deferred(),
     filtered = defer.pipe( null, function( value ) {
@@ -80,7 +79,7 @@ filtered.fail(function( value ) {
   alert( "Value is ( 3*6 = ) 18: " + value );
 });
 </code></pre><h3>示例:</h3>
-      <p>Chain tasks:</p>
+      <p>链式任务:</p>
       <h5>jQuery 代码:</h5><pre><code>
 var request = $.ajax( url, { dataType: "json" } ),
     chained = request.pipe(function( data ) {
