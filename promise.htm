@@ -3,9 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Promise</span>promise(<em class="optional">[type]</em>, <em class="optional">[target]</em>)<br></h2>
    <div class="desc">
-      <p> Return a Promise object to observe when all actions of a certain type bound to the collection, queued or not, have finished.
-         
-      </p>
+      <p>当绑定到集合中的所有特定动作（action）已经被加入或未被加入到队列中时，返回一个观察用的 Promise 对象。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.6 新增</span>promise(<em class="optional">[type]</em>, <em class="optional">[target]</em>)
@@ -13,35 +11,33 @@
             </h4>
             <div class="arguement"><strong>type</strong>
                								(String)
-               								 可选参数，默认值:'fx' The type of queue that needs to be observed. 
+               								 可选参数，默认值:'fx'需要被观察的队列类型
             </div>
             <div class="arguement"><strong>target</strong>
                								(Object)
-               								 可选参数，Object onto which the promise methods have to be attached
+               								 可选参数，将要绑定 promise 方法的对象。
             </div>
          </li>
       </ul>
       <div class="longdesc"> 
          
-         <p><code>.promise()</code> method returns a dynamically generated Promise that is resolved once all actions of a certain type bound to the collection,
-            queued or not, have ended.
+         <p><code>.promise()</code> 方法返回一个动态生成的 Promise，当绑定到集合中的所有特定动作（action）已经被加入或未被加入到队列中时，生成的 Promise 将被受理（resolve）。
          </p>
          
-         <p> By default, <code>type</code> is <code>"fx"</code>, which means the returned Promise is resolved when all animations of the selected elements have completed.
+         <p>默认情况下，<code>type</code> 的值是 <code>"fx"</code>，这意味着，返回被受理（resolve）的 Promise 对象的时机，是在所有被选中元素的动画都完成时发生的。
          </p>
          
-         <p> Resolve context and sole argument is the collection onto which <code>.promise()</code> has been called. 
+         <p>调用 <code>.promise()</code> 的集合，既是受理上下文（Resolve context）也是唯一的参数。
          </p>
          
-         <p> If <code>target</code> is provided, <code>.promise()</code> will attach the methods onto it and then return this object rather than create a new one. This can be useful to attach the
-            Promise behavior to an object that already exists.
-         </p>  
+         <p>如果提供了 <code>target</code> 参数，那么 <code>.promise()</code> 会在该参数上添加方法，然后返回这个对象，而不是创建一个新对象。它适用于在一个已经存在的对象上添加 Promise 行为的情况。
+         </p>
          
          <blockquote>
             
             <p>
-               <strong>Note: </strong>The returned Promise is linked to a Deferred object stored on the <code>.data()</code> for an element. Since the <code>.remove()</code> method removes the element's data as well as the element itself, it will prevent any of the element's unresolved Promises
-               from resolving. If it is necessary to remove an element from the DOM before its Promise is resolved, use <code>.detach()</code> instead and follow with <code>.removeData()</code> after resolution.
+               <strong>注意： </strong>返回的 Promise 被链接到延迟对象上，保存在元素的 <code>.data()</code> 中。由于 <code>.remove()</code> 方法会移除元素上的 data，同时也会移除元素本身。所以，使用它会防止任何元素上未被受理的（unresolved） Promise 被受理（resolving）。如果有必要在元素的 Promise 被受理（resolved）之前，从 DOM
+               中移除该元素的话，请使用 <code>.detach()</code> 来代替。之后再调用 <code>.removeData()</code>。
             </p>
             
          </blockquote>
@@ -50,7 +46,7 @@
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Using .promise() on a collection with no active animation returns a resolved Promise:</p>
+      <p>在一个没有激活动画的集合上调用 .promise()，返回一个被受理（resolved）的 Promise：</p>
       <h5>jQuery 代码:</h5><pre><code>
 var div = $( "&lt;div /&gt;" );
 
@@ -59,9 +55,7 @@ div.promise().done(function( arg1 ) {
   alert( this === div &amp;&amp; arg1 === div );
 });
 </code></pre><h3>示例:</h3>
-      <p>Resolve the returned Promise when all animations have ended (including those initiated in the animation callback or added
-         later on):
-      </p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>当所有的动画结果时(包括那些在动画回调函数和之后添加的回调函数中初始化的动画），受理（Resolve）返回的 Promise：</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -104,7 +98,7 @@ $("button").bind( "click", function() {
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
-      <p>Resolve the returned Promise using a $.when() statement (the .promise() method makes it possible to do this with jQuery collections):</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>使用 $.when() 语句(.promise() 方法使得在 jQuery 集合中实现它变成了可能)，受理（Resolve）返回的 Promise：</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
