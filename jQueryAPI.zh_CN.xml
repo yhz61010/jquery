@@ -1830,21 +1830,21 @@ $.ajaxPrefilter(function( options ) {
          <category name="Version 1.5"/>
       </entry>
       <entry type="method" name="jQuery.holdReady" return="undefined">
-         <desc>Holds or releases the execution of jQuery's ready event.</desc>
+         <desc>持有或释放 jQuery 的 ready 事件的执行。</desc>
          <signature>
             <added>1.6</added>
             <argument name="hold" type="Boolean">
-               <desc>Indicates whether the ready hold is being requested or released</desc>
+               <desc>表示是否正在请求持有或释放 ready 事件。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p><code>$.holdReady()</code> method allows the caller to delay jQuery's ready event. This <em>advanced feature</em> would typically be used by dynamic script loaders that want to load additional JavaScript such as jQuery plugins before allowing the ready event to occur, even though the DOM may be ready. This method must be called early in the document, such as in the <code>&lt;head&gt;</code> immediately after the jQuery script tag. Calling this method after the ready event has already fired will have no effect. </p>
-            <p>To delay the ready event, first call <code>$.holdReady(true)</code>. When the ready event should be released to execute, call <code>$.holdReady(false)</code>. Note that multiple holds can be put on the ready event, one for each <code>$.holdReady(true)</code> call. The ready event will not actually fire until all holds have been released with a corresponding number of <code>$.holdReady(false)</code> calls <em>and</em> the normal document ready conditions are met. (详见 <code><a href="ready.htm">
+            <p><code>$.holdReady()</code> 允许调用该方法的调用者延迟 jQuery 的 ready 事件。这个<em>高级机能</em>通常会被用来允许在 ready 事件发生之前，动态加载其它的 JavaScript（例如 jQuery 插件），即使 DOM 可能已经准备就绪。该方法必须在文档早期被调用，例如，在 <code>&lt;head&gt;</code> 中加载完 jQuery 脚本之后，立刻调用该方法。如果在 ready 事件已经被调用后再调用该方法，将不会起作用。</p>
+            <p>为了延迟 ready 事件，首先要调用 <code>$.holdReady(true)</code>，然后，当 ready 事件准备执行时，再调用 <code>$.holdReady(false)</code>。注意，在 ready 事件中可以设置多个 hold。每一个都对应一次 <code>$.holdReady(true)</code> 调用。直到所有的 hold 都被释放，也就是调用了对应数量的 <code>$.holdReady(false)</code> 之后，<em>并且</em>满足正常的文档 ready 条件时，ready 事件才会被真正执行。(详见 <code><a href="ready.htm">
                   ready</a></code>
                 来获得更多信息。)</p>
          </longdesc>
          <example>
-            <desc>Delay the ready event until a custom plugin has loaded.</desc>
+            <desc>延迟 ready 事件，直到自定义插件加载完成。</desc>
             <code>
 $.holdReady(true);
 $.getScript("myplugin.js", function() {
@@ -2228,29 +2228,29 @@ $( "#anotherElement" ).append( $title.text() );
          <category name="Version 1.5"/>
       </entry>
       <entry type="method" name="jQuery.when" return="Promise">
-         <desc>Provides a way to execute callback functions based on one or more objects, usually <a href="http://api.jquery.com/category/deferred-object/">Deferred</a> objects that represent asynchronous events.</desc>
+         <desc>提供了一种在一个或多个对象上执行回调函数的方法。通常，<a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>代表异步事件。</desc>
          <signature>
             <added>1.5</added>
             <argument name="deferreds" type="Deferred">
-               <desc>One or more Deferred objects, or plain JavaScript objects.</desc>
+               <desc>一个或多个延迟对象，或是纯 JavaScript 对象。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p>If a single Deferred is passed to <code>jQuery.when</code>, its Promise object (a subset of the Deferred methods) is returned by the method. Additional methods of the Promise object can be called to attach callbacks, such as <code><a href="deferred.then.htm">
+            <p>如果向 <code>jQuery.when</code> 传入一个延迟对象，那么会返回它的 Promise 对象(延迟方法的一个子集)。可以继续绑定 Promise 对象的其它方法，例如，<code><a href="deferred.then.htm">
                   deferred.then</a></code>
-               . When the Deferred is resolved or rejected, usually by the code that created the Deferred originally, the appropriate callbacks will be called. For example, the jqXHR object returned by <code>jQuery.ajax</code> is a Deferred and can be used this way:</p>
+               。当延迟对象已经被受理（resolved）或被拒绝(rejected）（通常是由创建延迟对象的最初代码执行的），那么就会调用适当的回调函数。例如，由 <code>jQuery.ajax</code> 返回的 jqXHR 对象是一个延迟对象，可以向下面这样使用：</p>
             <pre>$.when( $.ajax("test.aspx") ).then(function(ajaxArgs){ 
      alert(ajaxArgs[1]); /* ajaxArgs is [ "success", statusText, jqXHR ] */
 });</pre>
-            <p>If a single argument is passed to <code>jQuery.when</code> and it is not a Deferred, it will be treated as a resolved Deferred and any doneCallbacks attached will be executed immediately. The doneCallbacks are passed the original argument. In this case any failCallbacks you might set are never called since the Deferred is never rejected. For example:</p>
+            <p>如果向 <code>jQuery.when</code> 传入的参数不是延迟对象，那么它会被当作是一个被受理（resolved）的延迟对象，并且添加到上面的任何 doneCallbacks 都会被立刻执行。向 doneCallbacks 中传入的是原始的参数。在这种情况下，设定的任何 failCallbacks 永远都不会被执行，因为延迟对象永远不会被拒绝（rejected）。例如：</p>
             <pre>$.when( { testing: 123 } ).done(
    function(x){ alert(x.testing); } /* alerts "123" */
 );</pre>
-            <p>In the case where multiple Deferred objects are passed to <code>jQuery.when</code>, the method returns the Promise from a new "master" Deferred object that tracks the aggregate state of all the Deferreds it has been passed. The method will resolve its master Deferred as soon as all the Deferreds resolve, or reject the master Deferred as soon as one of the Deferreds is rejected. If the master Deferred is resolved, it is passed the resolved values of all the Deferreds that were passed to <code>jQuery.when</code>. For example, when the Deferreds are <code>jQuery.ajax()</code> requests, the arguments will be the jqXHR objects for the requests, in the order they were given in the argument list.</p>
-            <p>In the multiple-Deferreds case where one of the Deferreds is rejected, <code>jQuery.when</code> immediately fires the failCallbacks for its master Deferred. Note that some of the Deferreds may still be unresolved at that point. If you need to perform additional processing for this case, such as canceling any unfinished ajax requests, you can keep references to the underlying jqXHR objects in a closure and inspect/cancel them in the failCallback.</p>
+            <p>如果向 <code>jQuery.when</code> 中传入了多个延迟对象，那么方法返回的 Promise 是来自一个新的 "master" 延迟对象，该对象用来跟踪所有传入的延迟对象的总状态。当所有的延迟对象被受理（resolve）时，该方法才会受理它的 master 延迟对象。当其中有一个延迟对象被拒绝（rejected）时，该方法就会拒绝它的 master 延迟对象。如果 master 延迟对象被受理（resolved），那么会传入所有延迟对象的受理（resolved）值，这些延迟对象指的就是传给 <code>jQuery.when</code> 的参数。例如，当延迟对象是 <code>jQuery.ajax()</code> 请求，那么传入的受理（resolved）参数就是请求用的 jqXHR 对象，传入顺序就是它们在参数列表中的顺序。</p>
+            <p>在传入多个延迟对象的情况下，若其中任何一个延迟对象被拒绝（rejected），那么 <code>jQuery.when</code> 会立刻调用 master 延迟对象的 failCallbacks。注意，在上述情况中，有一些延迟对象依然是不能被受理（unresolved）的。那么，在这种情况下，如果需要执行一些额外的处理，例如，取消所有未完成的 ajax 请求，你可以在闭包中进行保持 jqXHR 对象的引用，并且在 failCallback 中检查或取消它们。</p>
          </longdesc>
          <example>
-            <desc>Execute a function after two ajax requests are successful. (See the jQuery.ajax() documentation for a complete description of success and error cases for an ajax request).</desc>
+            <desc>在两个 ajax 请求成功后，执行一个函数。(关于 ajax 请求成功和失败的完整描述，请参见 jQuery.ajax() 文档)。</desc>
             <code>$.when($.ajax("/page1.php"), $.ajax("/page2.php")).done(function(a1,  a2){
     /* a1 and a2 are arguments resolved for the 
         page1 and page2 ajax requests, respectively */
@@ -2262,7 +2262,7 @@ $( "#anotherElement" ).append( $title.text() );
 </code>
          </example>
          <example>
-            <desc>Execute the function <code>myFunc</code> when both ajax requests are successful, or <code>myFailure</code> if either one has an error.</desc>
+            <desc>当两个 ajax 请求都成功时，执行 <code>myFunc</code> 函数。当其中任何一个请求失败时，调用 <code>myFailure</code> 函数。</desc>
             <code>$.when($.ajax("/page1.php"), $.ajax("/page2.php"))
   .then(myFunc, myFailure);
 </code>
@@ -2571,20 +2571,20 @@ $.get("test.php").then(
          <category name="Version 1.5"/>
       </entry>
       <entry type="method" name="jQuery.sub" return="jQuery">
-         <desc>Creates a new copy of jQuery whose properties and methods can be modified without affecting the original jQuery object.</desc>
+         <desc>创建一个 jQuery 的副本，可以修改这个 jQuery 副本的属性和方法而不影响原始的 jQuery 对象。</desc>
          <signature>
             <added>1.5</added>
             <deprecated>1.7</deprecated>
          </signature>
          <longdesc>
-	    <p><strong>This method is deprecated as of jQuery 1.7 and will be moved to a plugin in jQuery 1.8.</strong></p>
-            <p>There are two specific use cases for which jQuery.sub() was created. The first was for providing a painless way of overriding jQuery methods without completely destroying the original methods and another was for helping to do encapsulation and basic namespacing for jQuery plugins.</p>
-            <p>Note that jQuery.sub() doesn't attempt to do any sort of isolation - that's not its intention. All the methods on the sub'd version of jQuery will still point to the original jQuery (events bound and triggered will still be through the main jQuery, data will be bound to elements through the main jQuery, Ajax queries and events will run through the main jQuery, etc.).</p>
-            <p>Note that if you're looking to use this for plugin development you should first <i>strongly</i> consider using something like the jQuery UI widget factory which manages both state and plugin sub-methods. <a href="http://blog.nemikor.com/2010/05/15/building-stateful-jquery-plugins/">Some examples of using the jQuery UI widget factory</a> to build a plugin.</p>
-            <p>The particular use cases of this method can be best described through some examples.</p>
+	    <p><strong>从 jQuery 1.7 开始，不再建议使用该方法。在 jQuery 1.8 中，该方法将会被移到插件中。</strong></p>
+            <p>以下是两种使用 jQuery.sub() 的具体情况，第一种情况是希望重写 jQuery 的方法，而不想破坏原始的方法。另一种情况是想为 jQuery 插件做进一步的封装或进行基本的命名空间。</p>
+            <p>注意，jQuery.sub() 并不尝试做任何形式的隔离，因为这不是该方法的本意。所有 jQuery 副本中的方法依然指向原始的 jQuery (例如，依然会通过原始的 jQuery 进行事件绑定和触发，data 也会通过原始的 jQuery 绑定到元素上。Ajax 请求和事件也是通过原始的 jQuery 运行的等等。)。</p>
+            <p>注意，如果你想使用它进行插件开发，那么你应该<i>优先</i>考虑使用一些像 jQuery UI 小部件工厂之类的，来管理状态和插件方法。以下是一些<a href="http://blog.nemikor.com/2010/05/15/building-stateful-jquery-plugins/">使用 jQuery UI 小部件工厂</a>创建插件的例子。</p>
+            <p>上述那些例子非常好的描述了该方法的详细用法。</p>
          </longdesc>
          <example>
-            <desc>Adding a method to a jQuery sub so that it isn't exposed externally:</desc>
+            <desc>向 jQuery 副本中，添加一个不对外暴露的方法：</desc>
         <code><![CDATA[  (function(){
     var sub$ = jQuery.sub();
 
@@ -2600,7 +2600,7 @@ $.get("test.php").then(
   typeof jQuery('body').myCustomMethod // undefined]]></code>
          </example>
          <example>
-            <desc>Override some jQuery methods to provide new functionality.</desc>
+            <desc>重写一些 jQuery 方法，提供新的功能。</desc>
         <code><![CDATA[
 (function() {
   var myjQuery = jQuery.sub();
@@ -2629,7 +2629,7 @@ $.get("test.php").then(
 // This functionality is only contained within the modified 'myjQuery'.]]></code>
          </example>
          <example>
-            <desc>Create a plugin that returns plugin-specific methods.</desc>
+            <desc>创建一个插件，返回插件的具体方法。</desc>
         <code><![CDATA[
 (function() {
   // Create a new copy of jQuery using sub()
