@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Promise</span>jQuery.when(deferreds)<br></h2>
    <div class="desc">
-      <p>Provides a way to execute callback functions based on one or more objects, usually <a href="http://api.jquery.com/category/deferred-object/">Deferred</a> objects that represent asynchronous events.
+      <p>提供了一种在一个或多个对象上执行回调函数的方法。通常，<a href="http://api.jquery.com/category/deferred-object/">延迟对象</a>代表异步事件。
       </p>
       <ul class="signatures">
          <li>
@@ -12,46 +12,38 @@
             </h4>
             <div class="arguement"><strong>deferreds</strong>
                								(Deferred)
-               								One or more Deferred objects, or plain JavaScript objects.
+               								一个或多个延迟对象，或是纯 JavaScript 对象。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p>If a single Deferred is passed to <code>jQuery.when</code>, its Promise object (a subset of the Deferred methods) is returned by the method. Additional methods of the Promise object
-            can be called to attach callbacks, such as <code><a href="deferred.then.htm">
+         <p>如果向 <code>jQuery.when</code> 传入一个延迟对象，那么会返回它的 Promise 对象(延迟方法的一个子集)。可以继续绑定 Promise 对象的其它方法，例如，<code><a href="deferred.then.htm">
                   deferred.then</a></code>
-            . When the Deferred is resolved or rejected, usually by the code that created the Deferred originally, the appropriate callbacks
-            will be called. For example, the jqXHR object returned by <code>jQuery.ajax</code> is a Deferred and can be used this way:
+            。当延迟对象已经被受理（resolved）或被拒绝(rejected）（通常是由创建延迟对象的最初代码执行的），那么就会调用适当的回调函数。例如，由 <code>jQuery.ajax</code> 返回的 jqXHR 对象是一个延迟对象，可以向下面这样使用：
          </p>
          <pre>$.when( $.ajax("test.aspx") ).then(function(ajaxArgs){ 
      alert(ajaxArgs[1]); /* ajaxArgs is [ "success", statusText, jqXHR ] */
 });</pre>
-         <p>If a single argument is passed to <code>jQuery.when</code> and it is not a Deferred, it will be treated as a resolved Deferred and any doneCallbacks attached will be executed immediately.
-            The doneCallbacks are passed the original argument. In this case any failCallbacks you might set are never called since the
-            Deferred is never rejected. For example:
+         <p>如果向 <code>jQuery.when</code> 传入的参数不是延迟对象，那么它会被当作是一个被受理（resolved）的延迟对象，并且添加到上面的任何 doneCallbacks 都会被立刻执行。向 doneCallbacks 中传入的是原始的参数。在这种情况下，设定的任何 failCallbacks
+            永远都不会被执行，因为延迟对象永远不会被拒绝（rejected）。例如：
          </p>
          <pre>$.when( { testing: 123 } ).done(
    function(x){ alert(x.testing); } /* alerts "123" */
 );</pre>
-         <p>In the case where multiple Deferred objects are passed to <code>jQuery.when</code>, the method returns the Promise from a new "master" Deferred object that tracks the aggregate state of all the Deferreds
-            it has been passed. The method will resolve its master Deferred as soon as all the Deferreds resolve, or reject the master
-            Deferred as soon as one of the Deferreds is rejected. If the master Deferred is resolved, it is passed the resolved values
-            of all the Deferreds that were passed to <code>jQuery.when</code>. For example, when the Deferreds are <code>jQuery.ajax()</code> requests, the arguments will be the jqXHR objects for the requests, in the order they were given in the argument list.
+         <p>如果向 <code>jQuery.when</code> 中传入了多个延迟对象，那么方法返回的 Promise 是来自一个新的 "master" 延迟对象，该对象用来跟踪所有传入的延迟对象的总状态。当所有的延迟对象被受理（resolve）时，该方法才会受理它的 master 延迟对象。当其中有一个延迟对象被拒绝（rejected）时，该方法就会拒绝它的
+            master 延迟对象。如果 master 延迟对象被受理（resolved），那么会传入所有延迟对象的受理（resolved）值，这些延迟对象指的就是传给 <code>jQuery.when</code> 的参数。例如，当延迟对象是 <code>jQuery.ajax()</code> 请求，那么传入的受理（resolved）参数就是请求用的 jqXHR 对象，传入顺序就是它们在参数列表中的顺序。
          </p>
          
-         <p>In the multiple-Deferreds case where one of the Deferreds is rejected, <code>jQuery.when</code> immediately fires the failCallbacks for its master Deferred. Note that some of the Deferreds may still be unresolved at that
-            point. If you need to perform additional processing for this case, such as canceling any unfinished ajax requests, you can
-            keep references to the underlying jqXHR objects in a closure and inspect/cancel them in the failCallback.
+         <p>在传入多个延迟对象的情况下，若其中任何一个延迟对象被拒绝（rejected），那么 <code>jQuery.when</code> 会立刻调用 master 延迟对象的 failCallbacks。注意，在上述情况中，有一些延迟对象依然是不能被受理（unresolved）的。那么，在这种情况下，如果需要执行一些额外的处理，例如，取消所有未完成的 ajax 请求，你可以在闭包中进行保持
+            jqXHR 对象的引用，并且在 failCallback 中检查或取消它们。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Execute a function after two ajax requests are successful. (See the jQuery.ajax() documentation for a complete description
-         of success and error cases for an ajax request).
-      </p>
+      <p>在两个 ajax 请求成功后，执行一个函数。(关于 ajax 请求成功和失败的完整描述，请参见 jQuery.ajax() 文档)。</p>
       <h5>jQuery 代码:</h5><pre><code>$.when($.ajax("/page1.php"), $.ajax("/page2.php")).done(function(a1,  a2){
     /* a1 and a2 are arguments resolved for the 
         page1 and page2 ajax requests, respectively */
@@ -61,7 +53,7 @@
    }
 });
 </code></pre><h3>示例:</h3>
-      <p>Execute the function myFunc when both ajax requests are successful, or myFailure if either one has an error.</p>
+      <p>当两个 ajax 请求都成功时，执行 myFunc 函数。当其中任何一个请求失败时，调用 myFailure 函数。</p>
       <h5>jQuery 代码:</h5><pre><code>$.when($.ajax("/page1.php"), $.ajax("/page2.php"))
   .then(myFunc, myFailure);
 </code></pre></div>
