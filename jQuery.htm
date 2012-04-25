@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>jQuery(selector, <em class="optional">[context]</em>)<br></h2>
    <div class="desc">
-      <p>Accepts a string containing a CSS selector which is then used to match a set of elements.</p>
+      <p>接受字符串形式的 CSS 选择器，用于匹配一组元素。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>jQuery(selector, <em class="optional">[context]</em>)
@@ -11,11 +11,11 @@
             </h4>
             <div class="arguement"><strong>selector</strong>
                								(selector)
-               								A string containing a selector expression
+               								字符串形式的 CSS 选择器。
             </div>
             <div class="arguement"><strong>context</strong>
                								(Element, jQuery)
-               								 可选参数，A DOM Element, Document, or jQuery to use as context
+               								 可选参数，DOM 元素， Document，或作为上下文的 jQuery 对象。
             </div>
          </li>
          <li>
@@ -24,7 +24,7 @@
             </h4>
             <div class="arguement"><strong>element</strong>
                								(Element)
-               								A DOM element to wrap in a jQuery object.
+               								DOM 元素。其结果会被 jQuery 对象包裹。
             </div>
          </li>
          <li>
@@ -33,7 +33,7 @@
             </h4>
             <div class="arguement"><strong>object</strong>
                								(Object)
-               								A plain object to wrap in a jQuery object.
+               								纯对象。其结果会被 jQuery 对象包裹。
             </div>
          </li>
          <li>
@@ -42,7 +42,7 @@
             </h4>
             <div class="arguement"><strong>elementArray</strong>
                								(Array)
-               								An array containing a set of DOM elements to wrap in a jQuery object.
+               								包含一组 DOM 元素的数组。其结果会被 jQuery 对象包裹。
             </div>
          </li>
          <li>
@@ -51,7 +51,7 @@
             </h4>
             <div class="arguement"><strong>jQuery object</strong>
                								(Object)
-               								An existing jQuery object to clone.
+               								将要被克隆的，已经存在的 jQuery 对象。
             </div>
          </li>
          <li>
@@ -62,45 +62,40 @@
       </ul>
       <div class="longdesc">
          
-         <p>In the first formulation listed above,  <code>jQuery()</code> — which can also be written as <code>$()</code> — searches through the DOM for any elements that match the provided selector and creates a new jQuery object that references
-            these elements:
+         <p>上述函数中的 <code>jQuery()</code> — 也可以写作 <code>$()</code> — 将会遍历 DOM，选择出满足指定选择器的元素，并生成一个新的 jQuery 对象，指向那些元素：
          </p>
          <pre>$('div.foo');</pre>
-         <p>If no elements match the provided selector, the new jQuery object is "empty"; that is, it contains no elements and has <code><a href="length.htm">.length</a></code> property of 0.
+         <p>如果没有找到与指定选择器相匹配的元素，那么新生成的 jQuery 对象会是 "empty"，也就是说，不包含任何元素，并且其 <code><a href="length.htm">.length</a></code> 的属性值是 0。
          </p>
          
-         <h4 id="selector-context">Selector Context</h4>
+         <h4 id="selector-context">选择器上下文</h4>
          
-         <p>By default, selectors perform their searches within the DOM starting at the document root. However, an alternate context can
-            be given for the search by using the optional second parameter to the  <code>$()</code> function. For example, to do a search within an event handler, the search can be restricted like so:
+         <p>默认情况下，选择器会从文档的根部，在 DOM 中查找匹配的元素。然而，你可以向 <code>$()</code> 函数中传入一个可选的参数（也就是传入第二个参数），来指定一个用于限定查找范围的上下文。例如，可以像下面这样，在一个事件处理的范围内限定查找范围：
          </p>
          <pre>
 $('div.foo').click(function() {
   $('span', this).addClass('bar');
 });
 </pre>
-         <p>When the search for the span selector is restricted to the context of <code>this</code>, only spans within the clicked element will get the additional class.
+         <p>用于查找 span 的选择器上下文被限定成 <code>this</code>，只有被点击元素内的 span，才会被附加上指定的样式。
          </p>
          
-         <p>Internally, selector context is implemented with the <code>.find()</code> method, so  <code>$('span', this)</code> is equivalent to  <code>$(this).find('span')</code>.
+         <p>在 jQuery 内部，选择器上下文是通过 <code>.find()</code> 方法实现的，因此 <code>$('span', this)</code> 等价于 <code>$(this).find('span')</code>。
          </p>
          
-         <h4 id="using-dom-elements">Using DOM elements</h4>
+         <h4 id="using-dom-elements">使用 DOM 元素</h4>
          
-         <p>The second and third formulations of this function create a jQuery object using one or more DOM elements that were already
-            selected in some other way. A common use of this facility is to call jQuery methods on an element that has been passed to
-            a callback function through the keyword <code>this</code>:
+         <p>在 jQuery(element) 和 jQuery(object) 函数中，也可以使用通过其它方式选择的 DOM 元素来生成新的 jQuery 对象。通常在如下情况使用此种方式：调用 jQuery 方法的元素，通过关键字 <code>this</code> 将选择的元素传给回调函数：
          </p>
          <pre>
 $('div.foo').click(function() {
   $(this).slideUp();
 });
 </pre>
-         <p>This example causes elements to be hidden with a sliding animation when clicked. Because the handler receives the clicked
-            item in the <code>this</code> keyword as a bare DOM element, the element must be passed to the <code>$()</code> function before applying jQuery methods to it.
+         <p>在上面例子中，点击匹配的元素时，会在元素上应用向上滑动的动画而最终导致元素被隐藏。因为事件处理通过 <code>this</code> 关键字，接收到了被点击的元素，但是该元素是原生的 DOM 元素，所以需要通过 <code>$()</code> 函数，将它转换成 jQuery 对象，然后就可以在该 jQuery 对象上调用 jQuery 方法了。
          </p>
          
-         <p>XML data returned from an Ajax call can be passed to the <code>$()</code> function so individual elements of the XML structure can be retrieved using <code>.find()</code> and other DOM traversal methods.
+         <p>通过 Ajax 调用而返回的 XML 数据，也可以传给 <code>$()</code> 函数。因此可以通过 <code>.find()</code> 或其它 DOM 遍历方法来返回所需要的节点的 XML 结构。
          </p>
          <pre>
 $.post('url.xml', function(data) {
@@ -108,21 +103,21 @@ $.post('url.xml', function(data) {
 })
 </pre>
          
-         <h4 id="cloning-jquery-objects">Cloning jQuery Objects</h4>
+         <h4 id="cloning-jquery-objects">克隆 jQuery 对象</h4>
          
-         <p>When a jQuery object is passed to the <code>$()</code> function, a clone of the object is created. This new jQuery object references the same DOM elements as the initial one.
+         <p>若将一个 jQuery 对象传给 <code>$()</code> 函数，会生成一个该 jQuery 对象的克隆对象。新的 jQuery 对象和参数中的 jQuery 对象所指向的 DOM 元素是一样的。
          </p>
          
-         <h4 id="returning-empty-set">Returning an Empty Set</h4>
+         <h4 id="returning-empty-set">返回一个空集合</h4>
          
-         <p>As of jQuery 1.4, calling the <code>jQuery()</code> method with <em>no arguments</em> returns an empty jQuery set (with a <code><a href="length.htm">.length</a></code> property of 0). In previous versions of jQuery, this would return a set containing the document node.
+         <p>从 jQuery 1.4 开始，如果调用<em>不带参数</em>的 <code>jQuery()</code> 方法，会返回一个空的 jQuery 集合(<code><a href="length.htm">.length</a></code> 属性值是 0)。在 jQuery 之前的版本中，则会返回一个含有文档节点的集合。
          </p>
          
          
-         <h4 id="working-with-plain-objects">Working With Plain Objects</h4>
+         <h4 id="working-with-plain-objects">与纯对象一起使用</h4>
          
          
-         <p>At present, the only operations supported on plain JavaScript objects wrapped in jQuery are: <code>.data()</code>,<code>.prop()</code>,<code>.bind()</code>, <code>.unbind()</code>, <code>.trigger()</code> and <code>.triggerHandler()</code>. The use of <code>.data()</code> (or any method requiring <code>.data()</code>) on a plain object will result in a new property on the object called jQuery{randomNumber} (eg. jQuery123456789).
+         <p>目前为止，支持将纯对象用 jQuery 包裹的方法包括：<code>.data()</code>,<code>.prop()</code>,<code>.bind()</code>, <code>.unbind()</code>, <code>.trigger()</code> 和 <code>.triggerHandler()</code>。在 <code>.data()</code> (或任何需要 <code>.data()</code> 的方法)上使用纯对象时，会导致在元素上生成一个新的属性，叫做 jQuery{随机数} (eg. jQuery123456789)。
          </p>
          
          <pre>
@@ -151,8 +146,8 @@ $foo.bind('eventName', function (){
 $foo.trigger('eventName'); // logs 'eventName was called'
 </pre>
          
-         <p>Should <code>.trigger('eventName')</code> be used, it will search for an 'eventName' property on the object and attempt to execute it after any attached jQuery handlers
-            are executed. It does not check whether the property is a function or not. To avoid this behavior, <code>.triggerHandler('eventName')</code> should be used instead.
+         <p>这里需要注意上面例子中的 <code>.trigger('eventName')</code>，该语句会在元素上查找 'eventName' 属性，并且当添加到元素的其它任何 jQuery 事件处理执行完后，就会执行 'eventName'。但它并不检查 'eventName' 到底是不是一个函数。为了避免这种情况的发生，也就是检查 'eventName'
+            到底是不是一个函数，请使用 <code>.triggerHandler('eventName')</code> 来代替。
          </p>
          
          <pre>
@@ -163,7 +158,7 @@ $foo.triggerHandler('eventName'); // also logs 'eventName was called'
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Find all p elements that are children of a div element and apply a border to them.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>查找所有 div 下的 p 元素，并为它们加上边框。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;script src="jquery.min.js"&gt;&lt;/script&gt;
@@ -181,19 +176,19 @@ $foo.triggerHandler('eventName'); // also logs 'eventName was called'
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
-      <p>Find all inputs of type radio within the first form in the document.</p>
+      <p>查找文档中第一个表单中的所有单选按钮。</p>
       <h5>jQuery 代码:</h5><pre><code>$("input:radio", document.forms[0]);</code></pre><h3>示例:</h3>
-      <p>Find all div elements within an XML document from an Ajax response.</p>
+      <p>查找 Ajax 返回的 XML 文档中的所有 div 元素。</p>
       <h5>jQuery 代码:</h5><pre><code>$("div", xml.responseXML);</code></pre><h3>示例:</h3>
-      <p>Set the background color of the page to black.</p>
+      <p>将页面的背景色设置成黑色。</p>
       <h5>jQuery 代码:</h5><pre><code>$(document.body).css( "background", "black" );</code></pre><h3>示例:</h3>
-      <p>Hide all the input elements within a form.</p>
+      <p>隐藏 myForm 表单中的所有 input 元素。</p>
       <h5>jQuery 代码:</h5><pre><code>$(myForm.elements).hide()</code></pre></div>
 </div>
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>jQuery(html, <em class="optional">[ownerDocument]</em>)<br></h2>
    <div class="desc">
-      <p>Creates DOM elements on the fly from the provided string of raw HTML.</p>
+      <p>根据提供的原始 HTML 字符串，动态创建 DOM 元素。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>jQuery(html, <em class="optional">[ownerDocument]</em>)
@@ -201,11 +196,11 @@ $foo.triggerHandler('eventName'); // also logs 'eventName was called'
             </h4>
             <div class="arguement"><strong>html</strong>
                								(String)
-               								A string of HTML to create on the fly. Note that this parses HTML, <strong>not</strong> XML.
+               								用于动态创建元素用的 HTML 字符串。注意，这里解析的是 HTML，<strong>不是</strong> XML。
             </div>
             <div class="arguement"><strong>ownerDocument</strong>
                								(document)
-               								 可选参数，A document in which the new elements will be created
+               								 可选参数，被创建出的新元素所在的文档。
             </div>
          </li>
          <li>
@@ -214,52 +209,43 @@ $foo.triggerHandler('eventName'); // also logs 'eventName was called'
             </h4>
             <div class="arguement"><strong>html</strong>
                								(String)
-               								A string defining a single, standalone, HTML element (e.g. &lt;div/&gt; or &lt;div&gt;&lt;/div&gt;).
+               								代表一个单一独立的 HTML 元素(例如， &lt;div/&gt; 或 &lt;div&gt;&lt;/div&gt;)。
             </div>
             <div class="arguement"><strong>props</strong>
                								(Object)
-               								An map of attributes, events, and methods to call on the newly-created element.
+               								一个映射。代表将会在新创建的元素上被调用的属性，事件，或方法。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <h4 id="creating-new-elements">Creating New Elements</h4>
+         <h4 id="creating-new-elements">创建新的元素</h4>
          
-         <p>If a string is passed as the parameter to <code>$()</code>, jQuery examines the string to see if it looks like HTML (i.e., it has <code>&lt;tag ... &gt;</code> somewhere within the string). If not, the string is interpreted as a selector expression, as explained above. But if the
-            string appears to be an HTML snippet, jQuery attempts to create new DOM elements as described by the HTML. Then a jQuery object
-            is created and returned that refers to these elements. You can perform any of the usual jQuery methods on this object:
+         <p>如果将一个字符串参数传给 <code>$()</code>，那么 jQuery 会检查这个字符串，判断它是否是 HTML。(例如，检查字符串中是否含有 <code>&lt;tag ... &gt;</code>)。如果不是 HTML，则该字符串会被当成是一个选择器表达式。但是如果该字符串是一个 HTML 代码片断，那么,jQuery 就会根据它尝试创建一个新的 DOM 元素。之后，该方法会返回一个 jQuery 对象，并指向这些元素。此时，你就可以使用像以前那样，在该对象上使用各种
+            jQuery 方法：
          </p>
          <pre>$('&lt;p id="test"&gt;My &lt;em&gt;new&lt;/em&gt; text&lt;/p&gt;').appendTo('body');</pre>
-         <p>If the HTML is more complex than a single tag without attributes, as it is in the above example, the actual creation of the
-            elements is handled by the browser's <code>innerHTML</code> mechanism. In most cases, jQuery creates a new &lt;div&gt; element and sets the innerHTML property of the element to the HTML snippet
-            that was passed in. When the parameter has a single tag, such as  <code>$('&lt;img&nbsp;/&gt;')</code> or  <code>$('&lt;a&gt;&lt;/a&gt;')</code>, jQuery creates the element using the native JavaScript <code>createElement()</code> function.
+         <p>如果提供的 HTML 比较复杂（不是一个简单的 HTML，只有一个单一标签而且没有属性），就像上面的例子那样，那么实际上，创建元素的处理是利用了浏览器的 <code>innerHTML</code> 机制。在大多数情况下，jQuery 会创建一个新的 &lt;div&gt; 元素，并将该元素的 innerHTML 属性设置成传入的 HTML 代码片断。如果传入的参数只是一个单一的标签，例如：<code>$('&lt;img&nbsp;/&gt;')</code> 或 <code>$('&lt;a&gt;&lt;/a&gt;')</code>，那么 jQuery 会使用 JavaScript 原生的 <code>createElement()</code> 函数来创建元素。
          </p>
          
          
-         <p>When passing in complex HTML, some browsers may not generate a DOM that exactly replicates the HTML source provided. As mentioned,
-            we use the browser's <code>.innerHTML</code> property to parse the passed HTML and insert it into the current document. During this process, some  browsers filter out
-            certain elements such as  <code>&lt;html&gt;</code>,  <code>&lt;title&gt;</code>, or  <code>&lt;head&gt;</code> elements. As a result, the  elements inserted may not be representative of the original string  passed.
+         <p>如果传递的 HTML 更加复杂，那么有些浏览器可能无法准确的根据所提供的 HTML 源代码，生成 DOM。正向前文所说的那样，jQuery 使用浏览器的 <code>.innerHTML</code> 属性来解析传入的 HTML 参数，并且将它插入到当前文档中。在这个过程中，有些浏览器会过滤掉一些元素，例如，<code>&lt;html&gt;</code>,  <code>&lt;title&gt;</code>, 或  <code>&lt;head&gt;</code> 元素。这就导致最终被插入的内容，可能并不是传入的原始字符串内容。
          </p>
          
-         <p> Filtering isn't however just limited to these tags. For example, Internet Explorer prior to version 8 will also convert all
-            <code>href</code> properties on links to absolute URLs, and Internet Explorer prior to version 9 will not correctly handle HTML5 elements without
-            the addition of a separate <a href="http://code.google.com/p/html5shiv/">compatibility layer</a>.
+         <p>过滤操作并不是指只过滤上述提到的标签。例如, Internet Explorer 8 之前的版本，还会将所有链接的 <code>href</code> 属性转化成绝对路径。并且在 Internet Explorer 9 之前的版本，还无法正确的处理 HTML5 元素，除非添加了如下内容 <a href="http://code.google.com/p/html5shiv/">兼容层</a>。
          </p>
          
          
-         <p>To ensure cross-platform compatibility, the snippet must be well-formed. Tags that can contain other elements should be paired
-            with a closing tag:
-         </p>
+         <p>为了保证跨浏览器的兼容性，所提供的代码片断必须是格式正确的。如果标签中含有其它元素，那么该标签就应该有结束标签：</p>
          <pre>$('&lt;a href="http://jquery.com"&gt;&lt;/a&gt;');</pre>
-         <p>Alternatively, jQuery allows XML-like tag syntax (with or without a space before the slash):</p>
+         <p>也可以像下面这样写，因为 jQuery 支持类似 XML 的标签语法(可以有，也可以没有斜杠)：</p>
          <pre>$('&lt;a/&gt;');</pre>
-         <p>Tags that cannot contain elements may be quick-closed or not:</p>
+         <p>对于不含有元素的标签，可以使用快速封闭(quick-closed)，当然也可以不这样做：</p>
          <pre>$('&lt;img /&gt;');
 $('&lt;input&gt;');
 </pre>
          
-         <p>When passing HTML to <code>jQuery()</code>, please also note that text nodes are not treated as DOM elements. With the exception of a few methods (such as <code>.content()</code>), they are generally otherwise ignored or removed. E.g:
+         <p>当向 <code>jQuery()</code> 中传入 HTML 时，还需要注意的是，文本节点并不必当作 DOM 元素来看待。除了某些方法外(例如，<code>.content()</code>)，文本节点通常会被忽略或被移除。例如：
          </p>
          
          <pre>
@@ -267,24 +253,24 @@ var el = $('1&lt;br/&gt;2&lt;br/&gt;3'); // returns [&lt;br&gt;, "2", &lt;br&gt;
 el  = $('1&lt;br/&gt;2&lt;br/&gt;3 &gt;'); // returns [&lt;br&gt;, "2", &lt;br&gt;, "3 &amp;gt;"]
 </pre>
          
-         <p>This behaviour is expected. </p>
+         <p>这是预期的行为。</p>
          
          
-         <p>As of jQuery 1.4, the second argument to <code>jQuery()</code> can accept a map consisting of a superset of the properties that can be passed to the <a href="attr.htm">.attr()</a> method. Furthermore, any <a href="/category/events/">event type</a> can be passed in, and the following jQuery methods can be called: <a href="val.htm">val</a>, <a href="css.htm">css</a>, <a href="html.htm">html</a>, <a href="text.htm">text</a>, <a href="data.htm">data</a>, <a href="width.htm">width</a>, <a href="height.htm">height</a>, or <a href="offset.htm">offset</a>. The name <code>"class"</code> must be quoted in the map since it is a JavaScript reserved word, and <code>"className"</code> cannot be used since it is not the correct attribute name. 
+         <p>从 jQuery 1.4 开始，<code>jQuery()</code> 的第二个参数是一个映射，该映射是由可传递给 <a href="attr.htm">.attr()</a> 方法的属性超集组成的。此外，映射里还可以包括任何 <a href="http://api.jquery.com/category/events/">事件类型</a>，还可以调用如下 jQuery 方法： <a href="val.htm">val</a>, <a href="css.htm">css</a>, <a href="html.htm">html</a>, <a href="text.htm">text</a>, <a href="data.htm">data</a>, <a href="width.htm">width</a>, <a href="height.htm">height</a>, 和 <a href="offset.htm">offset</a>。若映射的键是 <code>"class"</code>，那么必须使用引号包裹，因为它是 JavaScript 保留字。并且不能使用 <code>"className"</code>，因为它不是正确的属性名。
          </p>
          
          <p>
-            <strong>注意:</strong> Internet Explorer will not allow you to create an <code>input</code> or <code>button</code> element and change its type; you must specify the type using <code>'&lt;input type="checkbox" /&gt;'</code> for example. A demonstration of this can be seen below:
+            <strong>注意:</strong> Internet Explorer 不允许你创建 <code>input</code> 和 <code>button</code> 元素或修改它们的类型。你必须指明类型，例如 <code>'&lt;input type="checkbox" /&gt;'</code>。请看下面的示例：
          </p>
          
-         <p>Unsupported in IE:</p>
+         <p>IE 不支持以下形式的创建：</p>
          <pre>
 $('&lt;input /&gt;', {
     type: 'text',
     name: 'test'
 }).appendTo("body");
 </pre>
-         <p>Supported workaround:</p>
+         <p>需要像下面这样书写：</p>
          <pre>
 $('&lt;input type="text" /&gt;').attr({
     name: 'test'
@@ -294,11 +280,9 @@ $('&lt;input type="text" /&gt;').attr({
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Create a div element (and all of its contents) dynamically and append it to the body element. Internally, an element is created
-         and its innerHTML property set to the given markup.
-      </p>
+      <p>动态创建一个 div 元素(以及它的内容)，并将它追加到 body 元素后。在 jQuery 内部是通过所指定元素的 innerHTML 属性对新生成的元素进行赋值的。</p>
       <h5>jQuery 代码:</h5><pre><code>$("&lt;div&gt;&lt;p&gt;Hello&lt;/p&gt;&lt;/div&gt;").appendTo("body")</code></pre><h3>示例:</h3>
-      <p>Create some DOM elements.</p>
+      <p>创建一些 DOM 元素。</p>
       <h5>jQuery 代码:</h5><pre><code>$("&lt;div/&gt;", {
   "class": "test",
   text: "Click me!",
@@ -310,7 +294,7 @@ $('&lt;input type="text" /&gt;').attr({
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>jQuery(callback)<br></h2>
    <div class="desc">
-      <p>Binds a function to be executed when the DOM has finished loading.</p>
+      <p>绑定当 DOM 加载完成时执行的函数。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>jQuery(callback)
@@ -318,28 +302,25 @@ $('&lt;input type="text" /&gt;').attr({
             </h4>
             <div class="arguement"><strong>callback</strong>
                								(Function)
-               								The function to execute when the DOM is ready.
+               								当 DOM 加载完成时执行的函数。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p>This function behaves just like <code>$(document).ready()</code>, in that it should be used to wrap other <code>$()</code> operations on your page that depend on the DOM being ready. While this function is, technically, chainable, there really
-            isn't much use for chaining against it.
+         <p>该函数的行为就像 <code>$(document).ready()</code>，通常用 <code>$(document).ready()</code> 包裹页面上依赖 DOM 加载完成时执行的其它的 <code>$()</code> 操作。虽然这个函数从技术上来讲是可以进行链式操作的，但真的很少这么用。
          </p> 
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Execute the function when the DOM is ready to be used.</p>
+      <p>当 DOM 加载完成时执行函数。</p>
       <h5>jQuery 代码:</h5><pre><code>$(function(){
    // Document is ready
  });
 </code></pre><h3>示例:</h3>
-      <p>Use both the shortcut for $(document).ready() and the argument to write failsafe jQuery code using the $ alias, without relying
-         on the global alias.
-      </p>
+      <p>为了更加安全的使用 jQuery 的 $ 别名，而不依赖全局的 $ 别名，我们可以同时使用 $(document).ready() 的快捷方式和参数来达到此目的。</p>
       <h5>jQuery 代码:</h5><pre><code>jQuery(function($) {
     // Your code using failsafe $ alias here...
   });</code></pre></div>
