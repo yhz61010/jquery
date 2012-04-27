@@ -15,8 +15,8 @@
 		</head>
 		<body id="api">
 			<div id="header">
-				<div id="headerMain"><h1>jQuery <xsl:value-of select="replace(/api/categories/category[@name='Version']/category[last()]/@name,'Version ','')"/> 中文文档 Translated by <a href="http://www.ho1ho.com/" target="_blank">Michael Leo</a>, Thanks <a href="http://www.cn-cuckoo.com/" target="_blank">为之漫笔</a> for original version. Welcome to visit jQuery Cheatsheet from <a href="http://oscarotero.com/jquery/" target="_blank">Oscar Otero</a>.</h1></div>
-				<div id="headerMain">Last update: <xsl:value-of select="year-from-dateTime($curDateTime)"/>-<xsl:number value="month-from-dateTime($curDateTime)" format="01"/>-<xsl:number value="day-from-dateTime($curDateTime)" format="01"/><span id="current_time"><xsl:number value="hours-from-dateTime($curDateTime)" format="01"/>:<xsl:number value="minutes-from-dateTime($curDateTime)" format="01"/>:<xsl:number value="seconds-from-dateTime($curDateTime)" format="01"/></span> (Chinese Standard Time)</div>
+				<div class="headerMain"><h1>jQuery <xsl:value-of select="replace(/api/categories/category[@name='Version']/category[last()]/@name,'Version ','')"/> 中文文档 Translated by <a href="http://www.ho1ho.com/" target="_blank">Michael Leo</a>, Thanks <a href="http://www.cn-cuckoo.com/" target="_blank">为之漫笔</a> for original version. Welcome to visit jQuery Cheatsheet from <a href="http://oscarotero.com/jquery/" target="_blank">Oscar Otero</a>.</h1></div>
+				<div class="headerMain">Last update: <xsl:value-of select="year-from-dateTime($curDateTime)"/>-<xsl:number value="month-from-dateTime($curDateTime)" format="01"/>-<xsl:number value="day-from-dateTime($curDateTime)" format="01"/><span id="current_time"><xsl:number value="hours-from-dateTime($curDateTime)" format="01"/>:<xsl:number value="minutes-from-dateTime($curDateTime)" format="01"/>:<xsl:number value="seconds-from-dateTime($curDateTime)" format="01"/></span> (Chinese Standard Time)</div>
 			</div>
 			<div id="wrapper">
 				<div id="sidebar">
