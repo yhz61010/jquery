@@ -1,11 +1,710 @@
-﻿<!DOCTYPE>
+﻿<!DOCTYPE html>
 <html>
 <head>
-	<title>jQuery 1.7.1 速查表</title>
-	<meta charset="utf-8">
-	<meta name="author" content="MikeoLeo(ho1ho.com)" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>jQuery 1.7.2 速查表</title>
+<meta name="Keywords" content="jQuery中文API手册,jQuery速查手册,jQuery最新版CHM下载,jQuery最新中文版,jQuery最新中文参考手册">
+<meta name="Description" content="jQuery 1.7.2 CHM下载,jQuery中文参考手册,jQuery中文版1.7.2参考手册,jQuery 1.7.2 速查表,jQuery中文参考手册">
+<style type="text/css">
+#cs_main body {
+	margin: 2px;
+	height:auto;
+	font-family:"Microsoft YaHei", "微软雅黑", Tahoma, Simsun, Arial, "宋体";
+}
+#cs_main iframe {
+	margin:0px;
+	padding:0px;
+}
+#cs_main h1, #cs_main h2, #cs_main h3, #cs_main ul, #cs_main ul li {
+	font-size: 12px;
+	font-weight: normal;
+	padding:1;
+	margin:0;
+	list-style:none;
+	font-family:"Microsoft YaHei", "微软雅黑", Tahoma, Simsun, Arial, "宋体";
+	line-height: 1.2;
+}
+#cs_main ul li{
+	padding: 1px;
+}
+#cs_main h1 {
+	margin-bottom: 3px;
+	font-size: 14px;
+}
+#cs_main h2 {
+	background: rgb(79,129,189);
+	color:#eee;
+	padding: 3px 5px;
+}
+#cs_main h3 {
+	color: #666;
+	padding-top: 3px;
+	background: none;
+}
+#cs_main h2, #cs_main h3 {
+	font-size: 14px;
+}
+#cs_main ul {
+	margin:0 0 5px 10px;
+}
+#cs_main ul ul {
+	margin:0 0 0 12px;
+}
+#cs_main div.col {
+	float:left;
+	width: 206px;
+	height:auto;
+	overflow:hidden;
+	margin-right: 2px;
+}
+#cs_main a, #cs_main a:link, #cs_main a:visited {
+	color:rgb(64,112,170);
+	text-decoration: none;
+}
+#cs_main a:hover {
+	color:white;
+	background: rgb(79,129,189);
+}
+#cs_main .col>div:hover {
+	background:rgb(232,238,247);
+}
+#cs_main #book {
+	clear:both;
+	width:988px;
+}
+#cs_main #h_ad2 {
+	font-size:12px;
+}
+#cs_main ul li ul li {
+	color: #4070AA;
+}
+#cs_main sup {
+	color:#CC3300;
+	font-size: 9px;
+	line-height: 8px;
+}
+::-webkit-scrollbar-track-piece {
+ background-color:#f4f4f4;
+ -webkit-border-radius:1;
+}
+::-webkit-scrollbar {
+ width:8px;
+ height:8px;
+}
+::-webkit-scrollbar-thumb {
+ height:50px;
+ background-color:#999;
+ -webkit-border-radius:4px;
+ outline-offset:-2px;
+}
+::-webkit-scrollbar-thumb:hover {
+ height:50px;
+ background-color:#9f9f9f;
+ -webkit-border-radius:4px;
+}
+</style>
 </head>
 <body>
-	CheatSheet
+<h1>jQuery 1.7.2 速查表 -- <a href="http://www.ho1ho.com/">MikeoLeo</a>, 原作:<a href="http://www.gscottolson.com/weblog/2008/01/11/jquery-cheat-sheet/">G. Scott Olson</a></h1>
+<div id="cs_main">
+<div class="col">
+  <div id="core">
+    <h2>核心</h2>
+    <ul>
+      <li>
+        <h3>jQuery 核心函数</h3>
+        <ul>
+          <li><a href="jQuery_selector_context.htm">jQuery([sel,[context]])</a> </li>
+          <li><a href="jQuery_html_ownerDocument.htm">jQuery(html,[ownerDoc])</a></li>
+          <li><a href="jQuery_callback.htm">jQuery(callback)</a></li>
+          <li><a href="jQuery.holdReady.htm">jQuery.holdReady(hold)</a><sup>1.6+</sup></li>
+        </ul>
+      </li>
+      <li>
+        <h3>jQuery 对象访问</h3>
+        <ul>
+          <li><a href="each.htm">each(callback)</a></li>
+          <li><a href="size.htm">size()</a></li>
+          <li><a href="length.htm">length</a></li>
+          <li><a href="selector.htm">selector</a></li>
+          <li><a href="context.htm">context</a></li>
+          <li><a href="get.htm">get([index])</a></li>
+          <li><a href="index.htm">index([selector|element])</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>数据缓存</h3>
+        <ul>
+          <li><a href="data.htm">data([key],[value])</a></li>
+          <li><a href="removeData.htm">removeData([name|list])</a><sup>1.7*</sup></li>
+          <li><a href="jQuery.data.htm">$.data(element,[key],[value])</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>队列控制</h3>
+        <ul>
+          <li><a href="queue.htm">queue(element,[queueName])</a></li>
+          <li><a href="dequeue.htm">dequeue([queueName])</a></li>
+          <li><a href="clearQueue.htm">clearQueue([queueName])</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>插件机制</h3>
+        <ul>
+          <li><a href="jQuery.fn.extend.htm">jQuery.fn.extend(object)</a></li>
+          <li><a href="jQuery.extend_object.htm">jQuery.extend(object)</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>多库共存</h3>
+        <ul>
+          <li><a href="jQuery.noConflict.htm">jQuery.noConflict([ex])</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div id="attributes">
+    <h2>属性</h2>
+    <ul>
+      <li>
+        <h3>属性</h3>
+        <ul>
+          <li><a href="attr.htm">attr(name|pro|key,val|fn)</a></li>
+          <li><a href="removeAttr.htm">removeAttr(name)</a></li>
+          <li><a href="prop.htm">prop(name|pro|key,val|fn)</a><sup>1.6+</sup></li>
+          <li><a href="removeProp.htm">removeProp(name)</a><sup>1.6+</sup></li>
+        </ul>
+      </li>
+      <li>
+        <h3>CSS 类</h3>
+        <ul>
+          <li><a href="addClass.htm">addClass(class|fn)</a></li>
+          <li><a href="removeClass.htm">removeClass([class|fn])</a></li>
+          <li><a href="toggleClass.htm">toggleClass(class|fn[,sw])</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>HTML代码/文本/值</h3>
+        <ul>
+          <li><a href="html.htm">html([val|fn])</a></li>
+          <li><a href="text.htm">text([val|fn])</a></li>
+          <li><a href="val.htm">val([val|fn|arr])</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div id="css">
+    <h2>CSS</h2>
+    <ul>
+      <li>
+        <h3>CSS</h3>
+        <ul>
+          <li><a href="css.htm">css(name|pro|[,val|fn])</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>位置</h3>
+        <ul>
+          <li><a href="offset.htm">offset([coordinates])</a></li>
+          <li><a href="position.htm">position()</a></li>
+          <li><a href="scrollTop.htm">scrollTop([val])</a></li>
+          <li><a href="scrollLeft.htm">scrollLeft([val])</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>尺寸</h3>
+        <ul>
+          <li><a href="height.htm">heigh([val|fn])</a></li>
+          <li><a href="width.htm">width([val|fn])</a></li>
+          <li><a href="innerHeight.htm">innerHeight()</a></li>
+          <li><a href="innerWidth.htm">innerWidth()</a></li>
+          <li><a href="outerHeight.htm">outerHeight([soptions])</a></li>
+          <li><a href="outerWidth.htm">outerWidth([options])</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="col">
+  <div id="selectors">
+    <h2>选择器</h2>
+    <ul>
+      <li>
+        <h3>基本</h3>
+        <ul>
+          <li><a href="id.htm">#id</a></li>
+          <li><a href="element.htm">element</a></li>
+          <li><a href="class.htm">.class</a></li>
+          <li><a href="all.htm">*</a></li>
+          <li><a href="multiple.htm">selector1,selector2,selectorN</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>层级</h3>
+        <ul>
+          <li><a href="descendant.htm">ancestor descendant</a></li>
+          <li><a href="child.htm">parent &gt;  child</a></li>
+          <li><a href="next_1.htm">prev + next</a></li>
+          <li><a href="siblings_1.htm">prev ~ siblings</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>基本</h3>
+        <ul>
+          <li><a href="first_1.htm">:first</a></li>
+          <li><a href="last_1.htm">:last</a></li>
+          <li><a href="not_1.htm">:not(selector)</a></li>
+          <li><a href="even.htm">:even</a></li>
+          <li><a href="odd.htm">:odd</a></li>
+          <li><a href="eq_1.htm">:eq(index)</a></li>
+          <li><a href="gt.htm">:gt(index)</a></li>
+          <li><a href="lt.htm">:lt(index)</a></li>
+          <li><a href="header.htm">:header</a></li>
+          <li><a href="animated.htm">:animated</a></li>
+          <li><a href="focus_1.htm">:focus</a><sup>1.6+</sup></li>
+        </ul>
+      </li>
+      <li>
+        <h3>内容</h3>
+        <ul>
+          <li><a href="contains.htm">:contains(text)</a></li>
+          <li><a href="empty_1.htm">:empty</a></li>
+          <li><a href="has_1.htm">:has(selector)</a></li>
+          <li><a href="parent_1.htm">:parent</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>可见性</h3>
+        <ul>
+          <li><a href="hidden_1.htm">:hidden</a></li>
+          <li><a href="visible.htm">:visible</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>属性</h3>
+        <ul>
+          <li><a href="attributeHas.htm">[attribute]</a></li>
+          <li><a href="attributeEquals.htm">[attribute=value]</a></li>
+          <li><a href="attributeNotEqual.htm">[attribute!=value]</a></li>
+          <li><a href="attributeStartsWith.htm">[attribute^=value]</a></li>
+          <li><a href="attributeEndsWith.htm">[attribute$=value]</a></li>
+          <li><a href="attributeContains.htm">[attribute*=value]</a></li>
+          <li><a href="attributeMultiple.htm">[attrSel1][attrSel2][attrSelN]</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>子元素</h3>
+        <ul>
+          <li><a href="nthChild.htm">:nth-child</a></li>
+          <li><a href="firstChild.htm">:first-child</a></li>
+          <li><a href="lastChild.htm">:last-child</a></li>
+          <li><a href="onlyChild.htm">:only-child</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>表单</h3>
+        <ul>
+          <li><a href="input.htm">:input</a></li>
+          <li><a href="text_1.htm">:text</a></li>
+          <li><a href="password.htm">:password</a></li>
+          <li><a href="radio.htm">:radio</a></li>
+          <li><a href="checkbox.htm">:checkbox</a></li>
+          <li><a href="submit_1.htm">:submit</a></li>
+          <li><a href="image.htm">:image</a></li>
+          <li><a href="reset.htm">:reset</a></li>
+          <li><a href="button.htm">:button</a></li>
+          <li><a href="file.htm">:file</a></li>
+          <li><a href="hidden_1.htm">:hidden</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>表单对象属性</h3>
+        <ul>
+          <li><a href="enabled.htm">:enabled</a></li>
+          <li><a href="disabled.htm">:disabled</a></li>
+          <li><a href="checked.htm">:checked</a></li>
+          <li><a href="selected.htm">:selected</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="col">
+  <div id="manipulation">
+    <h2>文档处理</h2>
+    <ul>
+      <li>
+        <h3>内部插入</h3>
+        <ul>
+          <li><a href="append.htm">append(content|fn)</a></li>
+          <li><a href="appendTo.htm">appendTo(content)</a></li>
+          <li><a href="prepend.htm">prepend(content|fn)</a></li>
+          <li><a href="prependTo.htm">prependTo(content)</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>外部插入</h3>
+        <ul>
+          <li><a href="after.htm">after(content|fn)</a></li>
+          <li><a href="before.htm">before(content|fn)</a></li>
+          <li><a href="insertAfter.htm">insertAfter(content)</a></li>
+          <li><a href="insertBefore.htm">insertBefore(content)</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>包裹</h3>
+        <ul>
+          <li><a href="wrap.htm">wrap(html|ele|fn)</a></li>
+          <li><a href="unwrap.htm">unwrap()</a></li>
+          <li><a href="wrapAll.htm">wrapall(html|ele)</a></li>
+          <li><a href="wrapInner.htm">wrapInner(html|ele|fn)</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>替换</h3>
+        <ul>
+          <li><a href="replaceWith.htm">replaceWith(content|fn)</a></li>
+          <li><a href="replaceAll.htm">replaceAll(selector)</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>删除</h3>
+        <ul>
+          <li><a href="empty.htm">empty()</a></li>
+          <li><a href="remove.htm">remove([expr])</a></li>
+          <li><a href="detach.htm">detach([expr])</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>复制</h3>
+        <ul>
+          <li><a href="clone.htm">clone([Even[,deepEven]])</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div id="traversing">
+    <h2>筛选</h2>
+    <ul>
+      <li>
+        <h3>过滤</h3>
+        <ul>
+          <li><a href="eq.htm">eq(index|-index)</a></li>
+          <li><a href="first.htm">first()</a></li>
+          <li><a href="last.htm">last()</a></li>
+          <li><a href="hasClass.htm">hasClass(class)</a></li>
+          <li><a href="filter.htm">filter(expr|obj|ele|fn)</a></li>
+          <li><a href="is.htm">is(expr|obj|ele|fn)</a><sup>1.6*</sup></li>
+          <li><a href="map.htm">map(callback)</a></li>
+          <li><a href="has.htm">has(expr|ele)</a></li>
+          <li><a href="not.htm">not(expr|ele|fn)</a></li>
+          <li><a href="slice.htm">slice(start,[end])</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>查找</h3>
+        <ul>
+          <li><a href="children.htm">children([expr])</a></li>
+          <li><a href="closest.htm">closest(expr,[con]|obj|ele)</a><sup>1.6*</sup></li>
+          <li><a href="find.htm">find(expr|obj|ele)</a></li>
+          <li><a href="next.htm">next([expr])</a></li>
+          <li><a href="nextAll.htm">nextall([expr])</a></li>
+          <li><a href="nextUntil.htm">nextUntil([exp|ele][,fil])</a><sup>1.6*</sup></li>
+          <li><a href="offsetParent.htm">offsetParent()</a></li>
+          <li><a href="parent.htm">parent([expr])</a></li>
+          <li><a href="parents.htm">parents([expr])</a></li>
+          <li><a href="parentsUntil.htm">parentsUntil([exp|ele][,fil])</a><sup>1.6*</sup></li>
+          <li><a href="prev.htm">prev([expr])</a></li>
+          <li><a href="prevAll.htm">prevall([expr])</a></li>
+          <li><a href="prevUntil.htm">prevUntil([exp|ele][,fil])</a><sup>1.6*</sup></li>
+          <li><a href="siblings.htm">siblings([expr])</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>串联</h3>
+        <ul>
+          <li><a href="add.htm">add(expr|ele|html|obj[,con])</a></li>
+          <li><a href="andSelf.htm">andSelf()</a></li>
+          <li><a href="contents.htm">contents()</a></li>
+          <li><a href="end.htm">end()</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="col">
+  <div id="events">
+    <h2>事件</h2>
+    <ul>
+      <li>
+        <h3>页面载入</h3>
+        <ul>
+          <li><a href="ready.htm">ready(fn)</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>事件处理</h3>
+        <ul>
+          <li><a href="on.htm">on(eve,[sel],[data],fn)</a><sup>1.7+</sup></li>
+          <li><a href="off.htm">off(eve,[sel],[fn])</a><sup>1.7+</sup></li>
+          <li><a href="bind.htm">bind(type,[data],fn)</a></li>
+          <li><a href="one.htm">one(type,[data],fn)</a></li>
+          <li><a href="trigger.htm">trigger(type,[data])</a></li>
+          <li><a href="triggerHandler.htm">triggerHandler(type, [data])</a></li>
+          <li><a href="unbind.htm">unbind(type,[data|fn])</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>事件委派</h3>
+        <ul>
+          <li><a href="live.htm">live(type,[data],fn)</a></li>
+          <li><a href="die.htm">die(type,[fn])</a></li>
+          <li><a href="delegate.htm">delegate(sel,[type],[data],fn) </a></li>
+          <li><a href="undelegate.htm">undelegate([sel,[type],fn]) </a><sup>1.6*</sup></li>
+        </ul>
+      </li>
+      <li>
+        <h3>事件切换</h3>
+        <ul>
+          <li><a href="hover.htm">hover([over,]out)</a></li>
+          <li><a href="toggle.htm">toggle(fn, fn2, [fn3, fn4, ...])</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>事件</h3>
+        <ul>
+          <li><a href="blur.htm">blur([[data],fn])</a></li>
+          <li><a href="change.htm">change([[data],fn])</a></li>
+          <li><a href="click.htm">click([[data],fn])</a></li>
+          <li><a href="dblclick.htm">dblclick([[data],fn])</a></li>
+          <li><a href="error.htm">error([[data],fn])</a></li>
+          <li><a href="focus.htm">focus([[data],fn])</a></li>
+          <li><a href="focusin.htm">focusin([data],fn)</a></li>
+          <li><a href="focusout.htm">focusout([data],fn)</a></li>
+          <li><a href="keydown.htm">keydown([[data],fn])</a></li>
+          <li><a href="keypress.htm">keypress([[data],fn])</a></li>
+          <li><a href="keyup.htm">keyup([[data],fn])</a></li>
+          <li><a href="mousedown.htm">mousedown([[data],fn])</a></li>
+          <li><a href="mouseenter.htm">mouseenter([[data],fn])</a></li>
+          <li><a href="mouseleave.htm">mouseleave([[data],fn])</a></li>
+          <li><a href="mousemove.htm">mousemove([[data],fn])</a></li>
+          <li><a href="mouseout.htm">mouseout([[data],fn])</a></li>
+          <li><a href="mouseover.htm">mouseover([[data],fn])</a></li>
+          <li><a href="mouseup.htm">mouseup([[data],fn])</a></li>
+          <li><a href="resize.htm">resize([[data],fn])</a></li>
+          <li><a href="scroll.htm">scroll([[data],fn])</a></li>
+          <li><a href="select.htm">select([[data],fn])</a></li>
+          <li><a href="submit.htm">submit([[data],fn])</a></li>
+          <li><a href="unload.htm">unload([[data],fn])</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div id="effects">
+    <h2>效果</h2>
+    <ul>
+      <li>
+        <h3>基本</h3>
+        <ul>
+          <li><a href="show.htm">show([speed,[easing],[fn]])</a></li>
+          <li><a href="hide.htm">hide([speed,[easing],[fn]])</a></li>
+          <li><a href="toggle.htm">toggle([speed],[easing],[fn])</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>滑动</h3>
+        <ul>
+          <li><a href="slideDown.htm">slideDown([spe],[eas],[fn])</a></li>
+          <li><a href="slideUp.htm">slideUp([speed,[easing],[fn]])</a></li>
+          <li><a href="slideToggle.htm">slideToggle([speed],[easing],[fn])</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>淡入淡出</h3>
+        <ul>
+          <li><a href="fadeIn.htm">fadeIn([speed],[eas],[fn])</a></li>
+          <li><a href="fadeOut.htm">fadeOut([speed],[eas],[fn])</a></li>
+          <li><a href="fadeTo.htm">fadeTo([[spe],opa,[eas],[fn]])</a></li>
+          <li><a href="fadeToggle.htm">fadeToggle([speed,[eas],[fn]])</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>自定义</h3>
+        <ul>
+          <li><a href="animate.htm">animate(param,[spe],[e],[fn])</a></li>
+          <li><a href="stop.htm">stop([cle],[jum])</a><sup>1.7*</sup></li>
+          <li><a href="delay.htm">delay(duration,[queueName])</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>设置</h3>
+        <ul>
+          <li><a href="jQuery.fx.off.htm">jQuery.fx.off</a></li>
+          <li><a href="jQuery.fx.interval.htm">jQuery.fx.interval</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="col">
+  <div id="ajax">
+    <h2>ajax</h2>
+    <ul>
+      <li>
+        <h3>ajax 请求</h3>
+        <ul>
+          <li><a href="jQuery.ajax.htm">$.ajax(url,[settings])</a></li>
+          <li><a href="load.htm">load(url,[data],[callback])</a></li>
+          <li><a href="jQuery.get.htm">$.get(url,[data],[fn],[type])</a></li>
+          <li><a href="jQuery.getJSON.htm">$.getJSON(url,[data],[fn])</a></li>
+          <li><a href="jQuery.getScript.htm">$.getScript(url,[callback])</a></li>
+          <li><a href="jQuery.post.htm">$.post(url,[data],[fn],[type])</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>ajax 事件</h3>
+        <ul>
+          <li><a href="ajaxComplete.htm">ajaxComplete(callback)</a></li>
+          <li><a href="ajaxError.htm">ajaxError(callback)</a></li>
+          <li><a href="ajaxSend.htm">ajaxSend(callback)</a></li>
+          <li><a href="ajaxStart.htm">ajaxStart(callback)</a></li>
+          <li><a href="ajaxStop.htm">ajaxStop(callback)</a></li>
+          <li><a href="ajaxSuccess.htm">ajaxSuccess(callback)</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>其它</h3>
+        <ul>
+          <li><a href="jQuery.ajaxSetup.htm">$.ajaxSetup([options])</a></li>
+          <li><a href="serialize.htm">serialize()</a></li>
+          <li><a href="serializearray.htm">serializearray()</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div id="utilities">
+    <h2>工具</h2>
+    <ul>
+      <li>
+        <h3>浏览器及特性检测</h3>
+        <ul>
+          <li><a href="jQuery.support.htm">$.support</a></li>
+          <li><a href="jQuery.browser.htm">$.browser</a></li>
+          <li><a href="jQuery.browser.version.htm">$.browser.version</a></li>
+          <li><a href="jQuery.boxModel.htm">$.boxModel</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>数组和对象操作</h3>
+        <ul>
+          <li><a href="jQuery.each.htm">$.each(object,[callback])</a></li>
+          <li><a href="jQuery.extend.htm">$.extend([d],tgt,obj1,[objN])</a></li>
+          <li><a href="jQuery.grep.htm">$.grep(array,fn,[invert])</a></li>
+          <li><a href="jQuery.sub.htm">$.sub()</a></li>
+          <li><a href="jQuery.when.htm">$.when(deferreds)</a></li>
+          <li><a href="jQuery.makeArray.htm">$.makearray(obj)</a></li>
+          <li><a href="jQuery.map.htm">$.map(arr|obj,callback)</a><sup>1.6*</sup></li>
+          <li><a href="jQuery.inArray.htm">$.inarray(val,arr,[from])</a></li>
+          <li><a href="jQuery.toarray.htm">$.toarray()</a></li>
+          <li><a href="jQuery.merge.htm">$.merge(first,second)</a></li>
+          <li><a href="jQuery.unique.htm">$.unique(array)</a></li>
+          <li><a href="jQuery.parseJSON.htm">$.parseJSON(json)</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>函数操作</h3>
+        <ul>
+          <li><a href="jQuery.noop.htm">$.noop</a> </li>
+          <li><a href="jQuery.proxy.htm">$.proxy(function,context)</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>测试操作</h3>
+        <ul>
+          <li><a href="jQuery.contains.htm">$.contains(container,contained)</a></li>
+          <li><a href="jQuery.type.htm">$.type(obj)</a></li>
+          <li><a href="jQuery.isArray.htm">$.isarray(obj)</a></li>
+          <li><a href="jQuery.isFunction.htm">$.isFunction(obj)</a></li>
+          <li><a href="jQuery.isEmptyObject.htm">$.isEmptyObject(obj)</a></li>
+          <li><a href="jQuery.isPlainObject.htm">$.isPlainObject(obj)</a></li>
+          <li><a href="jQuery.isWindow.htm">$.isWindow(obj)</a></li>
+          <li><a href="jQuery.isNumeric.htm">$.isNumeric(value)</a><sup>1.7+</sup></li>
+        </ul>
+      </li>
+      <li>
+        <h3>字符串操作</h3>
+        <ul>
+          <li><a href="jQuery.trim.htm">$.trim(str)</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>URL</h3>
+        <ul>
+          <li><a href="jQuery.param.htm">$.param(obj,[traditional])</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>插件编写</h3>
+        <ul>
+          <li><a href="jQuery.error.htm">$.error(message)</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="col">
+  <div id="Deferred">
+    <h2>Deferred</h2>
+    <ul>
+      <li><a href="deferred.done.htm">def.done(donCal,[donCal])</a></li>
+      <li><a href="deferred.fail.htm">def.fail(failCallbacks)</a></li>
+      <li><a href="deferred.isRejected.htm">def.isRejected()</a></li>
+      <li><a href="deferred.isResolved.htm">def.isResolved()</a></li>
+      <li><a href="deferred.reject.htm">def.reject(args)</a></li>
+      <li><a href="deferred.rejectWith.htm">def.rejectWith(context,[args])</a></li>
+      <li><a href="deferred.resolve.htm">def.resolve(args)</a></li>
+      <li><a href="deferred.resolveWith.htm">def.resolveWith(context,[args])</a></li>
+      <li><a href="deferred.then.htm">def.then(doneCal,failCals)</a></li>
+      <li><a href="deferred.promise.htm">def.promise([type],[target])</a><sup>1.6+</sup></li>
+      <li><a href="deferred.pipe.htm">def.pipe([donl],[fai],[pro])</a><sup>1.7*</sup></li>
+      <li><a href="deferred.always.htm">def.always(alwCal,[alwCal])</a><sup>1.6+</sup></li>
+      <li><a href="deferred.notify.htm">def.notify(args)</a><sup>1.7+</sup></li>
+      <li><a href="deferred.notifyWith.htm">def.notifyWith(con,[args])</a><sup>1.7+</sup></li>
+      <li><a href="deferred.progress.htm">def.progress(proCal)</a><sup>1.7+</sup></li>
+      <li><a href="deferred.state.htm">def.state()</a><sup>1.7+</sup></li>
+    </ul>
+  </div>
+  <div id="Callbacks">
+    <h2>Callbacks</h2>
+    <ul>
+      <li><a href="callbacks.add.htm">cal.add(callbacks)</a><sup>1.7+</sup></li>
+      <li><a href="callbacks.disable.htm">cal.disable()</a><sup>1.7+</sup></li>
+      <li><a href="callbacks.empty.htm">cal.empty()</a><sup>1.7+</sup></li>
+      <li><a href="callbacks.fire.htm">cal.fire(arguments)</a><sup>1.7+</sup></li>
+      <li><a href="callbacks.fired.htm">cal.fired()</a><sup>1.7+</sup></li>
+      <li><a href="callbacks.fireWith.htm">cal.fireWith([context] [, args])</a><sup>1.7+</sup></li>
+      <li><a href="callbacks.has.htm">cal.has(callback)</a><sup>1.7+</sup></li>
+      <li><a href="callbacks.lock.htm">cal.lock()</a><sup>1.7+</sup></li>
+      <li><a href="callbacks.locked.htm">cal.locked()</a><sup>1.7+</sup></li>
+      <li><a href="callbacks.remove.htm">cal.remove(callbacks)</a><sup>1.7+</sup></li>
+      <li><a href="jQuery.callbacks.htm">$.callbacks(flags)</a><sup>1.7+</sup></li>
+    </ul>
+  </div>
+  <div id="Other">
+    <h2>其它</h2>
+    <ul>
+      <li><a href="regexp.htm">正则表达式</a></li>
+    </ul>
+  </div>
+  <div id="about">
+	<h2>关于</h2>
+	<ul>
+		<li><a href="aboutXMLDoc.htm">关于jQuery 中文文档</a></li>
+		<li><a href="aboutDoc1.7.htm">关于jQuery 1.7 版翻译</a></li>
+		<li><a href="changelog.htm">变更履历</a></li>
+	</ul>
+  </div>
+</div>
+</div>
 </body>
 </html>
