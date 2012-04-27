@@ -51,8 +51,8 @@ a:hover{
 	height:40px;
 	border-bottom: 1px dashed #ccc;
 }
-#header #headerMain{
-	width:1120px;
+#header div.headerMain{
+	width:900px;
 	margin:0 auto;
 }
 #header,#sidebar,#content{
