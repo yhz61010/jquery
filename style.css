@@ -47,12 +47,12 @@ a:hover{
 /* =Layout
 -------------------------------------*/
 #header{
-	min-width:960px;
+	min-width:1120px;
 	height:40px;
 	border-bottom: 1px dashed #ccc;
 }
 #header #headerMain{
-	width:960px;
+	width:1120px;
 	margin:0 auto;
 }
 #header,#sidebar,#content{
@@ -60,7 +60,7 @@ a:hover{
 }
 #wrapper{
 	position:relative;
-	width:960px;
+	width:1120px;
 	margin:0 auto;
 }
 #sidebar{
@@ -74,7 +74,7 @@ a:hover{
 	right:0px;
 }
 #content{
-	width:680px;
+	width:840px;
 	padding-left: 20px;
 }
 #split #content{
