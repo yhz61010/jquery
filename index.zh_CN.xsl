@@ -10,6 +10,8 @@
 	<xsl:param name="curDateTime" select="current-dateTime()"/>
 		<html>
 		<head>
+			<meta name="Keywords" content="jQuery中文API手册,jQuery速查手册,jQuery最新版CHM下载,jQuery最新中文版,jQuery最新中文参考手册" />
+			<meta name="Description" content="jQuery 1.7.2 CHM下载,jQuery中文参考手册,jQuery中文版1.7.2参考手册,jQuery 1.7.2 速查表,jQuery中文参考手册" />
 			<title>jQuery <xsl:value-of select="replace(/api/categories/category[@name='Version']/category[last()]/@name,'Version ','')"/> 中文文档 </title>
 			<link rel="stylesheet" href="style.css"/>
 		</head>
