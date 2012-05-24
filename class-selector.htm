@@ -3,20 +3,20 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2>.class</h2>
    <div class="desc">
-      <p>Selects all elements with the given class. </p>
+      <p>选择所有与指定样式名相同的元素。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>.class
             </h4>
             <div class="arguement"><strong>class</strong>
                								(String)
-               								A class to search for. An element can have multiple classes; only one of them must match.
+               								用于查找的样式名。一个元素可以有多个样式名，只要其中一个样式名与给定的参数相匹配，该元素就会被选中。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p>For class selectors, jQuery uses JavaScript's native <code>getElementsByClassName()</code> function if the browser supports it.
+         <p>对于样式选择器而言，若浏览器支持的话，jQuery 会使用 JavaScript 原生的 <code>getElementsByClassName()</code> 函数来实现。
          </p>
          
          
@@ -24,7 +24,7 @@
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Finds the element with the class "myClass".</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>查找带有 "myClass" 样式的元素。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -53,7 +53,7 @@ $(".myClass").css("border","3px solid red");
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
-      <p>Finds the element with both "myclass" and "otherclass" classes.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>查找既有 "myclass" 样式也有 "otherclass" 样式的元素。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;

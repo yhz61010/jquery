@@ -3,43 +3,39 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2>#id</h2>
    <div class="desc">
-      <p>Selects a single element with the given id attribute. </p>
+      <p>根据指定的 id 属性，选择单一元素。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>#id
             </h4>
             <div class="arguement"><strong>id</strong>
                								(String)
-               								An ID to search for, specified via the id attribute of an element.
+               								用于查找的 ID。即元素的 id 属性。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p>For id selectors, jQuery uses the JavaScript function <code>document.getElementById()</code>, which is extremely efficient. When another selector is attached to the id selector, such as <code>h2#pageTitle</code>, jQuery performs an additional check before identifying the element as a match.
+         <p>对于 id 选择器，jQuery 会使用极其高效的 JavaScript 函数 <code>document.getElementById()</code> 来实现。当其它选择器与 id 选择器一起使用时，例如 <code>h2#pageTitle</code>，jQuery 在确定匹配的元素之前会执行额外的验证。
          </p>
          
          <blockquote>
             
-            <p>As always, remember that as a developer, your time is typically the most valuable resource. Do not focus on optimization of
-               selector speed unless it is clear that performance needs to be improved.
-            </p>
+            <p>无论任何时候，要时刻记得，身为一名开发者，你的时间通常才是最宝贵的资源。不要一味的关注如何优先选择器的速度，除非有明确的迹象表明，必须要改善它的性能。</p>
             
          </blockquote>
          
-         <p>Each <code>id</code> value must be used only once within a document. If more than one element has been assigned the same ID, queries that use
-            that ID will only select the first matched element in the DOM. This behavior should not be relied on, however; a document
-            with more than one element using the same ID is invalid.
+         <p>在文档中，每一个 <code>id</code> 只能出现一次。如果多个元素使用了相同的 ID，那么 id 选择器只能匹配到 DOM 中的第一个满足条件的 id 元素。我们不应该依赖此种行为。在文档中，多个元素使用同一个 id 是无效的。
          </p>
          
-         <p>If the id contains characters like periods or colons you have to <a href="http://docs.jquery.com/Frequently_Asked_Questions#How_do_I_select_an_element_by_an_ID_that_has_characters_used_in_CSS_notation.3F">escape those characters with backslashes</a>.
+         <p>若 id 中包含句号或冒号之类的符号时，应该对这些符号<a href="http://docs.jquery.com/Frequently_Asked_Questions#How_do_I_select_an_element_by_an_ID_that_has_characters_used_in_CSS_notation.3F">使用反斜杠进行编码</a>。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Finds the element with the id "myDiv".</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>查找 id 为 "myDiv" 的元素。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -67,7 +63,7 @@ $("#myDiv").css("border","3px solid red");
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
-      <p>Finds the element with the id "myID.entry[1]".  See how certain characters must be escaped with backslashes.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>查找 id 为 "myID.entry[1]" 的元素。看看是如何使用反斜杠对特殊字符进行编码的。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;

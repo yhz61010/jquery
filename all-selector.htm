@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2>*</h2>
    <div class="desc">
-      <p>Selects all elements.</p>
+      <p>选择所有元素。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>*
@@ -12,13 +12,17 @@
       </ul>
       <div class="longdesc">
          
+         <p>注意：除非被它自己使用，否则 * 选择器或通用选择器，其速度是极其慢的。</p>
+         
+         <p>原文如下：</p>
+         
          <p>Caution: The all, or universal, selector is extremely slow, except when used by itself.</p> 
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Finds every element (including head, body, etc) in the document.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>查找文档中的每一个元素（包括 head, body 等）。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -49,7 +53,7 @@ $("body").prepend("&lt;h3&gt;" + elementCount + " elements found&lt;/h3&gt;");
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
-      <p>A common way to select all elements is to find within document.body so elements like head, script, etc are left out.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>选择所有元素的一种常用方法是在 document.body 里查找元素，但不包括像 head, script 等这样的元素。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
