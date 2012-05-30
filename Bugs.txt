@@ -3,3 +3,5 @@
 3. 操作 - DOM删除 - empty() 与 选择器 - 内容筛选 - :empty 应该是两个 html。分别是 empty.htm 和 empty-selector.htm。
 4. 选择器 - 表单 - :focus 与 事件 - 表单事件 - focus 应该是两个 html。分别是 focus-selector.htm 和 focus.htm。(目前，focus.htm 显示的内容不对。)
 5. 选择器 - 表单 - :submit 与 事件 - 表单事件 - submit 应该是两个 html。分别是 submit-selector.htm 和 submit.htm。(目前，submit.htm 显示的内容不对。)
+6. 选择器 - 基本筛选 - :first 与 事件 - 遍历 - first() 应该是两个 html。分别是 first-selector.htm 和 first.htm。(目前，first.htm 显示的内容不对。)
+7. 选择器 - 基本筛选 - :last 与 事件 - 遍历 - last() 应该是两个 html。分别是 last-selector.htm 和 last.htm。(目前，last.htm 显示的内容不对。)
