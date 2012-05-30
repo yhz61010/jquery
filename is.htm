@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Boolean</span>is(selector)<br></h2>
    <div class="desc">
-      <p>Check the current matched set of elements against a selector, element, or jQuery object and return <code>true</code> if at least one of these elements matches the given arguments.
+      <p>判断当前匹配的元素集合中的元素，是否为一个选择器，元素或 jQuery 对象。若匹配的元素集合中至少有一个元素满足给定的参数，则返回 <code>true</code>。
       </p>
       <ul class="signatures">
          <li>
@@ -21,7 +21,7 @@
             </h4>
             <div class="arguement"><strong>function(index)</strong>
                								(Function)
-               								A function used as a test for the set of elements. It accepts one argument, <code>index</code>, which is the element's index in the jQuery collection.Within the function, <code>this</code> refers to the current DOM element. 
+               								一个函数，用于检测集合中的元素。该函数接受一个 <code>index</code> 参数，代表 jQuery 集合中的元素索引位置。函数中的 <code>this</code> 指向当前 DOM 元素。
             </div>
          </li>
          <li>
@@ -30,7 +30,7 @@
             </h4>
             <div class="arguement"><strong>jQuery object</strong>
                								(Object)
-               								An existing jQuery object to match the current set of elements against.
+               								用于匹配当前元素集合中的已经存在的 jQuery 对象。
             </div>
          </li>
          <li>
@@ -39,17 +39,16 @@
             </h4>
             <div class="arguement"><strong>element</strong>
                								(Element)
-               								An element to match the current set of elements against.
+               								用于匹配当前元素集合中的元素。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p>Unlike other filtering methods, <code>.is()</code> does not create a new jQuery object. Instead, it allows you to test the contents of a jQuery object without modification.
-            This is often useful inside callbacks, such as event handlers.
+         <p>不像其它的过滤方法，<code>.is()</code> 并不会创建新的 jQuery 对象。相反，它允许你检测 jQuery 对象中的内容，而不会修改该 jQuery 对象。通常在回调函数内使用该方法，例如事件处理。
          </p>
          
-         <p>Suppose you have a list, with two of its items containing a child element:</p>
+         <p>假设有一个列表，其中有两个列表项含有子元素：</p>
          <pre>
 &lt;ul&gt;
   &lt;li&gt;list &lt;strong&gt;item 1&lt;/strong&gt;&lt;/li&gt;
@@ -57,26 +56,32 @@
   &lt;li&gt;list item 3&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-         <p>You can attach a click handler to the &lt;ul&gt; element, and then limit the code to be triggered only when a list item itself,
-            not one of its children, is clicked:
-         </p>
+         <p>你可以为 &lt;ul&gt; 元素绑定点击事件，然后限定只有点击列表项时才触发点击事件，点击列表项的子元素时不会触发点击事件：</p>
          <pre>$("ul").click(function(event) {
   var $target = $(event.target);
   if ( $target.is("li") ) {
     $target.css("background-color", "red");
   }
 });</pre>
-         <p>Now, when the user clicks on the word "list" in the first item or anywhere in the third item, the clicked list item will be
-            given a red background. However, when the user clicks on item 1 in the first item or anywhere in the second item, nothing
-            will occur, because in those cases the target of the event would be <code>&lt;strong&gt;</code> or <code>&lt;span&gt;</code>, respectively.
-            
+         <p>现在，当用户点击第一个列表项的单词 "list" 或点击第三个列表项的任何地方时，就会为所点击的列表项添加红色背景。然而，当用户点击第一个列表项中的 "item 1" 或者点击第二个列表项的任何地方时，就不会触发任何动作，因为这两种情况中 event
+            对象的 target 分别是 <code>&lt;strong&gt;</code> 和 <code>&lt;span&gt;</code>，而不是 <code>&lt;li&gt;</code>。
          </p>
          
+         <p>在 jQuery 1.7 之前，若在选择器字符串中包含位置选择器时，例如 <code>:first</code>， <code>:gt()</code>， 或 <code>:even</code>，那么位置选择器是相对于传入 <code>.is()</code> 的 jQuery 对象的，而<em>不是</em>相对于所在的文档的。因此，对于上面显示的 HTML，表达式 <code>$("li:first").is("li:last")</code> 会返回 <code>true</code>，但是 <code>$("li:first-child").is("li:last-child")</code> 则返回 <code>false</code>。此外，由于 Sizzle 中的一个 bug，使得很多位置选择器无法正常工作。由于这两个原因，使得在过滤器中几乎无法使用位置选择器。
+         </p>
+         			
+         <p>原文如下：</p>
+         			
          <p>Prior to jQuery 1.7, in selector strings with positional selectors such as <code>:first</code>, <code>:gt()</code>, or <code>:even</code>, the positional filtering is done against the jQuery object passed to <code>.is()</code>, <em>not</em> against the containing document. So for the HTML shown above, an expression such as <code>$("li:first").is("li:last")</code> returns <code>true</code>, but <code>$("li:first-child").is("li:last-child")</code> returns <code>false</code>. In addition, a bug in Sizzle prevented many positional selectors from working properly. These two factors made positional
             selectors almost unusable in filters.
          </p>
          
          
+         <p>从 jQuery 1.7 开始，若选择器字符串中含有位置选择器，那么选择器是相对于文档的，它会判断当前 jQuery 集合中的第一个元素是否匹配产生的任何元素。因此，对于上面显示的 HTML，表达式 <code>$("li:first").is("li:last")</code> 会返回 <code>false</code>。注意，由于位置选择器是 jQuery 添加的功能，而不是 W3C 标准，所以我们建议尽可能的使用 W3C 选择器。
+         </p>
+         			
+         <p>原文如下：</p>
+         			
          <p>Starting with jQuery 1.7, selector strings with positional selectors apply the selector against the document, and then determine
             whether the first element of the current jQuery set matches any of the resulting elements. So for the HTML shown above, an
             expression such as <code>$("li:first").is("li:last")</code> returns <code>false</code>. Note that since positional selectors are jQuery additions and not W3C standard, we recommend using the W3C selectors whenever
@@ -84,10 +89,9 @@
          </p>
          
          
-         <h4>Using a Function</h4>
+         <h4>使用函数</h4>
          
-         <p>The second form of this method evaluates expressions related to elements based on a function rather than a selector. For each
-            element, if the function returns <code>true</code>, <code>.is()</code> returns <code>true</code> as well. For example, given a somewhat more involved HTML snippet:
+         <p>is(function(index)) 此种形式的方法，会根据一个函数来进行判断，而不是使用一个选择器。对于集合中的每一个元素，如果函数返回 <code>true</code>，那么 <code>.is()</code> 方法也会返回 <code>true</code>。例如，有如下稍微复杂些的 HTML 片段：
          </p>
          <pre>
 &lt;ul&gt;
@@ -99,7 +103,7 @@
   &lt;li&gt;list item 5&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-         <p>You can attach a click handler to every <code>&lt;li&gt;</code> that evaluates the number of <code>&lt;strong&gt;</code> elements within the clicked <code>&lt;li&gt;</code> at that time like so:
+         <p>你可以为每个 <code>&lt;li&gt;</code> 绑定一个点击事件，判断所点击的 <code>&lt;li&gt;</code> 的<code>&lt;strong&gt;</code> 元素的个数，例如：
          </p>
          <pre>
 $("li").click(function() {
@@ -119,7 +123,7 @@ $("li").click(function() {
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Shows a few ways is() can be used inside an event handler.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>下面的例子为您展示了在事件处理中，使用 is() 的一些方法。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -166,7 +170,7 @@ $("li").click(function() {
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
-      <p>Returns true, because the parent of the input is a form element.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>由于 input 的父元素是表单元素，所以返回了 true。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;div { color:red; }&lt;/style&gt;
@@ -187,7 +191,7 @@ $("li").click(function() {
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
-      <p>Returns false, because the parent of the input is a p element.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>由于 input 的父元素是 p 元素，所以返回了 false。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;div { color:red; }&lt;/style&gt;
@@ -208,9 +212,7 @@ $("li").click(function() {
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
-      <p>Checks against an existing collection of alternating list elements. Blue, alternating list elements slide up while others
-         turn red.
-      </p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>检查一个已经存在的列表集合。点击蓝色的列表项时，该列表项会向上滑动，点击其它列表项则会使其背景色变成红色。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;li { cursor:pointer; }&lt;/style&gt;
@@ -243,9 +245,7 @@ $("li").click(function() {
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
-      <p>An alternate way to achieve the above example using an element rather than a jQuery object. Checks against an existing collection
-         of alternating list elements. Blue, alternating list elements slide up while others turn red.
-      </p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>可以使用另外一种方法来达到上面例子的效果，那就是使用元素，而不是使用 jQuery 对象。检查一个已经存在的列表集合。点击蓝色的列表项时，该列表项会向上滑动，点击其它列表项则会使其背景色变成红色。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;li { cursor:pointer; }&lt;/style&gt;
