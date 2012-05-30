@@ -11322,8 +11322,8 @@ span { color:blue; }
          <signature>
             <added>1.4</added>
          </signature>
-         <longdesc>[<p>Given a jQuery object that represents a set of DOM elements, the <code>.first()</code> method constructs a new jQuery object from the first matching element.</p>
-            <p>Consider a page with a simple list on it:</p>
+         <longdesc>[<p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.first()</code> method constructs a new jQuery object from the first matching element.</p>
+            <p>例如，在页面中有如下一个简单的列表：</p>
             <pre>
 &lt;ul&gt;
   &lt;li&gt;list item 1&lt;/li&gt;
@@ -11351,8 +11351,8 @@ span { color:blue; }
          <signature>
             <added>1.4</added>
          </signature>
-         <longdesc>[<p>Given a jQuery object that represents a set of DOM elements, the <code>.last()</code> method constructs a new jQuery object from the last matching element.</p>
-            <p>Consider a page with a simple list on it:</p>
+         <longdesc>[<p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.last()</code> method constructs a new jQuery object from the last matching element.</p>
+            <p>例如，在页面中有如下一个简单的列表：</p>
             <pre>
 &lt;ul&gt;
   &lt;li&gt;list item 1&lt;/li&gt;
@@ -11387,8 +11387,8 @@ span { color:blue; }
             </argument>
          </signature>
          <longdesc>
-            <p>Given a jQuery object that represents a set of DOM elements, the <code>.slice()</code> method constructs a new jQuery object from a subset of the matching elements. The supplied <code>start</code> index identifies the position of one of the elements in the set; if <code>end</code> is omitted, all elements after this one will be included in the result.</p>
-            <p>Consider a page with a simple list on it:</p>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.slice()</code> 方法会构造一个新的 jQuery 对象，用于存放筛选后的元素。The supplied <code>start</code> index identifies the position of one of the elements in the set; if <code>end</code> is omitted, all elements after this one will be included in the result.</p>
+            <p>例如，在页面中有如下一个简单的列表：</p>
             <pre>
 &lt;ul&gt;
   &lt;li&gt;list item 1&lt;/li&gt;
@@ -11933,7 +11933,7 @@ $('ul.first').find('.foo')
             <p>As described in the discussion for <code>
                   <a href="end.htm">.end()</a>
                </code>, jQuery objects maintain an internal stack that keeps track of changes to the matched set of elements. When one of the DOM traversal methods is called, the new set of elements is pushed onto the stack. If the previous set of elements is desired as well, <code>.andSelf()</code> can help.</p>
-            <p>Consider a page with a simple list on it:</p>
+            <p>例如，在页面中有如下一个简单的列表：</p>
             <pre>
 &lt;ul&gt;
    &lt;li&gt;list item 1&lt;/li&gt;
@@ -11978,9 +11978,9 @@ $('ul.first').find('.foo')
             </argument>
          </signature>
          <longdesc>
-            <p>Given a jQuery object that represents a set of DOM elements, the <code>.siblings()</code> method allows us to search through the siblings of these elements in the DOM tree and construct a new jQuery object from the matching elements.</p>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.siblings()</code> method allows us to search through the siblings of these elements in the DOM tree and construct a new jQuery object from the matching elements.</p>
             <p>The method optionally accepts a selector expression of the same type that we can pass to the <code>$()</code> function. If the selector is supplied, the elements will be filtered by testing whether they match it.</p>
-            <p>Consider a page with a simple list on it:</p>
+            <p>例如，在页面中有如下一个简单的列表：</p>
             <pre>
 &lt;ul&gt;
    &lt;li&gt;list item 1&lt;/li&gt;
@@ -12393,9 +12393,9 @@ div {
             </argument>
          </signature>
          <longdesc>
-            <p>Given a jQuery object that represents a set of DOM elements, the <code>.prevAll()</code> method searches through the predecessors of these elements in the DOM tree and construct a new jQuery object from the matching elements; the elements are returned in order beginning with the closest sibling.</p>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.prevAll()</code> method searches through the predecessors of these elements in the DOM tree and construct a new jQuery object from the matching elements; the elements are returned in order beginning with the closest sibling.</p>
             <p>The method optionally accepts a selector expression of the same type that we can pass to the <code>$()</code> function. If the selector is supplied, the elements will be filtered by testing whether they match it.</p>
-            <p>Consider a page with a simple list on it:</p>
+            <p>例如，在页面中有如下一个简单的列表：</p>
             <pre>
 &lt;ul&gt;
    &lt;li&gt;list item 1&lt;/li&gt;
@@ -12435,9 +12435,9 @@ div {
             </argument>
          </signature>
          <longdesc>
-            <p>Given a jQuery object that represents a set of DOM elements, the <code>.prev()</code> method searches for the predecessor of each of these elements in the DOM tree and constructs a new jQuery object from the matching elements.</p>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.prev()</code> method searches for the predecessor of each of these elements in the DOM tree and constructs a new jQuery object from the matching elements.</p>
             <p>The method optionally accepts a selector expression of the same type that can be passed to the <code>$()</code> function. If the selector is supplied, the preceding element will be filtered by testing whether it match the selector.</p>
-            <p>Consider a page with a simple list on it:</p>
+            <p>例如，在页面中有如下一个简单的列表：</p>
             <pre>
 &lt;ul&gt;
    &lt;li&gt;list item 1&lt;/li&gt;
@@ -12793,7 +12793,7 @@ button { float:left; margin:5px 10px 5px 0; }
             </argument>
          </signature>
          <longdesc>
-            <p>Given a jQuery object that represents a set of DOM elements, the <code>.parents()</code> method allows us to search through the ancestors of these elements in the DOM tree and construct a new jQuery object from the matching elements ordered from immediate parent on up; the elements are returned in order from the closest parent to the outer ones. The <code>.parents()</code> 和 <code>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.parents()</code> method allows us to search through the ancestors of these elements in the DOM tree and construct a new jQuery object from the matching elements ordered from immediate parent on up; the elements are returned in order from the closest parent to the outer ones. The <code>.parents()</code> 和 <code>
                   <a href="parent.htm">.parent()</a>
                </code> methods are similar, except that the latter only travels a single level up the DOM tree.</p>
             <p>The method optionally accepts a selector expression of the same type that we can pass to the <code>$()</code> function. If the selector is supplied, the elements will be filtered by testing whether they match it.</p>
@@ -13014,7 +13014,7 @@ $("span").click(function () {
             </argument>
          </signature>
          <longdesc>
-            <p>Given a jQuery object that represents a set of DOM elements, the <code>.parent()</code> method allows us to search through the parents of these elements in the DOM tree and construct a new jQuery object from the matching elements. The <code>.parents()</code> 和 <code>.parent()</code> methods are similar, except that the latter only travels a single level up the DOM tree.</p>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.parent()</code> method allows us to search through the parents of these elements in the DOM tree and construct a new jQuery object from the matching elements. The <code>.parents()</code> 和 <code>.parent()</code> methods are similar, except that the latter only travels a single level up the DOM tree.</p>
             <p>The method optionally accepts a selector expression of the same type that we can pass to the <code>$()</code> function. If the selector is supplied, the elements will be filtered by testing whether they match it.</p>
             <p>Consider a page with a basic nested list on it:</p>
             <pre>
@@ -13537,9 +13537,9 @@ $("span").click(function () {
             </argument>
          </signature>
          <longdesc>
-            <p>Given a jQuery object that represents a set of DOM elements, the <code>.nextAll()</code> method allows us to search through the successors of these elements in the DOM tree and construct a new jQuery object from the matching elements.</p>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.nextAll()</code> method allows us to search through the successors of these elements in the DOM tree and construct a new jQuery object from the matching elements.</p>
             <p>The method optionally accepts a selector expression of the same type that we can pass to the <code>$()</code> function. If the selector is supplied, the elements will be filtered by testing whether they match it.</p>
-            <p>Consider a page with a simple list on it:</p>
+            <p>例如，在页面中有如下一个简单的列表：</p>
             <pre>
 &lt;ul&gt;
    &lt;li&gt;list item 1&lt;/li&gt;
@@ -13600,9 +13600,9 @@ $("span").click(function () {
             </argument>
          </signature>
          <longdesc>
-            <p>Given a jQuery object that represents a set of DOM elements, the <code>.next()</code> method allows us to search through the immediately following sibling of these elements in the DOM tree and construct a new jQuery object from the matching elements.</p>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.next()</code> method allows us to search through the immediately following sibling of these elements in the DOM tree and construct a new jQuery object from the matching elements.</p>
             <p>The method optionally accepts a selector expression of the same type that we can pass to the <code>$()</code> function. If the immediately following sibling matches the selector, it remains in the newly constructed jQuery object; otherwise, it is excluded.</p>
-            <p>Consider a page with a simple list on it:</p>
+            <p>例如，在页面中有如下一个简单的列表：</p>
             <pre>
 &lt;ul&gt;
    &lt;li&gt;list item 1&lt;/li&gt;
@@ -13775,7 +13775,7 @@ margin:10px; }
             </argument>
          </signature>
          <longdesc>
-            <p>Given a jQuery object that represents a set of DOM elements, the <code>.find()</code> method allows us to search through the descendants of these elements in the DOM tree and construct a new jQuery object from the matching elements. The <code>.find()</code> 和 <code>.children()</code> methods are similar, except that the latter only travels a single level down the DOM tree.</p>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.find()</code> method allows us to search through the descendants of these elements in the DOM tree and construct a new jQuery object from the matching elements. The <code>.find()</code> 和 <code>.children()</code> methods are similar, except that the latter only travels a single level down the DOM tree.</p>
             <p>The first signature for the <code>.find()</code>method accepts a selector expression of the same type that we can pass to the <code>$()</code> function. The elements will be filtered by testing whether they match this selector.</p>
             <p>Consider a page with a basic nested list on it:</p>
             <pre>
@@ -13991,7 +13991,7 @@ $.getScript("http://api.jquery.com/scripts/jquery.color.js", function() {
             <added>1.2</added>
          </signature>
          <longdesc>
-            <p>Given a jQuery object that represents a set of DOM elements, the <code>.contents()</code> method allows us to search through the immediate children of these elements in the DOM tree and construct a new jQuery object from the matching elements. The <code>.contents()</code> 和 <code>.children()</code> methods are similar, except that the former includes text nodes as well as HTML elements in the resulting jQuery object.</p>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.contents()</code> method allows us to search through the immediate children of these elements in the DOM tree and construct a new jQuery object from the matching elements. The <code>.contents()</code> 和 <code>.children()</code> methods are similar, except that the former includes text nodes as well as HTML elements in the resulting jQuery object.</p>
             <p><code>.contents()</code> method can also be used to get the content document of an iframe, if the iframe is on the same domain as the main page.</p>
             <p>Consider a simple <code>&lt;div&gt;</code> with a number of text nodes, each of which is separated by two line break elements (<code>&lt;br /&gt;</code>):</p>
             <pre>&lt;div class="container"&gt;
@@ -14061,7 +14061,7 @@ $('.container').contents().filter(function() {
             </argument>
          </signature>
          <longdesc>
-            <p>Given a jQuery object that represents a set of DOM elements, the <code>.closest()</code> method searches through these elements and their ancestors in the DOM tree and constructs a new jQuery object from the matching elements. The <code>.parents()</code> 和 <code>.closest()</code> methods are similar in that they both traverse up the DOM tree. The differences between the two, though subtle, are significant:</p>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.closest()</code> method searches through these elements and their ancestors in the DOM tree and constructs a new jQuery object from the matching elements. The <code>.parents()</code> 和 <code>.closest()</code> methods are similar in that they both traverse up the DOM tree. The differences between the two, though subtle, are significant:</p>
 
             <table>
                <thead>
@@ -14961,7 +14961,7 @@ request.fail(function(jqXHR, textStatus) {
             </argument>
          </signature>
          <longdesc>            
-                 <p>Given a jQuery object that represents a set of DOM elements, the <code>.children()</code> method allows us to search through the children of these elements in the DOM tree and construct a new jQuery object from the matching elements. The <code>.children()</code> method differs from <code><a href="find.htm">.find()</a></code> in that <code>.children()</code> only travels a single level down the DOM tree while <code>.find()</code> can traverse down multiple levels to select descendant elements (grandchildren, etc.) as well. Note also that like most jQuery methods, <code>.children()</code> does not return text nodes; to get <em>all</em> children including text and comment nodes, use <code><a href="contents.htm">.contents()</a></code>.</p>
+                 <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.children()</code> method allows us to search through the children of these elements in the DOM tree and construct a new jQuery object from the matching elements. The <code>.children()</code> method differs from <code><a href="find.htm">.find()</a></code> in that <code>.children()</code> only travels a single level down the DOM tree while <code>.find()</code> can traverse down multiple levels to select descendant elements (grandchildren, etc.) as well. Note also that like most jQuery methods, <code>.children()</code> does not return text nodes; to get <em>all</em> children including text and comment nodes, use <code><a href="contents.htm">.contents()</a></code>.</p>
 	         <p>The <code>.children()</code> method optionally accepts a selector expression of the same type that we can pass to the <code>$()</code> function. If the selector is supplied, the elements will be filtered by testing whether they match it.</p>
 		 <p>Consider a page with a basic nested list on it:</p>
 		 <pre>
@@ -15113,7 +15113,7 @@ request.fail(function(jqXHR, textStatus) {
             </argument>
          </signature>
          <longdesc>
-            <p>Given a jQuery object that represents a set of DOM elements, the <code>.add()</code> method constructs a new jQuery object from the union of those elements and the ones passed into the method. The argument to <code>.add()</code> can be pretty much anything that  <code>$()</code> accepts, including a jQuery selector expression, references to DOM elements, or an HTML snippet.</p>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.add()</code> method constructs a new jQuery object from the union of those elements and the ones passed into the method. The argument to <code>.add()</code> can be pretty much anything that  <code>$()</code> accepts, including a jQuery selector expression, references to DOM elements, or an HTML snippet.</p>
             <p>The updated set of elements can be used in a following (chained) method, or assigned to a variable for later use. For example:</p>
             <pre>
 $("p").add("div").addClass("widget");
@@ -15252,12 +15252,12 @@ collection.css("background", "yellow");</code>
               <signature>
                 <added>1.4</added>
                 <argument name="jQuery object" type="Object">
-                  <desc>An existing jQuery object to match the current set of elements against.</desc>
+                  <desc>用于匹配当前元素集合中的一个已经存在的 jQuery 对象。</desc>
                 </argument>
               </signature>
               <desc>Remove elements from the set of matched elements.</desc>
-                <longdesc><p>Given a jQuery object that represents a set of DOM elements, the <code>.not()</code> method constructs a new jQuery object from a subset of the matching elements. The supplied selector is tested against each element; the elements that don't match the selector will be included in the result.</p>
-            <p>Consider a page with a simple list on it:</p>
+                <longdesc><p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.not()</code> 方法会构造一个新的 jQuery 对象，用于存放筛选后的元素。所提供的选择器，会用于测试匹配集合中的每一个元素。the elements that don't match the selector will be included in the result.</p>
+            <p>例如，在页面中有如下一个简单的列表：</p>
             <pre>
 &lt;ul&gt;
   &lt;li&gt;list item 1&lt;/li&gt;
@@ -19320,7 +19320,7 @@ input { clear:left}
          <category name="Version 1.2"/>
       </entry>
       <entry type="method" name="is" return="Boolean">
-         <desc>Check the current matched set of elements against a selector, element, or jQuery object and return <code>true</code> if at least one of these elements matches the given arguments.</desc>
+         <desc>判断当前匹配的元素集合中的元素，是否为一个选择器，元素或 jQuery 对象。若匹配的元素集合中至少有一个元素满足给定的参数，则返回 <code>true</code>。</desc>
          <signature>
             <added>1.0</added>
             <argument name="selector" type="Selector">
@@ -19330,24 +19330,24 @@ input { clear:left}
          <signature>
             <added>1.6</added>
             <argument name="function(index)" type="Function">
-               <desc>A function used as a test for the set of elements. It accepts one argument, <code>index</code>, which is the element's index in the jQuery collection.Within the function, <code>this</code> refers to the current DOM element. </desc>
+               <desc>一个函数，用于检测集合中的元素。该函数接受一个 <code>index</code> 参数，代表 jQuery 集合中的元素索引位置。函数中的 <code>this</code> 指向当前 DOM 元素。</desc>
             </argument>
          </signature>
          <signature>
             <added>1.6</added>
             <argument name="jQuery object" type="Object">
-               <desc>An existing jQuery object to match the current set of elements against.</desc>
+               <desc>用于匹配当前元素集合中的已经存在的 jQuery 对象。</desc>
             </argument>
          </signature>
          <signature>
             <added>1.6</added>
             <argument name="element" type="Element">
-               <desc>An element to match the current set of elements against.</desc>
+               <desc>用于匹配当前元素集合中的元素。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p>Unlike other filtering methods, <code>.is()</code> does not create a new jQuery object. Instead, it allows you to test the contents of a jQuery object without modification. This is often useful inside callbacks, such as event handlers.</p>
-            <p>Suppose you have a list, with two of its items containing a child element:</p>
+            <p>不像其它的过滤方法，<code>.is()</code> 并不会创建新的 jQuery 对象。相反，它允许你检测 jQuery 对象中的内容，而不会修改该 jQuery 对象。通常在回调函数内使用该方法，例如事件处理。</p>
+            <p>假设有一个列表，其中有两个列表项含有子元素：</p>
             <pre>
 &lt;ul&gt;
   &lt;li&gt;list &lt;strong&gt;item 1&lt;/strong&gt;&lt;/li&gt;
@@ -19355,21 +19355,24 @@ input { clear:left}
   &lt;li&gt;list item 3&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-            <p>You can attach a click handler to the &lt;ul&gt; element, and then limit the code to be triggered only when a list item itself, not one of its children, is clicked:</p>
+            <p>你可以为 &lt;ul&gt; 元素绑定点击事件，然后限定只有点击列表项时才触发点击事件，点击列表项的子元素时不会触发点击事件：</p>
             <pre>$("ul").click(function(event) {
   var $target = $(event.target);
   if ( $target.is("li") ) {
     $target.css("background-color", "red");
   }
 });</pre>
-            <p>Now, when the user clicks on the word "list" in the first item or anywhere in the third item, the clicked list item will be given a red background. However, when the user clicks on item 1 in the first item or anywhere in the second item, nothing will occur, because in those cases the target of the event would be <code>&lt;strong&gt;</code> or <code>&lt;span&gt;</code>, respectively.
-</p>
-            <p>Prior to jQuery 1.7, in selector strings with positional selectors such as <code>:first</code>, <code>:gt()</code>, or <code>:even</code>, the positional filtering is done against the jQuery object passed to <code>.is()</code>, <em>not</em> against the containing document. So for the HTML shown above, an expression such as <code>$("li:first").is("li:last")</code> returns <code>true</code>, but <code>$("li:first-child").is("li:last-child")</code> returns <code>false</code>. In addition, a bug in Sizzle prevented many positional selectors from working properly. These two factors made positional selectors almost unusable in filters.</p>
+            <p>现在，当用户点击第一个列表项的单词 "list" 或点击第三个列表项的任何地方时，就会为所点击的列表项添加红色背景。然而，当用户点击第一个列表项中的 "item 1" 或者点击第二个列表项的任何地方时，就不会触发任何动作，因为这两种情况中 event 对象的 target 分别是 <code>&lt;strong&gt;</code> 和 <code>&lt;span&gt;</code>，而不是 <code>&lt;li&gt;</code>。</p>
+            <p>在 jQuery 1.7 之前，若在选择器字符串中包含位置选择器时，例如 <code>:first</code>， <code>:gt()</code>， 或 <code>:even</code>，那么位置选择器是相对于传入 <code>.is()</code> 的 jQuery 对象的，而<em>不是</em>相对于所在的文档的。因此，对于上面显示的 HTML，表达式 <code>$("li:first").is("li:last")</code> 会返回 <code>true</code>，但是 <code>$("li:first-child").is("li:last-child")</code> 则返回 <code>false</code>。此外，由于 Sizzle 中的一个 bug，使得很多位置选择器无法正常工作。由于这两个原因，使得在过滤器中几乎无法使用位置选择器。</p>
+			<p>原文如下：</p>
+			<p>Prior to jQuery 1.7, in selector strings with positional selectors such as <code>:first</code>, <code>:gt()</code>, or <code>:even</code>, the positional filtering is done against the jQuery object passed to <code>.is()</code>, <em>not</em> against the containing document. So for the HTML shown above, an expression such as <code>$("li:first").is("li:last")</code> returns <code>true</code>, but <code>$("li:first-child").is("li:last-child")</code> returns <code>false</code>. In addition, a bug in Sizzle prevented many positional selectors from working properly. These two factors made positional selectors almost unusable in filters.</p>
 
-            <p>Starting with jQuery 1.7, selector strings with positional selectors apply the selector against the document, and then determine whether the first element of the current jQuery set matches any of the resulting elements. So for the HTML shown above, an expression such as <code>$("li:first").is("li:last")</code> returns <code>false</code>. Note that since positional selectors are jQuery additions and not W3C standard, we recommend using the W3C selectors whenever feasible.</p>
+            <p>从 jQuery 1.7 开始，若选择器字符串中含有位置选择器，那么选择器是相对于文档的，它会判断当前 jQuery 集合中的第一个元素是否匹配产生的任何元素。因此，对于上面显示的 HTML，表达式 <code>$("li:first").is("li:last")</code> 会返回 <code>false</code>。注意，由于位置选择器是 jQuery 添加的功能，而不是 W3C 标准，所以我们建议尽可能的使用 W3C 选择器。</p>
+			<p>原文如下：</p>
+			<p>Starting with jQuery 1.7, selector strings with positional selectors apply the selector against the document, and then determine whether the first element of the current jQuery set matches any of the resulting elements. So for the HTML shown above, an expression such as <code>$("li:first").is("li:last")</code> returns <code>false</code>. Note that since positional selectors are jQuery additions and not W3C standard, we recommend using the W3C selectors whenever feasible.</p>
 
-            <h4>Using a Function</h4>
-            <p>The second form of this method evaluates expressions related to elements based on a function rather than a selector. For each element, if the function returns <code>true</code>, <code>.is()</code> returns <code>true</code> as well. For example, given a somewhat more involved HTML snippet:</p>
+            <h4>使用函数</h4>
+            <p>is(function(index)) 此种形式的方法，会根据一个函数来进行判断，而不是使用一个选择器。对于集合中的每一个元素，如果函数返回 <code>true</code>，那么 <code>.is()</code> 方法也会返回 <code>true</code>。例如，有如下稍微复杂些的 HTML 片段：</p>
             <pre>
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;list&lt;/strong&gt; item 1 - one strong tag&lt;/li&gt;
@@ -19380,7 +19383,7 @@ input { clear:left}
   &lt;li&gt;list item 5&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-            <p>You can attach a click handler to every <code>&lt;li&gt;</code> that evaluates the number of <code>&lt;strong&gt;</code> elements within the clicked <code>&lt;li&gt;</code> at that time like so:</p>
+            <p>你可以为每个 <code>&lt;li&gt;</code> 绑定一个点击事件，判断所点击的 <code>&lt;li&gt;</code> 的<code>&lt;strong&gt;</code> 元素的个数，例如：</p>
             <pre>
 $("li").click(function() {
   var $li = $(this),
@@ -19397,7 +19400,7 @@ $("li").click(function() {
 
          </longdesc>
          <example>
-            <desc>Shows a few ways is() can be used inside an event handler.</desc>
+            <desc>下面的例子为您展示了在事件处理中，使用 is() 的一些方法。</desc>
             <code>
   $("div").one('click', function () {
     if ($(this).is(":first-child")) {
@@ -19433,7 +19436,7 @@ $("li").click(function() {
 &lt;p&gt;&amp;nbsp;&lt;/p&gt;</html>
          </example>
          <example>
-            <desc>Returns true, because the parent of the input is a form element.</desc>
+            <desc>由于 input 的父元素是表单元素，所以返回了 true。</desc>
             <code>
   var isFormParent = $("input[type='checkbox']").parent().is("form");
   $("div").text("isFormParent = " + isFormParent);
@@ -19443,7 +19446,7 @@ $("li").click(function() {
 &lt;div&gt;&lt;/div&gt;</html>
          </example>
          <example>
-            <desc>Returns false, because the parent of the input is a p element.</desc>
+            <desc>由于 input 的父元素是 p 元素，所以返回了 false。</desc>
             <code>
   var isFormParent = $("input[type='checkbox']").parent().is("form");
   $("div").text("isFormParent = " + isFormParent);
@@ -19453,7 +19456,7 @@ $("li").click(function() {
   &lt;div&gt;&lt;/div&gt;</html>
          </example>
          <example>
-            <desc>Checks against an existing collection of alternating list elements. Blue, alternating list elements slide up while others turn red.</desc>
+            <desc>检查一个已经存在的列表集合。点击蓝色的列表项时，该列表项会向上滑动，点击其它列表项则会使其背景色变成红色。</desc>
             <code>
   var $alt = $("#browsers li:nth-child(2n)").css("background", "#00FFFF");
   $('li').click(function() {
@@ -19475,7 +19478,7 @@ $("li").click(function() {
 &lt;/ul&gt;</html>
          </example>
          <example>
-            <desc>An alternate way to achieve the above example using an element rather than a jQuery object. Checks against an existing collection of alternating list elements. Blue, alternating list elements slide up while others turn red.</desc>
+            <desc>可以使用另外一种方法来达到上面例子的效果，那就是使用元素，而不是使用 jQuery 对象。检查一个已经存在的列表集合。点击蓝色的列表项时，该列表项会向上滑动，点击其它列表项则会使其背景色变成红色。</desc>
             <code>
   var $alt = $("#browsers li:nth-child(2n)").css("background", "#00FFFF");
   $('li').click(function() {
@@ -19515,8 +19518,8 @@ $("li").click(function() {
             </argument>
          </signature>
          <longdesc>
-            <p>Given a jQuery object that represents a set of DOM elements, the <code>.eq()</code> method constructs a new jQuery object from one element within that set. The supplied index identifies the position of this element in the set. </p>
-            <p>Consider a page with a simple list on it:</p>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.eq()</code> method constructs a new jQuery object from one element within that set. The supplied index identifies the position of this element in the set. </p>
+            <p>例如，在页面中有如下一个简单的列表：</p>
             <pre>
   &lt;ul&gt;
     &lt;li&gt;list item 1&lt;/li&gt;
@@ -19565,34 +19568,34 @@ $("li").click(function() {
          <category name="Version 1.1.2"/>
       </entry>
       <entry type="method" name="filter" return="jQuery">
-         <desc>Reduce the set of matched elements to those that match the selector or pass the function's test. </desc>
+         <desc>在匹配的元素集合中，根据指定的选择器或函数进一步筛选所匹配的元素。</desc>
          <signature>
             <added>1.0</added>
             <argument name="selector" type="Selector">
-               <desc>A string containing a selector expression to match the current set of elements against.</desc>
+               <desc>选择器字符串，用于进一步筛选集合中的元素。</desc>
             </argument>
          </signature>
          <signature>
             <added>1.0</added>
             <argument name="function(index)" type="Function">
-               <desc>A function used as a test for each element in the set. <code>this</code> is the current DOM element.</desc>
+               <desc>一个函数，用于测试匹配集合中的每一个元素。<code>this</code> 代表当前 DOM 元素。</desc>
             </argument>
          </signature>
          <signature>
             <added>1.4</added>
             <argument name="element" type="Element">
-               <desc>An element to match the current set of elements against.</desc>
+               <desc>一个元素，用于进一步筛选集合中的元素。</desc>
             </argument>
          </signature>
          <signature>
             <added>1.4</added>
             <argument name="jQuery object" type="Object">
-               <desc>An existing jQuery object to match the current set of elements against.</desc>
+               <desc>一个已经存在的 jQuery 对象，用于进一步筛选集合中的元素。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p>Given a jQuery object that represents a set of DOM elements, the <code>.filter()</code> method constructs a new jQuery object from a subset of the matching elements. The supplied selector is tested against each element; all elements matching the selector will be included in the result.</p>
-            <p>Consider a page with a simple list on it:</p>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.filter()</code> 方法会构造一个新的 jQuery 对象，用于存放筛选后的元素。所提供的选择器，会用于测试匹配集合中的每一个元素。所有满足指定的选择器的元素都会包含在结果集中。</p>
+            <p>例如，在页面中有如下一个简单的列表：</p>
 &lt;ul&gt;
   &lt;li&gt;list item 1&lt;/li&gt;
   &lt;li&gt;list item 2&lt;/li&gt;
@@ -19601,13 +19604,13 @@ $("li").click(function() {
   &lt;li&gt;list item 5&lt;/li&gt;
   &lt;li&gt;list item 6&lt;/li&gt;
 &lt;/ul&gt;
-<p>We can apply this method to the set of list items:</p>
+<p>我们可以在列表项集合中应用此方法：</p>
             <pre>
   $('li').filter(':even').css('background-color', 'red');
 </pre>
-            <p>The result of this call is a red background for items 1, 3, and 5, as they match the selector (recall that <code>:even</code> 和 <code>:odd</code> use 0-based indexing).</p>
-            <h4 id="using-filter-function">Using a Filter Function</h4>
-            <p>The second form of this method allows us to filter elements against a function rather than a selector. For each element, if the function returns <code>true</code> (or a "truthy" value), the element will be included in the filtered set; otherwise, it will be excluded. Suppose we have a somewhat more involved HTML snippet:</p>
+            <p>执行完上述方法的结果是，满足选择器的第 1, 3, 5 个列表项的背景色变成了红色(<code>:even</code> 和 <code>:odd</code> 的索引值是从 0 开始的)。</p>
+            <h4 id="using-filter-function">使用过滤函数</h4>
+            <p>除了可以指定选择器外，该方法的第二种形式还允许我们使用一个过滤函数。对于匹配集合中的每一个元素，若过滤函数返回 <code>true</code> (或者是 "truthy"（代表真的值）)，那么该元素就会包含在最终的返回结果中，否则，不会包含该元素。假设我们有一个稍微复杂点儿的 HTML 片段：</p>
             <pre>
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;list&lt;/strong&gt; item 1 -
@@ -19620,23 +19623,23 @@ $("li").click(function() {
   &lt;li&gt;list item 6&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-            <p>We can select the list items, then filter them based on their contents:</p>
+            <p>我们可以先选择出列表项，然后再根据它们的内容作进一步筛选：</p>
             <pre>
 $('li').filter(function(index) {
   return $('strong', this).length == 1;
 }).css('background-color', 'red');
 </pre>
-            <p>This code will alter the first list item only, as it contains exactly one <code>&lt;strong&gt;</code> tag. Within the filter function, <code>this</code> refers to each DOM element in turn. The parameter passed to the function tells us the index of that DOM element within the set matched by the jQuery object.</p>
-            <p>We can also take advantage of the <code>index</code> passed through the function, which indicates the 0-based position of the element within the unfiltered set of matched elements:</p>
+            <p>上述代码只会改变第一个列表项的背景色，因为只有第一个列表项仅含有一个 <code>&lt;strong&gt;</code> 标签。在过滤函数中 <code>this</code> 指向的是当前正在处理的 DOM 元素。过滤函数中传入的 index 参数代表匹配的 jQuery 对象集合中 DOM 元素的索引。</p>
+            <p>我们可以利用过滤函数中的 <code>index</code> 参数，该参数是从 0 开始的索引值，此索引值代表未经过滤的匹配元素集合中的元素位置：</p>
             <pre>
 $('li').filter(function(index) {
   return index % 3 == 2;
 }).css('background-color', 'red');
 </pre>
-            <p>This alteration to the code will cause the third and sixth list items to be highlighted, as it uses the modulus operator (<code>%</code>) to select every item with an <code>index</code> value that, when divided by 3, has a remainder of <code>2</code>.</p>
+            <p>上述代表会将第三个和第六个列表项高亮显示，因为该函数内使用了模运算符(<code>%</code>)来选择那些 <code>index</code> 被 3 整除余 <code>2</code> 的列表项。</p>
          </longdesc>
          <example>
-            <desc>Change the color of all divs; then add a border to those with a "middle" class.</desc>
+            <desc>改变所有 div 的颜色，然后为含有 "middle" 样式的 div 添加边框。</desc>
             <code>
 
     $("div").css("background", "#c8ebcc")
@@ -19657,7 +19660,7 @@ $('li').filter(function(index) {
   &lt;div&gt;&lt;/div&gt;</html>
          </example>
          <example>
-            <desc>Change the color of all divs; then add a border to the second one (index == 1) and the div with an id of "fourth."</desc>
+            <desc>改变所有 div 的颜色，然后为第二个 div (index == 1) 及 id 为 "fourth" 的 div 添加边框。</desc>
             <code>
     $("div").css("background", "#b4b0da")
             .filter(function (index) {
@@ -19680,11 +19683,11 @@ $('li').filter(function(index) {
   &lt;div id="sixth"&gt;&lt;/div&gt;</html>
          </example>
          <example>
-            <desc>Select all divs and filter the selection with a DOM element, keeping only the one with an id of "unique".</desc>
+            <desc>选择所有的 div，并使用 DOM 元素进行筛选，过滤出 id 为 "unique" 的元素。</desc>
             <code>$("div").filter( document.getElementById("unique") )</code>
          </example>
          <example>
-            <desc>Select all divs and filter the selection with a jQuery object, keeping only the one with an id of "unique".</desc>
+            <desc>选择所有的 div，并使用 jQuery 对象进行筛选，过滤出 id 为 "unique" 的元素。</desc>
             <code>
 $("div").filter( $("#unique") )</code>
          </example>
