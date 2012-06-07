@@ -11333,7 +11333,7 @@ span { color:blue; }
   &lt;li&gt;list item 5&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-            <p>We can apply this method to the set of list items:</p>
+            <p>我们可以在列表项集合中应用此方法：</p>
             <pre>$('li').first().css('background-color', 'red');</pre>
             <p>The result of this call is a red background for the first item.</p>
          </longdesc>
@@ -11362,7 +11362,7 @@ span { color:blue; }
   &lt;li&gt;list item 5&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-            <p>We can apply this method to the set of list items:</p>
+            <p>我们可以在列表项集合中应用此方法：</p>
             <pre>$('li').last().css('background-color', 'red');</pre>
             <p>The result of this call is a red background for the final item.</p>
          </longdesc>
@@ -11376,18 +11376,18 @@ span { color:blue; }
          <category name="Version 1.4"/>
       </entry>
       <entry type="method" name="slice" return="jQuery">
-         <desc>Reduce the set of matched elements to a subset specified by a range of indices.</desc>
+         <desc>根据指定的下标范围，过滤匹配的元素集合。</desc>
          <signature>
             <added>1.1.4</added>
             <argument name="start" type="Integer">
-               <desc>An integer indicating the 0-based position at which the elements begin to be selected. If negative, it indicates an offset from the end of the set.</desc>
+               <desc>从 0 开始计数的下标。代表将要被选择的元素的起始下标。如果指定的下标是一个负数，那么代表从末尾开始计数。</desc>
             </argument>
             <argument name="end" type="Integer" optional="true">
-               <desc>An integer indicating the 0-based position at which the elements stop being selected. If negative, it indicates an offset from the end of the set. If omitted, the range continues until the end of the set.</desc>
+               <desc>从 0 开始计数的下标。代表将要被选择的元素的结束下标。如果指定的下标是一个负数，那么代表从末尾开始计数。如果忽略此参数，则选择的范围是从 start 开始，一直到最后。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.slice()</code> 方法会构造一个新的 jQuery 对象，用于存放筛选后的元素。The supplied <code>start</code> index identifies the position of one of the elements in the set; if <code>end</code> is omitted, all elements after this one will be included in the result.</p>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.slice()</code> 方法会构造一个新的 jQuery 对象，用于存放筛选后的元素。所提供的 <code>start</code> 索引标识了集合中元素的起始位置，如果忽略 <code>end</code> 参数，从 <code>start</code> 开始，一直到集合中最后的元素都会被包含在结果中。</p>
             <p>例如，在页面中有如下一个简单的列表：</p>
             <pre>
 &lt;ul&gt;
@@ -11398,19 +11398,19 @@ span { color:blue; }
   &lt;li&gt;list item 5&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-            <p>We can apply this method to the set of list items:</p>
+            <p>我们可以在列表项集合中应用此方法：</p>
             <pre>$('li').slice(2).css('background-color', 'red');</pre>
-            <p>The result of this call is a red background for items 3, 4, and 5. Note that the supplied index is zero-based, and refers to the position of elements within the jQuery object, not within the DOM tree.</p>
-            <p>The end parameter allows us to limit the selected range even further. For example:</p>
+            <p>上述代码的执行结果是，第 3，4，5 项列表项的背景色变成了红色。注意，索引是从 0 开始计数的，并且代表的是 jQuery 对象中的元素位置，而不是在 DOM 树中的位置。</p>
+            <p>end 对数允许我们进一步限制所选择的元素。例如：</p>
             <pre>$('li').slice(2, 4).css('background-color', 'red');</pre>
-            <p>Now only items 3 and 4 are selected. The index is once again zero-based; the range extends up to but not including the specified index.</p>
-            <h4>Negative Indices</h4>
-            <p>The jQuery <code>.slice()</code> method is patterned after the JavaScript .slice() method for arrays. One of the features that it mimics is the ability for negative numbers to be passed as either the <code>start</code> or <code>end</code> parameter. If a negative number is provided, this indicates a position starting from the end of the set, rather than the beginning. For example:</p>
+            <p>现在，只有第 3 和第 4 项列表项会被选中。索引依然是从 0 开始计数的，但是在被选中的元素中不包括 end 参数所指的元素。</p>
+            <h4>负索引</h4>
+            <p>jQuery 的 <code>.slice()</code> 方法模仿了 JavaScript 的 .slice() 方法。其中的一个功能就是允许传入负的 <code>start</code> 和 <code>end</code> 参数。如果传递的是负数，那么下标位置是从结尾开始的，而不是从起始位置开始。例如：</p>
             <pre>$('li').slice(-2, -1).css('background-color', 'red');</pre>
-            <p>This time only list item 4 is turned red, since it is the only item in the range between two from the end (<code>-2</code>) and one from the end (<code>-1</code>).</p>
+            <p>这次的执行结果是，只有第 4 项列表项的背景色变成了红色。因为它是唯一满足条件的列表项，即被选中的元素是从倒数第二个元素(<code>-2</code>)开始到最后一个元素(<code>-1</code>)（不含此元素）之间的元素。</p>
          </longdesc>
          <example>
-            <desc>Turns divs yellow based on a random slice.</desc>
+            <desc>将随机选中的范围内的 div 变成黄色。</desc>
             <code>
 
     function colorEm() {
@@ -11456,23 +11456,23 @@ span { color:blue; }
   &lt;div&gt;&lt;/div&gt;</html>
          </example>
          <example>
-            <desc>Selects all paragraphs, then slices the selection to include only the first element.</desc>
+            <desc>假设共有三个段落，选择所有的段落，并进行 slice 操作，选择的范围只包含第一个元素。</desc>
             <code>$("p").slice(0, 1).wrapInner("&lt;b&gt;&lt;/b&gt;");</code>
          </example>
          <example>
-            <desc>Selects all paragraphs, then slices the selection to include only the first and second element.</desc>
+            <desc>假设共有三个段落，选择所有的段落，并进行 slice 操作，选择的范围只包含第一个和第二个元素。</desc>
             <code>$("p").slice(0, 2).wrapInner("&lt;b&gt;&lt;/b&gt;");</code>
          </example>
          <example>
-            <desc>Selects all paragraphs, then slices the selection to include only the second element.</desc>
+            <desc>假设共有三个段落，选择所有的段落，并进行 slice 操作，选择的范围只包含第二个元素。</desc>
             <code>$("p").slice(1, 2).wrapInner("&lt;b&gt;&lt;/b&gt;");</code>
          </example>
          <example>
-            <desc>Selects all paragraphs, then slices the selection to include only the second and third element.</desc>
+            <desc>假设共有三个段落，选择所有的段落，并进行 slice 操作，选择的范围只包含第二个和第三个元素。</desc>
             <code>$("p").slice(1).wrapInner("&lt;b&gt;&lt;/b&gt;");</code>
          </example>
          <example>
-            <desc>Selects all paragraphs, then slices the selection to include only the third element.</desc>
+            <desc>假设共有三个段落，选择所有的段落，并进行 slice 操作，选择的范围只包含第三个元素。</desc>
             <code>$("p").slice(-1).wrapInner("&lt;b&gt;&lt;/b&gt;");</code>
          </example>
          <category name="Filtering"/>
@@ -15267,7 +15267,7 @@ collection.css("background", "yellow");</code>
   &lt;li&gt;list item 5&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-            <p>We can apply this method to the set of list items:</p>
+            <p>我们可以在列表项集合中应用此方法：</p>
             <pre>$('li').not(':even').css('background-color', 'red');</pre>
             <p>The result of this call is a red background for items 2 and 4, as they do not match the selector (recall that :even and :odd use 0-based indexing).</p>
             <h4>Removing Specific Elements</h4>
@@ -19185,16 +19185,16 @@ $.valHooks.textarea = {
          <category name="Version 1.4"/>
       </entry>
       <entry type="method" name="map" return="jQuery">
-         <desc>Pass each element in the current matched set through a function, producing a new jQuery object containing the return values.</desc>
+         <desc>通过一个回调函数来处理匹配集合中的每个元素，将处理后的结果生成一个新的 jQuery 对象。</desc>
          <signature>
             <added>1.2</added>
             <argument name="callback(index, domElement)" type="Function">
-               <desc>A function object that will be invoked for each element in the current set.</desc>
+               <desc>一个函数对象，会在处理集合中的每个元素时被调用。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p>As the return value is a jQuery-wrapped array, it's very common to <code>get()</code> the returned object to work with a basic array.</p>
-            <p><code>.map()</code> method is particularly useful for getting or setting the value of a collection of elements. Consider a form with a set of checkboxes in it:</p>
+            <p>由于该方法返回的是经 jQuery 包裹的数组，所以，通常会使用 <code>get()</code> 方法将其转换成普通的数组。</p>
+            <p><code>.map()</code> 方法特别适用于获取或设置元素集合中的值。例如，如下的表单中包含一组 checkbox 框：</p>
             <pre>
 &lt;form method="post" action=""&gt;
   &lt;fieldset&gt;
@@ -19217,15 +19217,15 @@ $.valHooks.textarea = {
   &lt;/fieldset&gt;
 &lt;/form&gt;
 </pre>
-            <p>We can get a comma-separated list of checkbox <code>ID</code>s:</p>
+            <p>我们可以得到一个用逗号分隔的 checkbox 的 <code>ID</code> 字符串:</p>
             <pre>$(':checkbox').map(function() {
   return this.id;
 }).get().join(',');</pre>
-            <p>The result of this call is the string, <code>"two,four,six,eight"</code>.</p>
-            <p>Within the callback function, <code>this</code> refers to the current DOM element for each iteration. The function can return an individual data item or an array of data items to be inserted into the resulting set. If an array is returned, the elements inside the array are inserted into the set. If the function returns <code>null</code> or <code>undefined</code>, no element will be inserted.</p>
+            <p>上述代码的结果如下： <code>"two,four,six,eight"</code>。</p>
+            <p>在回调函数里，<code>this</code> 指向当前正在循环的 DOM 元素。该函数可以返回一个独立的数据或是一个数组，用于插入到结果集中。如果返回的是数组，数组中的元素会被插入到集合中。如果返回的是 <code>null</code> 或 <code>undefined</code>，则不会插入任何元素。</p>
          </longdesc>
          <example>
-            <desc>Build a list of all the values within a form.</desc>
+            <desc>获取表单中所有表单元素的值。</desc>
             <code>
     $("p").append( $("input").map(function(){
       return $(this).val();
@@ -19245,7 +19245,7 @@ $.valHooks.textarea = {
   &lt;/form&gt;</html>
          </example>
          <example>
-            <desc>A contrived example to show some functionality.</desc>
+            <desc>下面的例子展现了该方法的一些功能。</desc>
             <code>
 var mappedItems = $("li").map(function (index) {
   var replacement = $("&lt;li&gt;").text($(this).text()).get(0);
@@ -19287,7 +19287,7 @@ $("#results").append(mappedItems);
   &lt;/ul&gt;</html>
          </example>
          <example>
-            <desc>Equalize the heights of the divs.</desc>
+            <desc>使 div 的高度相同。</desc>
             <code>
 $.fn.equalizeHeights = function() {
   var maxHeight = this.map(function(i,e) {
@@ -19529,7 +19529,7 @@ $("li").click(function() {
     &lt;li&gt;list item 5&lt;/li&gt;
   &lt;/ul&gt;
 </pre>
-            <p>We can apply this method to the set of list items:</p>
+            <p>我们可以在列表项集合中应用此方法：</p>
             <pre>
   $('li').eq(2).css('background-color', 'red');
 </pre>
