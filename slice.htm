@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>slice(start, <em class="optional">[end]</em>)<br></h2>
    <div class="desc">
-      <p>Reduce the set of matched elements to a subset specified by a range of indices.</p>
+      <p>根据指定的下标范围，过滤匹配的元素集合。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.1.4 新增</span>slice(start, <em class="optional">[end]</em>)
@@ -11,19 +11,17 @@
             </h4>
             <div class="arguement"><strong>start</strong>
                								(Integer)
-               								An integer indicating the 0-based position at which the elements begin to be selected. If negative, it indicates an offset
-               from the end of the set.
+               								从 0 开始计数的下标。代表将要被选择的元素的起始下标。如果指定的下标是一个负数，那么代表从末尾开始计数。
             </div>
             <div class="arguement"><strong>end</strong>
                								(Integer)
-               								 可选参数，An integer indicating the 0-based position at which the elements stop being selected. If negative, it indicates an offset
-               from the end of the set. If omitted, the range continues until the end of the set.
+               								 可选参数，从 0 开始计数的下标。代表将要被选择的元素的结束下标。如果指定的下标是一个负数，那么代表从末尾开始计数。如果忽略此参数，则选择的范围是从 start 开始，一直到最后。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.slice()</code> 方法会构造一个新的 jQuery 对象，用于存放筛选后的元素。The supplied <code>start</code> index identifies the position of one of the elements in the set; if <code>end</code> is omitted, all elements after this one will be included in the result.
+         <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.slice()</code> 方法会构造一个新的 jQuery 对象，用于存放筛选后的元素。所提供的 <code>start</code> 索引标识了集合中元素的起始位置，如果忽略 <code>end</code> 参数，从 <code>start</code> 开始，一直到集合中最后的元素都会被包含在结果中。
          </p>
          
          <p>例如，在页面中有如下一个简单的列表：</p>
@@ -36,33 +34,27 @@
   &lt;li&gt;list item 5&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-         <p>We can apply this method to the set of list items:</p>
+         <p>我们可以在列表项集合中应用此方法：</p>
          <pre>$('li').slice(2).css('background-color', 'red');</pre>
-         <p>The result of this call is a red background for items 3, 4, and 5. Note that the supplied index is zero-based, and refers
-            to the position of elements within the jQuery object, not within the DOM tree.
-         </p>
+         <p>上述代码的执行结果是，第 3，4，5 项列表项的背景色变成了红色。注意，索引是从 0 开始计数的，并且代表的是 jQuery 对象中的元素位置，而不是在 DOM 树中的位置。</p>
          
-         <p>The end parameter allows us to limit the selected range even further. For example:</p>
+         <p>end 对数允许我们进一步限制所选择的元素。例如：</p>
          <pre>$('li').slice(2, 4).css('background-color', 'red');</pre>
-         <p>Now only items 3 and 4 are selected. The index is once again zero-based; the range extends up to but not including the specified
-            index.
-         </p>
+         <p>现在，只有第 3 和第 4 项列表项会被选中。索引依然是从 0 开始计数的，但是在被选中的元素中不包括 end 参数所指的元素。</p>
          
-         <h4>Negative Indices</h4>
+         <h4>负索引</h4>
          
-         <p>The jQuery <code>.slice()</code> method is patterned after the JavaScript .slice() method for arrays. One of the features that it mimics is the ability for
-            negative numbers to be passed as either the <code>start</code> or <code>end</code> parameter. If a negative number is provided, this indicates a position starting from the end of the set, rather than the
-            beginning. For example:
+         <p>jQuery 的 <code>.slice()</code> 方法模仿了 JavaScript 的 .slice() 方法。其中的一个功能就是允许传入负的 <code>start</code> 和 <code>end</code> 参数。如果传递的是负数，那么下标位置是从结尾开始的，而不是从起始位置开始。例如：
          </p>
          <pre>$('li').slice(-2, -1).css('background-color', 'red');</pre>
-         <p>This time only list item 4 is turned red, since it is the only item in the range between two from the end (<code>-2</code>) and one from the end (<code>-1</code>).
+         <p>这次的执行结果是，只有第 4 项列表项的背景色变成了红色。因为它是唯一满足条件的列表项，即被选中的元素是从倒数第二个元素(<code>-2</code>)开始到最后一个元素(<code>-1</code>)（不含此元素）之间的元素。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Turns divs yellow based on a random slice.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>将随机选中的范围内的 div 变成黄色。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -119,14 +111,14 @@
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="240"></iframe><h3>示例:</h3>
-      <p>Selects all paragraphs, then slices the selection to include only the first element.</p>
+      <p>假设共有三个段落，选择所有的段落，并进行 slice 操作，选择的范围只包含第一个元素。</p>
       <h5>jQuery 代码:</h5><pre><code>$("p").slice(0, 1).wrapInner("&lt;b&gt;&lt;/b&gt;");</code></pre><h3>示例:</h3>
-      <p>Selects all paragraphs, then slices the selection to include only the first and second element.</p>
+      <p>假设共有三个段落，选择所有的段落，并进行 slice 操作，选择的范围只包含第一个和第二个元素。</p>
       <h5>jQuery 代码:</h5><pre><code>$("p").slice(0, 2).wrapInner("&lt;b&gt;&lt;/b&gt;");</code></pre><h3>示例:</h3>
-      <p>Selects all paragraphs, then slices the selection to include only the second element.</p>
+      <p>假设共有三个段落，选择所有的段落，并进行 slice 操作，选择的范围只包含第二个元素。</p>
       <h5>jQuery 代码:</h5><pre><code>$("p").slice(1, 2).wrapInner("&lt;b&gt;&lt;/b&gt;");</code></pre><h3>示例:</h3>
-      <p>Selects all paragraphs, then slices the selection to include only the second and third element.</p>
+      <p>假设共有三个段落，选择所有的段落，并进行 slice 操作，选择的范围只包含第二个和第三个元素。</p>
       <h5>jQuery 代码:</h5><pre><code>$("p").slice(1).wrapInner("&lt;b&gt;&lt;/b&gt;");</code></pre><h3>示例:</h3>
-      <p>Selects all paragraphs, then slices the selection to include only the third element.</p>
+      <p>假设共有三个段落，选择所有的段落，并进行 slice 操作，选择的范围只包含第三个元素。</p>
       <h5>jQuery 代码:</h5><pre><code>$("p").slice(-1).wrapInner("&lt;b&gt;&lt;/b&gt;");</code></pre></div>
 </div>

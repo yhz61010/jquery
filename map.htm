@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>map(callback(index, domElement))<br></h2>
    <div class="desc">
-      <p>Pass each element in the current matched set through a function, producing a new jQuery object containing the return values.</p>
+      <p>通过一个回调函数来处理匹配集合中的每个元素，将处理后的结果生成一个新的 jQuery 对象。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.2 新增</span>map(callback(index, domElement))
@@ -11,17 +11,16 @@
             </h4>
             <div class="arguement"><strong>callback(index, domElement)</strong>
                								(Function)
-               								A function object that will be invoked for each element in the current set.
+               								一个函数对象，会在处理集合中的每个元素时被调用。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p>As the return value is a jQuery-wrapped array, it's very common to <code>get()</code> the returned object to work with a basic array.
+         <p>由于该方法返回的是经 jQuery 包裹的数组，所以，通常会使用 <code>get()</code> 方法将其转换成普通的数组。
          </p>
          
-         <p><code>.map()</code> method is particularly useful for getting or setting the value of a collection of elements. Consider a form with a set of
-            checkboxes in it:
+         <p><code>.map()</code> 方法特别适用于获取或设置元素集合中的值。例如，如下的表单中包含一组 checkbox 框：
          </p>
          <pre>
 &lt;form method="post" action=""&gt;
@@ -45,24 +44,22 @@
   &lt;/fieldset&gt;
 &lt;/form&gt;
 </pre>
-         <p>We can get a comma-separated list of checkbox <code>ID</code>s:
+         <p>我们可以得到一个用逗号分隔的 checkbox 的 <code>ID</code> 字符串:
          </p>
          <pre>$(':checkbox').map(function() {
   return this.id;
 }).get().join(',');</pre>
-         <p>The result of this call is the string, <code>"two,four,six,eight"</code>.
+         <p>上述代码的结果如下： <code>"two,four,six,eight"</code>。
          </p>
          
-         <p>Within the callback function, <code>this</code> refers to the current DOM element for each iteration. The function can return an individual data item or an array of data
-            items to be inserted into the resulting set. If an array is returned, the elements inside the array are inserted into the
-            set. If the function returns <code>null</code> or <code>undefined</code>, no element will be inserted.
+         <p>在回调函数里，<code>this</code> 指向当前正在循环的 DOM 元素。该函数可以返回一个独立的数据或是一个数组，用于插入到结果集中。如果返回的是数组，数组中的元素会被插入到集合中。如果返回的是 <code>null</code> 或 <code>undefined</code>，则不会插入任何元素。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Build a list of all the values within a form.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>获取表单中所有表单元素的值。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -93,7 +90,7 @@
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
-      <p>A contrived example to show some functionality.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>下面的例子展现了该方法的一些功能。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -146,7 +143,7 @@ $("#results").append(mappedItems);
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
-      <p>Equalize the heights of the divs.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>使 div 的高度相同。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
