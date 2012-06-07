@@ -3421,7 +3421,7 @@ $("p").focusout(function() {
             </argument>
          </signature>
          <longdesc>
-            <p>如果提供一个jQuery对象代表DOM元素集合， <code>.has()</code> 方法会用其子集创建一个新的jQuery对象。所提供的选择器会用于测试那些匹配的元素的后代，并将其保存在结果中。</p>
+            <p>如果提供一个 jQuery 对象代表 DOM 元素集合，<code>.has()</code> 方法会用其子集创建一个新的jQuery对象。所提供的选择器会用于测试那些匹配的元素的后代，并将其保存在结果中。</p>
             <p>下面是一个嵌套列表的页面：</p>
             <pre>
  &lt;ul&gt;
@@ -11376,7 +11376,7 @@ span { color:blue; }
          <category name="Version 1.4"/>
       </entry>
       <entry type="method" name="slice" return="jQuery">
-         <desc>根据指定的下标范围，过滤匹配的元素集合。</desc>
+         <desc>根据指定的下标范围，过滤匹配的元素集合，并生成一个新的 jQuery 对象。</desc>
          <signature>
             <added>1.1.4</added>
             <argument name="start" type="Integer">
