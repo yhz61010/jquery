@@ -7258,7 +7258,7 @@ $("ul.nav li:nth-child(2)").css( "color", "red" );
          <longdesc>
             <p><code>:not()</code> 的参数可以接受所有选择器。比如 <code>:not(div a)</code> 和 <code>:not(div,a)</code>。</p>
             <h3>附加信息</h3>
-            <p>使用 <code><a href="not.htm">.not()</a></code> 方法可以让代码更易读。使用 <code>:not()</code> 通常会构建出一个非常复杂的选择器。所以大多数情况下，推荐使用使用 <code><a href="not.htm">.not()</a></code> 方法。</p>
+            <p>使用 <code><a href="not.htm">.not()</a></code> 方法可以让代码更易读。而使用 <code>:not()</code> 通常会构建出一个非常复杂的选择器。所以大多数情况下，推荐使用 <code><a href="not.htm">.not()</a></code> 方法。</p>
          </longdesc>
          <example>
             <desc>查找所有没有被选中的复选框，然后高亮后面的 span。注意，当你点击复选框的时候不会有反应，因为没有绑定任何点击事件。</desc>
@@ -11925,14 +11925,14 @@ $('ul.first').find('.foo')
          <category name="Version 1.0"/>
       </entry>
       <entry type="method" name="andSelf" return="jQuery">
-         <desc>Add the previous set of elements on the stack to the current set.</desc>
+         <desc>将前一个元素集合插入到当前集合的栈顶。</desc>
          <signature>
             <added>1.2</added>
          </signature>
          <longdesc>
-            <p>As described in the discussion for <code>
+            <p>正如在 <code>
                   <a href="end.htm">.end()</a>
-               </code>, jQuery objects maintain an internal stack that keeps track of changes to the matched set of elements. When one of the DOM traversal methods is called, the new set of elements is pushed onto the stack. If the previous set of elements is desired as well, <code>.andSelf()</code> can help.</p>
+               </code> 中讨论过的，jQuery 对象会维护一个内部栈，用来持续跟踪匹配元素的变化。当调用了 DOM 遍历的方法，新的元素集合会被压入栈顶。如果同样需要之前的元素集合，那么 <code>.andSelf()</code> 一定会派上用场的。</p>
             <p>例如，在页面中有如下一个简单的列表：</p>
             <pre>
 &lt;ul&gt;
@@ -11943,14 +11943,14 @@ $('ul.first').find('.foo')
    &lt;li&gt;list item 5&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-            <p>The result of the following code is a red background behind items 3, 4 and 5:</p>
+            <p>如下代码的结果是，第 3, 4， 5 列表项的背景变成了红色：</p>
             <pre>$('li.third-item').nextAll().andSelf()
   .css('background-color', 'red');
 </pre>
-            <p>First, the initial selector locates item 3, initializing the stack with the set containing just this item. The call to <code>.nextAll()</code> then pushes the set of items 4 and 5 onto the stack. Finally, the <code>.andSelf()</code> invocation merges these two sets together, creating a jQuery object that points to all three items in document order: <code>{[&lt;li.third-item&gt;,&lt;li&gt;,&lt;li&gt; ]}</code>.</p>
+            <p>首先，初始选择器定位到第 3 项列表项，并使用该列表项初始化栈。然后调用 <code>.nextAll()</code> 后，第 4 和 第 5 项列表项被压入栈顶。最后，调用 <code>.andSelf()</code> 时，将这两个集合合并到一起，创建了一个 jQuery 对象，指向了这三个列表项，其顺序是按照这三个列表项在文档中的顺序，即：<code>{[&lt;li.third-item&gt;,&lt;li&gt;,&lt;li&gt; ]}</code>。</p>
          </longdesc>
          <example>
-            <desc>Find all <code>div</code>s, and all the paragraphs inside of them, and give them both class names.  Notice the <code>div</code> doesn't have the yellow background color since it didn't use <code>.andSelf()</code>.</desc>
+            <desc>查找所有的 <code>div</code>，及包含在它们中间的段落，并且为它们添加样式。注意，<code>div</code> 并没有黄色的背景色，因为它并没有使用 <code>.andSelf()</code>。</desc>
             <code>
     $("div").find("p").andSelf().addClass("border");
     $("div").find("p").addClass("background");
@@ -15078,70 +15078,69 @@ request.fail(function(jqXHR, textStatus) {
          <category name="Version 1.0"/>
       </entry>
       <entry type="method" name="add" return="jQuery">
-         <desc>Add elements to the set of matched elements.</desc>
+         <desc>向匹配的元素集合中添加元素。</desc>
          <signature>
             <added>1.0</added>
             <argument name="selector" type="Selector">
-               <desc>A string representing a selector expression to find additional elements to add to the set of matched elements.</desc>
+               <desc>选择器表达式字符串，查找将要添加到匹配的元素集合中的元素。</desc>
             </argument>
          </signature>
          <signature>
             <added>1.0</added>
             <argument name="elements" type="Elements">
-               <desc>One or more elements to add to the set of matched elements.</desc>
+               <desc>一个或多个将要添加到匹配的元素集合中的元素。</desc>
             </argument>
          </signature>
          <signature>
             <added>1.0</added>
             <argument name="html" type="HTML">
-               <desc>An HTML fragment to add to the set of matched elements.</desc>
+               <desc>用于将要添加到匹配的元素集合中的 HTML 片断。</desc>
             </argument>
          </signature>
          <signature>
             <added>1.3.2</added>
             <argument name="jQuery object" type="jQuery object ">
-               <desc>An existing jQuery object to add to the set of matched elements.</desc>
+               <desc>用于将要添加到匹配的元素集合中的已经存在的 jQuery 对象。</desc>
             </argument>
          </signature>
          <signature>
             <added>1.4</added>
             <argument name="selector" type="Selector">
-               <desc>A string representing a selector expression to find additional elements to add to the set of matched elements.</desc>
+               <desc>选择器表达式字符串，查找将要添加到匹配的元素集合中的元素。</desc>
             </argument>
             <argument name="context" type="Element">
-               <desc>The point in the document at which the selector should begin matching; similar to the context argument of the <code>$(selector, context)</code> method.</desc>
+               <desc>指定表达式查找元素所在的上下文。与 <code>$(selector, context)</code> 方法中的 context 类似。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.add()</code> method constructs a new jQuery object from the union of those elements and the ones passed into the method. The argument to <code>.add()</code> can be pretty much anything that  <code>$()</code> accepts, including a jQuery selector expression, references to DOM elements, or an HTML snippet.</p>
-            <p>The updated set of elements can be used in a following (chained) method, or assigned to a variable for later use. For example:</p>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.add()</code> 方法会生成一个新的 jQuery 对象，其中包括那些被选中的元素及传入的参数。<code>.add()</code> 的参数几乎可以是任何 <code>$()</code> 可接受的参数，包括 jQuery 选择器表达式，DOM 元素的引用，或者是一个 HTML 片断。</p>
+            <p>新生成的 jQuery 对象可以使用链式方式继续调用其它方法或者将其赋给一个变量，方便以后使用。例如：</p>
             <pre>
 $("p").add("div").addClass("widget");
 var pdiv = $("p").add("div");
 </pre>
-            <p>The following will <em>not</em> save the added elements, because the <code>.add()</code> method creates a new set and leaves the original set in pdiv unchanged:</p>
+            <p>以下的用法，并<em>不会</em>保存新添加的元素，因为 <code>.add()</code> 方法创建了一个新的集合，所以并没有改变 pdiv 的原始集合：</p>
             <pre>
 var pdiv = $("p");
 pdiv.add("div");  // WRONG, pdiv will not change
 </pre>
-            <p>Consider a page with a simple list and a paragraph following it:</p>
+            <p>假设有如下一个无序列表及一个段落：</p>
             <pre>&lt;ul&gt;
   &lt;li&gt;list item 1&lt;/li&gt;
   &lt;li&gt;list item 2&lt;/li&gt;
   &lt;li&gt;list item 3&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;a paragraph&lt;/p&gt;</pre>
-            <p>We can select the list items and then the paragraph by using either a selector or a reference to the DOM element itself as the <code>.add()</code> method's argument:</p>
+            <p>我们可以先选择列表，然后使用选择器或 DOM 元素引用作为 <code>.add()</code> 方法的参数，将段落添加到列表中：</p>
             <pre>$('li').add('p').css('background-color', 'red');</pre>
-            <p>Or:</p>
+            <p>或者:</p>
             <pre>$('li').add(document.getElementsByTagName('p')[0])
   .css('background-color', 'red');</pre>
-            <p>The result of this call is a red background behind all four elements.
-Using an HTML snippet as the <code>.add()</code> method's argument (as in the third version), we can create additional elements on the fly and add those elements to the matched set of elements. Let's say, for example, that we want to alter the background of the list items along with a newly created paragraph:</p>
+            <p>其执行结果是，所有四个元素（三个 li 元素及一个 p 元素）的背景变成了红色。若使用一个 HTML 片断作为 <code>.add()</code> 方法的参数的话，我们可以动态的向匹配的元素集合中添加元素。例如，我们可以改变列表和新添加的段落的背景色：</p>
             <pre>$('li').add('&lt;p id="new"&gt;new paragraph&lt;/p&gt;')
   .css('background-color', 'red');</pre>
-            <p>Although the new paragraph has been created and its background color changed, it still does not appear on the page. To place it on the page, we could add one of the insertion methods to the chain.</p>
-            <p>As of jQuery 1.4 the results from .add() will always be returned in document order (rather than a simple concatenation).</p>
+            <p>在上述的代码中，尽管创建了新的段落，并且改变了它的背景色，但是新的段落并没有显示在页面上。要想在页面上显示该段落，我们需要在链式方式中使用 jQuery 的插入方法。</p>
+            <p>从 jQuery 1.4 开始，.add() 的结果会按照文档顺序返回(而不是简单的串联)。</p>
             <p>
                <strong>注意:</strong> To reverse the <code>.add()</code> you can use <code><a href="not.htm">
                   .not( elements | selector )</a></code>
@@ -15150,7 +15149,7 @@ Using an HTML snippet as the <code>.add()</code> method's argument (as in the th
                 to return to the selection before you added.</p>
          </longdesc>
          <example>
-            <desc>Finds all divs and makes a border.  Then adds all paragraphs to the jQuery object to set their backgrounds yellow.</desc>
+            <desc>查找所有的 div，并且添加一个边框。然后将所有的段落添加到 jQuery 对象中，并将它们的背景色变成黄色。</desc>
             <code>
 
 $("div").css("border", "2px solid red")
@@ -15173,22 +15172,22 @@ $("div").css("border", "2px solid red")
   &lt;p&gt;Added this... (notice no border)&lt;/p&gt;</html>
          </example>
          <example>
-            <desc>Adds more elements, matched by the given expression, to the set of matched elements.</desc>
+            <desc>根据给定的表达式，向匹配的元素集合中添加一些元素。</desc>
             <code>$("p").add("span").css("background", "yellow");</code>
             <html>&lt;p&gt;Hello&lt;/p&gt;&lt;span&gt;Hello Again&lt;/span&gt;</html>
          </example>
          <example>
-            <desc>Adds more elements, created on the fly, to the set of matched elements.</desc>
+            <desc>动态的向匹配的元素集合中添加一些元素。</desc>
             <code>$("p").clone().add("&lt;span&gt;Again&lt;/span&gt;").appendTo(document.body);</code>
             <html>&lt;p&gt;Hello&lt;/p&gt;</html>
          </example>
          <example>
-            <desc>Adds one or more Elements to the set of matched elements.</desc>
+            <desc>向匹配的元素集合中添加一些元素对象。</desc>
             <code>$("p").add(document.getElementById("a")).css("background", "yellow");</code>
             <html>&lt;p&gt;Hello&lt;/p&gt;&lt;span id="a"&gt;Hello Again&lt;/span&gt;</html>
          </example>
          <example>
-            <desc>Demonstrates how to add (or push) elements to an existing collection</desc>
+            <desc>以下示例展示了如何向一个已经存在的集合中添加元素。</desc>
             <code>var collection = $("p");
 // capture the new collection
 collection = collection.add(document.getElementById("a"));
