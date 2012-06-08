@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>andSelf()<br></h2>
    <div class="desc">
-      <p>Add the previous set of elements on the stack to the current set.</p>
+      <p>将前一个元素集合插入到当前集合的栈顶。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.2 新增</span>andSelf()
@@ -13,11 +13,9 @@
       </ul>
       <div class="longdesc">
          
-         <p>As described in the discussion for <code>
+         <p>正如在 <code>
                <a href="end.htm">.end()</a>
-               </code>, jQuery objects maintain an internal stack that keeps track of changes to the matched set of elements. When one of the DOM
-            traversal methods is called, the new set of elements is pushed onto the stack. If the previous set of elements is desired
-            as well, <code>.andSelf()</code> can help.
+               </code> 中讨论过的，jQuery 对象会维护一个内部栈，用来持续跟踪匹配元素的变化。当调用了 DOM 遍历的方法，新的元素集合会被压入栈顶。如果同样需要之前的元素集合，那么 <code>.andSelf()</code> 一定会派上用场的。
          </p>
          
          <p>例如，在页面中有如下一个简单的列表：</p>
@@ -30,20 +28,18 @@
    &lt;li&gt;list item 5&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-         <p>The result of the following code is a red background behind items 3, 4 and 5:</p>
+         <p>如下代码的结果是，第 3, 4， 5 列表项的背景变成了红色：</p>
          <pre>$('li.third-item').nextAll().andSelf()
   .css('background-color', 'red');
 </pre>
-         <p>First, the initial selector locates item 3, initializing the stack with the set containing just this item. The call to <code>.nextAll()</code> then pushes the set of items 4 and 5 onto the stack. Finally, the <code>.andSelf()</code> invocation merges these two sets together, creating a jQuery object that points to all three items in document order: <code>{[&lt;li.third-item&gt;,&lt;li&gt;,&lt;li&gt; ]}</code>.
+         <p>首先，初始选择器定位到第 3 项列表项，并使用该列表项初始化栈。然后调用 <code>.nextAll()</code> 后，第 4 和 第 5 项列表项被压入栈顶。最后，调用 <code>.andSelf()</code> 时，将这两个集合合并到一起，创建了一个 jQuery 对象，指向了这三个列表项，其顺序是按照这三个列表项在文档中的顺序，即：<code>{[&lt;li.third-item&gt;,&lt;li&gt;,&lt;li&gt; ]}</code>。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Find all divs, and all the paragraphs inside of them, and give them both class names.  Notice the div doesn't have the yellow
-         background color since it didn't use .andSelf().
-      </p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>查找所有的 div，及包含在它们中间的段落，并且为它们添加样式。注意，div 并没有黄色的背景色，因为它并没有使用 .andSelf()。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
