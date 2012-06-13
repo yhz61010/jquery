@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>contents()<br></h2>
    <div class="desc">
-      <p>Get the children of each element in the set of matched elements, including text and comment nodes.</p>
+      <p>取得匹配元素中的每个元素的子元素，包括文本和注释节点。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.2 新增</span>contents()
@@ -13,14 +13,13 @@
       </ul>
       <div class="longdesc">
          
-         <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.contents()</code> method allows us to search through the immediate children of these elements in the DOM tree and construct a new jQuery object
-            from the matching elements. The <code>.contents()</code> 和 <code>.children()</code> methods are similar, except that the former includes text nodes as well as HTML elements in the resulting jQuery object.
+         <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.contents()</code> 方法允许我们在 DOM 树中查找集合中的直接子元素，并根据匹配的元素创建一个新的 jQuery 对象。<code>.contents()</code> 和 <code>.children()</code> 方法很类似，只不过是在最终的 jQuery 对象中，前者还包括了文本节点和 HTML 元素。
          </p>
          
-         <p><code>.contents()</code> method can also be used to get the content document of an iframe, if the iframe is on the same domain as the main page.
+         <p>如果 iframe 和页面在相同的域中，那么 <code>.contents()</code> 方法可以用于获取 iframe 的内容。
          </p>
          
-         <p>Consider a simple <code>&lt;div&gt;</code> with a number of text nodes, each of which is separated by two line break elements (<code>&lt;br /&gt;</code>):
+         <p>例如，有如下一个简单的 <code>&lt;div&gt;</code>，其中含有一些文本节点，每个文本节点由两个换行元素组成 (<code>&lt;br /&gt;</code>)：
          </p>
          <pre>&lt;div class="container"&gt;
   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed 
@@ -33,7 +32,7 @@
   esse cillum dolore eu fugiat nulla pariatur.
 &lt;/div&gt;
 </pre>
-         <p>We can employ the <code>.contents()</code> method to help convert this blob of text into three well-formed paragraphs:
+         <p>我们可以使用 <code>.contents()</code> 方法，将上述文本转换成三个格式良好的段落：
          </p>
          <pre>
 $('.container').contents().filter(function() {
@@ -44,16 +43,15 @@ $('.container').contents().filter(function() {
 .filter('br')
   .remove();
 </pre>
-         <p>This code first retrieves the contents  of <code>&lt;div class="container"&gt;</code> and then filters it for text nodes, which are wrapped in paragraph tags. This is accomplished by testing the <a href="https://developer.mozilla.org/en/nodeType">
-               <code>.nodeType</code> property</a> of the element. This DOM property holds a numeric code indicating the node's type; text nodes use the code 3. The contents
-            are again filtered, this time for <code>&lt;br /&gt;</code> elements, and these elements are removed.
+         <p>上述代码首先取得 <code>&lt;div class="container"&gt;</code> 的内容，然后过滤出文本节点，并使用段落标签包裹这些文本节点。通过测试元素的 <a href="https://developer.mozilla.org/en/nodeType">
+               <code>.nodeType</code></a> 属性来达到过滤出文本节点的目的。该 DOM 属性值是一个数值代码，代表节点的类型。文本节点的代码是 3。通过 .end() 方法再次选出 div 的内容，然后再过滤出 <code>&lt;br /&gt;</code> 元素，并移除该元素。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Find all the text nodes inside a paragraph and wrap them with a bold tag.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>查找段落中的所有文本节点，并为它们加上 bold 标签。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;script src="jquery.min.js"&gt;&lt;/script&gt;
@@ -69,7 +67,7 @@ $("p").contents().filter(function(){ return this.nodeType != 1; }).wrap("&lt;b/&
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
-      <p>Change the background colour of links inside of an iframe.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>改变 iframe 中链接的背景色。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;script src="jquery.min.js"&gt;&lt;/script&gt;

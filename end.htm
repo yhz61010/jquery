@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>end()<br></h2>
    <div class="desc">
-      <p>End the most recent filtering operation in the current chain and return the set of matched elements to its previous state.</p>
+      <p>结束当前链式方法中，最近使用的过滤操作，并返回匹配元素的前一个状态。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>end()
@@ -13,12 +13,10 @@
       </ul>
       <div class="longdesc">
          
-         <p>Most of jQuery's <a href="http://api.jquery.com/category/traversing">DOM traversal</a> methods operate on a jQuery object instance and produce a new one, matching a different set of DOM elements. When this happens,
-            it is as if the new set of elements is pushed onto a stack that is maintained inside the object. Each successive filtering
-            method pushes a new element set onto the stack. If we need an older element set, we can use <code>end()</code> to pop the sets back off of the stack.
+         <p>大多数 jQuery <a href="http://api.jquery.com/category/traversing">DOM 遍历</a> 方法来操作 jQuery 对象实例，并创建一个新的对象，匹配一个不同的 DOM 元素集合。当发生这种情况时，实际上是新的元素集合被压入到对象内部维护的栈中。每次过滤方法都会被压入栈中。当我们需要返回到前一个状态时，我们可以使用 <code>end()</code> 进行出栈操作，来返回栈中的前一个状态。
          </p>
          
-         <p>Suppose we have a couple short lists on a page:</p>
+         <p>假设页面上有两个短的列表：</p>
          <pre>
 &lt;ul class="first"&gt;
    &lt;li class="foo"&gt;list item 1&lt;/li&gt;
@@ -31,19 +29,16 @@
    &lt;li class="bar"&gt;list item 3&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-         <p><code>end()</code> method is useful primarily when exploiting jQuery's chaining properties. When not using chaining, we can usually just call
-            up a previous object by variable name, so we don't need to manipulate the stack. With <code>end()</code>, though, we can string all the method calls together:
+         <p><code>end()</code> 方法主要用于 jQuery 的链式属性中。当没有使用链式用法时，我们通常只是调用变量名上的前一个对象，所以我们不需要操作栈。使用 <code>end()</code> 时，我们可以一次性调用所有需要的方法：
          </p>
          <pre>
 $('ul.first').find('.foo').css('background-color', 'red')
   <code>.end()</code>.find('.bar').css('background-color', 'green');
 </pre>
-         <p>This chain searches for items with the class <code>foo</code> within the first list only and turns their backgrounds red. Then <code>end()</code> returns the object to its state before the call to <code>find()</code>, so the second <code>find()</code> looks for '.bar' inside <code>&lt;ul class="first"&gt;</code>, not just inside that list's <code>&lt;li class="foo"&gt;</code>, and turns the matching elements' backgrounds green. The net result is that items 1 and 3 of the first list have a colored
-            background, and none of the items from the second list do.
+         <p>在上面的代码中，首先在链式用法中只在第一个列表中查找样式为 <code>foo</code> 的项目，并将其背景色变成红色。然后 <code>end()</code> 返回调用 <code>find()</code> 之前的状态。因此，第二次 <code>find()</code> 将只会查找 <code>&lt;ul class="first"&gt;</code> 中的 '.bar'，而不是继续在 <code>&lt;li class="foo"&gt;</code> 中进行查找，结果是将匹配到的元素的背景色变成绿色。上述代码的最终结果是，第一个列表中的第 1 和第 3 个列表项的背景色有颜色，而第二个列表中的任何项目都没有背景色。
          </p>
          
-         <p>A long jQuery chain can be visualized as a structured code block, with filtering methods providing the openings of nested
-            blocks and <code>end()</code> methods closing them:
+         <p>对于一个长的 jQuery 链式写法，可以使用结构块的写法，让其具有很好的可读性，即：将 <code>end()</code> 方法与其对应的过滤方法写在一个嵌套块中，例如：
          </p>
          <pre>
 $('ul.first').find('.foo')
@@ -52,16 +47,14 @@ $('ul.first').find('.foo')
   .css('background-color', 'green')
 .end();
 </pre>
-         <p>The last <code>end()</code> is unnecessary, as we are discarding the jQuery object immediately thereafter. However, when the code is written in this
-            form, the <code>end()</code> provides visual symmetry and a sense of completion —making the program, at least to the eyes of some developers, more readable,
-            at the cost of a slight hit to performance as it is an additional function call.
+         <p>最后一个 <code>end()</code> 是不必要的，因为从那之后，我们就立即丢弃了 jQuery 对象。然而，当代码是按这种方式写时，<code>end()</code> 是为了使代码看起来对称和具体完整性 — 使程序，至少是从开发者角度来讲，具体更好的可读性。不过其代价是由于调用了多余的函数，对程序性能有少许的影响。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Selects all paragraphs, finds span elements inside these, and reverts the selection back to the paragraphs.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>选择所有的段落，在其中查找 span 元素，之后再恢复到选择段落的状态。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -121,7 +114,7 @@ $('ul.first').find('.foo')
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
-      <p>Selects all paragraphs, finds span elements inside these, and reverts the selection back to the paragraphs.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>选择所有的段落，在其中查找 span 元素，之后再恢复到选择段落的状态。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;p { margin:10px; padding:10px; }&lt;/style&gt;
