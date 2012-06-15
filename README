@@ -30,8 +30,13 @@ README				你正在看的文件
 
 翻译词汇对照表
 
-The JSON string to parse.		将要解析的 JSON 字符串
-The message to send out.		将要发送的消息
+The JSON string to parse.			将要解析的 JSON 字符串
+The message to send out.			将要发送的消息
 
-This method is most useful for ...	这个方法通常在 ... 的情况下使用
-Additionally				另外
+This method is most useful for ...		这个方法通常在 ... 的情况下使用
+Additionally					另外
+
+As of ...					从 ... 开始
+Allow us to ...					允许我们 ...
+on the fly(Creates DOM elements on the fly)	动态地 ... (动态地创建 DOM 元素)
+Note that ...					注意 ...
