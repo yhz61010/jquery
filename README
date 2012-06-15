@@ -1,4 +1,4 @@
-这里是jQuery文档
+这里是 jQuery 文档
 生成文档需要 Python 3.1 和 Java 支持
 
 jQueryAPI.zh_CN.xml		翻译的文档
@@ -40,3 +40,4 @@ As of ...					从 ... 开始
 Allow us to ...					允许我们 ...
 on the fly(Creates DOM elements on the fly)	动态地 ... (动态地创建 DOM 元素)
 Note that ...					注意 ...
+In most cases ...				在大多数情况下 ...
