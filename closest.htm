@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>closest(selector)<br></h2>
    <div class="desc">
-      <p>Get the first element that matches the selector, beginning at the current element and progressing up through the DOM tree.</p>
+      <p>取得与选择器相匹配的第一个元素，从当前元素开始，在 DOM 树中向上查找。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.3 新增</span>closest(selector)
@@ -24,8 +24,7 @@
             </div>
             <div class="arguement"><strong>context</strong>
                								(Element)
-               								 可选参数，A DOM element within which a matching element may be found. If no context is passed in then the context of the jQuery set
-               will be used instead.
+               								 可选参数，用于查找可能匹配到的 DOM 元素。如果不提供 context 参数，那么会使用 jQuery 集合的 context。
             </div>
          </li>
          <li>
@@ -34,7 +33,7 @@
             </h4>
             <div class="arguement"><strong>jQuery object</strong>
                								(jQuery)
-               								A jQuery object to match elements against.
+               								用于查找匹配的 jQuery 对象。
             </div>
          </li>
          <li>
@@ -43,14 +42,13 @@
             </h4>
             <div class="arguement"><strong>element</strong>
                								(Element)
-               								An element to match elements against.
+               								用于查找匹配的元素。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.closest()</code> method searches through these elements and their ancestors in the DOM tree and constructs a new jQuery object from the matching
-            elements. The <code>.parents()</code> 和 <code>.closest()</code> methods are similar in that they both traverse up the DOM tree. The differences between the two, though subtle, are significant:
+         <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.closest()</code> 方法会在 DOM 树中查找这些元素和它们的祖先元素，并根据匹配到的元素构建一个新的 jQuery 对象。<code>.parents()</code> 和 <code>.closest()</code> 方法很类似，它们都是在 DOM 树中向上遍历。虽然它们之间的区别很微妙，但是却很重要：
          </p>
          
          
@@ -72,27 +70,25 @@
                
                <tr>
                   
-                  <td>Begins with the current element</td>
+                  <td>从当前元素开始查找</td>
                   
-                  <td>Begins with the parent element</td>
-                  
-               </tr>
-               
-               <tr>
-                  
-                  <td>Travels up the DOM tree until it finds a match for the supplied selector</td>
-                  
-                  <td>Travels up the DOM tree to the document's root element, adding each ancestor element to a temporary collection; it then filters
-                     that collection based on a selector if one is supplied 
-                  </td>
+                  <td>从父元素开始查找</td>
                   
                </tr>
                
                <tr>
                   
-                  <td>The returned jQuery object contains zero or one element</td>
+                  <td>在 DOM 树中向上遍历，直到找到了与提供的选择器相匹配的元素</td>
                   
-                  <td>The returned jQuery object contains zero, one, or multiple elements</td>
+                  <td>在 DOM 树中向上遍历，直至文件的根元素，将每个祖先元素添加到一个临时的集合中，若提供了选择器，则会使用该选择器在集合中进行过滤</td>
+                  
+               </tr>
+               
+               <tr>
+                  
+                  <td>返回包括 0 个或 1 个 元素的 jQuery 对象</td>
+                  
+                  <td>返回包括 0 个， 1 个 或多个元素的 jQuery 对象</td>
                   
                </tr>
                
@@ -120,39 +116,37 @@
 &lt;/ul&gt;
 </pre>
          
-         <p>Suppose we perform a search for <code>&lt;ul&gt;</code> elements starting at item A:
+         <p>假如我们从列表项 A 开始，查找 <code>&lt;ul&gt;</code> 元素：
          </p>
          <pre>
 $('li.item-a').closest('ul')
   .css('background-color', 'red');
 </pre>
-         <p>This will change the color of the level-2 <code>&lt;ul&gt;</code>, since it is the first encountered when traveling up the DOM tree.
+         <p>其结果是改变了 level-2 <code>&lt;ul&gt;</code> 的颜色，因为在 DOM 中向上遍历时，它是第一个匹配的元素。
          </p>
          
-         <p>Suppose we search for an <code>&lt;li&gt;</code> element instead:
+         <p>例如这一次我们要查找 <code>&lt;li&gt;</code> 元素：
          </p>
          <pre>$('li.item-a').closest('li')
   .css('background-color', 'red');
 </pre>
-         <p>This will change the color of list item A. The <code>.closest()</code> method begins its search <em>with the element itself</em> before progressing up the DOM tree, and stops when item A matches the selector.
+         <p>其结果是改变了列表项 A 的元素。<code>.closest()</code> 方法是从<em>自身元素</em>开始查找的，然后在 DOM 树中向上遍历，直到找到了所提供的表达式列表项 A。
          </p>
          
-         <p>We can pass in a DOM element as the context within which to search for the closest element.</p>
+         <p>我们可以指定一个 DOM 元素作为 context 来限定查找元素的范围。</p>
          <pre>var listItemII = document.getElementById('ii');
 $('li.item-a').closest('ul', listItemII)
   .css('background-color', 'red');
 $('li.item-a').closest('#one', listItemII)
   .css('background-color', 'green');</pre>
-         <p>This will change the color of the level-2 <code>&lt;ul&gt;</code>, because it is both the first <code>&lt;ul&gt;</code> ancestor of list item A and a descendant of list item II. It will not change the color of the level-1 <code>&lt;ul&gt;</code>, however, because it is not a descendant of list item II.
+         <p>上述代码的结果会改变 level-2 <code>&lt;ul&gt;</code> 的颜色，因为它既是列表项 A 的第一个 <code>&lt;ul&gt;</code> 祖先元素也是列表项 II 的后代元素。但是并不会改变 level-1 <code>&lt;ul&gt;</code> 的元素，因为它不是列表项 II 的后代元素。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Show how event delegation can be done with closest. The closest list element toggles a yellow background when it or its descendent
-         is clicked.
-      </p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>该例子展示了如何在事件代理中应用 closest。当点击列表项时，会切换显示列表项的背景色，使其变为黄色。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -179,7 +173,7 @@ $('li.item-a').closest('#one', listItemII)
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
-      <p>Pass a jQuery object to closest. The closest list element toggles a yellow background when it or its descendent is clicked.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>将一个 jQuery 对象传入 closest 中。当点击列表项时，会切换显示列表项的背景色，使其变为黄色。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -211,7 +205,7 @@ $('li.item-a').closest('#one', listItemII)
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Array</span>closest(selectors, <em class="optional">[context]</em>)<br></h2>
    <div class="desc">
-      <p>Gets an array of all the elements and selectors matched against the current element up through the DOM tree.</p>
+      <p>以数组的形式返回与选择器相匹配的所有元素，从当前元素开始，在 DOM 树中向上遍历。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.4 新增</span>closest(selectors, <em class="optional">[context]</em>)
@@ -219,25 +213,24 @@ $('li.item-a').closest('#one', listItemII)
             </h4>
             <div class="arguement"><strong>selectors</strong>
                								(Array)
-               								An array or string containing a selector expression to match elements against (can also be a jQuery object).
+               								选择器表达式数组或字符串，用于查找匹配的元素（也可以是 jQuery 对象）。
             </div>
             <div class="arguement"><strong>context</strong>
                								(Element)
-               								 可选参数，A DOM element within which a matching element may be found. If no context is passed in then the context of the jQuery set
-               will be used instead.
+               								 可选参数，用于查找可能匹配到的 DOM 元素。如果不提供 context 参数，那么会使用 jQuery 集合的 context。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p><strong>This signature (only!) is deprecated as of jQuery 1.7.</strong> This method is primarily meant to be used internally or by plugin authors.
+         <p><strong>从 jQuery 1.7 开始，不再建议使用该方法，但是 jQuery 1.7 之前仍然可以使用。</strong>该方法将主要用于 jQuery 内部或插件作者使用。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Show how event delegation can be done with closest.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>该例子展示了如何在事件代理中应用 closest。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;&lt;/style&gt;
