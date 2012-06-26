@@ -11978,8 +11978,8 @@ $('ul.first').find('.foo')
             </argument>
          </signature>
          <longdesc>
-            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.siblings()</code> method allows us to search through the siblings of these elements in the DOM tree and construct a new jQuery object from the matching elements.</p>
-            <p>The method optionally accepts a selector expression of the same type that we can pass to the <code>$()</code> function. If the selector is supplied, the elements will be filtered by testing whether they match it.</p>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.siblings()</code> 方法允许我们在 DOM 树中查找集合中这些元素的兄弟元素，并根据匹配的元素创建一个新的 jQuery 对象。</p>
+            <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。If the selector is supplied, the elements will be filtered by testing whether they match it.</p>
             <p>例如，在页面中有如下一个简单的列表：</p>
             <pre>
 &lt;ul&gt;
@@ -12393,8 +12393,8 @@ div {
             </argument>
          </signature>
          <longdesc>
-            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.prevAll()</code> method searches through the predecessors of these elements in the DOM tree and construct a new jQuery object from the matching elements; the elements are returned in order beginning with the closest sibling.</p>
-            <p>The method optionally accepts a selector expression of the same type that we can pass to the <code>$()</code> function. If the selector is supplied, the elements will be filtered by testing whether they match it.</p>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.prevAll()</code> method searches through the predecessors of these elements in the DOM tree并根据匹配的元素创建一个新的 jQuery 对象。the elements are returned in order beginning with the closest sibling.</p>
+            <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。If the selector is supplied, the elements will be filtered by testing whether they match it.</p>
             <p>例如，在页面中有如下一个简单的列表：</p>
             <pre>
 &lt;ul&gt;
@@ -12793,10 +12793,10 @@ button { float:left; margin:5px 10px 5px 0; }
             </argument>
          </signature>
          <longdesc>
-            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.parents()</code> method allows us to search through the ancestors of these elements in the DOM tree and construct a new jQuery object from the matching elements ordered from immediate parent on up; the elements are returned in order from the closest parent to the outer ones. The <code>.parents()</code> 和 <code>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.parents()</code> 方法允许我们在 DOM 树中查找集合中这些元素的祖先元素，并根据匹配的元素创建一个新的 jQuery 对象。ordered from immediate parent on up; the elements are returned in order from the closest parent to the outer ones. The <code>.parents()</code> 和 <code>
                   <a href="parent.htm">.parent()</a>
                </code> methods are similar, except that the latter only travels a single level up the DOM tree.</p>
-            <p>The method optionally accepts a selector expression of the same type that we can pass to the <code>$()</code> function. If the selector is supplied, the elements will be filtered by testing whether they match it.</p>
+            <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。If the selector is supplied, the elements will be filtered by testing whether they match it.</p>
             <p>例如，在页面上有如下一个基本的嵌套列表：</p>
             <pre>
 &lt;ul class="level-1"&gt;
@@ -13014,8 +13014,8 @@ $("span").click(function () {
             </argument>
          </signature>
          <longdesc>
-            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.parent()</code> method allows us to search through the parents of these elements in the DOM tree and construct a new jQuery object from the matching elements. The <code>.parents()</code> 和 <code>.parent()</code> methods are similar, except that the latter only travels a single level up the DOM tree.</p>
-            <p>The method optionally accepts a selector expression of the same type that we can pass to the <code>$()</code> function. If the selector is supplied, the elements will be filtered by testing whether they match it.</p>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.parent()</code> 方法允许我们在 DOM 树中查找集合中这些元素的父元素，并根据匹配的元素创建一个新的 jQuery 对象。<code>.parents()</code> 和 <code>.parent()</code> 方法很类似，只不过后者在 DOM 树中，仅在单一层次上向上遍历。</p>
+            <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。If the selector is supplied, the elements will be filtered by testing whether they match it.</p>
             <p>例如，在页面上有如下一个基本的嵌套列表：</p>
             <pre>
 &lt;ul class="level-1"&gt;
@@ -13537,8 +13537,8 @@ $("span").click(function () {
             </argument>
          </signature>
          <longdesc>
-            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.nextAll()</code> method allows us to search through the successors of these elements in the DOM tree and construct a new jQuery object from the matching elements.</p>
-            <p>The method optionally accepts a selector expression of the same type that we can pass to the <code>$()</code> function. If the selector is supplied, the elements will be filtered by testing whether they match it.</p>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.nextAll()</code> 方法允许我们在 DOM 树中查找集合中这些元素的后继元素，并根据匹配的元素创建一个新的 jQuery 对象。</p>
+            <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。If the selector is supplied, the elements will be filtered by testing whether they match it.</p>
             <p>例如，在页面中有如下一个简单的列表：</p>
             <pre>
 &lt;ul&gt;
@@ -13592,7 +13592,7 @@ $("span").click(function () {
          <category name="Version 1.2"/>
       </entry>
       <entry type="method" name="next" return="jQuery">
-         <desc>Get the immediately following sibling of each element in the set of matched elements. If a selector is provided, it retrieves the next sibling only if it matches that selector.</desc>
+         <desc>取得匹配的元素集合中紧跟着集合中每个元素的兄弟元素。如果提供了选择器，那么只有紧跟着的兄弟元素满足选择器时，才会返回此元素。</desc>
          <signature>
             <added>1.0</added>
             <argument name="selector" type="Selector" optional="true">
@@ -13600,8 +13600,8 @@ $("span").click(function () {
             </argument>
          </signature>
          <longdesc>
-            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.next()</code> method allows us to search through the immediately following sibling of these elements in the DOM tree and construct a new jQuery object from the matching elements.</p>
-            <p>The method optionally accepts a selector expression of the same type that we can pass to the <code>$()</code> function. If the immediately following sibling matches the selector, it remains in the newly constructed jQuery object; otherwise, it is excluded.</p>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.next()</code> 方法允许我们在 DOM 中查找集合中紧跟着这些元素的直接兄弟元素，并根据匹配的元素创建一个新的 jQuery 对象。</p>
+            <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。如果每个元素的直接兄弟元素满足所提供的选择器，那么它会保留在新生成的 jQuery 对象中，否则，不会包含该元素。</p>
             <p>例如，在页面中有如下一个简单的列表：</p>
             <pre>
 &lt;ul&gt;
@@ -13612,12 +13612,12 @@ $("span").click(function () {
    &lt;li&gt;list item 5&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-            <p>If we begin at the third item, we can find the element which comes just after it:</p>
+            <p>如果我们从第三个列表项开始，那么我们可以查找紧随其后的元素：</p>
             <pre>$('li.third-item').next().css('background-color', 'red');</pre>
-            <p>The result of this call is a red background behind item 4. Since we do not supply a selector expression, this following element is unequivocally included as part of the object. If we had supplied one, the element would be tested for a match before it was included.</p>
+            <p>其结果是 item 4 的背景色变成了红色。由于我们没有提供选择器表达式，所以紧随其后的元素很明确成为了结果对象中的一部分。如果我们提供了选择器表达式，那么在包含在结果对象之前，会先测试该元素是否满足匹配的选择器表达式。</p>
          </longdesc>
          <example>
-            <desc>Find the very next sibling of each disabled button and change its text "this button is disabled".</desc>
+            <desc>查找每个紧随着被禁用的按钮的元素，并将其文本变为 "this button is disabled"。</desc>
             <code>$("button[disabled]").next().text("this button is disabled");</code>
             <css>
 
@@ -13630,7 +13630,7 @@ $("span").click(function () {
   &lt;div&gt;&lt;button disabled="disabled"&gt;Third&lt;/button&gt; - &lt;span&gt;&lt;/span&gt;&lt;/div&gt;</html>
          </example>
          <example>
-            <desc>Find the very next sibling of each paragraph. Keep only the ones with a class "selected".</desc>
+            <desc>查找每个紧随着段落的元素。只保留其中含有 "selected" 样式的元素。</desc>
             <code>$("p").next(".selected").css("background", "yellow");</code>
             <html>&lt;p&gt;Hello&lt;/p&gt;
 
@@ -13755,7 +13755,7 @@ margin:10px; }
 </del></note>
       </entry>
       <entry type="method" name="find" return="jQuery">
-         <desc>Get the descendants of each element in the current set of matched elements, filtered by a selector, jQuery object, or element.</desc>
+         <desc>通过给定的过滤器，jQuery 对象或元素，取得匹配元素集合中每个元素的后代元素。</desc>
          <signature>
             <added>1.0</added>
             <argument name="selector" type="Selector">
@@ -13765,18 +13765,18 @@ margin:10px; }
          <signature>
             <added>1.6</added>
             <argument name="jQuery object" type="Object">
-               <desc>A jQuery object to match elements against.</desc>
+               <desc>用于查找匹配的 jQuery 对象。</desc>
             </argument>
          </signature>
          <signature>
             <added>1.6</added>
             <argument name="element" type="Element">
-               <desc>An element to match elements against.</desc>
+               <desc>用于查找匹配的元素。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.find()</code> method allows us to search through the descendants of these elements in the DOM tree and construct a new jQuery object from the matching elements. The <code>.find()</code> 和 <code>.children()</code> methods are similar, except that the latter only travels a single level down the DOM tree.</p>
-            <p>The first signature for the <code>.find()</code>method accepts a selector expression of the same type that we can pass to the <code>$()</code> function. The elements will be filtered by testing whether they match this selector.</p>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.find()</code> 方法允许我们在 DOM 树中查找集合中这些元素的后代元素，并根据匹配的元素创建一个新的 jQuery 对象。<code>.find()</code> 和 <code>.children()</code> 方法很类似，只不过后者在 DOM 树中，仅在单一层次上向下遍历。</p>
+            <p><code>.find(selector)</code> 方法还可以接受一个选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。通过这个选择器表达式来过滤出满足匹配条件的元素。</p>
             <p>例如，在页面上有如下一个基本的嵌套列表：</p>
             <pre>
 &lt;ul class="level-1"&gt;
@@ -13797,30 +13797,29 @@ margin:10px; }
   &lt;li class="item-iii"&gt;III&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-            <p>If we begin at item II, we can find list items within it:</p>
+            <p>如果我们从 item II 开始查找的话，我们就可以向下面这样，查找其中的列表项：</p>
             <pre>$('li.item-ii').find('li').css('background-color', 'red');</pre>
-            <p>The result of this call is a red background on items A, B, 1, 2, 3, and C. Even though item II matches the selector expression, it is not included in the results; only descendants are considered candidates for the match.</p>
+            <p>执行上述代码的结果是，列表项 A, B, 1, 2, 3, 和 C 的背景色变为红色。虽然 item II 满足选择器表达式，但在最终的结果中却不包括它，只有它的后代元素才被认为是匹配到的候选元素。</p>
             <blockquote>
-               <p>Unlike in the rest of the tree traversal methods, the selector expression is required in a call to <code>.find()</code>. If we need to retrieve all of the descendant elements, we can pass in the universal selector <code>'*'</code> to accomplish this.</p>
+               <p>和其它的遍历方法不同，调用 <code>.find()</code> 时，需要传递选择器表达式参数。如果我们需要返回所有的后代元素，我们可以通过传入全局选择器 <code>'*'</code> 的方式来达到此目的。</p>
             </blockquote>
             <p>
-               <a href="http://api.jquery.com/jquery/#selector-context">Selector context</a> is implemented with the <code>.find()</code> 
-               <code>method;</code> therefore, <code>$('li.item-ii').find('li')</code> 等价于 <code>$('li', 'li.item-ii')</code>.</p>
+               <a href="http://api.jquery.com/jquery/#selector-context">选择器上下文</a>是通过 <code>.find()</code> 方法来实现的。因此，<code>$('li.item-ii').find('li')</code> 等价于 <code>$('li', 'li.item-ii')</code>。</p>
             <p>
-               <strong>As of jQuery 1.6</strong>, we can also filter the selection with a given jQuery collection or element. With the same nested list as above, if we start with:</p>
+               <strong>从 jQuery 1.6 开始</strong>，我们也可以通过给定的 jQuery 集合或元素来过滤元素。例如在上面的例子中，我们可以从如下语句开始：</p>
             <pre>var $allListElements = $('li');</pre>
-            <p>And then pass this jQuery object to find:</p>
+            <p>然后传入需要查找的 jQuery 对象：</p>
             <pre>$('li.item-ii').find( $allListElements );</pre>
-            <p>This will return a jQuery collection which contains only the list elements that are descendants of item II.</p>
-            <p>Similarly, an element may also be passed to find:</p>
+            <p>其结果是返回一个 jQuery 集合，其中只包含 item II 的后代元素。</p>
+            <p>同样的，我们也可以传入一个元素：</p>
             <pre>
 var item1 = $('li.item-1')[0];
 $('li.item-ii').find( item1 ).css('background-color', 'red');
 </pre>
-            <p>The result of this call would be a red background on item 1.</p>
+            <p>其结果是 item 1 的背景色变成了红色。</p>
          </longdesc>
          <example>
-            <desc>Starts with all paragraphs and searches for descendant span elements, same as $("p span")</desc>
+            <desc>查找所有段落中的 span 元素，等同于 $("p span")</desc>
             <code>
   $("p").find("span").css('color','red');
 </code>
@@ -13828,7 +13827,7 @@ $('li.item-ii').find( item1 ).css('background-color', 'red');
 &lt;p&gt;Me? I'm &lt;span&gt;good&lt;/span&gt;.&lt;/p&gt;</html>
          </example>
          <example>
-            <desc>A selection using a jQuery collection of all span tags. Only spans within p tags are changed to red while others are left blue.</desc>
+            <desc>以 span 标签作为 jQuery 集合当做查找用的参数。只有 p 标签中的 span 的背景色会变成红色，其它的 span 的背景色还是蓝色。</desc>
             <code>
   var $spans = $('span');
   $("p").find( $spans ).css('color','red');
@@ -13841,7 +13840,7 @@ $('li.item-ii').find( item1 ).css('background-color', 'red');
   &lt;div&gt;Did you &lt;span&gt;eat&lt;/span&gt; yet?&lt;/div&gt;</html>
          </example>
          <example>
-            <desc>Add spans around each word then add a hover and italicize words with the letter <strong>t</strong>.</desc>
+            <desc>为每个单词添加 span 标签，并为 span 标签添加 hover 事件，并且将含有 <strong>t</strong> 的单词变为斜体。</desc>
             <code>
   var newText = $("p").text().split(" ").join("&lt;/span&gt; &lt;span&gt;");
   newText = "&lt;span&gt;" + newText + "&lt;/span&gt;";
