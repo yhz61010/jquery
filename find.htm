@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>find(selector)<br></h2>
    <div class="desc">
-      <p>Get the descendants of each element in the current set of matched elements, filtered by a selector, jQuery object, or element.</p>
+      <p>通过给定的过滤器，jQuery 对象或元素，取得匹配元素集合中每个元素的后代元素。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>find(selector)
@@ -20,7 +20,7 @@
             </h4>
             <div class="arguement"><strong>jQuery object</strong>
                								(Object)
-               								A jQuery object to match elements against.
+               								用于查找匹配的 jQuery 对象。
             </div>
          </li>
          <li>
@@ -29,17 +29,16 @@
             </h4>
             <div class="arguement"><strong>element</strong>
                								(Element)
-               								An element to match elements against.
+               								用于查找匹配的元素。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.find()</code> method allows us to search through the descendants of these elements in the DOM tree and construct a new jQuery object from
-            the matching elements. The <code>.find()</code> 和 <code>.children()</code> methods are similar, except that the latter only travels a single level down the DOM tree.
+         <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.find()</code> 方法允许我们在 DOM 树中查找集合中这些元素的后代元素，并根据匹配的元素创建一个新的 jQuery 对象。<code>.find()</code> 和 <code>.children()</code> 方法很类似，只不过后者在 DOM 树中，仅在单一层次上向下遍历。
          </p>
          
-         <p>The first signature for the <code>.find()</code>method accepts a selector expression of the same type that we can pass to the <code>$()</code> function. The elements will be filtered by testing whether they match this selector.
+         <p><code>.find(selector)</code> 方法还可以接受一个选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。通过这个选择器表达式来过滤出满足匹配条件的元素。
          </p>
          
          <p>例如，在页面上有如下一个基本的嵌套列表：</p>
@@ -62,45 +61,41 @@
   &lt;li class="item-iii"&gt;III&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-         <p>If we begin at item II, we can find list items within it:</p>
+         <p>如果我们从 item II 开始查找的话，我们就可以向下面这样，查找其中的列表项：</p>
          <pre>$('li.item-ii').find('li').css('background-color', 'red');</pre>
-         <p>The result of this call is a red background on items A, B, 1, 2, 3, and C. Even though item II matches the selector expression,
-            it is not included in the results; only descendants are considered candidates for the match.
-         </p>
+         <p>执行上述代码的结果是，列表项 A, B, 1, 2, 3, 和 C 的背景色变为红色。虽然 item II 满足选择器表达式，但在最终的结果中却不包括它，只有它的后代元素才被认为是匹配到的候选元素。</p>
          
          <blockquote>
             
-            <p>Unlike in the rest of the tree traversal methods, the selector expression is required in a call to <code>.find()</code>. If we need to retrieve all of the descendant elements, we can pass in the universal selector <code>'*'</code> to accomplish this.
+            <p>和其它的遍历方法不同，调用 <code>.find()</code> 时，需要传递选择器表达式参数。如果我们需要返回所有的后代元素，我们可以通过传入全局选择器 <code>'*'</code> 的方式来达到此目的。
             </p>
             
          </blockquote>
          
          <p>
-            <a href="http://api.jquery.com/jquery/#selector-context">Selector context</a> is implemented with the <code>.find()</code> 
-            <code>method;</code> therefore, <code>$('li.item-ii').find('li')</code> 等价于 <code>$('li', 'li.item-ii')</code>.
+            <a href="http://api.jquery.com/jquery/#selector-context">选择器上下文</a>是通过 <code>.find()</code> 方法来实现的。因此，<code>$('li.item-ii').find('li')</code> 等价于 <code>$('li', 'li.item-ii')</code>。
          </p>
          
          <p>
-            <strong>As of jQuery 1.6</strong>, we can also filter the selection with a given jQuery collection or element. With the same nested list as above, if we start
-            with:
+            <strong>从 jQuery 1.6 开始</strong>，我们也可以通过给定的 jQuery 集合或元素来过滤元素。例如在上面的例子中，我们可以从如下语句开始：
          </p>
          <pre>var $allListElements = $('li');</pre>
-         <p>And then pass this jQuery object to find:</p>
+         <p>然后传入需要查找的 jQuery 对象：</p>
          <pre>$('li.item-ii').find( $allListElements );</pre>
-         <p>This will return a jQuery collection which contains only the list elements that are descendants of item II.</p>
+         <p>其结果是返回一个 jQuery 集合，其中只包含 item II 的后代元素。</p>
          
-         <p>Similarly, an element may also be passed to find:</p>
+         <p>同样的，我们也可以传入一个元素：</p>
          <pre>
 var item1 = $('li.item-1')[0];
 $('li.item-ii').find( item1 ).css('background-color', 'red');
 </pre>
-         <p>The result of this call would be a red background on item 1.</p>
+         <p>其结果是 item 1 的背景色变成了红色。</p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Starts with all paragraphs and searches for descendant span elements, same as $("p span")</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>查找所有段落中的 span 元素，等同于 $("p span")</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;script src="jquery.min.js"&gt;&lt;/script&gt;
@@ -119,9 +114,7 @@ $('li.item-ii').find( item1 ).css('background-color', 'red');
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
-      <p>A selection using a jQuery collection of all span tags. Only spans within p tags are changed to red while others are left
-         blue.
-      </p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>以 span 标签作为 jQuery 集合当做查找用的参数。只有 p 标签中的 span 的背景色会变成红色，其它的 span 的背景色还是蓝色。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -145,7 +138,7 @@ $('li.item-ii').find( item1 ).css('background-color', 'red');
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
-      <p>Add spans around each word then add a hover and italicize words with the letter t.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>为每个单词添加 span 标签，并为 span 标签添加 hover 事件，并且将含有 t 的单词变为斜体。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;

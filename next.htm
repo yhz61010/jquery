@@ -3,9 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>next(<em class="optional">[selector]</em>)<br></h2>
    <div class="desc">
-      <p>Get the immediately following sibling of each element in the set of matched elements. If a selector is provided, it retrieves
-         the next sibling only if it matches that selector.
-      </p>
+      <p>取得匹配的元素集合中紧跟着集合中每个元素的兄弟元素。如果提供了选择器，那么只有紧跟着的兄弟元素满足选择器时，才会返回此元素。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>next(<em class="optional">[selector]</em>)
@@ -19,12 +17,10 @@
       </ul>
       <div class="longdesc">
          
-         <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.next()</code> method allows us to search through the immediately following sibling of these elements in the DOM tree and construct a new
-            jQuery object from the matching elements.
+         <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.next()</code> 方法允许我们在 DOM 中查找集合中紧跟着这些元素的直接兄弟元素，并根据匹配的元素创建一个新的 jQuery 对象。
          </p>
          
-         <p>The method optionally accepts a selector expression of the same type that we can pass to the <code>$()</code> function. If the immediately following sibling matches the selector, it remains in the newly constructed jQuery object; otherwise,
-            it is excluded.
+         <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。如果每个元素的直接兄弟元素满足所提供的选择器，那么它会保留在新生成的 jQuery 对象中，否则，不会包含该元素。
          </p>
          
          <p>例如，在页面中有如下一个简单的列表：</p>
@@ -37,18 +33,15 @@
    &lt;li&gt;list item 5&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-         <p>If we begin at the third item, we can find the element which comes just after it:</p>
+         <p>如果我们从第三个列表项开始，那么我们可以查找紧随其后的元素：</p>
          <pre>$('li.third-item').next().css('background-color', 'red');</pre>
-         <p>The result of this call is a red background behind item 4. Since we do not supply a selector expression, this following element
-            is unequivocally included as part of the object. If we had supplied one, the element would be tested for a match before it
-            was included.
-         </p>
+         <p>其结果是 item 4 的背景色变成了红色。由于我们没有提供选择器表达式，所以紧随其后的元素很明确成为了结果对象中的一部分。如果我们提供了选择器表达式，那么在包含在结果对象之前，会先测试该元素是否满足匹配的选择器表达式。</p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Find the very next sibling of each disabled button and change its text "this button is disabled".</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>查找每个紧随着被禁用的按钮的元素，并将其文本变为 "this button is disabled"。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -72,7 +65,7 @@ $("button[disabled]").next().text("this button is disabled");
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
-      <p>Find the very next sibling of each paragraph. Keep only the ones with a class "selected".</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>查找每个紧随着段落的元素。只保留其中含有 "selected" 样式的元素。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;script src="jquery.min.js"&gt;&lt;/script&gt;
