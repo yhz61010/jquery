@@ -11979,7 +11979,7 @@ $('ul.first').find('.foo')
          </signature>
          <longdesc>
             <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.siblings()</code> 方法允许我们在 DOM 树中查找集合中这些元素的兄弟元素，并根据匹配的元素创建一个新的 jQuery 对象。</p>
-            <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。If the selector is supplied, the elements will be filtered by testing whether they match it.</p>
+            <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。如果提供了选择器表达式，那么会先测试该元素是否满足匹配的选择器表达式。</p>
             <p>例如，在页面中有如下一个简单的列表：</p>
             <pre>
 &lt;ul&gt;
@@ -11992,7 +11992,7 @@ $('ul.first').find('.foo')
 </pre>
             <p>If we begin at the third item, we can find its siblings:</p>
             <pre>$('li.third-item').siblings().css('background-color', 'red');</pre>
-            <p>The result of this call is a red background behind items 1, 2, 4, and 5. Since we do not supply a selector expression, all of the siblings are part of the object. If we had supplied one, only the matching items among these four would be included.</p>
+            <p>The result of this call is a red background behind items 1, 2, 4, and 5. 由于我们没有提供选择器表达式， all of the siblings are part of the object. If we had supplied one, only the matching items among these four would be included.</p>
             <p>The original element is not included among the siblings, which is important to remember when we wish to find all elements at a particular level of the DOM tree.</p>
          </longdesc>
          <example>
@@ -12394,7 +12394,7 @@ div {
          </signature>
          <longdesc>
             <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.prevAll()</code> method searches through the predecessors of these elements in the DOM tree并根据匹配的元素创建一个新的 jQuery 对象。the elements are returned in order beginning with the closest sibling.</p>
-            <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。If the selector is supplied, the elements will be filtered by testing whether they match it.</p>
+            <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。如果提供了选择器表达式，那么会先测试该元素是否满足匹配的选择器表达式。</p>
             <p>例如，在页面中有如下一个简单的列表：</p>
             <pre>
 &lt;ul&gt;
@@ -12407,7 +12407,7 @@ div {
 </pre>
             <p>If we begin at the third item, we can find the elements which come before it:</p>
             <pre>$('li.third-item').prevAll().css('background-color', 'red');</pre>
-            <p>The result of this call is a red background behind items 1 and 2. Since we do not supply a selector expression, these preceding elements are unequivocally included as part of the object. If we had supplied one, the elements would be tested for a match before they were included.</p>
+            <p>The result of this call is a red background behind items 1 and 2. 由于我们没有提供选择器表达式， these preceding elements 很明确成为了结果对象中的一部分。如果我们提供了选择器表达式，那么在包含在结果对象之前，会先测试该元素是否满足匹配的选择器表达式。</p>
          </longdesc>
          <example>
             <desc>Locate all the divs preceding the last div and give them a class.</desc>
@@ -12785,7 +12785,7 @@ button { float:left; margin:5px 10px 5px 0; }
 </del></note>
       </entry>
       <entry type="method" name="parents" return="jQuery">
-         <desc>Get the ancestors of each element in the current set of matched elements, optionally filtered by a selector.</desc>
+         <desc>查找当前匹配元素集合中每个元素的所有祖先元素，可以提供一个可选的选择器。</desc>
          <signature>
             <added>1.0</added>
             <argument name="selector" type="Selector" optional="true">
@@ -12793,10 +12793,10 @@ button { float:left; margin:5px 10px 5px 0; }
             </argument>
          </signature>
          <longdesc>
-            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.parents()</code> 方法允许我们在 DOM 树中查找集合中这些元素的祖先元素，并根据匹配的元素创建一个新的 jQuery 对象。ordered from immediate parent on up; the elements are returned in order from the closest parent to the outer ones. The <code>.parents()</code> 和 <code>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.parents()</code> 方法允许我们在 DOM 树中查找集合中这些元素的祖先元素，并将匹配的元素按照它们的直接父元素顺序创建一个新的 jQuery 对象。元素的返回顺序是按照由近及远的原则排列的。<code>.parents()</code> 和 <code>
                   <a href="parent.htm">.parent()</a>
-               </code> methods are similar, except that the latter only travels a single level up the DOM tree.</p>
-            <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。If the selector is supplied, the elements will be filtered by testing whether they match it.</p>
+               </code> 方法很类似，只是后者仅在 DOM 树中的单一层次向上遍历。</p>
+            <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。如果提供了选择器表达式，那么会先测试该元素是否满足匹配的选择器表达式。</p>
             <p>例如，在页面上有如下一个基本的嵌套列表：</p>
             <pre>
 &lt;ul class="level-1"&gt;
@@ -12817,12 +12817,12 @@ button { float:left; margin:5px 10px 5px 0; }
   &lt;li class="item-iii"&gt;III&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-            <p>If we begin at item A, we can find its ancestors:</p>
+            <p>如果我们从 item A 开始，我们可以查找它的所有祖先：</p>
             <pre>$('li.item-a').parents().css('background-color', 'red');</pre>
-            <p>The result of this call is a red background for the level-2 list, item II, and the level-1 list (and on up the DOM tree all the way to the <code>&lt;html&gt;</code> element). Since we do not supply a selector expression, all of the ancestors are part of the returned jQuery object. If we had supplied one, only the matching items among these would be included.</p>
+            <p>其结果是，level-2 列表, item II, 和 level-1 列表 (延着 DOM 树向上直到 <code>&lt;html&gt;</code> 元素) 的背景色变成了红色。由于我们没有提供选择器表达式，所有的祖先元素都是返回的 jQuery 对象的一部分。如果我们提供了选择器，那么只有满足选择器的元素才会被包含在结果中。</p>
          </longdesc>
          <example>
-            <desc>Find all parent elements of each b.</desc>
+            <desc>查找每个 b 标签的所有父元素。</desc>
             <code>
 var parentEls = $("b").parents()
             .map(function () { 
@@ -12850,7 +12850,7 @@ $("b").append("&lt;strong&gt;" + parentEls + "&lt;/strong&gt;");
   &lt;/div&gt;</html>
          </example>
          <example>
-            <desc>Click to find all unique div parent elements of each span.</desc>
+            <desc>点击元素，查找每个 span 标签的所有唯一 div 父元素。</desc>
             <code>
 function showParents() {
   $("div").css("border-color", "white");
@@ -13015,7 +13015,7 @@ $("span").click(function () {
          </signature>
          <longdesc>
             <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.parent()</code> 方法允许我们在 DOM 树中查找集合中这些元素的父元素，并根据匹配的元素创建一个新的 jQuery 对象。<code>.parents()</code> 和 <code>.parent()</code> 方法很类似，只不过后者在 DOM 树中，仅在单一层次上向上遍历。</p>
-            <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。If the selector is supplied, the elements will be filtered by testing whether they match it.</p>
+            <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。如果提供了选择器表达式，那么会先测试该元素是否满足匹配的选择器表达式。</p>
             <p>例如，在页面上有如下一个基本的嵌套列表：</p>
             <pre>
 &lt;ul class="level-1"&gt;
@@ -13038,7 +13038,7 @@ $("span").click(function () {
 </pre>
             <p>If we begin at item A, we can find its parents:</p>
             <pre>$('li.item-a').parent().css('background-color', 'red');</pre>
-            <p>The result of this call is a red background for the level-2 list. Since we do not supply a selector expression, the parent element is unequivocally included as part of the object. If we had supplied one, the element would be tested for a match before it was included.</p>
+            <p>The result of this call is a red background for the level-2 list. 由于我们没有提供选择器表达式， the parent element is unequivocally included as part of the object. If we had supplied one, the element would be tested for a match before it was included.</p>
          </longdesc>
          <example>
             <desc>Shows the parent of each element as (parent &gt; child).  Check the View Source to see the raw html.</desc>
@@ -13529,7 +13529,7 @@ $("span").click(function () {
 </del></note>
       </entry>
       <entry type="method" name="nextAll" return="jQuery">
-         <desc>Get all following siblings of each element in the set of matched elements, optionally filtered by a selector.</desc>
+         <desc>取得匹配元素集合中跟在每个元素后面的所有兄弟元素，还可以提供一个可选的选择器。</desc>
          <signature>
             <added>1.2</added>
             <argument name="selector" type="String" optional="true">
@@ -13538,7 +13538,7 @@ $("span").click(function () {
          </signature>
          <longdesc>
             <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.nextAll()</code> 方法允许我们在 DOM 树中查找集合中这些元素的后继元素，并根据匹配的元素创建一个新的 jQuery 对象。</p>
-            <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。If the selector is supplied, the elements will be filtered by testing whether they match it.</p>
+            <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。如果提供了选择器表达式，那么会先测试该元素是否满足匹配的选择器表达式。</p>
             <p>例如，在页面中有如下一个简单的列表：</p>
             <pre>
 &lt;ul&gt;
@@ -13549,12 +13549,12 @@ $("span").click(function () {
    &lt;li&gt;list item 5&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-            <p>If we begin at the third item, we can find the elements which come after it:</p>
+            <p>如果我们从第三个项目开始，我们可以查找哪些元素在它后面：</p>
             <pre>$('li.third-item').nextAll().css('background-color', 'red');</pre>
-            <p>The result of this call is a red background behind items 4 and 5. Since we do not supply a selector expression, these following elements are unequivocally included as part of the object. If we had supplied one, the elements would be tested for a match before they were included.</p>
+            <p>执行上述代码之后，第 4 和第 5 个列表项会变成红色背景。由于我们没有提供选择器表达式，因此这两个元素很明确成为了结果对象中的一部分。如果我们提供了选择器表达式，那么在包含在结果对象之前，会先测试该元素是否满足匹配的选择器表达式。</p>
          </longdesc>
          <example>
-            <desc>Locate all the divs after the first and give them a class.</desc>
+            <desc>定位在第一个 div 后面的所有 div，并为它们添加样式。</desc>
             <code>$("div:first").nextAll().addClass("after");</code>
             <css>
 
@@ -13569,7 +13569,7 @@ $("span").click(function () {
   &lt;div&gt;sibling&lt;/div&gt;</html>
          </example>
          <example>
-            <desc>Locate all the paragraphs after the second child in the body and give them a class.</desc>
+            <desc>定位在 body 中第二个孩子元素后面的所有段落，并为它们添加样式。</desc>
             <code>
     $(":nth-child(1)").nextAll("p").addClass("after");
 </code>
