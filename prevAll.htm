@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>prevAll(<em class="optional">[selector]</em>)<br></h2>
    <div class="desc">
-      <p>Get all preceding siblings of each element in the set of matched elements, optionally filtered by a selector.</p>
+      <p>查找匹配元素集合中每个元素前面的所有兄弟元素，可以提供一个可选的选择器。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.2 新增</span>prevAll(<em class="optional">[selector]</em>)
@@ -17,8 +17,7 @@
       </ul>
       <div class="longdesc">
          
-         <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.prevAll()</code> method searches through the predecessors of these elements in the DOM tree并根据匹配的元素创建一个新的 jQuery 对象。the elements are returned
-            in order beginning with the closest sibling.
+         <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.prevAll()</code> 方法允许我们在 DOM 树中查找集合中元素前面的所有兄弟元素，并根据匹配的元素创建一个新的 jQuery 对象。返回的元素是按照由近及远的顺序排列的。
          </p>
          
          <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。如果提供了选择器表达式，那么会先测试该元素是否满足匹配的选择器表达式。
@@ -34,15 +33,15 @@
    &lt;li&gt;list item 5&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-         <p>If we begin at the third item, we can find the elements which come before it:</p>
+         <p>如果我们从 item 3 开始，我们可以查找它前面所有的兄弟元素：</p>
          <pre>$('li.third-item').prevAll().css('background-color', 'red');</pre>
-         <p>The result of this call is a red background behind items 1 and 2. 由于我们没有提供选择器表达式， these preceding elements 很明确成为了结果对象中的一部分。如果我们提供了选择器表达式，那么在包含在结果对象之前，会先测试该元素是否满足匹配的选择器表达式。</p>
+         <p>其结果是 item 1 和 item 2 的背景色变成了红色。由于我们没有提供选择器表达式，前面的这些兄弟元素很明确的成为了结果对象中的一部分。如果我们提供了选择器表达式，那么在包含在结果对象之前，会先测试该元素是否满足匹配的选择器表达式。</p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Locate all the divs preceding the last div and give them a class.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>查找最后一个 div 前面的所有 div 元素，并给它们添加样式。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
