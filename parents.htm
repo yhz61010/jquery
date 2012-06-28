@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>parents(<em class="optional">[selector]</em>)<br></h2>
    <div class="desc">
-      <p>Get the ancestors of each element in the current set of matched elements, optionally filtered by a selector.</p>
+      <p>查找当前匹配元素集合中每个元素的所有祖先元素，可以提供一个可选的选择器。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>parents(<em class="optional">[selector]</em>)
@@ -17,13 +17,12 @@
       </ul>
       <div class="longdesc">
          
-         <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.parents()</code> 方法允许我们在 DOM 树中查找集合中这些元素的祖先元素，并根据匹配的元素创建一个新的 jQuery 对象。ordered from immediate parent on up; the elements are returned in order
-            from the closest parent to the outer ones. The <code>.parents()</code> 和 <code>
+         <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.parents()</code> 方法允许我们在 DOM 树中查找集合中这些元素的祖先元素，并将匹配的元素按照它们的直接父元素顺序创建一个新的 jQuery 对象。元素的返回顺序是按照由近及远的原则排列的。<code>.parents()</code> 和 <code>
                <a href="parent.htm">.parent()</a>
-               </code> methods are similar, except that the latter only travels a single level up the DOM tree.
+               </code> 方法很类似，只是后者仅在 DOM 树中的单一层次向上遍历。
          </p>
          
-         <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。If the selector is supplied, the elements will be filtered by testing whether they match it.
+         <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。如果提供了选择器表达式，那么会先测试该元素是否满足匹配的选择器表达式。
          </p>
          
          <p>例如，在页面上有如下一个基本的嵌套列表：</p>
@@ -46,18 +45,16 @@
   &lt;li class="item-iii"&gt;III&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-         <p>If we begin at item A, we can find its ancestors:</p>
+         <p>如果我们从 item A 开始，我们可以查找它的所有祖先：</p>
          <pre>$('li.item-a').parents().css('background-color', 'red');</pre>
-         <p>The result of this call is a red background for the level-2 list, item II, and the level-1 list (and on up the DOM tree all
-            the way to the <code>&lt;html&gt;</code> element). Since we do not supply a selector expression, all of the ancestors are part of the returned jQuery object. If we
-            had supplied one, only the matching items among these would be included.
+         <p>其结果是，level-2 列表, item II, 和 level-1 列表 (延着 DOM 树向上直到 <code>&lt;html&gt;</code> 元素) 的背景色变成了红色。由于我们没有提供选择器表达式，所有的祖先元素都是返回的 jQuery 对象的一部分。如果我们提供了选择器，那么只有满足选择器的元素才会被包含在结果中。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Find all parent elements of each b.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>查找每个 b 标签的所有父元素。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -96,7 +93,7 @@ $("b").append("&lt;strong&gt;" + parentEls + "&lt;/strong&gt;");
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
-      <p>Click to find all unique div parent elements of each span.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>点击元素，查找每个 span 标签的所有唯一 div 父元素。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;

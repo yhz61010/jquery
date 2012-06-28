@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>nextAll(<em class="optional">[selector]</em>)<br></h2>
    <div class="desc">
-      <p>Get all following siblings of each element in the set of matched elements, optionally filtered by a selector.</p>
+      <p>取得匹配元素集合中跟在每个元素后面的所有兄弟元素，还可以提供一个可选的选择器。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.2 新增</span>nextAll(<em class="optional">[selector]</em>)
@@ -20,7 +20,7 @@
          <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.nextAll()</code> 方法允许我们在 DOM 树中查找集合中这些元素的后继元素，并根据匹配的元素创建一个新的 jQuery 对象。
          </p>
          
-         <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。If the selector is supplied, the elements will be filtered by testing whether they match it.
+         <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。如果提供了选择器表达式，那么会先测试该元素是否满足匹配的选择器表达式。
          </p>
          
          <p>例如，在页面中有如下一个简单的列表：</p>
@@ -33,18 +33,15 @@
    &lt;li&gt;list item 5&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-         <p>If we begin at the third item, we can find the elements which come after it:</p>
+         <p>如果我们从第三个项目开始，我们可以查找哪些元素在它后面：</p>
          <pre>$('li.third-item').nextAll().css('background-color', 'red');</pre>
-         <p>The result of this call is a red background behind items 4 and 5. Since we do not supply a selector expression, these following
-            elements are unequivocally included as part of the object. If we had supplied one, the elements would be tested for a match
-            before they were included.
-         </p>
+         <p>执行上述代码之后，第 4 和第 5 个列表项会变成红色背景。由于我们没有提供选择器表达式，因此这两个元素很明确成为了结果对象中的一部分。如果我们提供了选择器表达式，那么在包含在结果对象之前，会先测试该元素是否满足匹配的选择器表达式。</p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Locate all the divs after the first and give them a class.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>定位在第一个 div 后面的所有 div，并为它们添加样式。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -70,7 +67,7 @@ $("div:first").nextAll().addClass("after");
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="150"></iframe><h3>示例:</h3>
-      <p>Locate all the paragraphs after the second child in the body and give them a class.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>定位在 body 中第二个孩子元素后面的所有段落，并为它们添加样式。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;

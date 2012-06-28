@@ -21,7 +21,7 @@
             in order beginning with the closest sibling.
          </p>
          
-         <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。If the selector is supplied, the elements will be filtered by testing whether they match it.
+         <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。如果提供了选择器表达式，那么会先测试该元素是否满足匹配的选择器表达式。
          </p>
          
          <p>例如，在页面中有如下一个简单的列表：</p>
@@ -36,10 +36,7 @@
 </pre>
          <p>If we begin at the third item, we can find the elements which come before it:</p>
          <pre>$('li.third-item').prevAll().css('background-color', 'red');</pre>
-         <p>The result of this call is a red background behind items 1 and 2. Since we do not supply a selector expression, these preceding
-            elements are unequivocally included as part of the object. If we had supplied one, the elements would be tested for a match
-            before they were included.
-         </p>
+         <p>The result of this call is a red background behind items 1 and 2. 由于我们没有提供选择器表达式， these preceding elements 很明确成为了结果对象中的一部分。如果我们提供了选择器表达式，那么在包含在结果对象之前，会先测试该元素是否满足匹配的选择器表达式。</p>
          
       </div>
    </div>

@@ -20,7 +20,7 @@
          <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.siblings()</code> 方法允许我们在 DOM 树中查找集合中这些元素的兄弟元素，并根据匹配的元素创建一个新的 jQuery 对象。
          </p>
          
-         <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。If the selector is supplied, the elements will be filtered by testing whether they match it.
+         <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。如果提供了选择器表达式，那么会先测试该元素是否满足匹配的选择器表达式。
          </p>
          
          <p>例如，在页面中有如下一个简单的列表：</p>
@@ -35,8 +35,8 @@
 </pre>
          <p>If we begin at the third item, we can find its siblings:</p>
          <pre>$('li.third-item').siblings().css('background-color', 'red');</pre>
-         <p>The result of this call is a red background behind items 1, 2, 4, and 5. Since we do not supply a selector expression, all
-            of the siblings are part of the object. If we had supplied one, only the matching items among these four would be included.
+         <p>The result of this call is a red background behind items 1, 2, 4, and 5. 由于我们没有提供选择器表达式， all of the siblings are part of the
+            object. If we had supplied one, only the matching items among these four would be included.
          </p>
          
          <p>The original element is not included among the siblings, which is important to remember when we wish to find all elements
