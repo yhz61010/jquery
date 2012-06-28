@@ -11970,7 +11970,7 @@ $('ul.first').find('.foo')
          <category name="Version 1.2"/>
       </entry>
       <entry type="method" name="siblings" return="jQuery">
-         <desc>Get the siblings of each element in the set of matched elements, optionally filtered by a selector.</desc>
+         <desc>查找匹配元素集合中每个元素的兄弟元素,可以提供一个可选的选择器。</desc>
          <signature>
             <added>1.0</added>
             <argument name="selector" type="Selector" optional="true">
@@ -11990,13 +11990,13 @@ $('ul.first').find('.foo')
    &lt;li&gt;list item 5&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-            <p>If we begin at the third item, we can find its siblings:</p>
+            <p>如果我们从 item 3 开始，我们可以向下面这样，查找它的兄弟元素：</p>
             <pre>$('li.third-item').siblings().css('background-color', 'red');</pre>
-            <p>The result of this call is a red background behind items 1, 2, 4, and 5. 由于我们没有提供选择器表达式， all of the siblings are part of the object. If we had supplied one, only the matching items among these four would be included.</p>
-            <p>The original element is not included among the siblings, which is important to remember when we wish to find all elements at a particular level of the DOM tree.</p>
+            <p>其结果是 item 1, item 2, item 4, 和 item 5 的背景色变成了红色。由于我们没有提供选择器表达式，因此所有的兄弟元素都是结果对象中的一部分。如果我们提供了选择器，那么只有上述四个列表项中，满足选择器的元素才会被包含在结果对象中。</p>
+            <p>原始元素并不会包含在结果对象中，要特别注意这一点，尤其是我们希望查找 DOM 中，在特殊层次上的所有元素时。</p>
          </longdesc>
          <example>
-            <desc>Find the unique siblings of all yellow li elements in the 3 lists (including other yellow li elements if appropriate).</desc>
+            <desc>查找 3 个列表中，所有黄色 li 元素的独一无二的的兄弟元素 (如果条件适当的话，还包括其它黄色 li 元素)。</desc>
             <code>
 
     var len = $(".hilite").siblings()
@@ -12034,7 +12034,7 @@ $('ul.first').find('.foo')
   &lt;p&gt;Unique siblings: &lt;b&gt;&lt;/b&gt;&lt;/p&gt;</html>
          </example>
          <example>
-            <desc>Find all siblings with a class "selected" of each div.</desc>
+            <desc>查找每个含有 "selected" 样式的 div 的所有兄弟元素。</desc>
             <code>$("p").siblings(".selected").css("background", "yellow");</code>
             <html>&lt;div&gt;&lt;span&gt;Hello&lt;/span&gt;&lt;/div&gt;
 
@@ -12385,7 +12385,7 @@ div {
 </del></note>
       </entry>
       <entry type="method" name="prevAll" return="jQuery">
-         <desc>Get all preceding siblings of each element in the set of matched elements, optionally filtered by a selector.</desc>
+         <desc>查找匹配元素集合中每个元素前面的所有兄弟元素，可以提供一个可选的选择器。</desc>
          <signature>
             <added>1.2</added>
             <argument name="selector" type="Selector" optional="true">
@@ -12393,7 +12393,7 @@ div {
             </argument>
          </signature>
          <longdesc>
-            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.prevAll()</code> method searches through the predecessors of these elements in the DOM tree并根据匹配的元素创建一个新的 jQuery 对象。the elements are returned in order beginning with the closest sibling.</p>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.prevAll()</code> 方法允许我们在 DOM 树中查找集合中元素前面的所有兄弟元素，并根据匹配的元素创建一个新的 jQuery 对象。返回的元素是按照由近及远的顺序排列的。</p>
             <p>该方法还可以接受一个可选的选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。如果提供了选择器表达式，那么会先测试该元素是否满足匹配的选择器表达式。</p>
             <p>例如，在页面中有如下一个简单的列表：</p>
             <pre>
@@ -12405,12 +12405,12 @@ div {
    &lt;li&gt;list item 5&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-            <p>If we begin at the third item, we can find the elements which come before it:</p>
+            <p>如果我们从 item 3 开始，我们可以查找它前面所有的兄弟元素：</p>
             <pre>$('li.third-item').prevAll().css('background-color', 'red');</pre>
-            <p>The result of this call is a red background behind items 1 and 2. 由于我们没有提供选择器表达式， these preceding elements 很明确成为了结果对象中的一部分。如果我们提供了选择器表达式，那么在包含在结果对象之前，会先测试该元素是否满足匹配的选择器表达式。</p>
+            <p>其结果是 item 1 和 item 2 的背景色变成了红色。由于我们没有提供选择器表达式，前面的这些兄弟元素很明确的成为了结果对象中的一部分。如果我们提供了选择器表达式，那么在包含在结果对象之前，会先测试该元素是否满足匹配的选择器表达式。</p>
          </longdesc>
          <example>
-            <desc>Locate all the divs preceding the last div and give them a class.</desc>
+            <desc>查找最后一个 div 前面的所有 div 元素，并给它们添加样式。</desc>
             <code>$("div:last").prevAll().addClass("before");</code>
             <css>
 
@@ -12427,7 +12427,7 @@ div {
          <category name="Version 1.2"/>
       </entry>
       <entry type="method" name="prev" return="jQuery">
-         <desc>Get the immediately preceding sibling of each element in the set of matched elements, optionally filtered by a selector.</desc>
+         <desc>查找匹配元素集合中每个元素前面的直接兄弟元素，可以提供一个可选的选择器。</desc>
          <signature>
             <added>1.0</added>
             <argument name="selector" type="Selector" optional="true">
@@ -12435,8 +12435,8 @@ div {
             </argument>
          </signature>
          <longdesc>
-            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.prev()</code> method searches for the predecessor of each of these elements in the DOM tree and constructs a new jQuery object from the matching elements.</p>
-            <p>The method optionally accepts a selector expression of the same type that can be passed to the <code>$()</code> function. If the selector is supplied, the preceding element will be filtered by testing whether it match the selector.</p>
+            <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.prev()</code> 方法允许我们在 DOM 树中查找集合中元素前面的兄弟元素，并根据匹配的元素创建一个新的 jQuery 对象。</p>
+            <p>该方法还可以接受一个选择器表达式，该选择器表达式可以是任何可传给 <code>$()</code> 函数的选择器表达式。如果提供了选择器，那么只有前面的直接兄弟元素满足选择器时，才会被过滤出来。</p>
             <p>例如，在页面中有如下一个简单的列表：</p>
             <pre>
 &lt;ul&gt;
@@ -12447,14 +12447,14 @@ div {
    &lt;li&gt;list item 5&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-            <p>To select the element that comes immediately before item three:</p>
+            <p>若要选择 item 3 前面的直接兄弟元素，可以像下面这样:</p>
             <pre>$('li.third-item').prev().css('background-color', 'red');</pre>
-            <p>The result of this call is a red background behind item 2. Since no selector expression is supplied, this preceding element is unequivocally included as part of the object. If one had been supplied, the element would be tested for a match before it was included.</p>
-            <p>If no previous sibling exists, or if the previous sibling element does not match a supplied selector, an empty jQuery object is returned.</p>
-            <p>To select <em>all</em> preceding sibling elements, rather than just the preceding <em>adjacent</em> sibling, use the <a href="prevAll.htm">.prevAll()</a> method.</p>
+            <p>其结果是 item 2 的背景色变成了红色。由于我们没有提供选择器表达式，所以前面的直接兄弟元素很明确的成为了结果对象中的一部分。如果我们提供了选择器表达式，那么在包含在结果对象之前，会先测试该元素是否满足匹配的选择器表达式。</p>
+            <p>如果前面的直接兄弟元素不存在，或者它不满足指定的选择器，那么会返回空的 jQuery 对象。</p>
+            <p>若要选择前面<em>所有的</em>兄弟元素，而不是只选择<em>邻近的</em>在前面的兄弟元素的话，请使用 <a href="prevAll.htm">.prevAll()</a> 方法。</p>
          </longdesc>
          <example>
-            <desc>Find the very previous sibling of each div.</desc>
+            <desc>查找每个 div 前面的直接兄弟元素。</desc>
             <code>
     var $curr = $("#start");
     $curr.css("background", "#f99");
@@ -12485,7 +12485,7 @@ div {
   &lt;p&gt;&lt;button&gt;Go to Prev&lt;/button&gt;&lt;/p&gt;</html>
          </example>
          <example>
-            <desc>For each paragraph, find the very previous sibling that has a class "selected".</desc>
+            <desc>查找每个段落前面的直接兄弟元素，要求它含有 "selected" 样式。</desc>
             <code>$("p").prev(".selected").css("background", "yellow");</code>
             <html>&lt;div&gt;&lt;span&gt;Hello&lt;/span&gt;&lt;/div&gt;
 
@@ -12850,7 +12850,7 @@ $("b").append("&lt;strong&gt;" + parentEls + "&lt;/strong&gt;");
   &lt;/div&gt;</html>
          </example>
          <example>
-            <desc>点击元素，查找每个 span 标签的所有唯一 div 父元素。</desc>
+            <desc>点击元素，查找每个 span 标签的所有独一无二的 div 父元素。</desc>
             <code>
 function showParents() {
   $("div").css("border-color", "white");
@@ -13006,7 +13006,7 @@ $("span").click(function () {
 </del></note>
       </entry>
       <entry type="method" name="parent" return="jQuery">
-         <desc>Get the parent of each element in the current set of matched elements, optionally filtered by a selector.</desc>
+         <desc>Get the parent of each element in the current set of matched elements, 可以提供一个可选的选择器。</desc>
          <signature>
             <added>1.0</added>
             <argument name="selector" type="Selector" optional="true">
@@ -13551,10 +13551,10 @@ $("span").click(function () {
 </pre>
             <p>如果我们从第三个项目开始，我们可以查找哪些元素在它后面：</p>
             <pre>$('li.third-item').nextAll().css('background-color', 'red');</pre>
-            <p>执行上述代码之后，第 4 和第 5 个列表项会变成红色背景。由于我们没有提供选择器表达式，因此这两个元素很明确成为了结果对象中的一部分。如果我们提供了选择器表达式，那么在包含在结果对象之前，会先测试该元素是否满足匹配的选择器表达式。</p>
+            <p>执行上述代码之后，第 4 和第 5 个列表项会变成红色背景。由于我们没有提供选择器表达式，因此这两个元素很明确的成为了结果对象中的一部分。如果我们提供了选择器表达式，那么在包含在结果对象之前，会先测试该元素是否满足匹配的选择器表达式。</p>
          </longdesc>
          <example>
-            <desc>定位在第一个 div 后面的所有 div，并为它们添加样式。</desc>
+            <desc>查找第一个 div 后面的所有 div，并为它们添加样式。</desc>
             <code>$("div:first").nextAll().addClass("after");</code>
             <css>
 
@@ -13569,7 +13569,7 @@ $("span").click(function () {
   &lt;div&gt;sibling&lt;/div&gt;</html>
          </example>
          <example>
-            <desc>定位在 body 中第二个孩子元素后面的所有段落，并为它们添加样式。</desc>
+            <desc>查找 body 中第二个孩子元素后面的所有段落，并为它们添加样式。</desc>
             <code>
     $(":nth-child(1)").nextAll("p").addClass("after");
 </code>
@@ -13614,7 +13614,7 @@ $("span").click(function () {
 </pre>
             <p>如果我们从第三个列表项开始，那么我们可以查找紧随其后的元素：</p>
             <pre>$('li.third-item').next().css('background-color', 'red');</pre>
-            <p>其结果是 item 4 的背景色变成了红色。由于我们没有提供选择器表达式，所以紧随其后的元素很明确成为了结果对象中的一部分。如果我们提供了选择器表达式，那么在包含在结果对象之前，会先测试该元素是否满足匹配的选择器表达式。</p>
+            <p>其结果是 item 4 的背景色变成了红色。由于我们没有提供选择器表达式，所以紧随其后的元素很明确的成为了结果对象中的一部分。如果我们提供了选择器表达式，那么在包含在结果对象之前，会先测试该元素是否满足匹配的选择器表达式。</p>
          </longdesc>
          <example>
             <desc>查找每个紧随着被禁用的按钮的元素，并将其文本变为 "this button is disabled"。</desc>
