@@ -3051,7 +3051,7 @@ $("form").undelegate(".whatever");</code>
                <desc>触发事件的元素选择器。</desc>
             </argument>
             <argument name="eventType" type="String">
-               <desc>含有 JavaScript 事件类型的字符串，字符串间使用空格分隔，例如："click" , "keydown," 或 自定义事件名称。</desc>
+               <desc>含有 JavaScript 事件类型的字符串，字符串间使用空格分隔，例如："click" , "keydown," 或自定义事件名称。</desc>
             </argument>
             <argument name="handler(eventObject)" type="Function">
                <desc>每当事件触发时执行的函数。</desc>
@@ -3063,7 +3063,7 @@ $("form").undelegate(".whatever");</code>
                <desc>触发事件的元素选择器。</desc>
             </argument>
             <argument name="eventType" type="String">
-               <desc>含有 JavaScript 事件类型的字符串，字符串间使用空格分隔，例如："click" , "keydown," 或 自定义事件名称。</desc>
+               <desc>含有 JavaScript 事件类型的字符串，字符串间使用空格分隔，例如："click" , "keydown," 或自定义事件名称。</desc>
             </argument>
             <argument name="eventData" type="Object">
                <desc>将要传递给事件处理函数的数据映射。</desc>
