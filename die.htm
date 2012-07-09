@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>die()<br></h2>
    <div class="desc">
-      <p>Remove all event handlers previously attached using <code>.live()</code> from the elements.
+      <p>从元素上移除所有之前通过 <code>.live()</code> 添加的事件处理。
       </p>
       <ul class="signatures">
          <li>
@@ -14,22 +14,21 @@
       </ul>
       <div class="longdesc">
          
-         <p>Any handler that has been attached with <code>.live()</code> can be removed with <code>.die()</code>. This method is analogous to calling <code>.unbind()</code> with no arguments, which is used to remove all handlers attached with <code>.bind()</code>.
-            See the discussions of <code>.live()</code> 和 <code>.unbind()</code> for further details.
+         <p>任何通过 <code>.live()</code> 绑定的事件处理，都可以通过 <code>.die()</code> 进行移除。该方法类似于调用不带参数的 <code>.unbind()</code>。<code>.unbind()</code> 用于移除所有通过 <code>.bind()</code> 绑定的事件处理。
+            了解更多信息，请参阅 <code>.live()</code> 和 <code>.unbind()</code>。
          </p>
          
          <p>
-            <strong>As of jQuery 1.7</strong>, use of <code>.die()</code> (and its complementary method, <code>.live()</code>) is not recommended. Instead, use <code><a href="off.htm">
-                  .off()</a></code>
-            to remove event handlers bound with <code><a href="on.htm">
-                  .on()</a></code>
+            <strong>从 jQuery 1.7 开始</strong>，不再建议使用 <code>.die()</code> (以及它的互补方法 <code>.live()</code>)。请使用 <code><a href="off.htm">
+                  .off()</a></code> 来代替，用于移除通过
+            <code><a href="on.htm">
+                  .on()</a></code> 绑定的事件处理。
             
             
          </p>
          
          <p>
-            <strong>注意:</strong> In order for .die() to function correctly, the selector used with it must match exactly the selector initially used with
-            .live().
+            <strong>注意:</strong> 为了保证 .die() 能正确工作，所使用的选择器必须与初始化 .live() 时所使用的选择器保持一致。
          </p>
          
       </div>
@@ -38,7 +37,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>die(eventType, <em class="optional">[handler]</em>)<br></h2>
    <div class="desc">
-      <p>Remove an event handler previously attached using <code>.live()</code> from the elements.
+      <p>从元素上移除之前通过 <code>.live()</code> 添加的事件处理。
       </p>
       <ul class="signatures">
          <li>
@@ -47,11 +46,11 @@
             </h4>
             <div class="arguement"><strong>eventType</strong>
                								(String)
-               								A string containing a JavaScript event type, such as <code>click</code> or <code>keydown</code>.
+               								包含 JavaScript 事件类型的字符串。例如 <code>click</code> 或 <code>keydown</code>。
             </div>
             <div class="arguement"><strong>handler</strong>
                								(String)
-               								 可选参数，The function that is no longer to be executed.
+               								 可选参数，不再需要执行的函数。
             </div>
          </li>
          <li>
@@ -60,25 +59,25 @@
             </h4>
             <div class="arguement"><strong>eventTypes</strong>
                								(Map)
-               								A map of one or more event types, such as <code>click</code> or <code>keydown</code> and their corresponding functions that are no longer to be executed.
+               								由一个或多个事件类型及其对应的不再需要执行的函数组成的映射，例如 <code>click</code> 或 <code>keydown</code> 及其对应的不再需要执行的函数。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p>Any handler that has been attached with <code>.live()</code> can be removed with <code>.die()</code>. This method is analogous to <code>.unbind()</code>, which is used to remove handlers attached with <code>.bind()</code>.
-            See the discussions of <code>.live()</code> 和 <code>.unbind()</code> for further details.
+         <p>任何通过 <code>.live()</code> 绑定的事件处理，都可以通过 <code>.die()</code> 进行移除。该方法类似于调用不带参数的 <code>.unbind()</code>。<code>.unbind()</code> 用于移除所有通过 <code>.bind()</code> 绑定的事件处理。
+            了解更多信息，请参阅 <code>.live()</code> 和 <code>.unbind()</code>。
          </p>
          
          <p>
-            <strong>注意:</strong> In order for <code>.die()</code> to function correctly, the selector used with it must match exactly the selector initially used with <code>.live()</code>.
+            <strong>注意:</strong> 为了保证 .die() 能正确工作，所使用的选择器必须与初始化 .live() 时所使用的选择器保持一致。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Can bind and unbind events to the colored button.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>为带颜色的按钮进行事件绑定或解除绑定。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -116,11 +115,11 @@ $("#unbind").click(function () {
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
-      <p>To unbind all live events from all paragraphs, write:</p>
+      <p>解除所有段落上绑定的 live 事件：</p>
       <h5>jQuery 代码:</h5><pre><code>$("p").die()</code></pre><h3>示例:</h3>
-      <p>To unbind all live click events from all paragraphs, write:</p>
+      <p>解除所有段落上通过 live 事件绑定的 click 事件：</p>
       <h5>jQuery 代码:</h5><pre><code>$("p").die( "click" )</code></pre><h3>示例:</h3>
-      <p>To unbind just one previously bound handler, pass the function in as the second argument:</p>
+      <p>解除之前绑定的事件处理，将该事件处理作为第二个参数：</p>
       <h5>jQuery 代码:</h5><pre><code>var foo = function () {
 // code to handle some kind of event
 };

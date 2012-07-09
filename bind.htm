@@ -3,7 +3,7 @@
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>bind(eventType, <em class="optional">[eventData]</em>, handler(eventObject))<br></h2>
    <div class="desc">
-      <p>Attach a handler to an event for the elements.</p>
+      <p>为元素绑定事件。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>bind(eventType, <em class="optional">[eventData]</em>, handler(eventObject))
@@ -11,7 +11,7 @@
             </h4>
             <div class="arguement"><strong>eventType</strong>
                								(String)
-               								A string containing one or more DOM event types, such as "click" or "submit," or custom event names.
+               								包含一个或多个 DOM 事件类型的字符串。例如，"click"， "submit," 或自定义事件名。
             </div>
             <div class="arguement"><strong>eventData</strong>
                								(Object)
@@ -28,7 +28,7 @@
             </h4>
             <div class="arguement"><strong>eventType</strong>
                								(String)
-               								A string containing one or more DOM event types, such as "click" or "submit," or custom event names.
+               								包含一个或多个 DOM 事件类型的字符串。例如，"click"， "submit," 或自定义事件名。
             </div>
             <div class="arguement"><strong>eventData</strong>
                								(Object)
@@ -36,8 +36,7 @@
             </div>
             <div class="arguement"><strong>preventBubble</strong>
                								(Boolean)
-               								Setting the third argument to false will attach a function that prevents the default action from occurring and stops the event
-               from bubbling. The default is true.
+               								将该参数设置为 false 会添加一个函数，该函数会阻止默认动作的发生，并且会阻止事件冒泡。默认值是 true。
             </div>
          </li>
          <li>
@@ -46,67 +45,60 @@
             </h4>
             <div class="arguement"><strong>events</strong>
                								(Object)
-               								A map of one or more DOM event types and functions to execute for them.
+               								一个由 DOM 事件类型和对应执行的函数组成的映射。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p>As of jQuery 1.7, the <code><a href="on.htm">
+         <p>从 jQuery 1.7 开始，<code><a href="on.htm">
                   .on()</a></code>
-            method is the preferred method for attaching event handlers to a document. For earlier versions, the <code>.bind()</code> method is used for attaching an event handler directly to elements. Handlers are attached to the currently selected elements
-            in the jQuery object, so those elements <em>must exist</em> at the point the call to <code>.bind()</code> occurs. For more flexible event binding, see the discussion of event delegation in <code><a href="on.htm">
+            方法是为文档添加事件的首先方法。在早先的版本中，<code>.bind()</code> 方法用作直接为元素添加事件。事件处理被添加到 jQuery 对象中当前被选中的元素上，这也要求在进行 <code>.bind()</code> 时，这些元素<em>必须存在</em>。了解更多灵活的事件绑定，请参阅事件代理 <code><a href="on.htm">
                   .on()</a></code>
-            or <code><a href="delegate.htm">
-                  .delegate()</a></code>
-            .
+            或 <code><a href="delegate.htm">
+                  .delegate()</a></code> 中的讨论
+            。
          </p>
          
          
-         <p>Any string is legal for <code>eventType</code>; if the string is not the name of a native DOM event, then the handler is bound to a custom event. These events are never
-            called by the browser, but may be triggered manually from other JavaScript code using <code>.trigger()</code> or <code>.triggerHandler()</code>.
+         <p>对于 <code>eventType</code> 而言，任何字符串都是合法的。如果该字符串不是原生的 DOM 事件，那么，该事件处理会被绑定到自定义事件中，而这些事件永远不会被浏览器调用，但是可以通过其它的 JavaScript，例如 <code>.trigger()</code> 或 <code>.triggerHandler()</code> 来手动触发。
          </p>
          
-         <p>If the <code>eventType</code> string contains a period (<code>.</code>) character, then the event is namespaced. The period character separates the event from its namespace. For example, in the
-            call <code>.bind('click.name', handler)</code>, the string <code>click</code> is the event type, and the string <code>name</code> is the namespace. Namespacing allows us to unbind or trigger some events of a type without affecting others. See the discussion
-            of <code>.unbind()</code> for more information.
+         <p>如果 <code>eventType</code> 字符串中包含句点(<code>.</code>)字符，那么说明这个事件是带命名空间的。句点字符将事件及其命名空间分隔开来。例如，在调用 <code>.bind('click.name', handler)</code> 时，字符串 <code>click</code> 代表了事件，字符串 <code>name</code> 就是它的命名空间。命名空间允许我们解除绑定或触发某种类型上的事件而不影响其它类型的事件。请参阅在 <code>.unbind()</code> 中讨论的内容，了解更多信息。
          </p>
          
          
-         <p>There are shorthand methods for some standard browser events such as <code><a href="click.htm">
+         <p>对于某些标准浏览器的事件，还可以使用简写的形式，例如 <code><a href="click.htm">
                   .click()</a></code>
-            that can be used to attach or trigger event handlers. For a complete list of shorthand methods, see the <a href="http://api.jquery.com/category/events/">events category</a>.
+            ，可以用于添加或触发事件。关于完整的简写事件列表，可以参阅 <a href="http://api.jquery.com/category/events/">事件分类</a>。
          </p>
          
          
-         <p>When an event reaches an element, all handlers bound to that event type for the element are fired. If there are multiple handlers
-            registered, they will always execute in the order in which they were bound. After all handlers have executed, the event continues
-            along the normal event propagation path.
-         </p>
+         <p>当一个事件到达一个元素上时，该元素上绑定的所有与之相对应的类型的事件都会被触发。如果在该元素上注册了多个相同类型的事件，那么它们的执行顺序和它们绑定时的顺序是一致的。在所有的事件执行完之后，事件会继续沿着正常的事件传播路径继续传播事件。</p>
          
          
-         <p>A basic usage of <code>.bind()</code> is:
+         <p><code>.bind()</code> 的基本用法是：
          </p>
          <pre>
 $('#foo').bind('click', function() {
   alert('User clicked on "foo."');
 });
 </pre>
-         <p>This code will cause the element with an ID of <code>foo</code> to respond to the <code>click</code> event. When a user clicks inside this element thereafter, the alert will be shown.
+         <p>上述代码会为 ID 为 <code>foo</code> 的元素绑定 <code>click</code> 事件。当用户在元素内部点击了鼠标，就会显示出一个提示框。
          </p>
          
-         <h4 id="multiple-events">Multiple Events</h4>
+         <h4 id="multiple-events">多事件</h4>
          
-         <p>Multiple event types can be bound at once by including each one separated by a space:</p>
+         <p>可以一次性为元素同时绑定多个事件类型，事件类型之间使用空格进行分隔，例如：</p>
          <pre>
 $('#foo').bind('mouseenter mouseleave', function() {
   $(this).toggleClass('entered');
 });
 </pre>
-         <p>The effect of this on <code>&lt;div id="foo"&gt;</code> (when it does not initially have the "entered" class) is to add the "entered" class when the mouse enters the <code>&lt;div&gt;</code> and remove the class when the mouse leaves. 
+         <p>其效果是，当鼠标进行 <code>&lt;div id="foo"&gt;</code> (其初始情况不含有 "entered" 样式) 时，为其添加 "entered" 样式，当鼠标离开 <code>&lt;div&gt;</code> 时，移除该样式。
          </p>
          
-         <p>As of jQuery 1.4 we can bind multiple event handlers simultaneously by passing a map of event type/handler pairs:</p>
+         <p>从 jQuery 1.4 开始，我们可以通过一个 事件类型/事件处理 的键值对映射，同时为元素添加多个事件处理，例如：</p>
          <pre>
 $('#foo').bind({
   click: function() {
@@ -117,47 +109,42 @@ $('#foo').bind({
   }
 });
 </pre>
-         <h4 id="event-handlers">Event Handlers</h4>
+         <h4 id="event-handlers">事件处理</h4>
          
-         <p><code>handler</code> parameter takes a callback function, as shown above. Within the handler, the keyword <code>this</code> refers to the DOM element to which the handler is bound. To make use of the element in jQuery, it can be passed to the normal
-            <code>$()</code> function. For example:
+         <p><code>handler</code> 参数是一个回调函数，就像上面例子中看到的那样。在 handler 中，关键字 <code>this</code> 指向当前所处理的 DOM 元素。若要以 jQuery 对象的方式来使用该元素，可以将该元素传给 <code>$()</code> 函数。例如：
          </p>
          <pre>$('#foo').bind('click', function() {
   alert($(this).text());
 });
 </pre>
-         <p>After this code is executed, when the user clicks inside the element with an ID of <code>foo</code>, its text contents will be shown as an alert.
+         <p>当执行完上述代码之后，如果用户在 ID 为 <code>foo</code> 的元素内点击了鼠标，那么就会显示出该元素的内容。
             
          </p>
          
-         <p>As of jQuery 1.4.2 duplicate event handlers can be bound to an element instead of being discarded. This is useful when the
-            event data feature is being used, or when other unique data resides in a closure around the event handler function.
-         </p>
+         <p>从 jQuery 1.4.2 开始，可以为元素绑定重复的事件处理，而不会丢弃重复的事件。这对于使用 event data 功能时，或者是当其它唯一的数据保存在事件处理函数的闭包中时，特别有用。</p>
          
          
-         <p>In jQuery 1.4.3 you can now pass in <code>false</code> in place of an event handler. This will bind an event handler equivalent to: <code>function(){ return false; }</code>. This function can be removed at a later time by calling: <code>.unbind( eventName, false )</code>.
+         <p>在 jQuery 1.4.3 中，你可以将 <code>handler</code> 设置成 <code>false</code>。这相当于绑定了如下事件：<code>function(){ return false; }</code>。之后，您可以通过调用: <code>.unbind( eventName, false )</code> 来移除该函数。
          </p>
          
          
          <h4 id="event-object">
-            <a href="http://api.jquery.com/category/events/event-object/">The Event object</a>
+            <a href="http://api.jquery.com/category/events/event-object/">Event 对象</a>
             
          </h4>
          
          
-         <p><code>handler</code> callback function can also take parameters. When the function is called, the event object will be passed to the first parameter.
+         <p><code>handler</code> 回调函数还可以带有参数。当调用该函数时，event 对象就是它的第一个参数。
          </p>
          
-         <p>The event object is often unnecessary and the parameter omitted, as sufficient context is usually available when the handler
-            is bound to know exactly what needs to be done when the handler is triggered. However, at times it becomes necessary to gather
-            more information about the user's environment at the time the event was initiated. <a href="http://api.jquery.com/category/events/event-object/">View the full Event Object</a>.
+         <p>通过是不需要 event 对象的，而且该参数通常被忽略，这是因为当触发事件处理时，我们可以通过上下文来取得足够的信息，完成我们需要的操作。然而，有的时候，当事件初始化完成时，我们需要收集更多关于用户环境的信息时，我们就需要使用该参数了。<a href="http://api.jquery.com/category/events/event-object/">查看全部 Event 对象</a>。
          </p>
          
          
-         <p>Returning <code>false</code> from a handler 等价于 calling both <code>.preventDefault()</code> 和 <code>.stopPropagation()</code> on the event object.
+         <p>当事件处理返回 <code>false</code> 时，等价于同时在 event 对象上调用了 <code>.preventDefault()</code> 和 <code>.stopPropagation()</code>。
          </p>
          
-         <p>Using the event object in a handler looks like this:</p>
+         <p>可以下面这样，在事件处理中使用 event 对象：</p>
          <pre>$(document).ready(function() {
   $('#foo').bind('click', function(event) {
     alert('The mouse cursor is at ('
@@ -165,15 +152,13 @@ $('#foo').bind({
   });
 });
 </pre>
-         <p>Note the parameter added to the anonymous function. This code will cause a click on the element with ID <code>foo</code> to report the page coordinates of the mouse cursor at the time of the click.
+         <p>请注意，event 参数传给了一个匿名函数。上述代码的执行结果是，当用户在 ID 为 <code>foo</code> 的元素内点击了鼠标后，会显示出点击鼠标时的坐标。
          </p>
          
          
-         <h4 id="passing-event-data">Passing Event Data</h4>
+         <h4 id="passing-event-data">传入 Event Data</h4>
          
-         <p>The optional <code>eventData</code> parameter is not commonly used. When provided, this argument allows us to pass additional information to the handler. One
-            handy use of this parameter is to work around issues caused by closures. For example, suppose we have two event handlers that
-            both refer to the same external variable:
+         <p>通常并不使用可选的 <code>eventData</code> 参数。当提供该参数时，它允许我们向事件处理中传入额外的信息。使用该参数的方便这一在于可以解决闭包引起的问题。例如，假设我们有两个事件处理函数，都引用了相同的外部变量：
          </p>
          <pre>var message = 'Spoon!';
 $('#foo').bind('click', function() {
@@ -184,7 +169,7 @@ $('#bar').bind('click', function() {
   alert(message);
 });
 </pre>
-         <p>Because the handlers are closures that both have <code>message</code> in their environment, both will display the message <span class="output">Not in the face!</span> when triggered. The variable's value has changed. To sidestep this, we can pass the message in using <code>eventData</code>:
+         <p>由于两个事件处理函数的闭包中，都引用了 <code>message</code>，所以，当事件被触发时，这两个事件处理都会显示 <span class="output">Not in the face!</span>，因为变量的值已经改变了。为了避免这个问题，我们可以使用 <code>eventData</code> 来传递 message：
             
          </p>
          <pre>var message = 'Spoon!';
@@ -196,45 +181,39 @@ $('#bar').bind('click', {msg: message}, function(event) {
   alert(event.data.msg);
 });
 </pre>
-         <p>This time the variable is not referred to directly within the handlers; instead, the variable is passed in <em>by value</em> through <code>eventData</code>, which fixes the value at the time the event is bound. The first handler will now display <span class="output">Spoon!</span> while the second will alert <span class="output">Not in the face!</span>
+         <p>这次在事件处理内部并没有直接引用外部变量，取而代之的是，变量的传入是通过 <code>eventData</code> <em>按值</em>传递的，所以就可以在事件绑定的时候进行赋值操作。现在，第一个事件会显示 <span class="output">Spoon!</span>，而第二个事件会显示 <span class="output">Not in the face!</span>
             
          </p>
          
          <blockquote>
             
-            <p>Note that objects are passed to functions <em>by reference</em>, which further complicates this scenario.
+            <p>请注意，传入函数的对象，是<em>按引用</em>的方式传递的，正是这一点，使上面例子中的问题显得有些复杂。
             </p>
             
          </blockquote>
          
-         <p>If <code>eventData</code> is present, it is the second argument to the <code>.bind()</code> method; if no additional data needs to be sent to the handler, then the callback is passed as the second and final argument.
+         <p>如果提供了 <code>eventData</code> 参数，那么它将作为 <code>.bind()</code> 方法的第二个参数。如果不需要向事件处理函数中传入额外的数据，那么回调函数将作为第二个也是最终参数。
          </p>
          
          <blockquote>
             
-            <p>See the <code>.trigger()</code> method reference for a way to pass data to a handler at the time the event happens rather than when the handler is bound.
+            <p>参阅 <code>.trigger()</code> 方法来了解如何在事件发生时向事件处理函数中传入参数，而不是在事件绑定的时候传递数据。
             </p>
             
          </blockquote>
          
          
-         <p>As of jQuery 1.4 we can no longer attach data (and thus, events) to object, embed, or applet elements because critical errors
-            occur when attaching data to Java applets.
-         </p>
+         <p>从 jQuery 1.4 开始，我们不再向 object，embed 或 applet 元素中附加数据(和事件)了，这是因为向 Java applet 附加数据时，会发生致命错误时。</p>
          
          <p>
-            <strong>Note: </strong>Although demonstrated in the next example, it is inadvisable to bind handlers to both the <code>click</code> 和 <code>dblclick</code> events for the same element. The sequence of events triggered varies from browser to browser, with some receiving two click
-            events before the <code>dblclick</code> and others only one. Double-click sensitivity (maximum time between clicks that is detected as a double click) can vary by
-            operating system and browser, and is often user-configurable.
+            <strong>注意：</strong> 尽管下面的例子演示了在同一个元素上同时绑定 <code>click</code> 和 <code>dblclick</code> 事件，但是我们不建议这样做。在不同的浏览器中，事件的触发顺序是不一样的。有些浏览器在接收到 <code>dblclick</code> 事件之前，会先接收两次 <code>click</code> 事件，而有些浏览器则只能按其中的一种情况处理。双击灵敏度 (被识别成双击的两次点击之间的最长时间) 可以通过操作系统或浏览器进行设置，通常它是用户可配置的。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Handle click and double-click for the paragraph.  Note: the coordinates are window relative, so in this case relative to the
-         demo iframe.
-      </p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>为段落标签绑定单击和双击事件。请注意：坐标是相对于窗口的，所以在这个例子中是相对于 iframe 的。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -269,26 +248,26 @@ $(this).toggleClass("over");
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
-      <p>To display each paragraph's text in an alert box whenever it is clicked:</p>
+      <p>点击段落时，显示其中的内容：</p>
       <h5>jQuery 代码:</h5><pre><code>$("p").bind("click", function(){
 alert( $(this).text() );
 });</code></pre><h3>示例:</h3>
-      <p>You can pass some extra data before the event handler:</p>
+      <p>在事件处理之前，你可以传入一些额外的数据：</p>
       <h5>jQuery 代码:</h5><pre><code>function handler(event) {
 alert(event.data.foo);
 }
 $("p").bind("click", {foo: "bar"}, handler)</code></pre><h3>示例:</h3>
-      <p>Cancel a default action and prevent it from bubbling up by returning false:</p>
+      <p>通过返回 false 的方式取消默认的动作，并防止它进行事件冒泡：</p>
       <h5>jQuery 代码:</h5><pre><code>$("form").bind("submit", function() { return false; })</code></pre><h3>示例:</h3>
-      <p>Cancel only the default action by using the .preventDefault() method.</p>
+      <p>通过使用 .preventDefault() 方法，仅取消默认的动作。</p>
       <h5>jQuery 代码:</h5><pre><code>$("form").bind("submit", function(event) {
 event.preventDefault();
 });</code></pre><h3>示例:</h3>
-      <p>Stop an event from bubbling without preventing the default action by using the .stopPropagation() method.</p>
+      <p>通过使用 .stopPropagation() 方法，防止事件冒泡，但是默认执行默认的动作。</p>
       <h5>jQuery 代码:</h5><pre><code>$("form").bind("submit", function(event) {
   event.stopPropagation();
 });</code></pre><h3>示例:</h3>
-      <p>Bind custom events.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>绑定自定义事件。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -322,7 +301,7 @@ $("p").trigger("myCustomEvent", [ "John" ]);
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="658" height="125"></iframe><h3>示例:</h3>
-      <p>Bind multiple events simultaneously.</p>
+      <p>同时绑定多个事件。</p>
       <h5>jQuery 代码:</h5><pre><code>$("div.test").bind({
   click: function(){
     $(this).addClass("active");
