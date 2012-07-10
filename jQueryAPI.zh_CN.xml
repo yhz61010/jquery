@@ -3236,7 +3236,7 @@ alert( obj.name === "John" );</code>
          </signature>
          <longdesc>
             <p>这个方法通常在向一个元素上附加事件处理函数时，上下文语境实际是指向另一个对象的情况下使用。另外，jQuery 能够确保即使你绑定的函数是经过 <code>jQuery.proxy()</code> 处理过的函数，你依然可以用原先的函数来正确地取消绑定。</p>
-            <p>Be aware, however, that jQuery's event binding subsystem assigns a unique id to each event handling function in order to track it when it is used to specify the function to be unbound. The function represented by <code>jQuery.proxy()</code> is seen as a single function by the event subsystem, even when it is used to bind different contexts. To avoid unbinding the wrong handler, use a unique event namespace for binding and unbinding (e.g., <code>"click.myproxy1"</code>) rather than specifying the proxied function during unbinding.
+            <p>需要您注意的是，jQuery 的事件绑定子系统会为每个事件处理函数分配一个唯一的 id 用于对其进行跟踪，这样的话，当需要解除绑定特定的事件处理时，系统就知道该解除绑定哪个事件处理函数了。<code>jQuery.proxy()</code> 参数中的 function 会被事件子系统当成一个单独的函数，即使是当它用于绑定不同的上下文时。为了避免错误的解除绑定事件，可以在绑定或解除绑定时，使用一个唯一的事件命令空间(例如， <code>"click.myproxy1"</code>)，这样比在解除绑定时仅指定被代理函数要好。
 </p>
          </longdesc>
          <example>
@@ -10025,11 +10025,11 @@ if ( $.browser.msie ) {
       </entry>
       <entry type="method" name="live" return="jQuery">
 	 <deprecated>1.7</deprecated>
-         <desc>Attach an event handler for all elements which match the current selector, now and in the future.</desc>
+         <desc>为所有与选择器匹配的元素添加一个事件处理。匹配的元素包括那些目前已经匹配到的元素，也包括那些今后可能匹配到的元素。</desc>
          <signature>
             <added>1.3</added>
             <argument name="events" type="String">
-               <desc>包含 JavaScript 事件类型的字符串。例如 "click" 或 "keydown." As of jQuery 1.4 the string can contain multiple, space-separated event types or custom event names.</desc>
+               <desc>包含 JavaScript 事件类型的字符串。例如 "click" 或 "keydown"。从 jQuery 1.4 开始，该字符串可以包含多个用空格分隔的事件类型或自定义事件名。</desc>
             </argument>
             <argument name="handler(eventObject)" type="Function">
                <desc>每当事件触发时执行的函数。</desc>
@@ -10038,7 +10038,7 @@ if ( $.browser.msie ) {
          <signature>
             <added>1.4</added>
             <argument name="events" type="String">
-               <desc>包含 JavaScript 事件类型的字符串。例如 "click" 或 "keydown." As of jQuery 1.4 the string can contain multiple, space-separated event types or custom event names.</desc>
+               <desc>包含 JavaScript 事件类型的字符串。例如 "click" 或 "keydown"。从 jQuery 1.4 开始，该字符串可以包含多个用空格分隔的事件类型或自定义事件名。</desc>
             </argument>
             <argument name="data" type="Object">
                <desc>将要传递给事件处理函数的数据映射。</desc>
@@ -10050,63 +10050,63 @@ if ( $.browser.msie ) {
          <signature>
             <added>1.4.3</added>
             <argument name="events-map" type="Object">
-               <desc>A map of one or more JavaScript event types and functions to execute for them.</desc>
+               <desc>由一个或多个 JavaScript 事件类型及其对应的执行函数组成的映射。</desc>
             </argument>
          </signature>
          <longdesc>
 
             <p>
-               <strong>As of jQuery 1.7</strong>, the <code>.live()</code> method is deprecated. Use <code><a href="on.htm">
+               <strong>从 jQuery 1.7 开始</strong>，不再建议使用 <code>.live()</code> 方法。请使用 <code><a href="on.htm">
                   .on()</a></code>
-                to attach event handlers. Users of older versions of jQuery should use <code><a href="delegate.htm">
+                来添加事件处理。使用旧版本的用户，应该优先使用 <code><a href="delegate.htm">
                   .delegate()</a></code>
-                in preference to <code>.live()</code>.</p>
+                来替代 <code>.live()</code>。</p>
 
-            <p>This method provides a means to attach delegated event handlers to the <code>document</code> element of a page, which simplifies the use of event handlers when content is dynamically added to a page. See the discussion of direct versus delegated events in the <code><a href="on.htm">
+            <p>该函数提供了一种向页面的 <code>document</code> 元素添加代理事件处理的方法，从而简化了在页面上动态添加的内容上事件处理的使用。有关直接添加事件处理和使用代理事件的讨论，请参阅在 <code><a href="on.htm">
                   .on()</a></code>
-                method for more information. </p>
+                方法中的相关说明。</p>
 
-            <p>Rewriting the <code>.live()</code> method in terms of its successors is straightforward; these are templates for equivalent calls for all three event attachment methods:</p>
+            <p>在 <code>.live()</code> 的后继方法中重写 <code>.live()</code> 方法是很简单的。以下是三种事件添加方法的模板，它们是等价的：</p>
             <pre>
 $(<em>selector</em>).live(<em>events</em>, <em>data</em>, <em>handler</em>);                // jQuery 1.3+
 $(document).delegate(<em>selector</em>, <em>events</em>, <em>data</em>, <em>handler</em>);  // jQuery 1.4.3+
 $(document).on(<em>events</em>, <em>selector</em>, <em>data</em>, <em>handler</em>);        // jQuery 1.7+
 </pre>
 
-            <p><code>events</code> argument can either be a space-separated list of event type names and optional namespaces, or an <code>event-map</code> of event names strings and handlers. The <code>data</code> argument is optional and can be omitted. For example, the following three method calls are functionally equivalent (but see below for more effective and performant ways to attach delegated event handlers):</p>
+            <p><code>events</code> 参数既可以是用空格分隔的事件类型名（还可以包含事件类型对应的可选的命令空间）列表，也可以是由事件名符串及其处理函数组成的 <code>event-map</code>。<code>data</code> 参数是可选的，也可以忽略此参数。例如，以下三种方法在功能上是一样的（后文还提供了更有效，性能更好的添加代理事件处理的方式）：</p>
             <pre>
 $("a.offsite").live("click", function(){ alert("Goodbye!"); });                // jQuery 1.3+
 $(document).delegate("a.offsite", "click", function(){ alert("Goodbye!"); });  // jQuery 1.4.3+
 $(document).on("click", "a.offsite", function(){ alert("Goodbye!"); });        // jQuery 1.7+
 </pre>
 
-            <p>Use of the <code>.live()</code> method is no longer recommended since later versions of jQuery offer better methods that do not have its drawbacks. In particular, the following issues arise with the use of <code>.live()</code>:</p>
+            <p>目前已经不再建议使用 <code>.live()</code> 方法，因为新版的 jQuery 提供了更好方法，并且没有此方法中提到的弊端。使用 <code>.live()</code> 会带来如下问题:</p>
             <ul>
-               <li>jQuery attempts to retrieve the elements specified by the selector before calling the <code>.live()</code> method, which may be time-consuming on large documents.</li>
-               <li>Chaining methods is not supported. For example, <code>$("a").find(".offsite, .external").live( ... ); </code> is <em>not</em> valid and does not work as expected.</li>
-               <li>Since all <code>.live()</code> events are attached at the <code>document</code> element, events take the longest and slowest possible path before they are handled.</li>
-               <li>On mobile iOS (iPhone, iPad and iPod Touch) the <code>click</code> event does not bubble to the document body for most elements and cannot be used with <code>.live()</code> without applying one of the following workarounds:
+               <li>在调用 <code>.live()</code> 方法之前，jQuery 会先获取与指定的选择器匹配的元素，这一点对于大型文档来说是很花费时间的。</li>
+               <li>不支持链式写法。例如，<code>$("a").find(".offsite, .external").live( ... ); </code> 这样的写法是<em>不合法</em>的，并不能像期待的那样起作用。</li>
+               <li>由于所有的 <code>.live()</code> 事件被添加到 <code>document</code> 元素上，所以在事件被处理之前，可能会通过最长最慢的那条路径之后才能被触发。</li>
+               <li>在移动 iOS (iPhone, iPad 和 iPod Touch) 上，对于大多数元素而言，<code>click</code> 事件不会冒泡到文档 body 上，并且如果不满足如下情况之一，就不能和 <code>.live()</code> 方法一起使用：
 <ol>
-    <li>Use natively clickable elements such as <code>a</code> or <code>button</code>, as both of these do bubble to <code>document</code>.</li>
-    <li>Use <code>.on()</code> or <code>.delegate()</code> attached to an element below the level of <code>document.body</code>, since mobile iOS does bubble within the body.</li>
-    <li>Apply the CSS style <code>cursor:pointer</code> to the element that needs to bubble clicks (or a parent including <code>document.documentElement</code>). Note however, this will disable copy\paste on the element and cause it to be highlighted when touched.</li>
+    <li>使用原生的可被点击的元素，例如, <code>a</code> 或 <code>button</code>，因为这两个元素可以冒泡到 <code>document</code>。</li>
+    <li>在 <code>document.body</code> 内的元素使用 <code>.on()</code> 或 <code>.delegate()</code> 进行绑定，因为移动 iOS 只有在 body 内才能进行冒泡。</li>
+    <li>需要 click 冒泡到元素上才能应用的 CSS 样式 <code>cursor:pointer</code> (或者是父元素包含 <code>document.documentElement</code>)。但是依需注意的是，这样会禁止元素上的复制/粘贴功能，并且当点击元素时，会导致该元素被高亮显示。</li>
 </ol>
 </li>
-	       <li>Calling <code><a href="event.stopPropagation.htm">
+	       <li>在事件处理中调用 <code><a href="event.stopPropagation.htm">
                      event.stopPropagation()</a></code>
-                   in the event handler is ineffective in stopping event handlers attached lower in the document; the event has already propagated to <code>document</code>.</li>
-               <li>The <code>.live()</code> method interacts with other event methods in ways that can be surprising, e.g., <code>$(document).unbind("click")</code> removes all click handlers attached by any call to <code>.live()</code>!</li>
+                   来阻止事件处理被添加到 document 之后的节点中，是效率很低的。因为事件已经被传播到 <code>document</code> 上。</li>
+               <li><code>.live()</code> 方法与其它事件方法的相互影响是会令人感到惊讶的。例如，<code>$(document).unbind("click")</code> 会移除所有通过 <code>.live()</code> 添加的 click 事件!</li>
             </ul>
 
-            <p>For pages still using <code>.live()</code>, this list of version-specific differences may be helpful:</p>
+            <p>如果依然在使用 <code>.live()</code>，那么下面关于该方法在不同版中的区别，可能会对您有一定帮助：</p>
             <ul>
-               <li>Before jQuery 1.7, to stop further handlers from executing after one bound using <code>.live()</code>, the handler must return <code>false</code>. Calling <code>.stopPropagation()</code> will not accomplish this.</li>
-               <li>As of <b>jQuery 1.4</b> the <code>.live()</code> method supports custom events as well as <em>all JavaScript events that bubble</em>.</li>
-               <li>In <b>jQuery 1.3.x</b> only the following JavaScript events could be bound: <code>click</code>, <code>dblclick</code>, <code>keydown</code>, <code>keypress</code>, <code>keyup</code>, <code>mousedown</code>, <code>mousemove</code>, <code>mouseout</code>, <code>mouseover</code>, and <code>mouseup</code>.</li>
+               <li>在 jQuery 1.7 之前，如果想阻止通过 <code>.live()</code> 绑定的事件被冒泡到其它元素上，必须在事件处理中返回 <code>false</code>。调用 <code>.stopPropagation()</code> 是不起作用的。</li>
+               <li>从 <b>jQuery 1.4</b> 开始，<code>.live()</code> 方法支持自定义事件，也支持<em>所有 JavaScript 事件冒泡</em>。</li>
+               <li>在 <b>jQuery 1.3.x</b> 中，只能绑定如下 JavaScript 事件：<code>click</code>, <code>dblclick</code>, <code>keydown</code>, <code>keypress</code>, <code>keyup</code>, <code>mousedown</code>, <code>mousemove</code>, <code>mouseout</code>, <code>mouseover</code>, 和 <code>mouseup</code>.</li>
             </ul>
          </longdesc>
          <example>
-            <desc>Click a paragraph to add another. Note that .live() binds the click event to all paragraphs - even new ones.</desc>
+            <desc>点击段落时，添加另一个段落。注意，.live() 会为所有的段落(包括新生成的段落)绑定事件。</desc>
             <code>
 $("p").live("click", function(){
   $(this).after("&lt;p&gt;Another paragraph!&lt;/p&gt;");
@@ -10123,17 +10123,17 @@ $("p").live("click", function(){
   &lt;span&gt;&lt;/span&gt;</html>
          </example>
          <example>
-            <desc>Cancel a default action and prevent it from bubbling up by returning false.</desc>
+            <desc>通过返回 false 的方法，取消默认的动作，并阻止事件向上冒泡。</desc>
             <code>$("a").live("click", function() { return false; })</code>
          </example>
          <example>
-            <desc>Cancel only the default action by using the preventDefault method.</desc>
+            <desc>通过使用 preventDefault 方法仅取消默认的动作。</desc>
             <code>$("a").live("click", function(event){
   event.preventDefault();
 });</code>
          </example>
          <example>
-            <desc>Bind custom events with .live().</desc>
+            <desc>使用 .live() 绑定自定义事件。</desc>
             <code>
 $("p").live("myCustomEvent", function(e, myName, myValue) {
   $(this).text("Hi there!");
@@ -10156,7 +10156,7 @@ $("button").click(function () {
   </html>
          </example>
          <example>
-            <desc>Use a map to bind multiple live event handlers. Note that .live() calls the click, mouseover, and mouseout event handlers for all paragraphs--even new ones.</desc>
+            <desc>使用映射绑定多个事件处理。注意，.live() 会为所有的段落(包括新生成的段落)绑定 click, mouseover, 和 mouseout 事件。</desc>
             <code>
 $("p").live({
   click: function() {
