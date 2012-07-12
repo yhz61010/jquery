@@ -10185,14 +10185,14 @@ $("p").live({
          <category name="Version 1.3"/>
       </entry>
       <entry type="method" name="triggerHandler" return="Object">
-         <desc>Execute all handlers attached to an element for an event.</desc>
+         <desc>执行绑定在元素上指定事件的所有处理函数。</desc>
          <signature>
             <added>1.2</added>
             <argument name="eventType" type="String">
                <desc>包含 JavaScript 事件类型的字符串。例如 <code>click</code> 或 <code>submit</code>。</desc>
             </argument>
 	    <argument name="extraParameters" optional="true" type="Array">
-               <desc>An array of additional parameters to pass along to the event handler.</desc>
+               <desc>传入到事件处理中的额外参数数组。</desc>
             </argument>
          </signature>
          <longdesc>

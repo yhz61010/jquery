@@ -21,10 +21,10 @@
 				<div class="headerMain">Last update: <xsl:value-of select="year-from-dateTime($curDateTime)"/>-<xsl:number value="month-from-dateTime($curDateTime)" format="01"/>-<xsl:number value="day-from-dateTime($curDateTime)" format="01"/><span id="current_time"><xsl:number value="hours-from-dateTime($curDateTime)" format="01"/>:<xsl:number value="minutes-from-dateTime($curDateTime)" format="01"/>:<xsl:number value="seconds-from-dateTime($curDateTime)" format="01"/></span> (Chinese Standard Time)</div>
 			</div>
 			<div id="wrapper">
-				<div id="sidebar">
+				<div id="sidebar" style="display:none">
 					<xsl:for-each select="/api/categories/category">
 						<h2><xsl:value-of select="document('jQueryAPI.zh_CN.xml')/api/categories//category[@name=current()/@name]/@zh"/></h2>
-						<div>
+						<div style="background: white;">
 							<xsl:choose>
 								<xsl:when test="category">
 									<xsl:for-each select="category">
@@ -89,6 +89,7 @@
 						</div>
 					</xsl:for-each>
 				</div>
+				<div id="sidebar_more">M<br/>E<br/>N<br/>U</div>
 				<div id="content">
 					<xsl:for-each-group select="/api/entries/entry" group-by="@type">
 						<xsl:for-each-group select="current-group()" group-by="@name">
@@ -154,10 +155,50 @@
 						}
 					}
 				});
+
+				function sidebar_more_blink() {
+					$("#sidebar_more").animate({
+							opacity: 'toggle'
+						}, "normal", function(){
+							sidebar_more_blink();
+						});
+				}
+				sidebar_more_blink();
+				
+				$("#sidebar_more").mouseenter(
+					function () {
+						$("#sidebar_more").stop();
+						$(this).hide();
+						$("#sidebar").animate({
+							width: 'toggle',
+							opacity: 1
+						}, "fast");
+						
+						$("#content").animate({
+							marginLeft: '210px'
+						}, "fast");
+					}
+				);
+				
+				$("#sidebar").mouseleave(
+					function () {
+						$(this).animate({
+							width: 'toggle',
+							opacity: 0
+						}, "fast", function(){
+							$("#sidebar_more").show();
+							sidebar_more_blink();
+						});
+						
+						$("#content").animate({
+							marginLeft: '20px'
+						}, "fast");
+					}
+				);
+				
 				$("#sidebar h2").click(function(){
 					$(this).next("div").animate({
-						height: ['toggle', 'swing'],
-						opacity: 'toggle'
+						height: ['toggle', 'swing']
 					}, 'fast').siblings("div").slideUp('fast');
 				});
 				$("#wrapper").click(function(e){
@@ -185,6 +226,7 @@
 		<xsl:variable name="zh-entrys" select="document('jQueryAPI.zh_CN.xml')//entry[@name=current()/@name]"/>
 		<xsl:variable name="pos" select="position()"/>
 		<xsl:variable name="zh-entry" select="$zh-entrys[$pos]"/>
+		<div id='go_home' style="cursor: pointer;" onclick="location.href='index.html'"></div>
 		<div class="entry">
 			<h2>
 				<xsl:if test="@return!=''">
