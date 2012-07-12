@@ -1,18 +1,9 @@
 @charset "utf-8";
 
-/*-------------------------------------
-Base Style
-
-version:	1.0
-author:		Shawphy
-email:		shawphy@gmail.com
-website:	http://shawphy.com/
--------------------------------------*/
-
 /* =Reset
 -------------------------------------*/
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,th,td{
-    margin: 0;
+	margin: 0;
 	padding: 0;
 	outline: 0;
 	font-family:Verdana,Tahoma,Arial,sans-serif,"宋体";
@@ -27,7 +18,7 @@ strong{
 	font-weight: bold;
 }
 ul,ol,li{
-    list-style: none;
+	list-style: none;
 }
 a,a:link,a:visited{
 	color:rgb(79,129,189);
@@ -46,6 +37,24 @@ a:hover{
 
 /* =Layout
 -------------------------------------*/
+#go_home {
+	opacity: 0.5;
+	filter:Alpha(Opacity=50);
+	position: fixed;
+	_position: absolute;
+	bottom: 50px;
+	right: 100px;
+	width: 76px;
+	height: 75px;
+
+	background:url('images/go_home.png');
+	/*filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/go_home.png');*/
+}
+
+#go_home:hover {
+	background-position:0px 75px;
+}
+
 #header{
 	min-width:1120px;
 	height:40px;
@@ -60,22 +69,34 @@ a:hover{
 }
 #wrapper{
 	position:relative;
-	width:1120px;
+	/*width:1120px;*/
 	margin:0 auto;
+}
+#sidebar_more{
+	color:#4F81BD;
+	float:left;
+	width:10px;
+	height: 546px;
+	cursor: pointer;
+	background: #DBE5F1;
+	/*z-index: 99999;*/
 }
 #sidebar{
 	float:left;
-	width:239px;
+	width:200px;
 	border-right: 1px dashed #ccc;
-	padding-left: 20px;
+	/*padding-left: 10px;*/
+	/*z-index: 99999;*/
+	position:absolute;
 }
 #api #content{
 	position:absolute;
-	right:0px;
+	/*right:0px;*/
 }
 #content{
-	width:840px;
-	padding-left: 20px;
+	/*margin-left:110px;*/
+	margin-left: 20px;
+	/*z-index: -9999*/;
 }
 #split #content{
 	padding:0 10px;
