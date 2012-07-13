@@ -42,8 +42,8 @@ a:hover{
 	filter:Alpha(Opacity=50);
 	position: fixed;
 	_position: absolute;
-	bottom: 50px;
-	right: 100px;
+	bottom: 75px;
+	left: 750px;
 	width: 76px;
 	height: 75px;
 
@@ -201,6 +201,7 @@ hr{
 }
 #content .entry{
 	margin-bottom: 40px;
+	width: 730px;
 }
 #content .signatures{
 	background: rgb(238,243,249);
