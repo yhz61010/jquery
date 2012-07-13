@@ -1,7 +1,18 @@
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" id="go_home" style="cursor: pointer;" onclick="location.href='index.html'"></div>
-<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
+<div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" id="go_home" style="cursor: pointer;" onclick="location.href='index.html'"></div><script xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions">
+			(function(){
+				$("#go_home").stop();
+				function go_home_blink() {
+						$("#go_home").animate({
+								opacity: 'toggle'
+							}, 1000, function(){
+								go_home_blink();
+							});
+					}
+					go_home_blink();
+			})(jQuery);
+		</script><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2>:enabled</h2>
    <div class="desc">
       <p>选择所有可用的(未被禁用的)元素。</p>

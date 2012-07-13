@@ -14,7 +14,7 @@
             <h1>jQuery 1.7 中文文档 Translated by <a href="http://www.ho1ho.com/" target="_blank">Michael Leo</a>, Thanks <a href="http://www.cn-cuckoo.com/" target="_blank">为之漫笔</a> for original version. Welcome to visit jQuery Cheatsheet from <a href="http://oscarotero.com/jquery/" target="_blank">Oscar Otero</a>.
             </h1>
          </div>
-         <div class="headerMain">Last update: 2012-07-13<span id="current_time">11:07:50</span> (Chinese Standard Time)
+         <div class="headerMain">Last update: 2012-07-13<span id="current_time">12:06:05</span> (Chinese Standard Time)
          </div>
       </div>
       <div id="wrapper">
@@ -976,15 +976,15 @@
 				function sidebar_more_blink() {
 					$("#sidebar_more").animate({
 							opacity: 'toggle'
-						}, "normal", function(){
+						}, "slow", function(){
 							sidebar_more_blink();
 						});
 				}
 				sidebar_more_blink();
-				
+
 				$("#sidebar_more").mouseenter(
 					function () {
-						$("#sidebar_more").stop();
+						$(this).stop();
 						$(this).hide();
 						$("#sidebar").animate({
 							width: 'toggle',

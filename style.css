@@ -38,21 +38,21 @@ a:hover{
 /* =Layout
 -------------------------------------*/
 #go_home {
-	opacity: 0.5;
-	filter:Alpha(Opacity=50);
+	opacity: 0.8;
+	filter:Alpha(Opacity=80);
 	position: fixed;
 	_position: absolute;
 	bottom: 75px;
 	left: 750px;
-	width: 76px;
-	height: 75px;
+	width: 64px;
+	height: 64px;
 
 	background:url('images/go_home.png');
 	/*filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/go_home.png');*/
 }
 
 #go_home:hover {
-	background-position:0px 75px;
+	background-position:0px 0px;
 }
 
 #header{
