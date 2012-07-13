@@ -10196,20 +10196,20 @@ $("p").live({
             </argument>
          </signature>
          <longdesc>
-            <p><code>.triggerHandler()</code> method behaves similarly to <code>.trigger()</code>, with the following exceptions:</p>
+            <p><code>.triggerHandler()</code> 方法的行为与 <code>.trigger()</code> 相似，不同之处有如下几点：</p>
             <ul>
-               <li>The <code>.triggerHandler()</code> method does not cause the default behavior of an event to occur (such as a form submission).</li>
-               <li>While <code>.trigger()</code> will operate on all elements matched by the jQuery object, <code>.triggerHandler()</code> only affects the first matched element.</li>
-               <li>Events created with <code>.triggerHandler()</code> do not bubble up the DOM hierarchy; if they are not handled by the target element directly, they do nothing.</li>
-               <li>Instead of returning the jQuery object (to allow chaining), <code>.triggerHandler()</code> returns whatever value was returned by the last handler it caused to be executed. If no handlers are triggered, it returns <code>undefined</code>
+               <li><code>.triggerHandler()</code> 方法并不会触发事件的默认行为。(例如，表单提交)。</li>
+               <li><code>.trigger()</code> 会影响所有与 jQuery 对象相匹配的元素，而 <code>.triggerHandler()</code> 仅影响第一个匹配到的元素。</li>
+               <li>使用 <code>.triggerHandler()</code> 创建的事件，并不会在 DOM 树中向上冒泡。如果事件没有被目标元素直接处理，那么它就不会进行任何处理。</li>
+               <li>与普通的方法返回 jQuery 对象(这样就能够使用链式用法)相反，<code>.triggerHandler()</code> 返回最后一个处理的事件的返回值。如果没有触发任何事件，会返回 <code>undefined</code>。
                </li>
             </ul>
-            <p>For more information on this method, see the discussion for <code>
+            <p>若想了解更多关于本方法的信息，请参阅 <code>
                   <a href="trigger.htm">.trigger()</a>
-               </code>.</p>
+               </code> 方法。</p>
          </longdesc>
          <example>
-            <desc>If you called .triggerHandler() on a focus event - the browser's default focus action would not be triggered, only the event handlers bound to the focus event.</desc>
+            <desc>如果您使用 .triggerHandler() 触发 focus 事件，那么它只会触发绑定了该事件的处理函数，而浏览器的默认 focus 动作是不会被触发的。</desc>
             <code>
 
 $("#old").click(function(){
