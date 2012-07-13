@@ -159,15 +159,15 @@
 				function sidebar_more_blink() {
 					$("#sidebar_more").animate({
 							opacity: 'toggle'
-						}, "normal", function(){
+						}, "slow", function(){
 							sidebar_more_blink();
 						});
 				}
 				sidebar_more_blink();
-				
+
 				$("#sidebar_more").mouseenter(
 					function () {
-						$("#sidebar_more").stop();
+						$(this).stop();
 						$(this).hide();
 						$("#sidebar").animate({
 							width: 'toggle',
@@ -227,6 +227,19 @@
 		<xsl:variable name="pos" select="position()"/>
 		<xsl:variable name="zh-entry" select="$zh-entrys[$pos]"/>
 		<div id='go_home' style="cursor: pointer;" onclick="location.href='index.html'"></div>
+		<script>
+			(function(){
+				$("#go_home").stop();
+				function go_home_blink() {
+						$("#go_home").animate({
+								opacity: 'toggle'
+							}, 1000, function(){
+								go_home_blink();
+							});
+					}
+					go_home_blink();
+			})(jQuery);
+		</script>
 		<div class="entry">
 			<h2>
 				<xsl:if test="@return!=''">

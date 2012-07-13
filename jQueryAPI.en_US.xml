@@ -19163,7 +19163,7 @@ $("div").attr("id", function (arr) {
     <desc>Set the src attribute from title attribute on the image.</desc>
     <code><![CDATA[
 $("img").attr("src", function() { 
-    return "/images/" + this.title; 
+    return "images/" + this.title; 
 });
 ]]></code>
     <html><![CDATA[
