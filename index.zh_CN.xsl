@@ -385,7 +385,7 @@
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 <h4>演示:</h4>
-<iframe src="blank.html" width="658" height="125">
+<iframe src="blank.html" width="708" height="125">
 	<xsl:if test="height">
 		<xsl:attribute name="height">
 			<xsl:value-of select="height"/>
