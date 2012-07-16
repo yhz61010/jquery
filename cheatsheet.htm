@@ -151,8 +151,7 @@
       <li>
         <h3>插件机制</h3>
         <ul>
-          <li><a href="jQuery.fn.extend.htm">jQuery.fn.extend(object)</a></li>
-          <li><a href="jQuery.extend_object.htm">jQuery.extend(object)</a></li>
+          <li><a href="jQuery.extend.htm">jQuery.extend(object)</a></li>
         </ul>
       </li>
       <li>
@@ -244,8 +243,8 @@
         <ul>
           <li><a href="descendant-selector.htm">ancestor descendant</a></li>
           <li><a href="child-selector.htm">parent &gt;  child</a></li>
-          <li><a href="next-selector.htm">prev + next</a></li>
-          <li><a href="siblings-selector.htm">prev ~ siblings</a></li>
+          <li><a href="next-adjacent-selector.htm">prev + next</a></li>
+          <li><a href="next-siblings-selector.htm">prev ~ siblings</a></li>
         </ul>
       </li>
       <li>
@@ -285,20 +284,22 @@
         <ul>
           <li><a href="attributeHas-selector.htm">[attribute]</a></li>
           <li><a href="attributeEquals-selector.htm">[attribute=value]</a></li>
+          <li><a href="attributeContainsPrefix-selector.htm">[attribute|=value]</a></li>
           <li><a href="attributeNotEqual-selector.htm">[attribute!=value]</a></li>
+          <li><a href="attributeContainsWord-selector.htm">[attribute~=value]</a></li>
           <li><a href="attributeStartsWith-selector.htm">[attribute^=value]</a></li>
           <li><a href="attributeEndsWith-selector.htm">[attribute$=value]</a></li>
           <li><a href="attributeContains-selector.htm">[attribute*=value]</a></li>
-          <li><a href="attributeMultiple-selector.htm">[attrSel1][attrSel2][attrSelN]</a></li>
+          <li><a href="attributeMultiple-selector.htm">[attributeFilter1][attributeFilter1][attributeFilter1]</a></li>
         </ul>
       </li>
       <li>
         <h3>子元素</h3>
         <ul>
-          <li><a href="nthChild-selector.htm">:nth-child</a></li>
-          <li><a href="firstChild-selector.htm">:first-child</a></li>
-          <li><a href="lastChild-selector.htm">:last-child</a></li>
-          <li><a href="onlyChild-selector.htm">:only-child</a></li>
+          <li><a href="nth-child-selector.htm">:nth-child</a></li>
+          <li><a href="first-child-selector.htm">:first-child</a></li>
+          <li><a href="last-child-selector.htm">:last-child</a></li>
+          <li><a href="only-child-selector.htm">:only-child</a></li>
         </ul>
       </li>
       <li>
@@ -309,7 +310,7 @@
           <li><a href="password-selector.htm">:password</a></li>
           <li><a href="radio-selector.htm">:radio</a></li>
           <li><a href="checkbox-selector.htm">:checkbox</a></li>
-          <li><a href="submit-selector-selector.htm">:submit</a></li>
+          <li><a href="submit-selector.htm">:submit</a></li>
           <li><a href="image-selector.htm">:image</a></li>
           <li><a href="reset-selector.htm">:reset</a></li>
           <li><a href="button-selector.htm">:button</a></li>
@@ -547,6 +548,105 @@
   </div>
 </div>
 <div class="col">
+  <div id="event_objects">
+    <h2>事件对象</h2>
+    <ul>
+      <li>
+        <h3>事件对象</h3>
+        <ul>
+          <li><a href="event.currentTarget.htm">event.currentTarget</a></li>
+          <li><a href="event.data.htm">event.data</a></li>
+          <li><a href="event.delegateTarget.htm">event.delegateTarget</a></li>
+          <li><a href="event.isDefaultPrevented.htm">event.isDefaultPrevented()</a></li>
+          <li><a href="event.isImmediatePropagationStopped.htm">event.isImmediatePropagationStopped()</a></li>
+          <li><a href="event.isPropagationStopped.htm">event.isPropagationStopped()</a></li>
+          <li><a href="event.namespace.htm">event.namespace</a></li>
+          <li><a href="event.pageX.htm">event.pageX</a></li>
+          <li><a href="event.pageY.htm">event.pageY</a></li>
+          <li><a href="event.preventDefault.htm">event.preventDefault()</a></li>
+          <li><a href="event.relatedTarget.htm">event.relatedTarget</a></li>
+          <li><a href="event.result.htm">event.result</a></li>
+          <li><a href="event.stopImmediatePropagation.htm">event.stopImmediatePropagation()</a></li>
+          <li><a href="event.stopPropagation.htm">event.stopPropagation()</a></li>
+          <li><a href="event.target.htm">event.target</a></li>
+          <li><a href="event.timeStamp.htm">event.timeStamp</a></li>
+          <li><a href="event.type.htm">event.type</a></li>
+          <li><a href="event.which.htm">event.which</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div id="utilities">
+    <h2>工具</h2>
+    <ul>
+      <li>
+        <h3>浏览器及特性检测</h3>
+        <ul>
+          <li><a href="jQuery.support.htm">$.support</a></li>
+          <li><a href="jQuery.browser.htm">$.browser</a></li>
+          <li><a href="jQuery.browser.version.htm">$.browser.version</a></li>
+          <li><a href="jQuery.boxModel.htm">$.boxModel</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>数组和对象操作</h3>
+        <ul>
+          <li><a href="jQuery.each.htm">$.each(object,[callback])</a></li>
+          <li><a href="jQuery.extend.htm">$.extend([d],tgt,obj1,[objN])</a></li>
+          <li><a href="jQuery.grep.htm">$.grep(array,fn,[invert])</a></li>
+          <li><a href="jQuery.sub.htm">$.sub()</a></li>
+          <li><a href="jQuery.when.htm">$.when(deferreds)</a></li>
+          <li><a href="jQuery.makeArray.htm">$.makearray(obj)</a></li>
+          <li><a href="jQuery.map.htm">$.map(arr|obj,callback)</a><sup>1.6*</sup></li>
+          <li><a href="jQuery.inArray.htm">$.inArray(val,arr,[from])</a></li>
+          <li><a href="toarray.htm">$.toArray()</a></li>
+          <li><a href="jQuery.merge.htm">$.merge(first,second)</a></li>
+          <li><a href="jQuery.unique.htm">$.unique(array)</a></li>
+          <li><a href="jQuery.parseJSON.htm">$.parseJSON(json)</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>函数操作</h3>
+        <ul>
+          <li><a href="jQuery.noop.htm">$.noop</a> </li>
+          <li><a href="jQuery.proxy.htm">$.proxy(function,context)</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>测试操作</h3>
+        <ul>
+          <li><a href="jQuery.contains.htm">$.contains(container,contained)</a></li>
+          <li><a href="jQuery.type.htm">$.type(obj)</a></li>
+          <li><a href="jQuery.isArray.htm">$.isArray(obj)</a></li>
+          <li><a href="jQuery.isFunction.htm">$.isFunction(obj)</a></li>
+          <li><a href="jQuery.isEmptyObject.htm">$.isEmptyObject(obj)</a></li>
+          <li><a href="jQuery.isPlainObject.htm">$.isPlainObject(obj)</a></li>
+          <li><a href="jQuery.isWindow.htm">$.isWindow(obj)</a></li>
+          <li><a href="jQuery.isNumeric.htm">$.isNumeric(value)</a><sup>1.7+</sup></li>
+        </ul>
+      </li>
+      <li>
+        <h3>字符串操作</h3>
+        <ul>
+          <li><a href="jQuery.trim.htm">$.trim(str)</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>URL</h3>
+        <ul>
+          <li><a href="jQuery.param.htm">$.param(obj,[traditional])</a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>插件编写</h3>
+        <ul>
+          <li><a href="jQuery.error.htm">$.error(message)</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="col">
   <div id="ajax">
     <h2>Ajax</h2>
     <ul>
@@ -582,77 +682,6 @@
       </li>
     </ul>
   </div>
-  <div id="utilities">
-    <h2>工具</h2>
-    <ul>
-      <li>
-        <h3>浏览器及特性检测</h3>
-        <ul>
-          <li><a href="jQuery.support.htm">$.support</a></li>
-          <li><a href="jQuery.browser.htm">$.browser</a></li>
-          <li><a href="jQuery.browser.version.htm">$.browser.version</a></li>
-          <li><a href="jQuery.boxModel.htm">$.boxModel</a></li>
-        </ul>
-      </li>
-      <li>
-        <h3>数组和对象操作</h3>
-        <ul>
-          <li><a href="jQuery.each.htm">$.each(object,[callback])</a></li>
-          <li><a href="jQuery.extend.htm">$.extend([d],tgt,obj1,[objN])</a></li>
-          <li><a href="jQuery.grep.htm">$.grep(array,fn,[invert])</a></li>
-          <li><a href="jQuery.sub.htm">$.sub()</a></li>
-          <li><a href="jQuery.when.htm">$.when(deferreds)</a></li>
-          <li><a href="jQuery.makeArray.htm">$.makearray(obj)</a></li>
-          <li><a href="jQuery.map.htm">$.map(arr|obj,callback)</a><sup>1.6*</sup></li>
-          <li><a href="jQuery.inArray.htm">$.inarray(val,arr,[from])</a></li>
-          <li><a href="jQuery.toarray.htm">$.toarray()</a></li>
-          <li><a href="jQuery.merge.htm">$.merge(first,second)</a></li>
-          <li><a href="jQuery.unique.htm">$.unique(array)</a></li>
-          <li><a href="jQuery.parseJSON.htm">$.parseJSON(json)</a></li>
-        </ul>
-      </li>
-      <li>
-        <h3>函数操作</h3>
-        <ul>
-          <li><a href="jQuery.noop.htm">$.noop</a> </li>
-          <li><a href="jQuery.proxy.htm">$.proxy(function,context)</a></li>
-        </ul>
-      </li>
-      <li>
-        <h3>测试操作</h3>
-        <ul>
-          <li><a href="jQuery.contains.htm">$.contains(container,contained)</a></li>
-          <li><a href="jQuery.type.htm">$.type(obj)</a></li>
-          <li><a href="jQuery.isArray.htm">$.isarray(obj)</a></li>
-          <li><a href="jQuery.isFunction.htm">$.isFunction(obj)</a></li>
-          <li><a href="jQuery.isEmptyObject.htm">$.isEmptyObject(obj)</a></li>
-          <li><a href="jQuery.isPlainObject.htm">$.isPlainObject(obj)</a></li>
-          <li><a href="jQuery.isWindow.htm">$.isWindow(obj)</a></li>
-          <li><a href="jQuery.isNumeric.htm">$.isNumeric(value)</a><sup>1.7+</sup></li>
-        </ul>
-      </li>
-      <li>
-        <h3>字符串操作</h3>
-        <ul>
-          <li><a href="jQuery.trim.htm">$.trim(str)</a></li>
-        </ul>
-      </li>
-      <li>
-        <h3>URL</h3>
-        <ul>
-          <li><a href="jQuery.param.htm">$.param(obj,[traditional])</a></li>
-        </ul>
-      </li>
-      <li>
-        <h3>插件编写</h3>
-        <ul>
-          <li><a href="jQuery.error.htm">$.error(message)</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</div>
-<div class="col">
   <div id="Deferred">
     <h2>延迟对象</h2>
     <ul>
