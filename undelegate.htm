@@ -15,7 +15,7 @@
 		</script><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>undelegate()<br></h2>
    <div class="desc">
-      <p>Remove a handler from the event for all elements which match the current selector, based upon a specific set of root elements.</p>
+      <p>移除所有匹配元素上的事件，基于一个指定的根元素的子集。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.4.2 新增</span>undelegate()
@@ -28,7 +28,7 @@
             </h4>
             <div class="arguement"><strong>selector</strong>
                								(String)
-               								A selector which will be used to filter the event results.
+               								用于过滤事件结果的选择器。
             </div>
             <div class="arguement"><strong>eventType</strong>
                								(String)
@@ -41,7 +41,7 @@
             </h4>
             <div class="arguement"><strong>selector</strong>
                								(String)
-               								A selector which will be used to filter the event results.
+               								用于过滤事件结果的选择器。
             </div>
             <div class="arguement"><strong>eventType</strong>
                								(String)
@@ -58,11 +58,11 @@
             </h4>
             <div class="arguement"><strong>selector</strong>
                								(String)
-               								A selector which will be used to filter the event results.
+               								用于过滤事件结果的选择器。
             </div>
             <div class="arguement"><strong>events</strong>
                								(Map)
-               								A map of one or more event types and previously bound functions to unbind from them.
+               								由一个或多个事件类型及其所绑定的事件组成的用于解除绑定事件用的映射。
             </div>
          </li>
          <li>
@@ -71,26 +71,25 @@
             </h4>
             <div class="arguement"><strong>namespace</strong>
                								(String)
-               								A string containing a namespace to unbind all events from.
+               								命名空间字符串，用于解除该命名空间下绑定的所有事件。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p><code>.undelegate()</code> method is a way of removing event handlers that have been bound using <code><a href="delegate.htm">
-                  .delegate()</a></code>
-            . <strong>As of jQuery 1.7</strong>, the <code><a href="on.htm">
+         <p><code>.undelegate()</code> 方法用于解除通过 <code><a href="delegate.htm">
+                  .delegate()</a></code> 绑定的事件。
+            <strong>从 jQuery 1.7 开始</strong>，在元素上进行事件绑定和解除绑定的首选方法是 <code><a href="on.htm">
                   .on()</a></code>
-            and <code><a href="off.htm">
-                  .off()</a></code>
-            methods are preferred for attaching and removing event handlers.
+            和 <code><a href="off.htm">
+                  .off()</a></code>。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Can bind and unbind events to the colored button.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>为带颜色的按钮绑定和解除事件绑定。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -125,11 +124,11 @@ $("#unbind").click(function () {
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="708" height="125"></iframe><h3>示例:</h3>
-      <p>To unbind all delegated events from all paragraphs, write:</p>
+      <p>可以像下面这样，解除绑定在段落上的所有事件：</p>
       <h5>jQuery 代码:</h5><pre><code>$("p").undelegate()</code></pre><h3>示例:</h3>
-      <p>To unbind all delegated click events from all paragraphs, write:</p>
+      <p>可以像下面这样，解除绑定在段落上的 click 事件：</p>
       <h5>jQuery 代码:</h5><pre><code>$("p").undelegate( "click" )</code></pre><h3>示例:</h3>
-      <p>To undelegate just one previously bound handler, pass the function in as the third argument:</p>
+      <p>通过传入的第三个参数，仅解除绑定先前绑定的事件：</p>
       <h5>jQuery 代码:</h5><pre><code>var foo = function () {
   // code to handle some kind of event
 };
@@ -140,7 +139,7 @@ $("body").delegate("p", "click", foo);
 
 // ... foo will no longer be called.
 $("body").undelegate("p", "click", foo); </code></pre><h3>示例:</h3>
-      <p>To unbind all delegated events by their namespace:</p>
+      <p>通过命名空间解除所有绑定的事件：</p>
       <h5>jQuery 代码:</h5><pre><code>var foo = function () {
   // code to handle some kind of event
 };
