@@ -2929,14 +2929,14 @@ $("button").click(function(event) {
          <category name="Version 1.4.3"/>
       </entry>
       <entry type="method" name="undelegate" return="jQuery">
-         <desc>Remove a handler from the event for all elements which match the current selector, based upon a specific set of root elements.</desc>
+         <desc>移除所有匹配元素上的事件，基于一个指定的根元素的子集。</desc>
          <signature>
             <added>1.4.2</added>
          </signature>
          <signature>
             <added>1.4.2</added>
             <argument name="selector" type="String">
-               <desc>A selector which will be used to filter the event results.</desc>
+               <desc>用于过滤事件结果的选择器。</desc>
             </argument>
             <argument name="eventType" type="String">
                <desc>包含 JavaScript 事件类型的字符串。例如 "click" 或 "keydown"。</desc>
@@ -2945,7 +2945,7 @@ $("button").click(function(event) {
          <signature>
             <added>1.4.2</added>
             <argument name="selector" type="String">
-               <desc>A selector which will be used to filter the event results.</desc>
+               <desc>用于过滤事件结果的选择器。</desc>
             </argument>
             <argument name="eventType" type="String">
                <desc>包含 JavaScript 事件类型的字符串。例如 "click" 或 "keydown"。</desc>
@@ -2957,29 +2957,28 @@ $("button").click(function(event) {
          <signature>
             <added>1.4.3</added>
             <argument name="selector" type="String">
-               <desc>A selector which will be used to filter the event results.</desc>
+               <desc>用于过滤事件结果的选择器。</desc>
             </argument>
             <argument name="events" type="Map">
-               <desc>A map of one or more event types and previously bound functions to unbind from them.</desc>
+               <desc>由一个或多个事件类型及其所绑定的事件组成的用于解除绑定事件用的映射。</desc>
             </argument>
          </signature>
          <signature>
             <added>1.6</added>
             <argument name="namespace" type="String">
-               <desc>A string containing a namespace to unbind all events from.</desc>
+               <desc>命名空间字符串，用于解除该命名空间下绑定的所有事件。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p><code>.undelegate()</code> method is a way of removing event handlers that have been bound using <code><a href="delegate.htm">
-                  .delegate()</a></code>
-               . <strong>As of jQuery 1.7</strong>, the <code><a href="on.htm">
+            <p><code>.undelegate()</code> 方法用于解除通过 <code><a href="delegate.htm">
+                  .delegate()</a></code> 绑定的事件。
+                <strong>从 jQuery 1.7 开始</strong>，在元素上进行事件绑定和解除绑定的首选方法是 <code><a href="on.htm">
                   .on()</a></code>
-                and <code><a href="off.htm">
-                  .off()</a></code>
-                methods are preferred for attaching and removing event handlers.</p>
+                和 <code><a href="off.htm">
+                  .off()</a></code>。</p>
          </longdesc>
          <example>
-            <desc>Can bind and unbind events to the colored button.</desc>
+            <desc>为带颜色的按钮绑定和解除事件绑定。</desc>
             <code>
 function aClick() {
   $("div").show().fadeOut("slow");
@@ -3003,15 +3002,15 @@ button#theone { color:red; background:yellow; }
 &lt;div style="display:none;"&gt;Click!&lt;/div&gt;</html>
          </example>
          <example>
-            <desc>To unbind all delegated events from all paragraphs, write:</desc>
+            <desc>可以像下面这样，解除绑定在段落上的所有事件：</desc>
             <code>$("p").undelegate()</code>
          </example>
          <example>
-            <desc>To unbind all delegated click events from all paragraphs, write:</desc>
+            <desc>可以像下面这样，解除绑定在段落上的 click 事件：</desc>
             <code>$("p").undelegate( "click" )</code>
          </example>
          <example>
-            <desc>To undelegate just one previously bound handler, pass the function in as the third argument:</desc>
+            <desc>通过传入的第三个参数，仅解除绑定先前绑定的事件：</desc>
             <code>var foo = function () {
   // code to handle some kind of event
 };
@@ -3024,7 +3023,7 @@ $("body").delegate("p", "click", foo);
 $("body").undelegate("p", "click", foo); </code>
          </example>
          <example>
-            <desc>To unbind all delegated events by their namespace:</desc>
+            <desc>通过命名空间解除所有绑定的事件：</desc>
             <code>var foo = function () {
   // code to handle some kind of event
 };
@@ -3044,7 +3043,7 @@ $("form").undelegate(".whatever");</code>
          <category name="Version 1.6"/>
       </entry>
       <entry type="method" name="delegate" return="jQuery">
-         <desc>为所有与选择器匹配的元素的一个或多个事件添加事件处理。基于根元素的一个特定子集，匹配的元素包括那些目前已经匹配到的元素，也包括那些今后可能匹配到的元素。</desc>
+         <desc>为所有与选择器匹配的元素的一个或多个事件添加事件处理。基于一个指定的根元素的子集，匹配的元素包括那些目前已经匹配到的元素，也包括那些今后可能匹配到的元素。</desc>
          <signature>
             <added>1.4.2</added>
             <argument name="selector" type="String">
@@ -10951,14 +10950,14 @@ alert( $(this).text() );
          <category name="Version 1.0"/>
       </entry>
       <entry type="method" name="unbind" return="jQuery">
-         <desc>Remove a previously-attached event handler from the elements.</desc>
+         <desc>从元素上移除先前绑定的事件。</desc>
          <signature>
             <added>1.0</added>
             <argument name="eventType" type="String" optional="true">
                <desc>包含 JavaScript 事件类型的字符串。例如 <code>click</code> 或 <code>submit</code>。</desc>
             </argument>
             <argument name="handler(eventObject)" type="Function" optional="true">
-               <desc>The function that is to be no longer executed.</desc>
+               <desc>不再需要执行的函数。</desc>
             </argument>
          </signature>
          <signature>
@@ -10967,32 +10966,32 @@ alert( $(this).text() );
                <desc>包含 JavaScript 事件类型的字符串。例如 <code>click</code> 或 <code>submit</code>。</desc>
             </argument>
             <argument name="false" type="Boolean">
-               <desc>Unbinds the corresponding 'return false' function that was bound using <code>.bind( eventType, false )</code>.</desc>
+               <desc>解除通过 <code>.bind( eventType, false )</code> 绑定的对应的 'return false' 函数。</desc>
             </argument>
          </signature>
          <signature>
             <added>1.0</added>
             <argument name="event" type="Object">
-               <desc>A JavaScript event object as passed to an event handler.</desc>
+               <desc>传入事件处理中的 JavaScript 事件对象。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p>Event handlers attached with <code>.bind()</code> can be removed with <code>.unbind()</code>. (As of jQuery 1.7, the <code><a href="on.htm">
+            <p>通过 <code>.bind()</code> 绑定的事件处理函数，可以通过 <code>.unbind()</code> 方法移除。(从 jQuery 1.7 开始，在元素上进行事件绑定和解除绑定的首选方法是 <code><a href="on.htm">
                   .on()</a></code>
-                and <code><a href="off.htm">
+                和 <code><a href="off.htm">
                   .off()</a></code>
-                methods are preferred to attach and remove event handlers on elements.) In the simplest case, with no arguments, <code>.unbind()</code> removes all handlers attached to the elements:</p>
+                ) 该方法最简单的使用方法是，不传入任何参数，<code>.unbind()</code> 会移除元素上所有绑定的事件：</p>
             <pre>$('#foo').unbind();</pre>
-            <p>This version removes the handlers regardless of type. To be more precise, we can pass an event type:</p>
+            <p>上述方法会移除所有类型的事件处理。若要准确移除某种特定类型的事件处理，可以传入一个事件类型：</p>
             <pre>$('#foo').unbind('click');</pre>
-            <p>By specifying the <code>click</code> event type, only handlers for that event type will be unbound. This approach can still have negative ramifications if other scripts might be attaching behaviors to the same element, however. Robust and extensible applications typically demand the two-argument version for this reason:</p>
+            <p>若指定的是 <code>click</code> 事件类型，那么仅会解除绑定该类型的事件处理。但是这么做也有负面影响，这是因为有可能在代码的其它地方在相同的元素上绑定了相同的事件处理。为了避免该问题，对于一个健壮性和扩展性强的应用而言，通过在使用该方法时，会传入两个参数：</p>
             <pre>var handler = function() {
   alert('The quick brown fox jumps over the lazy dog.');
 };
 $('#foo').bind('click', handler);
 $('#foo').unbind('click', handler);
 </pre>
-            <p>By naming the handler, we can be assured that no other functions are accidentally removed. Note that the following will <em>not</em> work:</p>
+            <p>通过传入 handler 参数，我们可以确保不会意外的移除其它的函数。但是需要注意的是，如下用法是<em>无法</em>正常工作的：</p>
             <pre>$('#foo').bind('click', function() {
   alert('The quick brown fox jumps over the lazy dog.');
 });
@@ -11001,23 +11000,23 @@ $('#foo').unbind('click', handler);
 $('#foo').unbind('click', function() {
   alert('The quick brown fox jumps over the lazy dog.');
 });</pre>
-            <p>Even though the two functions are identical in content, they are created separately and so JavaScript is free to keep them as distinct function objects. To unbind a particular handler, we need a reference to that function and not a different one that happens to do the same thing.</p>
+            <p>尽管上述代码中，两个匿名函数的内容是一样的，但是它们是在不同的地方被创建的，因此 JavaScript 会将它们当成是不同的函数对象。若要解除绑定特定的事件处理函数，我们需要的是指向该函数的引用，而不是内容相同的不同函数。</p>
             <blockquote>
                <p>
-                  <strong>注意:</strong> Using a proxied function to unbind an event on an element will unbind all proxied functions on that element, as the same proxy function is used for all proxied events. To allow unbinding a specific event, use unique class names on the event (e.g. <code>click.proxy1</code>, <code>click.proxy2</code>) when attaching them.</p>
+                  <strong>注意:</strong> 使用代理函数解绑元素上的事件并不会解绑该元素上所有的代理函数，因为相同的代理函数是作用于所有被代理的事件。可以使用事件上唯一的类名来解除绑定特定的事件(例如，<code>click.proxy1</code>, <code>click.proxy2</code>)。</p>
             </blockquote>
-            <h4>Using Namespaces</h4>
-            <p>Instead of maintaining references to handlers in order to unbind them, we can namespace the events and use this capability to narrow the scope of our unbinding actions. As shown in the discussion for the <code>.bind()</code> method, namespaces are defined by using a period (<code>.</code>) character when binding a handler:</p>
+            <h4>使用命名空间</h4>
+            <p>与为了解除事件绑定，而维护事件处理方法的引用不同，我们可以为事件命令，并且使用它来缩小解除动作的范围。正如在 <code>.bind()</code> 方法中讨论过的那样，绑定事件处理的命名空间是使用句点(<code>.</code>)符号来定义的：</p>
             <pre>$('#foo').bind('click.myEvents', handler);</pre>
-            <p>When a handler is bound in this fashion, we can still unbind it the normal way:</p>
+            <p>当以这种方式绑定事件时，我们依然可以使用普通的方式来解除绑定：</p>
             <pre>$('#foo').unbind('click');</pre>
-            <p>However, if we want to avoid affecting other handlers, we can be more specific:</p>
+            <p>但如果您希望在解除绑定时避免影响其它的事件处理，我们可以指定更加详细的信息：</p>
             <pre>$('#foo').unbind('click.myEvents');</pre>
-            <p>We can also unbind all of the handlers in a namespace, regardless of event type:</p>
+            <p>我们同样可以解除绑定同一命令空间下所有的事件处理，而不管它的事件类型是什么：</p>
             <pre>$('#foo').unbind('.myEvents');</pre>
-            <p>It is particularly useful to attach namespaces to event bindings when we are developing plug-ins or otherwise writing code that may interact with other event-handling code in the future.</p>
-            <h4>Using the Event Object</h4>
-            <p>The third form of the <code>.unbind()</code> method is used when we wish to unbind a handler from within itself. For example, suppose we wish to trigger an event handler only three times:</p>
+            <p>当进行插件开发或今后的代码可能与其它事件处理相交互时，使用命名空间来进行事件绑定就是很好的做法。</p>
+            <h4>使用 Event 对象</h4>
+            <p><code>.unbind(event)</code> 这种用法适用于移除自身所绑定的事件。例如，假设我们希望仅触发一个事件处理函数三次：</p>
             <pre>var timesClicked = 0;
 $('#foo').bind('click', function(event) {
   alert('The quick brown fox jumps over the lazy dog.');
@@ -11027,11 +11026,11 @@ $('#foo').bind('click', function(event) {
   }
 });
 </pre>
-            <p>The handler in this case must take a parameter, so that we can capture the event object and use it to unbind the handler after the third click. The event object contains the context necessary for <code>.unbind()</code> to know which handler to remove.
-This example is also an illustration of a closure. Since the handler refers to the <code>timesClicked</code> variable, which is defined outside the function, incrementing the variable has an effect even between invocations of the handler.</p>
+            <p>这种情况下，事件处理函数必须带有一个参数，这样我们就可以捕获 event 对象，并且使用它在第三点击时，移除该事件处理。event 对象包含 <code>.unbind()</code> 所需的必要上下文信息，来确定需要移除的事件处理函数。
+该例子同时也演示了闭包的用法。由于在事件处理中，引用了在函数外定义的 <code>timesClicked</code> 外部变量，因此在事件处理被调用时，该变量会持续递增。</p>
          </longdesc>
          <example>
-            <desc>Can bind and unbind events to the colored button.</desc>
+            <desc>为带颜色的按钮绑定和解除事件绑定。</desc>
             <code>
 
 function aClick() {
@@ -11059,15 +11058,15 @@ button#theone { color:red; background:yellow; }
 &lt;div style="display:none;"&gt;Click!&lt;/div&gt;</html>
          </example>
          <example>
-            <desc>To unbind all events from all paragraphs, write:</desc>
+            <desc>可以像下面这样，解除绑定在段落上的所有事件：</desc>
             <code>$("p").unbind()</code>
          </example>
          <example>
-            <desc>To unbind all click events from all paragraphs, write:</desc>
+            <desc>可以像下面这样，解除绑定在段落上的 click 事件：</desc>
             <code>$("p").unbind( "click" )</code>
          </example>
          <example>
-            <desc>To unbind just one previously bound handler, pass the function in as the second argument:</desc>
+            <desc>通过传入的第二个参数，仅解除绑定先前绑定的事件：</desc>
             <code>var foo = function () {
 // code to handle some kind of event
 };
@@ -11115,7 +11114,7 @@ $("p").unbind("click", foo); // ... foo will no longer be called.</code>
          <longdesc>
             <p>从 jQuery 1.7 开始，<code><a href="on.htm">
                   .on()</a></code>
-                方法是为文档添加事件的首先方法。在早先的版本中，<code>.bind()</code> 方法用作直接为元素添加事件。事件处理被添加到 jQuery 对象中当前被选中的元素上，这也要求在进行 <code>.bind()</code> 时，这些元素<em>必须存在</em>。了解更多灵活的事件绑定，请参阅事件代理 <code><a href="on.htm">
+                方法是为文档添加事件的首选方法。在早先的版本中，<code>.bind()</code> 方法用作直接为元素添加事件。事件处理被添加到 jQuery 对象中当前被选中的元素上，这也要求在进行 <code>.bind()</code> 时，这些元素<em>必须存在</em>。了解更多灵活的事件绑定，请参阅事件代理 <code><a href="on.htm">
                   .on()</a></code>
                 或 <code><a href="delegate.htm">
                   .delegate()</a></code> 中的讨论
