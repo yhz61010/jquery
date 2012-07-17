@@ -180,7 +180,11 @@
 					}
 				);
 				
-				$("#sidebar").mouseleave(
+				$("#sidebar").hover(
+					function () {
+						$("#sidebar_more").stop();
+						$("#sidebar_more").hide();
+					},
 					function () {
 						$(this).animate({
 							width: 'toggle',
@@ -231,13 +235,13 @@
 			(function(){
 				$("#go_home").stop();
 				function go_home_blink() {
-						$("#go_home").animate({
-								opacity: 'toggle'
-							}, 1000, function(){
-								go_home_blink();
-							});
-					}
-					go_home_blink();
+					$("#go_home").animate({
+							opacity: 'toggle'
+						}, 1000, function(){
+							go_home_blink();
+						});
+				}
+				go_home_blink();
 			})(jQuery);
 		</script>
 		<div class="entry">
