@@ -15,7 +15,7 @@
 		</script><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:boolean</span>jQuery.isFunction(obj)<br></h2>
    <div class="desc">
-      <p>Determine if the argument passed is a Javascript function object. </p>
+      <p>判断传入的参数是否为 Javascript 函数对象。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.2 新增</span>jQuery.isFunction(obj)
@@ -23,21 +23,21 @@
             </h4>
             <div class="arguement"><strong>obj</strong>
                								(Object)
-               								Object to test whether or not it is a function.
+               								将要被检查的对象。用于判断该对象是否为函数。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
          <p>
-            <strong>注意:</strong> As of jQuery 1.3, functions provided by the browser like <code>alert()</code> and DOM element methods like <code>getAttribute()</code> are not guaranteed to be detected as functions in browsers such as Internet Explorer.
+            <strong>注意:</strong> 从 jQuery 1.3 开始，在某些浏览器，例如在 Internet Explorer 中，检测浏览器所提供的函数，例如 <code>alert()</code> 和 DOM 元素方法，例如 <code>getAttribute()</code> 等，则不能保证在检测这些方法时，会被检测成函数。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Test a few parameter examples.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>测试一些参数是否为函数的例子。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -80,6 +80,6 @@
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="708" height="125"></iframe><h3>示例:</h3>
-      <p>Finds out if the parameter is a function.</p>
+      <p>判断传入的参数是否为函数。</p>
       <h5>jQuery 代码:</h5><pre><code>$.isFunction(function(){});</code></pre><h5>结果:</h5><pre><code>true</code></pre></div>
 </div>

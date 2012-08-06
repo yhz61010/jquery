@@ -15,7 +15,7 @@
 		</script><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Number</span>jQuery.inArray(value, array, <em class="optional">[fromIndex]</em>)<br></h2>
    <div class="desc">
-      <p>Search for a specified value within an array and return its index (or -1 if not found).</p>
+      <p>在数组中查找指定的值，返回该值的索引值(若没有找到该值，则返回 -1)。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.2 新增</span>jQuery.inArray(value, array, <em class="optional">[fromIndex]</em>)
@@ -23,33 +23,32 @@
             </h4>
             <div class="arguement"><strong>value</strong>
                								(Any)
-               								The value to search for.
+               								将要查找的值。
             </div>
             <div class="arguement"><strong>array</strong>
                								(Array)
-               								An array through which to search.
+               								将会在该数组中进行值查找。
             </div>
             <div class="arguement"><strong>fromIndex</strong>
                								(Number)
-               								 可选参数，The index of the array at which to begin the search. The default is 0, which will search the whole array.
+               								 可选参数，将要查找的起始索引值。默认值是 0，代表在整个数组中进行查找。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p><code>$.inArray()</code> method is similar to JavaScript's native <code>.indexOf()</code> method in that it returns -1 when it doesn't find a match. If the first element within the array matches <code>value</code>, <code>$.inArray()</code> returns 0.
+         <p><code>$.inArray()</code> 方法和 JavaScript 的原生方法 <code>.indexOf()</code> 很类似，当没有查找到指定的值时，都返回 -1。如果数组中第一个元素就是要查找的<code>值</code>，则 <code>$.inArray()</code> 返回 0。
          </p> 
          
          
-         <p>Because JavaScript treats 0 as loosely equal to false (i.e. 0 == false, but 0 !== false), if we're checking for the presence
-            of <code>value</code> within <code>array</code>, we need to check if it's not equal to (or greater than) -1.
+         <p>由于 JavaScript 同样将 0 看成是 false(例如，0 == false，但是 0 !== false)，所以如果我们要检查某个<code>值</code>是否存在于某个<code>数组中</code>，我们需要检查该方法的返回值是否不等于 -1（或者是大于 -1）。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Report the index of some elements in the array.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>返回数组中指定元素的索引值。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;

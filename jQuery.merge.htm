@@ -15,7 +15,7 @@
 		</script><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Array</span>jQuery.merge(first, second)<br></h2>
    <div class="desc">
-      <p>Merge the contents of two arrays together into the first array. </p>
+      <p>将两个数组的内容合并到第一个数组中。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>jQuery.merge(first, second)
@@ -23,37 +23,36 @@
             </h4>
             <div class="arguement"><strong>first</strong>
                								(Array)
-               								The first array to merge, the elements of second added.
+               								第一个用于合并的数组，其中将会包含合并后的第二个数组的内容。
             </div>
             <div class="arguement"><strong>second</strong>
                								(Array)
-               								The second array to merge into the first, unaltered.
+               								第二个用于合并的数组，该数组不会被修改，其中的内容将会被合并到第一个数组中。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p><code>$.merge()</code> operation forms an array that contains all elements from the two arrays. The orders of items in the arrays are preserved,
-            with items from the second array appended. The <code>$.merge()</code> function is destructive. It alters the first parameter to add the items from the second.  
+         <p><code>$.merge()</code> 操作会形成一个数组，包括两个数组的全部元素。追加到第一个数组中的第二个数组元素的顺序会被保留。<code>$.merge()</code> 函数是一种破坏型的函数，它会修改第一个数组的内容，并将第二个数组的内容添加到第一个数组中。
          </p>
          
-         <p>If you need the original first array, make a copy of it before calling <code>$.merge()</code>. Fortunately, <code>$.merge()</code> itself can be used for this duplication:
+         <p>如果你需要保留第一个数组的原始内容，请在调用 <code>$.merge()</code> 之前，对第一个数组进行拷贝。幸运的是，<code>$.merge()</code> 方法本身就可以完成这种拷贝操作：
          </p>
          <pre>var newArray = $.merge([], oldArray);</pre>
-         <p>This shortcut creates a new, empty array and merges the contents of oldArray into it, effectively cloning the array.</p>
+         <p>这种快捷方式创建了一个新的，空的数组，并将 oldArray 数组的内容插入到新的数组中，从而有效的对数组进行了克隆。</p>
          
-         <p>Prior to jQuery 1.4, the arguments should be true Javascript Array objects; use <code>$.makeArray</code> if they are not.
+         <p>在 jQuery 1.4 之前，该方法的参数应该是真正的 Javascript 数组对象。使用 <code>$.makeArray</code> 来判断它们是否为真正的 Javascript 数组。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Merges two arrays, altering the first argument.</p>
+      <p>合并两个数组，修改第一个参数的内容。</p>
       <h5>jQuery 代码:</h5><pre><code>$.merge( [0,1,2], [2,3,4] )</code></pre><h5>结果:</h5><pre><code>[0,1,2,2,3,4] </code></pre><h3>示例:</h3>
-      <p>Merges two arrays, altering the first argument.</p>
+      <p>合并两个数组，修改第一个参数的内容。</p>
       <h5>jQuery 代码:</h5><pre><code>$.merge( [3,2,1], [4,3,2] )  </code></pre><h5>结果:</h5><pre><code>[3,2,1,4,3,2] </code></pre><h3>示例:</h3>
-      <p>Merges two arrays, but uses a copy, so the original isn't altered.</p>
+      <p>合并两个数组，但是对第一个参数进行拷贝，这样就可以保证原始的内容不被修改。</p>
       <h5>jQuery 代码:</h5><pre><code>var first = ['a','b','c'];
 var second = ['d','e','f'];
 $.merge( $.merge([],first), second);

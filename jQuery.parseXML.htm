@@ -15,7 +15,7 @@
 		</script><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:XMLDocument</span>jQuery.parseXML(data)<br></h2>
    <div class="desc">
-      <p>Parses a string into an XML document.</p>
+      <p>将一个字符串解析成一个 XML 文档。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.5 新增</span>jQuery.parseXML(data)
@@ -23,21 +23,21 @@
             </h4>
             <div class="arguement"><strong>data</strong>
                								(String)
-               								a well-formed XML string to be parsed
+               								用于将要被解析的一个格式正确的 XML 字符串。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
          <p>
-            <code>jQuery.parseXML</code> uses the native parsing function of the browser to create a valid XML Document. This document can then be passed to <code>jQuery</code> to create a typical jQuery object that can be traversed and manipulated.
+            <code>jQuery.parseXML</code> 使用浏览器原生的解析函数来创建一个有效的 XML 文档。该文档可以再被传入 <code>jQuery</code> 中用于创建一个类型的 jQuery 对象，可以使用 jQuery 的遍历和操作方法。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Create a jQuery object using an XML string and obtain the value of the title node.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>使用一个 XML 字符串创建一个 jQuery 对象，并且获取 title 节点的值。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;script src="jquery.min.js"&gt;&lt;/script&gt;

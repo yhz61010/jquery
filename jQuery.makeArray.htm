@@ -15,7 +15,7 @@
 		</script><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Array</span>jQuery.makeArray(obj)<br></h2>
    <div class="desc">
-      <p>Convert an array-like object into a true JavaScript array.</p>
+      <p>将一个像数组的对象，转换成一个真正的 JavaScript 数组。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.2 新增</span>jQuery.makeArray(obj)
@@ -23,27 +23,23 @@
             </h4>
             <div class="arguement"><strong>obj</strong>
                								(Object)
-               								Any object to turn into a native Array.
+               								任何将要被转换成原生数组的对象。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p>Many methods, both in jQuery and in JavaScript in general, return objects that are array-like. For example, the jQuery factory
-            function <code>$()</code> returns a jQuery object that has many of the properties of an array (a length, the <code>[]</code> array access operator, etc.), but is not exactly the same as an array and lacks some of an array's built-in methods (such
-            as <code>.pop()</code> 和 <code>.reverse()</code>).
+         <p>一般来说，jQuery 和 JavaScript 的很多方法会返回像数组的对象。例如，jQuery 的工厂函数 <code>$()</code> 返回一个 jQuery 对象，该对象有很多数组的属性(例如，取得数组 <code>[]</code> 长度的操作符 length 等)，但是它和真正的数组不完全一样，并且缺少一些数组内建的方法(例如， <code>.pop()</code> 和 <code>.reverse()</code>)。
          </p>
          
          
-         <p>Note that after the conversion, any special features the object had (such as the jQuery methods in our example) will no longer
-            be present. The object is now a plain array.
-         </p>
+         <p>注意，在转换之后，元素任何特殊的功能都将不复存在(例如，在例子中提到的 jQuery 方法)。因为转换后的对象已经是一个纯的数组。</p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Turn a collection of HTMLElements into an Array of them.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>将一个 HTMLElements 集合转换成对应的数组。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -71,7 +67,7 @@
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="708" height="125"></iframe><h3>示例:</h3>
-      <p>Turn a jQuery object into an array</p>
+      <p>将一个 jQuery 对象转换成一个数组。</p>
       <h5>jQuery 代码:</h5><pre><code>
     var obj = $('li');
     var arr = $.makeArray(obj);
