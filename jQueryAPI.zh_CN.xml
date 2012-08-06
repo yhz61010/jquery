@@ -1216,18 +1216,18 @@ span { color:blue; }
          <category name="Version 1.7"/>
       </entry>
       <entry type="method" name="jQuery.isNumeric" return="Boolean">
-         <desc>Determines whether its argument is a number.</desc>
+         <desc>判断传入的参数是否为数字。</desc>
          <signature>
             <added>1.7</added>
             <argument name="value" type="Object">
-               <desc>The value to be tested.</desc>
+               <desc>将要被检查的值。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p><code>$.isNumeric()</code> method checks whether its argument represents a numeric value. If so, it returns <code>true</code>. Otherwise it returns <code>false</code>. The argument can be of any type.</p>
+            <p><code>$.isNumeric()</code> 方法会检查传入的参数是否为数字。如果是，则返回 <code>true</code>。否则返回 <code>false</code>。传入的参数可以是任何类型。</p>
          </longdesc>
          <example>
-            <desc>Sample return values of $.isNumeric with various inputs.</desc>
+            <desc>以下是使用 $.isNumeric 检测各种输入类型的例子。</desc>
     <code><![CDATA[
 $.isNumeric("-10");  // true
 $.isNumeric(16);     // true
@@ -1891,12 +1891,12 @@ $p.append(jQuery.hasData(p)+" "); /* false */
          <category name="Version 1.5"/>
       </entry>
       <entry type="method" name="jQuery.now" return="Number">
-         <desc>Return a number representing the current time.</desc>
+         <desc>返回一个代表当前时间的数字。</desc>
          <signature>
             <added>1.4.3</added>
          </signature>
          <longdesc>
-            <p><code>$.now()</code> method is a shorthand for the number returned by the expression <code>(new Date).getTime()</code>.</p>
+            <p><code>$.now()</code> 方法是 <code>(new Date).getTime()</code> 的简便写法。</p>
          </longdesc>
          <category name="Utilities"/>
          <category name="Version 1.4.3"/>
@@ -2189,19 +2189,19 @@ $("#another").css("border-radius", "20px");
          <category name="Version 1.4.3"/>
       </entry>
       <entry type="method" name="jQuery.parseXML" return="XMLDocument">
-         <desc>Parses a string into an XML document.</desc>
+         <desc>将一个字符串解析成一个 XML 文档。</desc>
          <signature>
             <added>1.5</added>
             <argument name="data" type="String">
-               <desc>a well-formed XML string to be parsed</desc>
+               <desc>用于将要被解析的一个格式正确的 XML 字符串。</desc>
             </argument>
          </signature>
          <longdesc>
             <p>
-               <code>jQuery.parseXML</code> uses the native parsing function of the browser to create a valid XML Document. This document can then be passed to <code>jQuery</code> to create a typical jQuery object that can be traversed and manipulated.</p>
+               <code>jQuery.parseXML</code> 使用浏览器原生的解析函数来创建一个有效的 XML 文档。该文档可以再被传入 <code>jQuery</code> 中用于创建一个类型的 jQuery 对象，可以使用 jQuery 的遍历和操作方法。</p>
          </longdesc>
          <example>
-            <desc>Create a jQuery object using an XML string and obtain the value of the title node.</desc>
+            <desc>使用一个 XML 字符串创建一个 jQuery 对象，并且获取 title 节点的值。</desc>
             <code>
 var xml = "&lt;rss version='2.0'&gt;&lt;channel&gt;&lt;title&gt;RSS Title&lt;/title&gt;&lt;/channel&gt;&lt;/rss&gt;",
     xmlDoc = $.parseXML( xml ),
@@ -2761,18 +2761,18 @@ $("button:last").click(function () {
          <category name="Version 1.4.3"/>
       </entry>
       <entry type="method" name="jQuery.isWindow" return="boolean">
-         <desc>Determine whether the argument is a window.</desc>
+         <desc>判断传入的参数是否为 window 对象。</desc>
          <signature>
             <added>1.4.3</added>
             <argument name="obj" type="Object">
-               <desc>Object to test whether or not it is a window.</desc>
+               <desc>将要被检查的对象。用于判断该对象是否为 window。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p>This is used in a number of places in jQuery to determine if we're operating against a browser window (such as the current window or an iframe).</p>
+            <p>该方法在 jQuery 的很多地方都有使用，用来判断是否操作于浏览器的窗口中(例如，当前窗口或 iframe)。</p>
          </longdesc>
          <example>
-            <desc>Finds out if the parameter is a window.</desc>
+            <desc>判断传入的参数是否为 window。</desc>
             <code>$("b").append( "" + $.isWindow(window) );</code>
             <html>Is 'window' a window? &lt;b&gt;&lt;/b&gt;</html>
          </example>
@@ -16254,19 +16254,19 @@ $("form").submit(function () {
          <category name="Version 1.0"/>
       </entry>
       <entry type="method" name="jQuery.isFunction" return="boolean">
-         <desc>Determine if the argument passed is a Javascript function object. </desc>
+         <desc>判断传入的参数是否为 Javascript 函数对象。</desc>
          <signature>
             <added>1.2</added>
             <argument name="obj" type="Object">
-               <desc>Object to test whether or not it is a function.</desc>
+               <desc>将要被检查的对象。用于判断该对象是否为函数。</desc>
             </argument>
          </signature>
          <longdesc>
             <p>
-               <strong>注意:</strong> As of jQuery 1.3, functions provided by the browser like <code>alert()</code> and DOM element methods like <code>getAttribute()</code> are not guaranteed to be detected as functions in browsers such as Internet Explorer.</p>
+               <strong>注意:</strong> 从 jQuery 1.3 开始，在某些浏览器，例如在 Internet Explorer 中，检测浏览器所提供的函数，例如 <code>alert()</code> 和 DOM 元素方法，例如 <code>getAttribute()</code> 等，则不能保证在检测这些方法时，会被检测成函数。</p>
          </longdesc>
          <example>
-            <desc>Test a few parameter examples.</desc>
+            <desc>测试一些参数是否为函数的例子。</desc>
             <code>
     function stub() {
     }
@@ -16298,7 +16298,7 @@ $("form").submit(function () {
   </html>
          </example>
          <example>
-            <desc>Finds out if the parameter is a function.</desc>
+            <desc>判断传入的参数是否为函数。</desc>
             <code>$.isFunction(function(){});</code>
             <results>true</results>
          </example>
@@ -16306,19 +16306,19 @@ $("form").submit(function () {
          <category name="Version 1.2"/>
       </entry>
       <entry type="method" name="jQuery.isArray" return="boolean">
-         <desc>Determine whether the argument is an array.</desc>
+         <desc>判断传入的参数是否为数组。</desc>
          <signature>
             <added>1.3</added>
             <argument name="obj" type="Object">
-               <desc>Object to test whether or not it is an array.</desc>
+               <desc>将要被检查的对象。用于判断该对象是否为数组。</desc>
             </argument>
          </signature>
          <longdesc>
             <p>
-               <code>$.isArray()</code> returns a Boolean indicating whether the object is a JavaScript array (not an array-like object, such as a jQuery object).</p>
+               <code>$.isArray()</code> 会返回一个布尔值，用来表明该对象是否为一个 JavaScript 数组(而不是像数组的对象，例如 jQuery 对象)。</p>
          </longdesc>
          <example>
-            <desc>Finds out if the parameter is an array.</desc>
+            <desc>判断参数是否为数组。</desc>
             <code>$("b").append( "" + $.isArray([]) );</code>
             <html>Is [] an Array? &lt;b&gt;&lt;/b&gt;</html>
          </example>
@@ -16367,35 +16367,35 @@ $("form").submit(function () {
          <category name="Version 1.1.3"/>
       </entry>
       <entry type="method" name="jQuery.merge" return="Array">
-         <desc>Merge the contents of two arrays together into the first array. </desc>
+         <desc>将两个数组的内容合并到第一个数组中。</desc>
          <signature>
             <added>1.0</added>
             <argument name="first" type="Array">
-               <desc>The first array to merge, the elements of second added.</desc>
+               <desc>第一个用于合并的数组，其中将会包含合并后的第二个数组的内容。</desc>
             </argument>
             <argument name="second" type="Array">
-               <desc>The second array to merge into the first, unaltered.</desc>
+               <desc>第二个用于合并的数组，该数组不会被修改，其中的内容将会被合并到第一个数组中。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p><code>$.merge()</code> operation forms an array that contains all elements from the two arrays. The orders of items in the arrays are preserved, with items from the second array appended. The <code>$.merge()</code> function is destructive. It alters the first parameter to add the items from the second.  </p>
-            <p>If you need the original first array, make a copy of it before calling <code>$.merge()</code>. Fortunately, <code>$.merge()</code> itself can be used for this duplication:</p>
+            <p><code>$.merge()</code> 操作会形成一个数组，包括两个数组的全部元素。追加到第一个数组中的第二个数组元素的顺序会被保留。<code>$.merge()</code> 函数是一种破坏型的函数，它会修改第一个数组的内容，并将第二个数组的内容添加到第一个数组中。</p>
+            <p>如果你需要保留第一个数组的原始内容，请在调用 <code>$.merge()</code> 之前，对第一个数组进行拷贝。幸运的是，<code>$.merge()</code> 方法本身就可以完成这种拷贝操作：</p>
             <pre>var newArray = $.merge([], oldArray);</pre>
-            <p>This shortcut creates a new, empty array and merges the contents of oldArray into it, effectively cloning the array.</p>
-            <p>Prior to jQuery 1.4, the arguments should be true Javascript Array objects; use <code>$.makeArray</code> if they are not.</p>
+            <p>这种快捷方式创建了一个新的，空的数组，并将 oldArray 数组的内容插入到新的数组中，从而有效的对数组进行了克隆。</p>
+            <p>在 jQuery 1.4 之前，该方法的参数应该是真正的 Javascript 数组对象。使用 <code>$.makeArray</code> 来判断它们是否为真正的 Javascript 数组。</p>
          </longdesc>
          <example>
-            <desc>Merges two arrays, altering the first argument.</desc>
+            <desc>合并两个数组，修改第一个参数的内容。</desc>
             <code>$.merge( [0,1,2], [2,3,4] )</code>
             <results>[0,1,2,2,3,4] </results>
          </example>
          <example>
-            <desc>Merges two arrays, altering the first argument.</desc>
+            <desc>合并两个数组，修改第一个参数的内容。</desc>
             <code>$.merge( [3,2,1], [4,3,2] )  </code>
             <results>[3,2,1,4,3,2] </results>
          </example>
          <example>
-            <desc>Merges two arrays, but uses a copy, so the original isn't altered.</desc>
+            <desc>合并两个数组，但是对第一个参数进行拷贝，这样就可以保证原始的内容不被修改。</desc>
             <code>var first = ['a','b','c'];
 var second = ['d','e','f'];
 $.merge( $.merge([],first), second);
@@ -16406,26 +16406,26 @@ $.merge( $.merge([],first), second);
          <category name="Version 1.0"/>
       </entry>
       <entry type="method" name="jQuery.inArray" return="Number">
-         <desc>Search for a specified value within an array and return its index (or -1 if not found).</desc>
+         <desc>在数组中查找指定的值，返回该值的索引值(若没有找到该值，则返回 -1)。</desc>
          <signature>
             <added>1.2</added>
             <argument name="value" type="Any">
-               <desc>The value to search for.</desc>
+               <desc>将要查找的值。</desc>
             </argument>
             <argument name="array" type="Array">
-               <desc>An array through which to search.</desc>
+               <desc>将会在该数组中进行值查找。</desc>
             </argument>
             <argument name="fromIndex" type="Number" optional="true">
-               <desc>The index of the array at which to begin the search. The default is 0, which will search the whole array.</desc>
+               <desc>将要查找的起始索引值。默认值是 0，代表在整个数组中进行查找。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p><code>$.inArray()</code> method is similar to JavaScript's native <code>.indexOf()</code> method in that it returns -1 when it doesn't find a match. If the first element within the array matches <code>value</code>, <code>$.inArray()</code> returns 0.</p> 
+            <p><code>$.inArray()</code> 方法和 JavaScript 的原生方法 <code>.indexOf()</code> 很类似，当没有查找到指定的值时，都返回 -1。如果数组中第一个元素就是要查找的<code>值</code>，则 <code>$.inArray()</code> 返回 0。</p> 
 
-            <p>Because JavaScript treats 0 as loosely equal to false (i.e. 0 == false, but 0 !== false), if we're checking for the presence of <code>value</code> within <code>array</code>, we need to check if it's not equal to (or greater than) -1.</p>
+            <p>由于 JavaScript 同样将 0 看成是 false(例如，0 == false，但是 0 !== false)，所以如果我们要检查某个<code>值</code>是否存在于某个<code>数组中</code>，我们需要检查该方法的返回值是否不等于 -1（或者是大于 -1）。</p>
          </longdesc>
          <example>
-            <desc>Report the index of some elements in the array.</desc>
+            <desc>返回数组中指定元素的索引值。</desc>
             <code>var arr = [ 4, "Pete", 8, "John" ];
 var $spans = $("span");
 $spans.eq(0).text(jQuery.inArray("John", arr));
@@ -16585,20 +16585,20 @@ array = $.map(array, function(a, index) {
          <category name="Version 1.6"/>
       </entry>
       <entry type="method" name="jQuery.makeArray" return="Array">
-         <desc>Convert an array-like object into a true JavaScript array.</desc>
+         <desc>将一个像数组的对象，转换成一个真正的 JavaScript 数组。</desc>
          <signature>
             <added>1.2</added>
             <argument name="obj" type="Object">
-               <desc>Any object to turn into a native Array.</desc>
+               <desc>任何将要被转换成原生数组的对象。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p>Many methods, both in jQuery and in JavaScript in general, return objects that are array-like. For example, the jQuery factory function <code>$()</code> returns a jQuery object that has many of the properties of an array (a length, the <code>[]</code> array access operator, etc.), but is not exactly the same as an array and lacks some of an array's built-in methods (such as <code>.pop()</code> 和 <code>.reverse()</code>).</p>
+            <p>一般来说，jQuery 和 JavaScript 的很多方法会返回像数组的对象。例如，jQuery 的工厂函数 <code>$()</code> 返回一个 jQuery 对象，该对象有很多数组的属性(例如，取得数组 <code>[]</code> 长度的操作符 length 等)，但是它和真正的数组不完全一样，并且缺少一些数组内建的方法(例如， <code>.pop()</code> 和 <code>.reverse()</code>)。</p>
 
-            <p>Note that after the conversion, any special features the object had (such as the jQuery methods in our example) will no longer be present. The object is now a plain array.</p>
+            <p>注意，在转换之后，元素任何特殊的功能都将不复存在(例如，在例子中提到的 jQuery 方法)。因为转换后的对象已经是一个纯的数组。</p>
          </longdesc>
          <example>
-            <desc>Turn a collection of HTMLElements into an Array of them.</desc>
+            <desc>将一个 HTMLElements 集合转换成对应的数组。</desc>
             <code>
     var elems = document.getElementsByTagName("div"); // returns a nodeList
     var arr = jQuery.makeArray(elems);
@@ -16615,7 +16615,7 @@ array = $.map(array, function(a, index) {
   &lt;div&gt;Fourth&lt;/div&gt;</html>
          </example>
          <example>
-            <desc>Turn a jQuery object into an array</desc>
+            <desc>将一个 jQuery 对象转换成一个数组。</desc>
             <code>
     var obj = $('li');
     var arr = $.makeArray(obj);
@@ -16910,13 +16910,13 @@ $.each(map, function(key, value) {
       </entry>
       <entry type="property" name="jQuery.boxModel" return="Boolean">
          <desc>
-            <strong>Deprecated in jQuery 1.3 (详见 <a href="jQuery.support.htm">jQuery.support</a>)</strong>. States if the current page, in the user's browser, is being rendered using the <a href="http://www.w3.org/TR/REC-CSS2/box.html">W3C CSS Box Model</a>.</desc>
+            <strong>在 jQuery 1.3 中不再建议使用。(详见 <a href="jQuery.support.htm">jQuery.support</a>)</strong>。判断当前页面在用户浏览器中是否使用 <a href="http://www.w3.org/TR/REC-CSS2/box.html">W3C CSS Box Model</a> 进行渲染。</desc>
          <signature>
             <added>1.0</added>
          </signature>
          <longdesc/>
          <example>
-            <desc>Returns the box model for the iframe.</desc>
+            <desc>返回 iframe 的 box model（盒模型）状态。</desc>
             <code>
 
     $("p").html("The box model for this iframe is: &lt;span&gt;" +
@@ -16931,7 +16931,7 @@ $.each(map, function(key, value) {
   &lt;/p&gt;</html>
          </example>
          <example>
-            <desc>Returns false if the page is in Quirks Mode in Internet Explorer</desc>
+            <desc>如果页面运行在 Internet Explorer 的 Quirks 模式下，则返回 false。</desc>
             <code>$.boxModel</code>
             <results>false</results>
          </example>
