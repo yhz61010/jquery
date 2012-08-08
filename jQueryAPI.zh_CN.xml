@@ -2721,17 +2721,17 @@ $("button:last").click(function () {
          <note type="additional">所有的 jQuery 动画, 包括 <code>.fadeToggle()</code>, 都可以被关闭，通过全局设置 <code>jQuery.fx.off = true</code>, 效果等同于将动画时间 duration  设置成 0. 可以访问 <a href="jquery.fx.off.htm">jQuery.fx.off</a> 来获得更多信息。</note>
       </entry>
       <entry type="method" name="jQuery.type" return="String">
-         <desc>Determine the internal JavaScript [[Class]] of an object.</desc>
+         <desc>判断内部 JavaScript 对象的 [[Class]]。</desc>
          <signature>
             <added>1.4.3</added>
             <argument name="obj" type="Object">
-               <desc>Object to get the internal JavaScript [[Class]] of.</desc>
+               <desc>需要取得内部 JavaScript [[Class]] 的对象。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p>A number of techniques are used to determine the exact return value for an object. The [[Class]] is determined as follows:</p>
+            <p>使用了很多的技术方法来准确的判断一个对象的类型。[[Class]] 的判断方法如下：</p>
             <ul>
-	       <li>If the object is undefined or null, then "undefined" or "null" is returned accordingly.
+	       <li>如果对象为 undefined 或 null，那么会相应的返回 "undefined" 或 "null"。
 		  <ul>
 		    <li>jQuery.type(undefined) === "undefined"</li>
 		    <li>jQuery.type() === "undefined"</li>
@@ -2739,7 +2739,7 @@ $("button:last").click(function () {
 		    <li>jQuery.type(null) === "null"</li>
 	    	  </ul>
 	       </li>
-               <li>If the object has an internal [[Class]] equivalent to one of the browser's built-in objects, the associated name is returned. (<a href="http://perfectionkills.com/instanceof-considered-harmful-or-how-to-write-a-robust-isarray/">More details about this technique.</a>)<ul>
+               <li>如果对象的 [[Class]] 与浏览器内建对象的 [[Class]] 相同，那么就返回相应的 [[Class]] 名字。(<a href="http://perfectionkills.com/instanceof-considered-harmful-or-how-to-write-a-robust-isarray/">更多关于该技术的信息。</a>)<ul>
                      <li>jQuery.type(true) === "boolean"</li>
                      <li>jQuery.type(3) === "number"</li>
                      <li>jQuery.type("test") === "string"</li>
@@ -2749,11 +2749,11 @@ $("button:last").click(function () {
                      <li>jQuery.type(/test/) === "regexp"</li>
                   </ul>
                </li>
-               <li>Everything else returns "object" as its type.</li>
+               <li>其它任何对象都会返回 "object"。</li>
             </ul>
          </longdesc>
          <example>
-            <desc>Find out if the parameter is a RegExp.</desc>
+            <desc>判断传入的参数是否为 RegExp 类型。</desc>
             <code>$("b").append( "" + jQuery.type(/test/) );</code>
             <html>Is it a RegExp? &lt;b&gt;&lt;/b&gt;</html>
          </example>
@@ -16223,18 +16223,18 @@ $("form").submit(function () {
          <category name="Version 1.2.6"/>
       </entry>
       <entry type="method" name="jQuery.trim" return="String">
-         <desc>Remove the whitespace from the beginning and end of a string.</desc>
+         <desc>移除字符串中开始和结束处的空格。</desc>
          <signature>
             <added>1.0</added>
             <argument name="str" type="String">
-               <desc>The string to trim.</desc>
+               <desc>将要被移除空格的字符串。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p><code>$.trim()</code> function removes all newlines, spaces (including non-breaking spaces), and tabs from the beginning and end of the supplied string. If these whitespace characters occur in the middle of the string, they are preserved.</p>
+            <p><code>$.trim()</code> 函数会移除字符串开始和结尾处的所有换行符，空格(包括连续的空格)和制表符。该方法不会移除字符串中间的空格。</p>
          </longdesc>
          <example>
-            <desc>Remove the two white spaces at the start and at the end of the string.</desc>
+            <desc>移除字符串开始和结尾处的空格。</desc>
             <code>
   var str = "         lots of spaces before and after         ";
   $("#original").html("Original String: '" + str + "'");
@@ -16246,7 +16246,7 @@ $("form").submit(function () {
       </html>
          </example>
          <example>
-            <desc>Remove the two white spaces at the start and at the end of the string.</desc>
+            <desc>移除字符串开始和结尾处的空格。</desc>
             <code>$.trim("    hello, how are you?    ");</code>
             <results>"hello, how are you?"</results>
          </example>
@@ -16326,19 +16326,19 @@ $("form").submit(function () {
          <category name="Version 1.3"/>
       </entry>
       <entry type="method" name="jQuery.unique" return="Array">
-         <desc>Sorts an array of DOM elements, in place, with the duplicates removed. Note that this only works on arrays of DOM elements, not strings or numbers.</desc>
+         <desc>对 DOM 元素数组进行排序，并删除重复的元素。注意，该方法只能应用于 DOM 元素数组，无法在字符串数组或数字数组上使用。</desc>
          <signature>
             <added>1.1.3</added>
             <argument name="array" type="Array">
-               <desc>The Array of DOM elements.</desc>
+               <desc>DOM 元素数组。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p><code>$.unique()</code> function searches through an array of objects, sorting the array, and removing any duplicate nodes. This function only works on plain JavaScript arrays of DOM elements, and is chiefly used internally by jQuery.</p>
-            <p>As of jQuery 1.4 the results will always be returned in document order.</p>
+            <p><code>$.unique()</code> 函数会遍历对象数组，对其进行排序，并移除任何重复的节点。该函数只能应用在纯 JavaScript DOM 元素数组上，并且主要在 jQuery 内部使用。</p>
+            <p>从 jQuery 1.4 开始，该函数返回的结果数组中的元素位置，始终和它们在文档中的顺序一致。</p>
          </longdesc>
          <example>
-            <desc>Removes any duplicate elements from the array of divs.</desc>
+            <desc>移除 div 数组中任何重复的元素。</desc>
             <code>
 
     var divs = $("div").get(); // unique() must take a native array
