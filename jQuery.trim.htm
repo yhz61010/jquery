@@ -15,7 +15,7 @@
 		</script><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:String</span>jQuery.trim(str)<br></h2>
    <div class="desc">
-      <p>Remove the whitespace from the beginning and end of a string.</p>
+      <p>移除字符串中开始和结束处的空格。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>jQuery.trim(str)
@@ -23,21 +23,20 @@
             </h4>
             <div class="arguement"><strong>str</strong>
                								(String)
-               								The string to trim.
+               								将要被移除空格的字符串。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p><code>$.trim()</code> function removes all newlines, spaces (including non-breaking spaces), and tabs from the beginning and end of the supplied
-            string. If these whitespace characters occur in the middle of the string, they are preserved.
+         <p><code>$.trim()</code> 函数会移除字符串开始和结尾处的所有换行符，空格(包括连续的空格)和制表符。该方法不会移除字符串中间的空格。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Remove the two white spaces at the start and at the end of the string.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>移除字符串开始和结尾处的空格。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;script src="jquery.min.js"&gt;&lt;/script&gt;
@@ -60,6 +59,6 @@
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="708" height="125"></iframe><h3>示例:</h3>
-      <p>Remove the two white spaces at the start and at the end of the string.</p>
+      <p>移除字符串开始和结尾处的空格。</p>
       <h5>jQuery 代码:</h5><pre><code>$.trim("    hello, how are you?    ");</code></pre><h5>结果:</h5><pre><code>"hello, how are you?"</code></pre></div>
 </div>

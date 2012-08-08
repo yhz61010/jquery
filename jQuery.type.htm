@@ -15,7 +15,7 @@
 		</script><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:String</span>jQuery.type(obj)<br></h2>
    <div class="desc">
-      <p>Determine the internal JavaScript [[Class]] of an object.</p>
+      <p>判断内部 JavaScript 对象的 [[Class]]。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.4.3 新增</span>jQuery.type(obj)
@@ -23,17 +23,17 @@
             </h4>
             <div class="arguement"><strong>obj</strong>
                								(Object)
-               								Object to get the internal JavaScript [[Class]] of.
+               								需要取得内部 JavaScript [[Class]] 的对象。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p>A number of techniques are used to determine the exact return value for an object. The [[Class]] is determined as follows:</p>
+         <p>使用了很多的技术方法来准确的判断一个对象的类型。[[Class]] 的判断方法如下：</p>
          
          <ul>
             	       
-            <li>If the object is undefined or null, then "undefined" or "null" is returned accordingly.
+            <li>如果对象为 undefined 或 null，那么会相应的返回 "undefined" 或 "null"。
                		  
                <ul>
                   		    
@@ -49,8 +49,7 @@
                	       
             </li>
             
-            <li>If the object has an internal [[Class]] equivalent to one of the browser's built-in objects, the associated name is returned.
-               (<a href="http://perfectionkills.com/instanceof-considered-harmful-or-how-to-write-a-robust-isarray/">More details about this technique.</a>)
+            <li>如果对象的 [[Class]] 与浏览器内建对象的 [[Class]] 相同，那么就返回相应的 [[Class]] 名字。(<a href="http://perfectionkills.com/instanceof-considered-harmful-or-how-to-write-a-robust-isarray/">更多关于该技术的信息。</a>)
                <ul>
                   
                   <li>jQuery.type(true) === "boolean"</li>
@@ -71,7 +70,7 @@
                
             </li>
             
-            <li>Everything else returns "object" as its type.</li>
+            <li>其它任何对象都会返回 "object"。</li>
             
          </ul>
          
@@ -79,7 +78,7 @@
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Find out if the parameter is a RegExp.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>判断传入的参数是否为 RegExp 类型。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;script src="jquery.min.js"&gt;&lt;/script&gt;

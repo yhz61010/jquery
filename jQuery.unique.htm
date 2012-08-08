@@ -15,9 +15,7 @@
 		</script><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Array</span>jQuery.unique(array)<br></h2>
    <div class="desc">
-      <p>Sorts an array of DOM elements, in place, with the duplicates removed. Note that this only works on arrays of DOM elements,
-         not strings or numbers.
-      </p>
+      <p>对 DOM 元素数组进行排序，并删除重复的元素。注意，该方法只能应用于 DOM 元素数组，无法在字符串数组或数字数组上使用。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.1.3 新增</span>jQuery.unique(array)
@@ -25,23 +23,22 @@
             </h4>
             <div class="arguement"><strong>array</strong>
                								(Array)
-               								The Array of DOM elements.
+               								DOM 元素数组。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p><code>$.unique()</code> function searches through an array of objects, sorting the array, and removing any duplicate nodes. This function only works
-            on plain JavaScript arrays of DOM elements, and is chiefly used internally by jQuery.
+         <p><code>$.unique()</code> 函数会遍历对象数组，对其进行排序，并移除任何重复的节点。该函数只能应用在纯 JavaScript DOM 元素数组上，并且主要在 jQuery 内部使用。
          </p>
          
-         <p>As of jQuery 1.4 the results will always be returned in document order.</p>
+         <p>从 jQuery 1.4 开始，该函数返回的结果数组中的元素位置，始终和它们在文档中的顺序一致。</p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Removes any duplicate elements from the array of divs.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>移除 div 数组中任何重复的元素。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
