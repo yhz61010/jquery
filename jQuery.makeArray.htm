@@ -15,7 +15,7 @@
 		</script><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Array</span>jQuery.makeArray(obj)<br></h2>
    <div class="desc">
-      <p>将一个像数组的对象，转换成一个真正的 JavaScript 数组。</p>
+      <p>将一个类数组（array-like）的对象，转换成一个真正的 JavaScript 数组。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.2 新增</span>jQuery.makeArray(obj)
@@ -29,7 +29,7 @@
       </ul>
       <div class="longdesc">
          
-         <p>一般来说，jQuery 和 JavaScript 的很多方法会返回像数组的对象。例如，jQuery 的工厂函数 <code>$()</code> 返回一个 jQuery 对象，该对象有很多数组的属性(例如，取得数组 <code>[]</code> 长度的操作符 length 等)，但是它和真正的数组不完全一样，并且缺少一些数组内建的方法(例如， <code>.pop()</code> 和 <code>.reverse()</code>)。
+         <p>一般来说，jQuery 和 JavaScript 的很多方法会返回类数组（array-like）的对象。例如，jQuery 的工厂函数 <code>$()</code> 返回一个 jQuery 对象，该对象有很多数组的属性(例如，取得数组 <code>[]</code> 长度的操作符 length 等)，但是它和真正的数组不完全一样，并且缺少一些数组内建的方法(例如， <code>.pop()</code> 和 <code>.reverse()</code>)。
          </p>
          
          

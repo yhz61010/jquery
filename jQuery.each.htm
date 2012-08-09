@@ -15,10 +15,7 @@
 		</script><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Object</span>jQuery.each(collection, callback(indexInArray, valueOfElement))<br></h2>
    <div class="desc">
-      <p>A generic iterator function, which can be used to seamlessly iterate over both objects and arrays. Arrays and array-like objects
-         with a length property (such as a function's arguments object) are iterated by numeric index, from 0 to length-1. Other objects
-         are iterated via their named properties.
-      </p>
+      <p>通用的迭代函数，用于无缝的迭代对象及数组。含有 length 属性的数组和类数组（array-like）对象(例如，函数的 arguments 对象)会按索引值进行迭代，迭代的索引值从 0 开始，到 length-1 结束。其它的对象会按照它们的属性名进行迭代。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>jQuery.each(collection, callback(indexInArray, valueOfElement))
@@ -26,26 +23,24 @@
             </h4>
             <div class="arguement"><strong>collection</strong>
                								(Object)
-               								The object or array to iterate over.
+               								将要用于迭代的对象或数组。
             </div>
             <div class="arguement"><strong>callback(indexInArray, valueOfElement)</strong>
                								(Function)
-               								The function that will be executed on every object.
+               								该函数会在每次迭代时被调用。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p><code>$.each()</code> function is not the same as <a href="each.htm">$(selector).each()</a>, which is used to iterate, exclusively, over a jQuery object. The <code>$.each()</code> function can be used to iterate over any collection, whether it is a map (JavaScript object) or an array. In the case of
-            an array, the callback is passed an array index and a corresponding array value each time. (The value can also be accessed
-            through the <code>this</code> keyword, but Javascript will always wrap the <code>this</code> value as an <code>Object</code> even if it is a simple string or number value.) The method returns its first argument, the object that was iterated.
+         <p><code>$.each()</code> 函数与 <a href="each.htm">$(selector).each()</a> 不同，<a href="each.htm">$(selector).each()</a> 仅用于 jQuery 对象的迭代，而 <code>$.each()</code> 函数可以用于迭代任何集合，无论它是一个映射(JavaScript 对象)还是一个数组。在迭代数组的时候，回调函数中的参数分别是当前数组中元素的的索引值及对象的元素值。(可以通过 <code>this</code> 关键字来取得该值。Javascript 总是将 <code>this</code> 当成一个<code>Object</code>，即使它只是一个简单的字符串或数值。)该方法返回其第一个参数，迭代对象。
          </p>
          
          <pre>$.each([52, 97], function(index, value) { 
   alert(index + ': ' + value); 
 });
 </pre>
-         <p>This produces two messages:</p>
+         <p>上述方法产生两条消息：</p>
          
          <p>
             <span class="output">0: 52</span>
@@ -54,7 +49,7 @@
             
          </p>
          
-         <p>If a map is used as the collection, the callback is passed a key-value pair each time:</p>
+         <p>如果将映射作为迭代的对象，那么回调函数中的参数就是映射的键和值：</p>
          <pre>var map = { 
   'flammable': 'inflammable', 
   'duh': 'no duh' 
@@ -62,7 +57,7 @@
 $.each(map, function(key, value) { 
   alert(key + ': ' + value); 
 });</pre>
-         <p>Once again, this produces two messages:</p>
+         <p>同样，上述方法生产两个消息：</p>
          
          <p>
             <span class="output">flammable: inflammable</span>
@@ -72,14 +67,14 @@ $.each(map, function(key, value) {
          </p>
          
          
-         <p>We can break the <code>$.each()</code> loop at a particular iteration by making the callback function return <code>false</code>. Returning <em>non-false</em> is the same as a <code>continue</code> statement in a for loop; it will skip immediately to the next iteration.
+         <p>我们可以在 <code>$.each()</code> 迭代时通过在回调函数中返回 <code>false</code> 的方式来中止迭代。返回<em>非-false</em>就相当于循环中的 <code>continue</code> 语句，意味着它会立即跳过当前的迭代，马上开始下一个迭代。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Iterates through the array displaying each number as both a word and numeral</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>对数组进行迭代，迭代过程中同时显示关键字及数值</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -116,11 +111,11 @@ $.each(map, function(key, value) {
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="708" height="125"></iframe><h3>示例:</h3>
-      <p>Iterates over items in an array, accessing both the current item and its index.</p>
+      <p>迭代一个数组，并同时访问迭代的元素及它的索引值。</p>
       <h5>jQuery 代码:</h5><pre><code>$.each( ['a','b','c'], function(i, l){
    alert( "Index #" + i + ": " + l );
  });</code></pre><h3>示例:</h3>
-      <p>Iterates over the properties in an object, accessing both the current item and its key.</p>
+      <p>在一个元素的属性上进行迭代，并同时访问它的键及值。</p>
       <h5>jQuery 代码:</h5><pre><code>$.each( { name: "John", lang: "JS" }, function(k, v){
    alert( "Key: " + k + ", Value: " + v );
  });</code></pre></div>

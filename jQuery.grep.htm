@@ -15,7 +15,7 @@
 		</script><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Array</span>jQuery.grep(array, function(elementOfArray, indexInArray), <em class="optional">[invert]</em>)<br></h2>
    <div class="desc">
-      <p>Finds the elements of an array which satisfy a filter function. The original array is not affected.</p>
+      <p>在数组中查找满足过滤器函数的元素。本方法不会影响原数组。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>jQuery.grep(array, function(elementOfArray, indexInArray), <em class="optional">[invert]</em>)
@@ -23,38 +23,31 @@
             </h4>
             <div class="arguement"><strong>array</strong>
                								(Array)
-               								The array to search through.
+               								用于查找元素的数组。
             </div>
             <div class="arguement"><strong>function(elementOfArray, indexInArray)</strong>
                								(Function)
-               								The function to process each item against.  The first argument to the function is the item, and the second argument is the
-               index.  The function should return a Boolean value.  <code>this</code> will be the global window object.
+               								过滤元素用的函数。第一个参数是正在被检查的数组的元素，第二个参数是该元素的索引值。该函数返回一个布尔值。函数中的 <code>this</code> 代表了全局的 window 对象。
             </div>
             <div class="arguement"><strong>invert</strong>
                								(Boolean)
-               								 可选参数，If "invert" is false, or not provided, then the function returns an array consisting of all elements for which "callback"
-               returns true.  If "invert" is true, then the function returns an array consisting of all elements for which "callback" returns
-               false.
+               								 可选参数，如果 "invert" 为 false，或者不提供该参数，那么该方法返回的数组中的元素是那些在过滤方法中返回 true 的元素。如果将 "invert" 设置成 true，那么该方法返回的数组中的元素是那些在过滤方法中返回 false 的元素。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p><code>$.grep()</code> method removes items from an array as necessary so that all remaining items pass a provided test. The test is a function
-            that is passed an array item and the index of the item within the array. Only if the test returns true will the item be in
-            the result array.
+         <p><code>$.grep()</code> 方法会在必要的时候会从数组中移除元素，这样可以让所有剩余的元素经过过滤函数的检查。过滤函数中的参数分别是当前正在被检查的数组中的元素，以及该元素的索引值。只有过滤函数返回 true 时，被检查的元素才会包含在结果数组中。
          </p>
          
          
-         <p> The filter function will be passed two arguments: the current array item and its index. The filter function must return 'true'
-            to include the item in the result array.
-         </p>
+         <p>过滤函数有两个参数：当前正在被检查的数组中的元素，及该元素的索引值。只有过滤函数返回 'true' 时，被检查的元素才会包含在结果数组中。</p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Filters the original array of numbers leaving that are not 5 and have an index greater than 4.  Then it removes all 9s.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>过滤出原始数组中值不为 5，并且索引值大于 4 的元素。然后再过滤掉所有值为 9 的元素。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -90,11 +83,11 @@ $("span").text(arr.join(", "));
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="708" height="125"></iframe><h3>示例:</h3>
-      <p>Filter an array of numbers to include only numbers bigger then zero.</p>
+      <p>过滤出数组中值大于 0 的元素。</p>
       <h5>jQuery 代码:</h5><pre><code>$.grep( [0,1,2], function(n,i){
    return n &gt; 0;
  });</code></pre><h5>结果:</h5><pre><code>[1, 2] </code></pre><h3>示例:</h3>
-      <p>Filter an array of numbers to include numbers that are not bigger than zero.</p>
+      <p>过滤出数组中值不大于 0 的元素。</p>
       <h5>jQuery 代码:</h5><pre><code>$.grep( [0,1,2], function(n,i){
     return n &gt; 0;
 },true);</code></pre><h5>结果:</h5><pre><code>[0] </code></pre></div>
