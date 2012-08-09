@@ -16315,7 +16315,7 @@ $("form").submit(function () {
          </signature>
          <longdesc>
             <p>
-               <code>$.isArray()</code> 会返回一个布尔值，用来表明该对象是否为一个 JavaScript 数组(而不是像数组的对象，例如 jQuery 对象)。</p>
+               <code>$.isArray()</code> 会返回一个布尔值，用来表明该对象是否为一个 JavaScript 数组(而不是类数组（array-like）的对象，例如 jQuery 对象)。</p>
          </longdesc>
          <example>
             <desc>判断参数是否为数组。</desc>
@@ -16585,7 +16585,7 @@ array = $.map(array, function(a, index) {
          <category name="Version 1.6"/>
       </entry>
       <entry type="method" name="jQuery.makeArray" return="Array">
-         <desc>将一个像数组的对象，转换成一个真正的 JavaScript 数组。</desc>
+         <desc>将一个类数组（array-like）的对象，转换成一个真正的 JavaScript 数组。</desc>
          <signature>
             <added>1.2</added>
             <argument name="obj" type="Object">
@@ -16593,7 +16593,7 @@ array = $.map(array, function(a, index) {
             </argument>
          </signature>
          <longdesc>
-            <p>一般来说，jQuery 和 JavaScript 的很多方法会返回像数组的对象。例如，jQuery 的工厂函数 <code>$()</code> 返回一个 jQuery 对象，该对象有很多数组的属性(例如，取得数组 <code>[]</code> 长度的操作符 length 等)，但是它和真正的数组不完全一样，并且缺少一些数组内建的方法(例如， <code>.pop()</code> 和 <code>.reverse()</code>)。</p>
+            <p>一般来说，jQuery 和 JavaScript 的很多方法会返回类数组（array-like）的对象。例如，jQuery 的工厂函数 <code>$()</code> 返回一个 jQuery 对象，该对象有很多数组的属性(例如，取得数组 <code>[]</code> 长度的操作符 length 等)，但是它和真正的数组不完全一样，并且缺少一些数组内建的方法(例如， <code>.pop()</code> 和 <code>.reverse()</code>)。</p>
 
             <p>注意，在转换之后，元素任何特殊的功能都将不复存在(例如，在例子中提到的 jQuery 方法)。因为转换后的对象已经是一个纯的数组。</p>
          </longdesc>
@@ -16628,26 +16628,26 @@ jQuery.isArray(arr) === true;
          <category name="Version 1.2"/>
       </entry>
       <entry type="method" name="jQuery.grep" return="Array">
-         <desc>Finds the elements of an array which satisfy a filter function. The original array is not affected.</desc>
+         <desc>在数组中查找满足过滤器函数的元素。本方法不会影响原数组。</desc>
          <signature>
             <added>1.0</added>
             <argument name="array" type="Array">
-               <desc>The array to search through.</desc>
+               <desc>用于查找元素的数组。</desc>
             </argument>
             <argument name="function(elementOfArray, indexInArray)" type="Function">
-               <desc>The function to process each item against.  The first argument to the function is the item, and the second argument is the index.  The function should return a Boolean value.  <code>this</code> will be the global window object.</desc>
+               <desc>过滤元素用的函数。第一个参数是正在被检查的数组的元素，第二个参数是该元素的索引值。该函数返回一个布尔值。函数中的 <code>this</code> 代表了全局的 window 对象。</desc>
             </argument>
             <argument name="invert" type="Boolean" optional="true">
-               <desc>If "invert" is false, or not provided, then the function returns an array consisting of all elements for which "callback" returns true.  If "invert" is true, then the function returns an array consisting of all elements for which "callback" returns false.</desc>
+               <desc>如果 "invert" 为 false，或者不提供该参数，那么该方法返回的数组中的元素是那些在过滤方法中返回 true 的元素。如果将 "invert" 设置成 true，那么该方法返回的数组中的元素是那些在过滤方法中返回 false 的元素。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p><code>$.grep()</code> method removes items from an array as necessary so that all remaining items pass a provided test. The test is a function that is passed an array item and the index of the item within the array. Only if the test returns true will the item be in the result array.</p>
+            <p><code>$.grep()</code> 方法会在必要的时候会从数组中移除元素，这样可以让所有剩余的元素经过过滤函数的检查。过滤函数中的参数分别是当前正在被检查的数组中的元素，以及该元素的索引值。只有过滤函数返回 true 时，被检查的元素才会包含在结果数组中。</p>
 
-            <p> The filter function will be passed two arguments: the current array item and its index. The filter function must return 'true' to include the item in the result array.</p>
+            <p>过滤函数有两个参数：当前正在被检查的数组中的元素，及该元素的索引值。只有过滤函数返回 'true' 时，被检查的元素才会包含在结果数组中。</p>
          </longdesc>
          <example>
-            <desc>Filters the original array of numbers leaving that are not 5 and have an index greater than 4.  Then it removes all 9s.</desc>
+            <desc>过滤出原始数组中值不为 5，并且索引值大于 4 的元素。然后再过滤掉所有值为 9 的元素。</desc>
             <code>
 var arr = [ 1, 9, 3, 8, 6, 1, 5, 9, 4, 7, 3, 8, 6, 9, 1 ];
 $("div").text(arr.join(", "));
@@ -16672,14 +16672,14 @@ $("span").text(arr.join(", "));
   </html>
          </example>
          <example>
-            <desc>Filter an array of numbers to include only numbers bigger then zero.</desc>
+            <desc>过滤出数组中值大于 0 的元素。</desc>
             <code>$.grep( [0,1,2], function(n,i){
    return n &gt; 0;
  });</code>
             <results>[1, 2] </results>
          </example>
          <example>
-            <desc>Filter an array of numbers to include numbers that are not bigger than zero.</desc>
+            <desc>过滤出数组中值不大于 0 的元素。</desc>
             <code>$.grep( [0,1,2], function(n,i){
     return n &gt; 0;
 },true);</code>
@@ -16827,30 +16827,30 @@ $("#log").append( "<div><b>settings -- </b>" + printObj(settings) + "</div>" );
          <category name="Version 1.0"/>
       </entry>
       <entry type="method" name="jQuery.each" return="Object">
-         <desc>A generic iterator function, which can be used to seamlessly iterate over both objects and arrays. Arrays and array-like objects with a length property (such as a function's arguments object) are iterated by numeric index, from 0 to length-1. Other objects are iterated via their named properties.</desc>
+         <desc>通用的迭代函数，用于无缝的迭代对象及数组。含有 length 属性的数组和类数组（array-like）对象(例如，函数的 arguments 对象)会按索引值进行迭代，迭代的索引值从 0 开始，到 length-1 结束。其它的对象会按照它们的属性名进行迭代。</desc>
          <signature>
             <added>1.0</added>
             <argument name="collection" type="Object">
-               <desc>The object or array to iterate over.</desc>
+               <desc>将要用于迭代的对象或数组。</desc>
             </argument>
             <argument name="callback(indexInArray, valueOfElement)" type="Function">
-               <desc>The function that will be executed on every object.</desc>
+               <desc>该函数会在每次迭代时被调用。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p><code>$.each()</code> function is not the same as <a href="each.htm">$(selector).each()</a>, which is used to iterate, exclusively, over a jQuery object. The <code>$.each()</code> function can be used to iterate over any collection, whether it is a map (JavaScript object) or an array. In the case of an array, the callback is passed an array index and a corresponding array value each time. (The value can also be accessed through the <code>this</code> keyword, but Javascript will always wrap the <code>this</code> value as an <code>Object</code> even if it is a simple string or number value.) The method returns its first argument, the object that was iterated.</p>
+            <p><code>$.each()</code> 函数与 <a href="each.htm">$(selector).each()</a> 不同，<a href="each.htm">$(selector).each()</a> 仅用于 jQuery 对象的迭代，而 <code>$.each()</code> 函数可以用于迭代任何集合，无论它是一个映射(JavaScript 对象)还是一个数组。在迭代数组的时候，回调函数中的参数分别是当前数组中元素的的索引值及对象的元素值。(可以通过 <code>this</code> 关键字来取得该值。Javascript 总是将 <code>this</code> 当成一个<code>Object</code>，即使它只是一个简单的字符串或数值。)该方法返回其第一个参数，迭代对象。</p>
 
             <pre>$.each([52, 97], function(index, value) { 
   alert(index + ': ' + value); 
 });
 </pre>
-            <p>This produces two messages:</p>
+            <p>上述方法产生两条消息：</p>
             <p>
                <span class="output">0: 52</span>
                <br/>
                <span class="output">1: 97</span>
             </p>
-            <p>If a map is used as the collection, the callback is passed a key-value pair each time:</p>
+            <p>如果将映射作为迭代的对象，那么回调函数中的参数就是映射的键和值：</p>
             <pre>var map = { 
   'flammable': 'inflammable', 
   'duh': 'no duh' 
@@ -16858,17 +16858,17 @@ $("#log").append( "<div><b>settings -- </b>" + printObj(settings) + "</div>" );
 $.each(map, function(key, value) { 
   alert(key + ': ' + value); 
 });</pre>
-            <p>Once again, this produces two messages:</p>
+            <p>同样，上述方法生产两个消息：</p>
             <p>
                <span class="output">flammable: inflammable</span>
                <br/>
                <span class="output">duh: no duh</span>
             </p>
     
-            <p>We can break the <code>$.each()</code> loop at a particular iteration by making the callback function return <code>false</code>. Returning <em>non-false</em> is the same as a <code>continue</code> statement in a for loop; it will skip immediately to the next iteration.</p>
+            <p>我们可以在 <code>$.each()</code> 迭代时通过在回调函数中返回 <code>false</code> 的方式来中止迭代。返回<em>非-false</em>就相当于循环中的 <code>continue</code> 语句，意味着它会立即跳过当前的迭代，马上开始下一个迭代。</p>
          </longdesc>
          <example>
-            <desc>Iterates through the array displaying each number as both a word and numeral</desc>
+            <desc>对数组进行迭代，迭代过程中同时显示关键字及数值</desc>
             <code>
     var arr = [ "one", "two", "three", "four", "five" ];
     var obj = { one:1, two:2, three:3, four:4, five:5 };
@@ -16894,13 +16894,13 @@ $.each(map, function(key, value) {
   &lt;div id="five"&gt;&lt;/div&gt;</html>
          </example>
          <example>
-            <desc>Iterates over items in an array, accessing both the current item and its index.</desc>
+            <desc>迭代一个数组，并同时访问迭代的元素及它的索引值。</desc>
             <code>$.each( ['a','b','c'], function(i, l){
    alert( "Index #" + i + ": " + l );
  });</code>
          </example>
          <example>
-            <desc>Iterates over the properties in an object, accessing both the current item and its key.</desc>
+            <desc>在一个元素的属性上进行迭代，并同时访问它的键及值。</desc>
             <code>$.each( { name: "John", lang: "JS" }, function(k, v){
    alert( "Key: " + k + ", Value: " + v );
  });</code>
