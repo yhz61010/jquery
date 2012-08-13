@@ -47,8 +47,7 @@
                <h5 class="option">async<span>Boolean</span></h5>
                <div><strong class="default-value">默认值: </strong>true
                </div>
-               <p class="options_p">默认设置下，所有请求均为异步请求(即默认值为： <code>true</code>)。如果需要发送同步请求，请将此选项设置为 <code>false</code>。跨域请求以及 <code>dataType: "jsonp"</code> 的请求不支持同步方式。注意，同步请求可能会锁住浏览器，用户其它操作必须等待请求完成才可以执行。
-               </p>
+               <p class="options_p">默认设置下，所有请求均为异步请求(即默认值为： <code>true</code>)。如果需要发送同步请求，请将此选项设置为 <code>false</code>。跨域请求以及 <code>dataType: "jsonp"</code> 的请求不支持同步方式。注意，同步请求可能会锁住浏览器，用户其它操作必须等待请求完成才可以执行。<strong>从 jQuery 1.8 开始，不再建议使用 <code> async: false </code>。</strong></p>
                <h5 class="option">beforeSend(jqXHR, settings)<span>Function</span></h5>
                <p class="options_p">发送请求前可修改 jqXHR (在 jQuery 1.4.x 之前，是 XMLHTTPRequest) 对象的函数，如添加自定义 HTTP 头等。jqXHR 和设置参数的映射表将作为参数被传递。这是一个 <a href="http://docs.jquery.com/Ajax_Events">Ajax 事件</a>。如果返回 <code>false</code> 可以取消本次ajax请求。<strong>从 jQuery 1.5 开始</strong>, <code>beforeSend</code> 被调用时，将不考虑请求的类型。
                </p>
@@ -525,7 +524,7 @@ jQuery.ajaxSettings.xhr = function () {
       <h5>jQuery 代码:</h5><pre><code>$.ajax({
   type: "POST",
   url: "some.php",
-  data: "name=John&amp;location=Boston"
+  data: { name: "John", location: "Boston" }
 }).done(function( msg ) {
   alert( "Data Saved: " + msg );
 });</code></pre><h3>示例:</h3>

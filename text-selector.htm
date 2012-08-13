@@ -25,17 +25,18 @@
       <div class="longdesc">
          
          <p>
-            <code>$(':text')</code> 等价于 <code>$('[type=text]')</code>因为，它会选择所有的 <code>&lt;input type="text"&gt;</code> 元素。如其它伪类选择器(以 ":" 开头的选择器)一样，建议使用此类选择器时，跟在一个标签名或者其它选择器后面，否则，默认使用了全局通配符选择器 "*"。换句话说，<code>$(':text')</code> 等价于 <code>$('*:text')</code>，所以应该使用 <code>$('input:text')</code> 来提升匹配效率。
-         </p>
-         
-         <p>换句话说，<code>$(':text')</code> 等价于 <code>$('*:text')</code>，所以应该使用 <code>$('input:text')</code> 来提升匹配效率。
+            <code>$(':text')</code> 允许我们选择所有的 <code>&lt;input type="text"&gt;</code> 元素。如其它伪类选择器(以 ":" 开头的选择器)一样，建议使用此类选择器时，跟在一个标签名或者其它选择器后面，否则，默认使用了全局通配符选择器 "*"。换句话说，<code>$(':text')</code> 等价于 <code>$('*:text')</code>，所以应该使用 <code>$('input:text')</code> 来提升匹配效率。
          </p>
          
          <p>
             <strong>注意:</strong> 从 jQuery 1.5.2 开始, <code>:text</code> 也选择那些 <code>input</code> 没有指定 <code>type</code> 属性的元素 (默认情况下 <code>type="text"</code>)。
          </p>
          
-      </div>
+         <p>This difference in behavior between <code>$(':text')</code> and <code>$('[type=text]')</code>, can be seen below:
+         </p><pre>$('&lt;input&gt;').is('[type=text]'); // false
+$('&lt;input&gt;').is(':text'); // true
+</pre>
+         </div>
       <h3 id="notes-0">补充说明:</h3>
       <div class="longdesc">
          <ul>

@@ -152,7 +152,7 @@
          </p>
          
          	    
-         <p><strong>注意：</strong> 在 Internet Explorer 中，包括 IE 9，设置 HTML 元素的文本内容，可能会破坏其子节点的文本节点，结果导致子节点的文本节点从文档中被删除。如果你想保留这些 DOM 元素的引用，并且不希望它们被改变，请使用 <code>.empty().append(string)</code> 来代替 <code>.html(string)</code>。这样的话，在字符串赋给元素之前，会先从文档中移除该元素的内容。
+         <p><strong>注意：</strong> 在 Internet Explorer 中，包括 IE 9，设置 HTML 元素的文本内容，可能会破坏其子节点的文本节点，结果导致子节点的文本节点从文档中被删除。如果你想保留这些 DOM 元素的引用，并且不希望它们被改变，请使用 <code>.empty().html(string)</code> 来代替 <code>.html(string)</code>。这样的话，在新的字符串赋给元素之前，会先从文档中移除该元素的内容。
          </p>
          
       </div>

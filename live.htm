@@ -141,7 +141,7 @@ $(document).on("click", "a.offsite", function(){ alert("Goodbye!"); });        /
             <li>在 jQuery 1.7 之前，如果想阻止通过 <code>.live()</code> 绑定的事件被冒泡到其它元素上，必须在事件处理中返回 <code>false</code>。调用 <code>.stopPropagation()</code> 是不起作用的。
             </li>
             
-            <li>从 <b>jQuery 1.4</b> 开始，<code>.live()</code> 方法支持自定义事件，也支持<em>所有 JavaScript 事件冒泡</em>。
+            <li>从 <b>jQuery 1.4</b> 开始，<code>.live()</code> 方法支持自定义事件，也支持<em>所有 JavaScript 事件冒泡</em>。它还支持一些原本不能冒泡的事件，包括 <code>change</code>, <code>submit</code>, <code>focus</code> 和 <code>blur</code>。
             </li>
             
             <li>在 <b>jQuery 1.3.x</b> 中，只能绑定如下 JavaScript 事件：<code>click</code>, <code>dblclick</code>, <code>keydown</code>, <code>keypress</code>, <code>keyup</code>, <code>mousedown</code>, <code>mousemove</code>, <code>mouseout</code>, <code>mouseover</code>, 和 <code>mouseup</code>.

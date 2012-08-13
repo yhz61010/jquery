@@ -76,17 +76,14 @@
             examining the value of banana. However, by passing <code>true</code> for the first function argument, objects will be recursively merged. (Passing <code>false</code> for the first argument is not supported.)
          </p>
          
-         <p>Undefined properties are not copied. However, properties inherited from the object's prototype <em>will</em> be copied over. For performance reasons, properties that have values of built-in JavaScript types such as Date or RegExp
-            are not re-constructed, and will appear as plain Objects in the resulting object or array.
+         <p>Undefined properties are not copied. However, properties inherited from the object's prototype <em>will</em> be copied over. Properties that are an object constructed via <code>new MyCustomObject(args)</code>, or built-in JavaScript types such as Date or RegExp, are not re-constructed and will appear as plain Objects in the resulting
+            object or array.
          </p>
          
-         <blockquote>
-            
-            <p><strong>Note:</strong> When performing a deep extend, Object and Array are extended, but primitive types such as String, Boolean, and Number are
-               not. For specific needs that fall outside of this behavior, you may prefer to write a custom extend method instead. 
-            </p>
-            
-         </blockquote>
+         <p>On a <code>deep</code> extend, Object and Array are extended, but object wrappers on primitive types such as String, Boolean, and Number are not.
+         </p>
+         
+         <p>For needs that fall outside of this behavior, write a custom extend method instead. </p>
          
          
       </div>

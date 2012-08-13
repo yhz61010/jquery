@@ -122,7 +122,6 @@ showIt();
          </li>
       </ul>
       <div class="longdesc">
-         
          <p>Every element can have one to many queues of functions attached to it by jQuery. In most applications, only one queue (called
             <code>fx</code>) is used. Queues allow a sequence of actions to be called on an element asynchronously, without halting program execution.
             The typical example of this is calling multiple animation methods on an element. For example:
@@ -150,8 +149,8 @@ $('#foo').queue(function() {
          <p>Note that when adding a function with <code>.queue()</code>, we should ensure that <code>.dequeue()</code> is eventually called so that the next function in line executes.
          </p>
          
-         <p>In jQuery 1.4 the function that's called is passed in another function, as the first argument, that when called automatically
-            dequeues the next item and keeps the queue moving. You would use it like so:
+         <p><strong>As of jQuery 1.4</strong>, the function that's called is passed another function as the first argument. When called, this automatically dequeues the
+            next item and keeps the queue moving. We use it as follows:
          </p>
          <pre>$("#test").queue(function(next) {
     // Do some stuff...

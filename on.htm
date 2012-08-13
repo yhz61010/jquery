@@ -143,7 +143,7 @@ function notify() { alert("clicked"); }
 $("button").on("click", notify);
 </pre>
          
-         <p>When the browser triggers an event or other JavaScript calls jQuery's <code>.trigger()</code> method, jQuery passes the handler an <code><a href="http://api.jquery.com/category/event-object/">event object</a></code> it can use to analyze and change the status of the event. This object is a <em>normalized subset</em> of data provided by the browser; the browser's unmodified native event object is available in <code>event.originalEvent</code>. For example, <code><a href="event.type.htm">event.type</a></code> contains the event name (e.g., "resize") and <code><a href="event.target.htm">event.target</a></code> indicates the deepest (innermost) element where the event occurred.
+         <p>When the browser triggers an event or other JavaScript calls jQuery's <code>.trigger()</code> method, jQuery passes the handler an <a href="http://api.jquery.com/category/event-object/"><code>event object</code></a> it can use to analyze and change the status of the event. This object includes a <em>normalized subset</em> of data provided by the browser; the browser's unmodified native event object is available in <code>event.originalEvent</code>. For example, <a href="event.type.htm"><code>event.type</code></a> contains the event name (e.g., "resize") and <a href="event.target.htm"><code>event.target</code></a> indicates the deepest (innermost) element where the event occurred.
          </p>
          
          
@@ -220,7 +220,7 @@ $("button").on("click", { name: "Addy" }, greet);
          </p>
          
          
-         <p>Although strongly discouraged for new code, you may see the pseudo-event-name <code>"hover"</code> used as a shorthand for the string <code>"mouseenter mouseleave"</code>. It attaches a <em>single event handler</em> for those two events, and the handler must examine <code>event.type</code> to determine whether the event is <code>mouseenter</code> or <code>mouseleave</code>. Do not confuse the "hover" pseudo-event-name with the <a href="hover.htm"><code>.hover()</code></a> method, which accepts <em>one or two</em> functions.
+         <p><em>Deprecated as of jQuery 1.8:</em> The name <code>"hover"</code> used as a shorthand for the string <code>"mouseenter mouseleave"</code>. It attaches a <em>single event handler</em> for those two events, and the handler must examine <code>event.type</code> to determine whether the event is <code>mouseenter</code> or <code>mouseleave</code>. Do not confuse the "hover" pseudo-event-name with the <a href="hover.htm"><code>.hover()</code></a> method, which accepts <em>one or two</em> functions.
          </p>
          
          
@@ -233,7 +233,11 @@ $("button").on("click", { name: "Addy" }, greet);
          </p>
          
          
-         <p>In all browsers, the <code>load</code> event does not bubble. In Internet Explorer 8 and lower, the <code>paste</code> 和 <code>reset</code> events do not bubble. Such events are not supported for use with delegation, but they <em>can</em> be used when the event handler is directly attached to the element generating the event.
+         <p>jQuery also specifically prevents right and middle clicks from bubbling as they don't occur on the element being clicked.
+            Should working with the middle click be required, the <code>mousedown</code> or <code>mouseup</code> events should be used with <code>.on()</code> instead.
+         </p>
+         
+         <p>In all browsers, the <code>load</code>, <code>scroll</code>, and <code>error</code> events (e.g., on an <code>&lt;img&gt;</code> element) do not bubble. In Internet Explorer 8 and lower, the <code>paste</code> and <code>reset</code> events do not bubble. Such events are not supported for use with delegation, but they <em>can</em> be used when the event handler is directly attached to the element generating the event.
          </p>
          
          	    

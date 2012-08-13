@@ -29,27 +29,26 @@
       </ul>
       <div class="longdesc">
          
-         <p><code>.css()</code> 方法可以很方便的取得第一个匹配元素的属性。对于某些属性而言，浏览器访问它们的方式是不同的，所以该方法对于取得这样的属性是格外的方便(例如，某些方法是通过基于标准浏览器的 <code>getComputedStyle()</code> 方法取得的，而有些方法是通过 IE 中的 <code>currentStyle</code> 和 <code>runtimeStyle</code> 属性取得的)。另外，某些特定的属性，不同浏览器的写法不一（例如,在 IE DOM 实现中 <code>float</code> 属性应该写成 <code>styleFloat</code>。然而，根据 W3C 的规范，应该写成 <code>cssFloat</code>），无论你使用哪种写法，<code>.css()</code> 方法都能返回相同的结果。例如，某元素是浮动在左侧的，下面三种写法都会返回正确的浮动值 <code>left</code>：
-         </p>
-         				        
-         <ol>
-            					          
-            <li>
-               <code>$('div.left').css('float');</code>
-               
-            </li>
-            					          
-            <li>
-               <code>$('div.left').css('cssFloat');</code>
-               
-            </li>
-            					          
-            <li>
-               <code>$('div.left').css('styleFloat');</code>
-               
-            </li>
-            				        
-         </ol>
+         <p><code>.css()</code> 方法可以很方便的取得第一个匹配元素的属性。对于某些属性而言，浏览器访问它们的方式是不同的，所以该方法对于取得这样的属性是格外的方便(例如，某些方法是通过基于标准浏览器的 <code>getComputedStyle()</code> 方法取得的，而有些方法是通过 IE 中的 <code>currentStyle</code> 和 <code>runtimeStyle</code> 属性取得的)。另外，某些特定的属性，不同浏览器的写法不一（例如,在 IE DOM 实现中 <code>float</code> 属性应该写成 <code>styleFloat</code>。然而，根据 W3C 的规范，应该写成 <code>cssFloat</code>），所以为了统一不同的写法，你可以简单的将其写成 <code>"float"</code>，这样 jQuery 就可以根据不同的浏览器，返回正确的值。<del>例如，某元素是浮动在左侧的，下面三种写法都会返回正确的浮动值 <code>left</code>：</del></p>
+         				        <del>
+            <ol>
+               					          
+               <li>
+                  <code>$('div.left').css('float');</code>
+                  
+               </li>
+               					          
+               <li>
+                  <code>$('div.left').css('cssFloat');</code>
+                  
+               </li>
+               					          
+               <li>
+                  <code>$('div.left').css('styleFloat');</code>
+                  
+               </li>
+               				        
+            </ol></del>
          				        
          <p>同样，jQuery 也能正确理解相同属性在 CSS 和 DOM 中的不同写法，将它们一视同仁。例如，jQuery 知道 <code>.css('background-color')</code> 和 <code>.css('backgroundColor')</code> 是相同的，因此能返回正确的结果。不同的浏览器对于 CSS 颜色值返回的结果是不同的，有的会以逻辑值形式返回，有的则会以实际值形式返回。例如, #FFF, #ffffff, 和 rgb(255,255,255)。
          </p>

@@ -73,7 +73,7 @@
 &lt;/div&gt;</pre>
          <blockquote>
             
-            <p>注意，当使用 <code>.clone()</code> 方法时，在向文档中插入或再插入之前，你可以修改克隆后的元素或者是其内容。
+            <p><strong>注意：</strong> 当使用 <code>.clone()</code> 方法时，在向文档中插入或再插入之前，你可以修改克隆后的元素或者是其内容。
             </p>
             
          </blockquote>
@@ -88,6 +88,11 @@
 </pre>
          <p>从 jQuery 1.5 开始,使用 <code>withDataAndEvents</code> 参数时，也可以使用增强的 <code>deepWithDataAndEvents </code> 参数，实现对所有子元素的事件和数据的拷贝。
          </p>
+         	    
+         <blockquote>
+            <p><strong>注意：</strong> 在使用 <code>.clone()</code> 生成含有 <code>id</code> 属性元素的副本时会有副作用，因为该元素本应该是唯一的元素。所以，应该尽可能的避免克隆含有 <code>id</code> 属性的元素或者使用 <code>class</code> 属性作为标识符进行替代。
+            </p>
+         </blockquote>
          
       </div>
    </div>

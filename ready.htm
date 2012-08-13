@@ -69,7 +69,7 @@
          
          <p>（思考了好久，又写了个例子，始终觉得上面的话有点儿自相矛盾，所以将原文贴在下面，请高人指教：</p>
          
-         <p>There is also <code>$(document).bind("ready", handler)</code>. This behaves similarly to the ready method but with one exception: If the ready event has already fired and you try to <code>.bind("ready")</code> the bound handler will not be executed. Ready handlers bound this way are executed <em>after</em> any bound by the other three methods above.
+         <p>There is also <code>$(document).bind("ready", handler)</code>, <em>deprecated as of jQuery 1.8</em>. This behaves similarly to the ready method but if the ready event has already fired and you try to <code>.bind("ready")</code> the bound handler will not be executed. Ready handlers bound this way are executed <em>after</em> any bound by the other three methods above.
          </p>
          
          <p>由于 <code>.ready()</code> 方法只能被匹配当前文档的 jQuery 对象调用，因此选择符可能被省略。

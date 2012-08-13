@@ -25,7 +25,7 @@
       </ul>
       <div class="longdesc">
          
-         <p>与使用 <code>$.browser</code> 来检测 user agent 或者根据不同的浏览器，改变页面的展示效果相比，使用<strong>功能检测</strong>是更好的作法。这意味着，在执行依赖于浏览器功能的代码之前，我们要先测试该功能是否有效，从而确保该功能能正常工作。为了简化该过程，jQuery 进行了很多这样的测试，保证我们使用 <code>jQuery.support</code> 对象的属性时可以得到正确的结果。
+         <p>与使用 <code>$.browser</code> 来检测 user agent 或者根据不同的浏览器，改变页面的展示效果相比，使用<strong>功能检测</strong>是更好的作法。为了使该该过程变得更简单，jQuery 进行了很多这样的测试，来设置 <code>jQuery.support</code> 对象的属性。
          </p>
          
          <p>所有支持的属性值用来进行功能检测（不使用任何形式的浏览器侦测方法）。</p>
@@ -56,7 +56,7 @@
             
          </blockquote>
          
-         <p>虽然 jQuery 已经包含了很多属性，但开发者在有特殊需求的时候，应该可以自由的向 jQuery 中添加自己所需的属性。很多 <code>jQuery.support</code> 属性还是相当底层的，这对于插件开发和 jQuery 核心开发而言是十分有用的，但是相对于一般使用者而言，并不是十分方便。由于 jQuery 内部需要进行这些测试，因此，<em>每次</em>页面加载时，都必须进行这些测试。由于这个原因，下面列出了 jQuery 短期保存的及本身所需要的属性。
+         <p>为了满足开发者在自己的工程上进行功能测试的需要，我们强烈建议使用其它的类库，例如 <a href="http://modernizr.com">Modernizr</a> 来代替对 <code>jQuery.support</code> 中属性的依赖。
          </p>
          
          

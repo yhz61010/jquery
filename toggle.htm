@@ -37,17 +37,19 @@
       </ul>
       <div class="longdesc">
          
+         <blockquote>
+            
+            <p>注意： jQuery 同样提供的一个动画方法，也叫 <a href="toggle.htm">.toggle()</a>。动画的 .toggle() 应用于元素的可见性。究竟哪一个方法会被执行，取决于传递的参数设置。
+            </p>
+            
+         </blockquote>
+         	    
          <p><code>.toggle()</code> 方法绑定方法用于 <code>click</code> 事件，因此，对于 <code>click</code> 事件适用的规则，同样也适用于该事件。
          </p>
          <pre>举例来说，请看下面的HTML：
 &lt;div id="target"&gt;
   Click here
 &lt;/div&gt;</pre>
-         
-         <p class="image">
-            <img src="images/0042_05_05.png" alt="">
-            
-         </p>
          
          <p>可以将事件绑定在 <code>&lt;div&gt;</code> 上：
          </p>
@@ -73,14 +75,6 @@
          
          <p>如果提供的函数多于两个，<code>.toggle()</code> 也将会循环这些事件。例如，如果提供了三个函数，那么第一个事件会在第一次，第四次，第七次这样的点击次数时被调用
          </p>
-         
-         <blockquote>
-            
-            <p>注意： jQuery 同样提供的一个动画方法，也叫 <a href="toggle.htm">.toggle()</a>。动画的 .toggle() 应用于元素的可见性。究竟哪一个方法会被执行，取决于传递的参数设置。
-            </p>
-            
-         </blockquote>
-         
          
          <p>之所以要有 <code>.toggle()</code> 方法，主要是出于使用方便的角度。它采用相对简单的实现，完成了需要人工实现的同样行为。如果内置的 <code>.toggle()</code> 的假设被证明是受限的，那么这可能是必要的。（原文如下：It is relatively straightforward to implement the same behavior by hand, and this can be necessary
             if the assumptions built into <code>.toggle()</code> prove limiting.）例如，如果在相同的元素上绑定了两个 <code>.toggle()</code> 事件，那么无法保证它们能正确的工作。因为 <code>.toggle()</code> 内部使用了 <code>click</code> 进行处理，所以我们必须先解除 <code>click</code> 事件的绑定，移除 <code>.toggle()</code> 的附属行为。这样的话，其它的 <code>click</code> 处理，就会出现麻烦。在 <code>.toggle()</code> 的实现中，同样调用了 <code>.preventDefault()</code>，因此，链接将不会被触发。并且，如果已经调用了元素上的 <code>.toggle()</code> 事件，那么，按钮的点击事件也不会被触发。
@@ -197,6 +191,13 @@
          </li>
       </ul>
       <div class="longdesc">
+         	    
+         <blockquote>
+            
+            <p>注意: 在事件处理模块中，也有一个叫 <a href="toggle-event.htm">.toggle()</a> 的方法。但哪一个会被执行，取决于传递的参数设置。
+            </p>
+            
+         </blockquote>
          
          <p>可以非常方便的使用没有任何参数的 <code>.toggle()</code> 方法来切换元素的显示或隐藏状态：
          </p>
@@ -209,13 +210,6 @@
          </p>
          
          <p>duration 参数可以提供一个毫秒数，代表动画运行的时间，时间越长动画越慢。还可以提供字符串 <code>'fast'</code> 和 <code>'slow'</code> ，分别对应了 <code>200</code> 和 <code>600</code> 毫秒。<del>如果没有设置 <code>duration</code> 参数，或者设置成其他无法识别的字符串，就会使用默认值 400 毫秒。</del></p>
-         
-         <blockquote>
-            
-            <p>注意: 在事件处理模块中，也有一个叫 <a href="toggle-event.htm">.toggle()</a> 的方法。但哪一个会被执行，取决于传递的参数设置。
-            </p>
-            
-         </blockquote>
          
          <p>从 jQuery 1.4.3 起，增加了一个可选的参数，用于确定使用的缓冲函数。缓冲函数确定了动画在不同位置的速度。jQuery默认只提供两个缓冲效果：<code>swing</code>（默认值） 和 线性缓冲效果<code>linear</code>。更多特效需要使用插件。可以访问 <a href="http://jqueryui.com">jQuery UI 网站</a> 来获得更多信息。
          </p>

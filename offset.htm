@@ -38,6 +38,9 @@
             <p>
                <strong>注意:</strong> jQuery 无法取得隐藏元素的偏移坐标。同样的，也无法取得隐藏元素的 border, margin, 或 padding 信息。
             </p>
+            	       
+            <p>若元素的属性设置的是 <code>visibility:hidden</code>，那么我们依然可以取得它的坐标。但是若设置的属性是 <code>display:none</code>，由于在绘制 DOM 树时根本就不绘制该元素，所以它的位置属性值是 undefined。
+            </p>
             
          </blockquote>    
          
