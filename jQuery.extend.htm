@@ -15,7 +15,7 @@
 		</script><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Object</span>jQuery.extend(target, <em class="optional">[object1]</em>, <em class="optional">[objectN]</em>)<br></h2>
    <div class="desc">
-      <p>Merge the contents of two or more objects together into the first object.</p>
+      <p>将两个或多个对象的内容合并到第一个对象中。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>jQuery.extend(target, <em class="optional">[object1]</em>, <em class="optional">[objectN]</em>)
@@ -23,16 +23,15 @@
             </h4>
             <div class="arguement"><strong>target</strong>
                								(Object)
-               								 An object that will receive the new properties if additional objects are passed in or that will extend the jQuery namespace
-               if it is the sole argument.
+               								如果传入了其它额外的参数对象，那么本参数是用于接收新属性的对象。如果该参数是唯一的参数，那么将用于扩展 jQuery 命名空间。
             </div>
             <div class="arguement"><strong>object1</strong>
                								(Object)
-               								 可选参数，An object containing additional properties to merge in.
+               								 可选参数，将要被合并的包含额外属性的对象。
             </div>
             <div class="arguement"><strong>objectN</strong>
                								(Object)
-               								 可选参数，Additional objects containing properties to merge in.
+               								 可选参数，可选的对象，包含将要被合并的属性。
             </div>
          </li>
          <li>
@@ -41,56 +40,59 @@
             </h4>
             <div class="arguement"><strong>deep</strong>
                								(Boolean)
-               								 可选参数，If true, the merge becomes recursive (aka. deep copy).
+               								 可选参数，如果该参数为 true，那么将进行递归合并(也就是深拷贝)。
             </div>
             <div class="arguement"><strong>target</strong>
                								(Object)
-               								The object to extend. It will receive the new properties.
+               								用于扩展的对象。用于接收新的属性。
             </div>
             <div class="arguement"><strong>object1</strong>
                								(Object)
-               								An object containing additional properties to merge in.
+               								将要被合并的包含额外属性的对象。
             </div>
             <div class="arguement"><strong>objectN</strong>
                								(Object)
-               								 可选参数，Additional objects containing properties to merge in.
+               								 可选参数，可选的对象，包含将要被合并的属性。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p>When we supply two or more objects to <code>$.extend()</code>, properties from all of the objects are added to the target object.
+         <p>当我们向 <code>$.extend()</code> 中传入两个或更多对象时，那么这些对象中的所有属性都会被合并到 target 参数中。
          </p>
          
-         <p>If only one argument is supplied to <code>$.extend()</code>, this means the target argument was omitted. In this case, the jQuery object itself is assumed to be the target. By doing
-            this, we can add new functions to the jQuery namespace.  This can be useful for plugin authors wishing to add new methods
-            to JQuery.
+         <p>如果只向 <code>$.extend()</code> 中提供了一个参数，那意味着将忽略 target 参数。在这种情况下，jQuery 对象本身会被当成是 target 参数。如果这样做的话，我们可以向 jQuery 名字空间中添加新的函数。这对于插件开发者希望向 jQuery 中添加新函数时是很有用的。
          </p>
          
-         <p>Keep in mind that the target object (first argument) will be modified, and will also be returned from <code>$.extend()</code>. If, however, we want to preserve both of the original objects, we can do so by passing an empty object as the target:
+         <p>值得注意的是，target 对象(即第一个参数)是会被修改的，并且该对象将作为 <code>$.extend()</code> 的返回值。如果我们想保留原始的对象，不希望它被修改的话，我们可以将空对象作为 target 对象：
          </p>
          <pre>var object = $.extend({}, object1, object2);</pre>
          
-         <p>The merge performed by <code>$.extend()</code> is not recursive by default; if a property of the first object is itself an object or array, it will be completely overwritten
-            by a property with the same key in the second object. The values are not merged. This can be seen in the example below by
-            examining the value of banana. However, by passing <code>true</code> for the first function argument, objects will be recursively merged. (Passing <code>false</code> for the first argument is not supported.)
+         <p>默认情况下，<code>$.extend()</code> 的合并操作并不是递归进行的。如果第一个对象的属性本身就是一个对象或数组，那么它将被第二个对象中含有相同键的属性所覆盖，但是值是不会被合并的。可以通过检查下面例子中 banana 的值，就可以了解这一点。然而，如果将 <code>true</code> 作为该函数的第一个参数，那么会在对象上进行递归的合并。(不支持将 <code>false</code> 作为函数的第一个参数。)
          </p>
          
-         <p>Undefined properties are not copied. However, properties inherited from the object's prototype <em>will</em> be copied over. Properties that are an object constructed via <code>new MyCustomObject(args)</code>, or built-in JavaScript types such as Date or RegExp, are not re-constructed and will appear as plain Objects in the resulting
-            object or array.
+         <p>未定义的属性是不会被拷贝的。但是，如果属性是继承自对象的 prototype 的话，是<em>会</em>被拷贝的。若属性是通过构造函数 <code>new MyCustomObject(args)</code> 进行赋值的，或通过内建的 JavaScript 类型，例如，Date 或 RegExp 进行赋值的话，是不会被重新创建的，并且会被当作简单对象出现在结果对象或数组中。
          </p>
          
-         <p>On a <code>deep</code> extend, Object and Array are extended, but object wrappers on primitive types such as String, Boolean, and Number are not.
+         <p>（原文如下：Undefined properties are not copied. However, properties inherited from the object's prototype will be copied over.
+            Properties that are an object constructed via new MyCustomObject(args), or built-in JavaScript types such as Date or RegExp,
+            are not re-constructed and will appear as plain Objects in the resulting object or array.）
          </p>
          
-         <p>For needs that fall outside of this behavior, write a custom extend method instead. </p>
+         <p>若设置了 <code>deep</code> 参数，对象和数组也会被合并进来，但如果对象是通过基本类型（例如，String, Boolean, 和 Number）包裹的话是不会被合并进来的。
+         </p>
+         
+         <p>(原文如下：On a <code>deep</code> extend, Object and Array are extended, but object wrappers on primitive types such as String, Boolean, and Number are not.)
+         </p>
+         
+         <p>若要满足其它不同于该行为的需求，可以编写一个自定义的扩展方法。</p>
          
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Merge two objects, modifying the first.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>合并两个对象，并修改第一个对象。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;script src="jquery.min.js"&gt;&lt;/script&gt;
@@ -133,7 +135,7 @@ $("#log").append( printObj(object1) );
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="708" height="125"></iframe><h3>示例:</h3>
-      <p>Merge two objects recursively, modifying the first.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>采用递归方式合并两个对象，并修改第一个对象。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;script src="jquery.min.js"&gt;&lt;/script&gt;
@@ -176,7 +178,7 @@ $("#log").append( printObj(object1) );
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="708" height="125"></iframe><h3>示例:</h3>
-      <p>Merge defaults and options, without modifying the defaults. This is a common plugin development pattern.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>合并 defaults 和 options 对象，并且不修改 defaults 对象。这是常用的插件开发模式。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;script src="jquery.min.js"&gt;&lt;/script&gt;
