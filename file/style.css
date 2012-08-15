@@ -315,3 +315,7 @@ em.optional{
 #current_time{
 	padding-left: 8px;
 }
+.feedback{
+	color: red;
+	font-weight: bold;
+}
