@@ -16464,28 +16464,28 @@ $spans.eq(3).text(jQuery.inArray("Pete", arr, 2));
          <category name="Version 1.2"/>
       </entry>
       <entry type="method" name="jQuery.map" return="Array">
-         <desc>Translate all items in an array or object to new array of items.</desc>
+         <desc>为数组或对象中的每一个元素应用一个转换函数，并将转换后的结果添加到新生成的数组中。</desc>
          <signature>
             <added>1.0</added>
             <argument name="array" type="Array">
-               <desc>The Array to translate.</desc>
+               <desc>用于应用转换的数组。</desc>
             </argument>
             <argument name="callback(elementOfArray, indexInArray)" type="Function">
-               <desc>The function to process each item against.  The first argument to the function is the array item, the second argument is the index in array The function can return any value. Within the function, <code>this</code> refers to the global (window) object.</desc>
+               <desc>处理每一个元素的函数。第一个参数是数组元素，第二个参数是该元素的索引值。该函数可以返回任何值。在函数内部，<code>this</code> 是指向全局(window)对象的。</desc>
             </argument>
          </signature>
          <signature>
             <added>1.6</added>
             <argument name="arrayOrObject" type="Array,Object">
-               <desc>The Array or Object to translate.</desc>
+               <desc>用于应用转换的数组或对象。</desc>
             </argument>
             <argument name="callback( value, indexOrKey )" type="Function">
-               <desc>The function to process each item against.  The first argument to the function is the value; the second argument is the index or key of the array or object property. The function can return any value to add to the array. A returned array will be flattened into the resulting array. Within the function, <code>this</code> refers to the global (window) object. </desc>
+               <desc>处理每一个元素的函数。第一个参数是数组中元素或对象的值，第二个参数是该元素在数组中的索引值或该对象的键。该函数可以返回任何值，该返回值会被添加到数组中。若返回是数组，则会将该数组中的元素添加到最终的结果数组中。在函数内部，<code>this</code> 是指向全局(window)对象的。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p><code>$.map()</code> method applies a function to each item in an array or object and maps the results into a new array. <strong>Prior to jQuery 1.6</strong>, <code>$.map()</code> supports traversing <em>arrays only</em>. <strong>As of jQuery 1.6</strong> it also traverses objects.</p>
-            <p>Array-like objects — those with a <code>.length</code> property <em>and</em> a value on the <code>.length - 1</code> index — must be converted to actual arrays before being passed to <code>$.map()</code>. The jQuery library provides <a href="jQuery.makeArray.htm">$.makeArray()</a> for such conversions.</p>
+            <p><code>$.map()</code> 方法会在数组的每一个元素或对象上应用一个函数并将结果映射到一个新的数组中。<strong>在 jQuery 1.6 之前</strong>， <code>$.map()</code> <em>仅支持遍历数组</em>。<strong>从 jQuery 1.6 开始</strong>，该方法还支持遍历对象。</p>
+            <p>类数组（Array-like）对象（也就是那些含有 <code>.length</code> 属性<em>以及</em>在索引值为 <code>.length - 1</code> 的位置处有值的对象）必须将其转化成真正的数组之后才能使用 <code>$.map()</code> 方法。jQuery 库提供了 <a href="jQuery.makeArray.htm">$.makeArray()</a> 方法来完成这样的转换。</p>
             <pre class="prettyprint">
 // The following object masquerades as an array.
 var fakeArray = {"length": 1, 0: "Addy", 1: "Subtracty"};
@@ -16498,16 +16498,16 @@ $.map( realArray, function(val, i) {
   // do something 
 });
 </pre>
-            <p>The translation function that is provided to this method is called for each top-level element in the array or object and is passed two arguments: The element's value and its index or key within the array or object.</p>
-            <p>The function can return:</p>
+            <p>在该方法中提供的转换函数会应用在数组或对象的顶级（top-level）元素上，并且该转换函数中有两个参数：元素在数组或对象中的值及该值所对应的索引值或键。</p>
+            <p>转换函数可以返回如下值:</p>
             <ul>
-               <li>the translated value, which will be mapped to the resulting array</li>
-               <li><code>null</code> or <code>undefined</code>, to remove the item</li>
-               <li>an array of values, which will be flattened into the full array</li>
+               <li>转换后的值，该值会被映射到最终的结果数组中</li>
+               <li><code>null</code> 或 <code>undefined</code>，用于移除该元素</li>
+               <li>数组，会将该数组中的元素添加到最终的结果数组中</li>
             </ul>
          </longdesc>
          <example>
-            <desc>A couple examples of using .map()</desc>
+            <desc>两个使用 .map() 的例子。</desc>
             <code>
     var arr = [ "a", "b", "c", "d", "e" ];
     $("div").text(arr.join(", "));
@@ -16534,28 +16534,28 @@ $.map( realArray, function(val, i) {
   </html>
          </example>
          <example>
-            <desc>Map the original array to a new one and add 4 to each value.</desc>
+            <desc>将原始数组中的每个值加 4 后，映射到新的数组中。</desc>
             <code>$.map( [0,1,2], function(n){
    return n + 4;
  });</code>
             <results>[4, 5, 6] </results>
          </example>
          <example>
-            <desc>Maps the original array to a new one and adds 1 to each value if it is bigger then zero, otherwise it's removed.</desc>
+            <desc>若原始数组中的值大于 0，则将该值加 1 后，映射到新的数组中，否则在结果数组中将不包含该值。</desc>
             <code>$.map( [0,1,2], function(n){
    return n &gt; 0 ? n + 1 : null;
  });</code>
             <results>[2, 3] </results>
          </example>
          <example>
-            <desc>Map the original array to a new one; each element is added with its original value and the value plus one.</desc>
+            <desc>将原始数组中每个值及该值加 1 后的值作为返回结果，映射到新生成的数组中。</desc>
             <code>$.map( [0,1,2], function(n){
    return [ n, n + 1 ];
  });</code>
             <results>[0, 1, 1, 2, 2, 3] </results>
          </example>
          <example>
-            <desc>Map the original object to a new array and double each value.</desc>
+            <desc>将原始对象中的每个值乘 2 后，映射到新生成的数组中。</desc>
             <code>
 var dimensions = { width: 10, height: 15, length: 20 };
 dimensions = $.map( dimensions, function( value, index ) {
@@ -16564,7 +16564,7 @@ dimensions = $.map( dimensions, function( value, index ) {
             <results>[20, 30, 40] </results>
          </example>
          <example>
-            <desc>Map an object's keys to an array.</desc>
+            <desc>将对象中的键映射到新生成的数组中。</desc>
             <code>
 var dimensions = { width: 10, height: 15, length: 20 },
     keys = $.map( dimensions, function( value, index ) {
@@ -16573,7 +16573,7 @@ var dimensions = { width: 10, height: 15, length: 20 },
             <results>["width", "height", "length"] </results>
          </example>
          <example>
-            <desc>Maps the original array to a new one; each element is squared.</desc>
+            <desc>将原始数组中每个值的两次方作为返回结果，映射到新生成的数组中。</desc>
             <code>
 $.map( [0,1,2,3], function (a) { 
   return a * a; 
@@ -16581,7 +16581,7 @@ $.map( [0,1,2,3], function (a) {
             <results>[0, 1, 4, 9] </results>
          </example>
          <example>
-            <desc>Remove items by returning <code>null</code> from the function. This removes any numbers less than 50, and the rest are decreased by 45.</desc>
+            <desc>在处理函数中，通过返回 <code>null</code> 的方式来移除该元素。移除条件是该值小于 50。同时将未被移除的元素值减小 45。</desc>
             <code>
 $.map( [0, 1, 52, 97], function (a) {
   return (a &gt; 50 ? a - 45 : null); 
@@ -16589,7 +16589,7 @@ $.map( [0, 1, 52, 97], function (a) {
             <results>[7, 52] </results>
          </example>
          <example>
-            <desc>Augmenting the resulting array by returning an array inside the function.</desc>
+            <desc>通过在处理函数中返回数组的方式，在最终返回的结果数组中添加元素。</desc>
             <code>var array = [0, 1, 52, 97];
 array = $.map(array, function(a, index) {
   return [a - 45, index];
@@ -16705,48 +16705,50 @@ $("span").text(arr.join(", "));
          <category name="Version 1.0"/>
       </entry>
       <entry type="method" name="jQuery.extend" return="Object">
-         <desc>Merge the contents of two or more objects together into the first object.</desc>
+         <desc>将两个或多个对象的内容合并到第一个对象中。</desc>
          <signature>
             <added>1.0</added>
             <argument name="target" type="Object">
-               <desc> An object that will receive the new properties if additional objects are passed in or that will extend the jQuery namespace if it is the sole argument.</desc>
+               <desc>如果传入了其它额外的参数对象，那么本参数是用于接收新属性的对象。如果该参数是唯一的参数，那么将用于扩展 jQuery 命名空间。</desc>
             </argument>
             <argument name="object1" type="Object" optional="true">
-               <desc>An object containing additional properties to merge in.</desc>
+               <desc>将要被合并的包含额外属性的对象。</desc>
             </argument>
             <argument name="objectN" type="Object" optional="true">
-               <desc>Additional objects containing properties to merge in.</desc>
+               <desc>可选的对象，包含将要被合并的属性。</desc>
             </argument>
          </signature>
          <signature>
             <added>1.1.4</added>
             <argument name="deep" type="Boolean" optional="true">
-               <desc>If true, the merge becomes recursive (aka. deep copy).</desc>
+               <desc>如果该参数为 true，那么将进行递归合并(也就是深拷贝)。</desc>
             </argument>
             <argument name="target" type="Object">
-               <desc>The object to extend. It will receive the new properties.</desc>
+               <desc>用于扩展的对象。用于接收新的属性。</desc>
             </argument>
             <argument name="object1" type="Object">
-               <desc>An object containing additional properties to merge in.</desc>
+               <desc>将要被合并的包含额外属性的对象。</desc>
             </argument>
             <argument name="objectN" type="Object" optional="true">
-               <desc>Additional objects containing properties to merge in.</desc>
+               <desc>可选的对象，包含将要被合并的属性。</desc>
             </argument>
          </signature>
          <longdesc>
-            <p>When we supply two or more objects to <code>$.extend()</code>, properties from all of the objects are added to the target object.</p>
-            <p>If only one argument is supplied to <code>$.extend()</code>, this means the target argument was omitted. In this case, the jQuery object itself is assumed to be the target. By doing this, we can add new functions to the jQuery namespace.  This can be useful for plugin authors wishing to add new methods to JQuery.</p>
-            <p>Keep in mind that the target object (first argument) will be modified, and will also be returned from <code>$.extend()</code>. If, however, we want to preserve both of the original objects, we can do so by passing an empty object as the target:</p>
+            <p>当我们向 <code>$.extend()</code> 中传入两个或更多对象时，那么这些对象中的所有属性都会被合并到 target 参数中。</p>
+            <p>如果只向 <code>$.extend()</code> 中提供了一个参数，那意味着将忽略 target 参数。在这种情况下，jQuery 对象本身会被当成是 target 参数。如果这样做的话，我们可以向 jQuery 名字空间中添加新的函数。这对于插件开发者希望向 jQuery 中添加新函数时是很有用的。</p>
+            <p>值得注意的是，target 对象(即第一个参数)是会被修改的，并且该对象将作为 <code>$.extend()</code> 的返回值。如果我们想保留原始的对象，不希望它被修改的话，我们可以将空对象作为 target 对象：</p>
             <pre>var object = $.extend({}, object1, object2);</pre>
 
-  <p>The merge performed by <code>$.extend()</code> is not recursive by default; if a property of the first object is itself an object or array, it will be completely overwritten by a property with the same key in the second object. The values are not merged. This can be seen in the example below by examining the value of banana. However, by passing <code>true</code> for the first function argument, objects will be recursively merged. (Passing <code>false</code> for the first argument is not supported.)</p>
-  <p>Undefined properties are not copied. However, properties inherited from the object's prototype <em>will</em> be copied over. Properties that are an object constructed via <code>new MyCustomObject(args)</code>, or built-in JavaScript types such as Date or RegExp, are not re-constructed and will appear as plain Objects in the resulting object or array.</p>
-  <p>On a <code>deep</code> extend, Object and Array are extended, but object wrappers on primitive types such as String, Boolean, and Number are not.</p>
-  <p>For needs that fall outside of this behavior, write a custom extend method instead. </p>
+  <p>默认情况下，<code>$.extend()</code> 的合并操作并不是递归进行的。如果第一个对象的属性本身就是一个对象或数组，那么它将被第二个对象中含有相同键的属性所覆盖，但是值是不会被合并的。可以通过检查下面例子中 banana 的值，就可以了解这一点。然而，如果将 <code>true</code> 作为该函数的第一个参数，那么会在对象上进行递归的合并。(不支持将 <code>false</code> 作为函数的第一个参数。)</p>
+  <p>未定义的属性是不会被拷贝的。但是，如果属性是继承自对象的 prototype 的话，是<em>会</em>被拷贝的。若属性是通过构造函数 <code>new MyCustomObject(args)</code> 进行赋值的，或通过内建的 JavaScript 类型，例如，Date 或 RegExp 进行赋值的话，是不会被重新创建的，并且会被当作简单对象出现在结果对象或数组中。</p>
+  <p>（原文如下：Undefined properties are not copied. However, properties inherited from the object's prototype will be copied over. Properties that are an object constructed via new MyCustomObject(args), or built-in JavaScript types such as Date or RegExp, are not re-constructed and will appear as plain Objects in the resulting object or array.）</p>
+  <p>若设置了 <code>deep</code> 参数，对象和数组也会被合并进来，但如果对象是通过基本类型（例如，String, Boolean, 和 Number）包裹的话是不会被合并进来的。</p>
+  <p>(原文如下：On a <code>deep</code> extend, Object and Array are extended, but object wrappers on primitive types such as String, Boolean, and Number are not.)</p>
+  <p>若要满足其它不同于该行为的需求，可以编写一个自定义的扩展方法。</p>
 
          </longdesc>
          <example>
-            <desc>Merge two objects, modifying the first.</desc>
+            <desc>合并两个对象，并修改第一个对象。</desc>
     <code><![CDATA[
 var object1 = {
   apple: 0,
@@ -16778,7 +16780,7 @@ $("#log").append( printObj(object1) );
 ]]></html>
          </example>
          <example>
-            <desc>Merge two objects recursively, modifying the first.</desc>
+            <desc>采用递归方式合并两个对象，并修改第一个对象。</desc>
 <code><![CDATA[
 var object1 = {
   apple: 0,
@@ -16810,7 +16812,7 @@ $("#log").append( printObj(object1) );
 ]]></html>
          </example>
          <example>
-            <desc>Merge defaults and options, without modifying the defaults. This is a common plugin development pattern.</desc>
+            <desc>合并 defaults 和 options 对象，并且不修改 defaults 对象。这是常用的插件开发模式。</desc>
 <code><![CDATA[
 var defaults = { validate: false, limit: 5, name: "foo" };
 var options = { validate: true, name: "bar" };
