@@ -15,7 +15,7 @@
 		</script><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>on(events, <em class="optional">[selector]</em>, <em class="optional">[data]</em>, handler(eventObject))<br></h2>
    <div class="desc">
-      <p>Attach an event handler function for one or more events to the selected elements.</p>
+      <p>为选中元素上的一个或多个事件绑定事件处理函数。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.7 新增</span>on(events, <em class="optional">[selector]</em>, <em class="optional">[data]</em>, handler(eventObject))
@@ -23,19 +23,19 @@
             </h4>
             <div class="arguement"><strong>events</strong>
                								(String)
-               								One or more space-separated event types and optional namespaces, such as "click" or "keydown.myPlugin".
+               								一个或多个由空格分隔的事件类型及可选的名字空间，例如："click" 或 "keydown.myPlugin"。
             </div>
             <div class="arguement"><strong>selector</strong>
                								(String)
-               								 可选参数，A selector string to filter the descendants of the selected elements that trigger the event. If the selector is <code>null</code> or omitted, the event is always triggered when it reaches the selected element.
+               								 可选参数，一个选择器字符串，用于过滤出被选中的元素中能触发事件的后代元素。如果选择器是 <code>null</code> 或者忽略了该选择器，那么被选中的元素总是能触发事件。
             </div>
             <div class="arguement"><strong>data</strong>
                								(Anything)
-               								 可选参数，Data to be passed to the handler in <code><a href="event.data.htm">event.data</a></code> when an event is triggered.
+               								 可选参数，当事件触发时，将要传入事件处理函数中的 <code><a href="event.data.htm">event.data</a></code> 的数据。
             </div>
             <div class="arguement"><strong>handler(eventObject)</strong>
                								(Function)
-               								当事件被触发时，执行的函数。 The value <code>false</code> is also allowed as a shorthand for a function that simply does <code>return false</code>.
+               								当事件被触发时，执行的函数。若该函数只是要执行 <code>return false</code> 的话，那么该参数位置可以直接简写成 <code>false</code>。
             </div>
          </li>
          <li>
@@ -44,88 +44,72 @@
             </h4>
             <div class="arguement"><strong>events-map</strong>
                								(Map)
-               								A map in which the string keys represent one or more space-separated event types and optional namespaces, and the values represent
-               a handler function to be called for the event(s).
+               								一个映射，键是由一个或多个由空格分隔的事件类型及可选的名字空间，值是这些事件类型所对应的事件处理函数。
             </div>
             <div class="arguement"><strong>selector</strong>
                								(String)
-               								 可选参数，A selector string to filter the descendants of the selected elements that will call the handler. If the selector is null or
-               omitted, the handler is always called when it reaches the selected element.
+               								 可选参数，一个选择器字符串，用于过滤出被选中的元素中能触发事件的后代元素。如果选择器是 <code>null</code> 或者忽略了该选择器，那么被选中的元素总是能触发事件。
             </div>
             <div class="arguement"><strong>data</strong>
                								(Anything)
-               								 可选参数，Data to be passed to the handler in <code><a href="event.data.htm">event.data</a></code> when an event occurs.
+               								 可选参数，当事件触发时，将要传入事件处理函数中的 <code><a href="event.data.htm">event.data</a></code> 的数据。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
          
-         <p><code>.on()</code> method attaches event handlers to the currently selected set of elements in the jQuery object. As of jQuery 1.7, the <code>.on()</code> method provides all functionality required for attaching event handlers. For help in converting from older jQuery event methods,
-            see <code><a href="bind.htm">.bind()</a></code>,  <code><a href="delegate.htm">.delegate()</a></code>, and <code><a href="live.htm">.live()</a></code>. To remove events bound with <code>.on()</code>, see <code><a href="off.htm">.off()</a></code>. To attach an event that runs only once and then removes itself, see <code><a href="one.htm">.one()</a></code></p>
-         
-         
-         <h2 id="event-names">Event names and namespaces</h2>
-         
-         
-         <p>Any event names can be used for the <code>events</code> argument. jQuery will pass through the browser's standard JavaScript event types, calling the <code>handler</code> function when the browser generates events due to user actions such as <code>click</code>. In addition, the <code><a href="trigger.htm">.trigger()</a></code> method can trigger both standard browser event names and custom event names to call attached handlers.
+         <p><code>.on()</code> 方法会在 jQuery 对象中将当前被选中的元素的上绑定事件。从 jQuery 1.7 开始，<code>.on()</code> 方法提供了绑定事件处理的所有功能。为了帮助您更好的将旧的 jQuery 事件方法转换成新的方法，您可以参阅 <code><a href="bind.htm">.bind()</a></code>， <code><a href="delegate.htm">.delegate()</a></code>， 和 <code><a href="live.htm">.live()</a></code> 方法。若要移除通过 <code>.on()</code> 绑定的事件，请使用 <code><a href="off.htm">.off()</a></code>。若要绑定仅执行一次之后就被删除的事件，请使用 <code><a href="one.htm">.one()</a></code>。
          </p>
          
          
-         <p>An event name can be qualified by <em>event namespaces</em> that simplify removing or triggering the event. For example, <code>"click.myPlugin.simple"</code> defines both the myPlugin and simple namespaces for this particular click event. A click event handler attached via that
-            string could be removed with <code>.off("click.myPlugin")</code> or <code>.off("click.simple")</code> without disturbing other click handlers attached to the elements. Namespaces are similar to CSS classes in that they are
-            not hierarchical; only one name needs to match. Namespaces beginning with an underscore are reserved for jQuery's use.
+         <h2 id="event-names">事件名和名字空间</h2>
+         
+         
+         <p>任何事件名都可以作为 <code>events</code> 参数。当浏览器根据用户的动作（例如，<code>click</code>）产生事件时，jQuery 将通过浏览器的标准 JavaScript 事件类型，调用 <code>handler</code> 函数。此外，<code><a href="trigger.htm">.trigger()</a></code> 方法既可以根据标准的浏览器事件名触发事件，也可以根据自定义的事件名触发事件。
          </p>
          
          
-         <p>In the second form of <code>.on()</code>, the <code>events-map</code> argument is a JavaScript Object, or "map". The keys are strings in the same form as the <code>events</code> argument with space-separated event type names and optional namespaces. The value for each key is a function (or <code>false</code> value) that is used as the <code>handler</code> instead of the final argument to the method. In other respects, the two forms are identical in their behavior as described
-            below.
+         <p>还可以为事件名添加指定一个<em>事件名字空间</em>，这样可以简化事件移除或触发。例如，<code>"click.myPlugin.simple"</code> 为 click 事件同时定义了两个名字空间 myPlugin 和 simple。通过上述方法绑定的 click 事件处理，可以使用 <code>.off("click.myPlugin")</code> 或 <code>.off("click.simple")</code> 来移除，而且还不会影响绑定在该元素上的其它 click 事件。名字空间与 CSS 样式类似，它们都不分层次，只需要有一个名字相匹配即可。以下划线开头的名字空间是供 jQuery 使用的。
          </p>
          
          
-         <h2 id="direct-and-delegated-events">Direct and delegated events</h2>
-         
-         
-         <p>The majority of browser events <em>bubble</em>, or <em>propagate</em>, from the deepest, innermost element (the <strong>event target</strong>) in the document where they occur all the way up to the body and the <code>document</code> element. In Internet Explorer 8 and lower, a few events such as <code>change</code> 和 <code>submit</code> do not natively bubble but jQuery patches these to bubble and create consistent cross-browser behavior.
+         <p>在 <code>.on(events-map, [selector], [data])</code> 这种用法中，<code>events-map</code> 参数是一个 JavaScript 对象，或者是 "map"。该参数的键的形式与 <code>events</code> 参数相同，也就是由空格分隔的事件类型及可选的名字空间。该参数的值是与键相对应的处理函数(或者是 <code>false</code>)，相当于 <code>.on(events, [selector], [data], handler(eventObject))</code> 中的 <code>handler</code> 参数，但是该值并不是方法中的最后一个参数。在其它方面，这两种形式在下面描述的内容中其行为都是相同的。
          </p>
          
          
-         <p>If <code>selector</code> is omitted or is null, the event handler is referred to as <em>direct</em> or <em>directly-bound</em>. The handler is called every time an event occurs on the selected elements, whether it occurs directly on the element or
-            bubbles from a descendant (inner) element.
+         <h2 id="direct-and-delegated-events">直接事件和代理事件</h2>
+         
+         
+         <p>大多数浏览器事件的<em>冒泡</em>或<em>传播</em>都是由内而外的(从 <strong>event target</strong> 开始)直到 body 及 <code>document</code> 元素，并且在传播路径上所有绑定了相同事件的元素上的这些事件都会被触发。在 Internet Explorer 8 及其早先的版本中，有一些事件，例如，<code>change</code> 和 <code>submit</code> 是不会本能的进行冒泡的，但 jQuery 为了跨浏览器的一致性，在这些事件上模拟了冒泡行为。
          </p>
          
          
-         <p>When a <code>selector</code> is provided, the event handler is referred to as <em>delegated</em>. The handler is not called when the event occurs directly on the bound element, but only for descendants (inner elements)
-            that match the selector. jQuery bubbles the event from the event target up to the element where the handler is attached (i.e.,
-            innermost to outermost element) and runs the handler for any elements along that path matching the selector.
+         <p>如果忽略了 <code>selector</code> 参数，或者该参数为 null，那么这种事件处理就被称之为<em>直接事件</em>或<em>直接绑定事件</em>。只要被选中元素上有事件发生时，那么事件处理函数每次都会被调用，无论它是元素上的直接事件还是从后代元素上冒泡上来的事件。
+         </p>
+         
+         
+         <p>当提供了 <code>selector</code> 参数时，事件处理就被称之为<em>代理事件</em>。当事件直接发生在绑定的元素上时，事件处理函数是不会被触发的，只有其后代元素与提供的选择器相匹配时，事件处理函数才会被触发。jQuery 会从 event target 开始向上层元素(例如，由最内层元素到最外层元素)开始冒泡，并且在传播路径上所有绑定了相同事件的元素若满足匹配的选择器，那么这些元素上的事件也会被触发。
          </p>
          
          
          <p>
-            <strong>Event handlers are bound only to the currently selected elements; they must exist on the page at the time your code makes
-               the call to <code>.on()</code>.</strong> To ensure the elements are present and can be selected, perform event binding inside a document ready handler for elements
-            that are in the HTML markup on the page. If new HTML is being injected into the page, select the elements and attach event
-            handlers <em>after</em> the new HTML is placed into the page. Or, use delegated events to attach an event handler, as described next.
+            <strong>事件处理只能绑定在当前被选中的元素上。并且，当调用 <code>.on()</code> 的时候，这些被选中的元素必须是在页面中存在的。</strong>为了保证元素是存在的，并且能够被选中，最好是在 document 的 ready 事件中进行事件绑定。如果有新的 HTML 被注入到页面中时，那么当新的 HTML 在页面上生成完<em>之后</em>，再进行元素选择，并绑定事件。也可以像下面提到的那样，使用代理事件进行事件绑定。
          </p>
          
          
-         <p>Delegated events have the advantage that they can process events from <em>descendant elements</em> that are added to the document at a later time. By picking an element that is guaranteed to be present at the time the delegated
-            event handler is attached, you can use delegated events to avoid the need to frequently attach and remove event handlers.
-            This element could be the container element of a view in a Model-View-Controller design, for example, or <code>document</code> if the event handler wants to monitor all bubbling events in the document. The <code>document</code> element is available in the <code>head</code> of the document before loading any other HTML, so it is safe to attach events there without waiting for the document to be
-            ready.
+         <p>代理事件有一个优势，那就是它可以处理在经过事件绑定之后又添加的<em>后代元素</em>上的事件。在确保所选择的元素已经存在的情况下，进行事件绑定时，您可以使用代理事件从而避免频繁的绑定事件及解除绑定事件。例如，这个已经存在的元素可以是 Model-View-Controller 模式中 View 的一个容器元素，也可以是 <code>document</code>，若您想监视所有文档中的冒泡事件的话。在加载任何其它 HTML 之前，<code>document</code> 元素在 <code>head</code> 中就是有效的，所以您可以安全的在 <code>head</code> 中进行事件绑定，而不需要等待文档加载完。
          </p>
          
          
-         <p>In addition to their ability to handle events on descendant elements not yet created, another advantage of delegated events
-            is their potential for much lower overhead when many elements must be monitored. On a data table with 1,000 rows in its <code>tbody</code>, this example attaches a handler to 1,000 elements:
+         <p>除了可以给未创建的后代元素绑定事件外（即上面提到的优势），代理事件的另一个好处就是，当需要监视很多元素的时候，代理事件的开销更小。例如，在一个表格的 <code>tbody</code> 中含有 1,000 行，下面这个例子会为这 1,000 元素绑定事件：
          </p>
          <pre>
 $("#dataTable tbody tr").on("click", function(event){
 	alert($(this).text());
 });
 </pre>
-         <p>A delegated-events approach attaches an event handler to only one element, the tbody, and the event only needs to bubble up
-            one level (from the clicked <code>tr</code> to <code>tbody</code>):
+         <p>然而，使用代理事件时，只需要为一个元素 tbody 绑定事件，并且事件只会向上冒泡一层(从被点击的 <code>tr</code> 到 <code>tbody</code>)：
          </p>
          <pre>
 $("#dataTable tbody").on("click", "tr", function(event){
@@ -133,142 +117,127 @@ $("#dataTable tbody").on("click", "tr", function(event){
 });
 </pre>
          
-         <h2 id="event-handler">The event handler and its environment</h2>
+         <h2 id="event-handler">事件处理函数和它的运行环境</h2>
          
          
-         <p><code>handler</code> argument is a function (or the value <code>false</code>, see below), and is required unless the <code>events-map</code> form is used. You can provide an anonymous handler function at the point of the <code>.on()</code> call, as the examples have done above, or declare a named function and pass its name:
+         <p><code>handler</code> 参数是一个函数(或者是一个 <code>false</code> 值，请看下文)，并且该参数是必须的参数，除非采用的是 <code>events-map</code> 形式。您可以在调用 <code>.on()</code> 时，提供一个匿名函数，就像上面例子中的用法，或者可以声明一个函数，然后再将该函数名作为参数：
          </p>
          <pre>
 function notify() { alert("clicked"); }
 $("button").on("click", notify);
 </pre>
          
-         <p>When the browser triggers an event or other JavaScript calls jQuery's <code>.trigger()</code> method, jQuery passes the handler an <a href="http://api.jquery.com/category/event-object/"><code>event object</code></a> it can use to analyze and change the status of the event. This object includes a <em>normalized subset</em> of data provided by the browser; the browser's unmodified native event object is available in <code>event.originalEvent</code>. For example, <a href="event.type.htm"><code>event.type</code></a> contains the event name (e.g., "resize") and <a href="event.target.htm"><code>event.target</code></a> indicates the deepest (innermost) element where the event occurred.
+         <p>当浏览器触发一个事件或使用其它 JavaScript 调用了 jQuery 的 <code>.trigger()</code> 方法时，jQuery 会为处理函数传入一个 <a href="http://api.jquery.com/category/event-object/"><code>event 对象</code></a>，可以使用它来分析或改变事件的状态。该对象包含了一个浏览器提供的数据的<em>标准化子集（normalized subset）</em>，而您需要浏览器自己的未经修改的原始 event 对象，您可以使用 <code>event.originalEvent</code> 来获得。例如，<a href="event.type.htm"><code>event.type</code></a> 包含事件名(例如，"resize") 和 <a href="event.target.htm"><code>event.target</code></a> 代表最内层的发生事件的元素。
          </p>
          
          
-         <p>By default, most events bubble up from the original event target to the <code>document</code> element. At each element along the way, jQuery calls any matching event handlers that have been attached. A handler can prevent
-            the event from bubbling further up the document tree (and thus prevent handlers on those elements from running) by calling
-            <code>event.stopPropagation()</code>. Any other handlers attached on the current element <em>will</em> run however. To prevent that, call <code>event.stopImmediatePropagation()</code>. (Event handlers bound to an element are called in the same order that they were bound.)
+         <p>默认情况下，大多数事件冒泡是从最初的 event target 开始的，直至 <code>document</code> 元素。并且在传播路径上所有绑定了相同事件的元素上的这些事件都会被触发。可以通过调用 <code>event.stopPropagation()</code> 来阻止事件在文档树中向上冒泡(这样就可以阻止这些元素上的事件被触发)。任何绑定在当前元素上的其它事件<em>将会</em>执行。为了防止这种事件发生，可以调用 <code>event.stopImmediatePropagation()</code>。(绑定在元素上的事件被调用的顺序和它们被绑定的顺序是一致的。)
          </p>
          
          
-         <p>Similarly, a handler can call <code>event.preventDefault()</code> to cancel any default action that the browser may have for this event; for example, the default action on a <code>click</code> event is to follow the link. Not all browser events have default actions, and not all default actions can be canceled. See
-            the <a href="http://www.w3.org/TR/DOM-Level-3-Events/#event-types-list">W3C Events Specification</a> for details.
+         <p>类似的，可以在事件处理函数中调用 <code>event.preventDefault()</code> 来取消浏览器在该事件上的默认动作。例如，跟随在链接之后的 <code>click</code> 事件的默认动作。不是所有的浏览器事件都有默认动作，而且也不是所有的默认动作都可以被取消。了解更多内容，请参阅 <a href="http://www.w3.org/TR/DOM-Level-3-Events/#event-types-list">W3C 事件规范</a>。
          </p>
          
          
-         <p>Returning <code>false</code> from an event handler will automatically call <code>event.stopPropagation()</code> 和 <code>event.preventDefault()</code>. A <code>false</code> value can also be passed for the <code>handler</code> as a shorthand for <code>function(){ return false; }</code>. So, <code>$("a.disabled").on("click", false);</code> attaches an event handler to all links with class "disabled" that prevents them from being followed when they are clicked
-            and also stops the event from bubbling. 
+         <p>若在事件处理中返回 <code>false</code> 的话，会自动调用 <code>event.stopPropagation()</code> 和 <code>event.preventDefault()</code>。也可以直接将 <code>false</code> 当作 <code>handler</code> 的参数，作为 <code>function(){ return false; }</code> 的简写形式。因此，下面的写法 <code>$("a.disabled").on("click", false);</code> 将会阻止所有含有 "disabled" 样式的链接的默认行为，并阻止该事件上的冒泡行为。
          </p>
          
          
-         <p>When jQuery calls a handler, the <code>this</code> keyword is a reference to the element where the event is being delivered; for directly bound events this is the element where
-            the event was attached and for delegated events this is an element matching <code>selector</code>. (Note that <code>this</code> may not be equal to <code>event.target</code> if the event has bubbled from a descendant element.) To create a jQuery object from the element so that it can be used with
-            jQuery methods, use <code>$(this)</code>.
+         <p>当 jQuery 调用事件处理函数时，关键字 <code>this</code> 指向的是当前正在执行事件的元素。对于直接事件而言，<code>this</code> 代表绑定事件的元素。对于代理事件而言，<code>this</code> 则代表了与 <code>selector</code> 相匹配的元素。(注意，如果事件是从后代元素冒泡上来的话，那么 <code>this</code> 就有可能不等于 <code>event.target</code>。)若要使用 jQuery 的相关方法，可以根据当前元素创建一个 jQuery 对象，即使用 <code>$(this)</code>。
          </p>
          
          
-         <h2 id="passing-data">Passing data to the handler</h2>
+         <h2 id="passing-data">向事件处理函数传入数据</h2>
          
          
-         <p>If a <code>data</code> argument is provided to <code>.on()</code> and is not <code>null</code> or <code>undefined</code>, it is passed to the handler in the <code><a href="event.data.htm">event.data</a></code> property each time an event is triggered. The <code>data</code> argument can be any type, but if a string is used the <code>selector</code> must either be provided or explicitly passed as <code>null</code> so that the data is not mistaken for a selector. Best practice is to use an object (map) so that multiple values can be passed
-            as properties.
+         <p>如果向 <code>.on()</code> 中传入了 <code>data</code> 参数，并且该参数不等于 <code>null</code> 或 <code>undefined</code> 的话，那么当事件被触发时，就可以使用 <code><a href="event.data.htm">event.data</a></code> 属性来获得传入的参数。<code>data</code> 参数可以是任何类型，但若是字符串类型的话，则必须同时提供 <code>selector</code> 参数，若您不想提供 <code>selector</code> 参数的话，请显式的使用 <code>null</code>。这么做的目的是为了不会将提供的 data 参数误当作选择器。最好使用一个对象(map)作为传入的参数，这样就可以同时传入很多的值。
          </p>
          
          
-         <p>As of jQuery 1.4, the same event handler can be bound to an element multiple times. This is especially useful when the <code>event.data</code> feature is being used, or when other unique data resides in a closure around the event handler function. For example:
+         <p>从 jQuery 1.4 开始，可以在同一个元素上多次绑定相同的事件处理函数。这对于使用 <code>event.data</code> 功能，或者在闭包中使用唯一的数据时是特别有用的。例如：
          </p>
          <pre>
 function greet(event) { alert("Hello "+event.data.name); }
 $("button").on("click", { name: "Karl" }, greet);
 $("button").on("click", { name: "Addy" }, greet);
 </pre>
-         <p>The above code will generate two different alerts when the button is clicked.</p>
+         <p>当点击按钮时，上述代码会产生两个不同的提示框。</p>
          
          
-         <p>As an alternative or in addition to the <code>data</code> argument provided to the <code>.on()</code> method, you can also pass data to an event handler using a second argument to <a href="trigger.htm">.trigger()</a> or <a href="triggerHandler.htm">.triggerHandler()</a>.
+         <p>除了可以向 <code>.on()</code> 方法传入 <code>data</code> 参数外，还可以向 <a href="trigger.htm">.trigger()</a> 和 <a href="triggerHandler.htm">.triggerHandler()</a> 中传入该参数。
          </p>
          
          
-         <h2 id="event-performance">Event performance</h2>
+         <h2 id="event-performance">事件性能</h2>
          
          
-         <p>In most cases, an event such as <code>click</code> occurs infrequently and performance is not a significant concern. However, high frequency events such as <code>mousemove</code> or <code>scroll</code> can fire dozens of times per second, and in those cases it becomes more important to use events judiciously. Performance
-            can be increased by reducing the amount of work done in the handler itself, caching information needed by the handler rather
-            than recalculating it, or by rate-limiting the number of actual page updates using <code>setTimeout</code>.
+         <p>在大多数情况下，因为事件（例如 <code>click</code> ）发生的频率并不是很高，所以我们最关心并不是事件的性能。然而，对于高频事件，例如 <code>mousemove</code> 或 <code>scroll</code>，通常会在一秒钟发生很多次。因此，在这种情况下，如果明智的使用事件就变得更加的重要。可以按如下的办法提高事件的性能：减少事件处理函数中的工作量；对于在事件处理函数中要用到的信息做好缓存而不是再重新计算一次；减少使用 <code>setTimeout</code> 更新页面的次数。
          </p>
          
          
-         <p>Attaching many delegated event handlers near the top of the document tree can degrade performance. Each time the event occurs,
-            jQuery must compare all selectors of all attached events of that type to every element in the path from the event target up
-            to the top of the document. For best performance, attach delegated events at a document location as close as possible to the
-            target elements. Avoid excessive use of <code>document</code> or <code>document.body</code> for delegated events on large documents.
+         <p>若在 document 树的顶层附近绑定很多代理事件的话，可能会使性能变得更差。每次发生事件时，jQuery 需要比较从 event target 开始到文档顶部的路径中每一个元素上所有该类型的事件。为了获得更好的性能，在绑定代理事件时，绑定的元素最好尽可能的靠近目标元素。避免在大型文档中，过多的在
+            <code>document</code> 或 <code>document.body</code> 上添加代理事件。
          </p>
          
          
-         <p>jQuery can process simple selectors of the form <code>tag#id.class</code> very quickly when they are used to filter delegated events. So, <code>"#myForm"</code>, <code>"a.external"</code>, and <code>"button"</code> are all fast selectors. Delegated events that use more complex selectors, particularly hierarchical ones, can be several
-            times slower--although they are still fast enough for most applications. Hierarchical selectors can often be avoided simply
-            by attaching the handler to a more appropriate point in the document. For example, instead of <code>$("body").on("click", "#commentForm .addNew", addComment)</code> use <code>$("#commentForm").on("click", ".addNew", addComment)</code>.
+         <p>当使用 <code>tag#id.class</code> 表单中的选择器来过滤代理事件时，jQuery 可以简单而快速的处理这种选择器。因此，<code>"#myForm"</code>， <code>"a.external"</code>，和 <code>"button"</code> 都是非常快速的选择器。若代理事件的选择器使用了过于复杂的形式，特别是使用了分层选择器的情况，虽然说这样做会大大的降低性能，但是对于大多数应用而言，它的速度依然是足够快的。通过为寻找更合适的元素绑定事件的方法，就可以很简单的避免使用分层选择器的情况。例如，使用
+            <code>$("#commentForm").on("click", ".addNew", addComment)</code> 来代替 <code>$("body").on("click", "#commentForm .addNew", addComment)</code> 。
          </p>
          
          
-         <h2 id="additional-notes">Additional notes</h2>
+         <h2 id="additional-notes">补充说明</h2>
          
          
-         <p>There are shorthand methods for some events such as <code><a href="click.htm">.click()</a></code> that can be used to attach or trigger event handlers. For a complete list of shorthand methods, see the <a href="http://api.jquery.com/category/events/">events category</a>.
+         <p>对于很多事件都有简写形式（例如 <code><a href="click.htm">.click()</a></code>）可以用于绑定或触发事件处理函数。完整的事件简写列表，请参阅 <a href="http://api.jquery.com/category/events/">事件类别</a>。
          </p>
          
          
-         <p><em>Deprecated as of jQuery 1.8:</em> The name <code>"hover"</code> used as a shorthand for the string <code>"mouseenter mouseleave"</code>. It attaches a <em>single event handler</em> for those two events, and the handler must examine <code>event.type</code> to determine whether the event is <code>mouseenter</code> or <code>mouseleave</code>. Do not confuse the "hover" pseudo-event-name with the <a href="hover.htm"><code>.hover()</code></a> method, which accepts <em>one or two</em> functions.
+         <p><em>从 jQuery 1.8 开始，不建议使用的方法：</em> <code>"hover"</code> 是字符串 <code>"mouseenter mouseleave"</code> 的简写形式。它为上述两个事件，绑定<em>一个单一事件处理函数</em>，而且，处理函数必须检查 <code>event.type</code> 来判断到底是 <code>mouseenter</code> 还是 <code>mouseleave</code>。不要将 "hover" 伪事件名和 <a href="hover.htm"><code>.hover()</code></a> 方法混为一谈, <a href="hover.htm"><code>.hover()</code></a> 可以接受<em>一个或两个</em>函数。
          </p>
          
          
-         <p>jQuery's event system requires that a DOM element allow attaching data via a property on the element, so that events can be
-            tracked and delivered. The <code>object</code>, <code>embed</code>, and <code>applet</code> elements cannot attach data, and therefore cannot have jQuery events bound to them.
+         <p>jQuery's 事件系统要求，一个 DOM 元素可以通过元素的属性附加数据，这样，事件就可以被跟踪和传递。<code>object</code>， <code>embed</code>， 和 <code>applet</code> 元素是不能附加数据的，因此，无法为这些元素绑定 jQuery 事件。
          </p>
          
          
-         <p><code>focus</code> 和 <code>blur</code> events are specified by the W3C to not bubble, but jQuery defines cross-browser <code>focusin</code> 和 <code>focusout</code> events that do bubble. When <code>focus</code> 和 <code>blur</code> are used to attach delegated event handlers, jQuery maps the names and delivers them as <code>focusin</code> 和 <code>focusout</code> respectively. For consistency and clarity, use the bubbling event type names.
+         <p>根据 W3C 的规定，<code>focus</code> 和 <code>blur</code> 事件是不能进行冒泡的，但是 jQuery 定义了跨浏览器的 <code>focusin</code> 和 <code>focusout</code> 事件，从而实现了事件的冒泡。当 <code>focus</code> 和 <code>blur</code> 用于绑定代理事件的时候，jQuery 会将它们映射成对应的 <code>focusin</code> 或 <code>focusout</code>。为了保证使用上的一致和清晰，请使用支持冒泡事件的事件名。
          </p>
          
          
-         <p>jQuery also specifically prevents right and middle clicks from bubbling as they don't occur on the element being clicked.
-            Should working with the middle click be required, the <code>mousedown</code> or <code>mouseup</code> events should be used with <code>.on()</code> instead.
+         <p>jQuery 同样明确的禁止了鼠标右键和中键的冒泡行为。因为它们并不在元素被点击的时候触发。若需要检测鼠标中键的动作，请 <code>.on()</code> 来代替 <code>mousedown</code> 和 <code>mouseup</code>。
          </p>
          
-         <p>In all browsers, the <code>load</code>, <code>scroll</code>, and <code>error</code> events (e.g., on an <code>&lt;img&gt;</code> element) do not bubble. In Internet Explorer 8 and lower, the <code>paste</code> and <code>reset</code> events do not bubble. Such events are not supported for use with delegation, but they <em>can</em> be used when the event handler is directly attached to the element generating the event.
+         <p>在所有的浏览器中，<code>load</code>， <code>scroll</code>，和 <code>error</code> 事件(例如，在 <code>&lt;img&gt;</code> 元素上)是不会进行冒泡的。在 Internet Explorer 8 及早先版本中，<code>paste</code> 和 <code>reset</code> 事件也不会发生冒泡现象。因此，无法在代理事件中使用这些事件。但若事件处理函数是直接绑定在产生事件的元素上的话，是<em>可以</em>使用这些事件的。
          </p>
          
          	    
-         <p><code>error</code> event on the <code>window</code> object uses nonstandard arguments and return value conventions, so it is not supported by jQuery. Instead, assign a handler
-            function directly to the <code>window.onerror</code> property.
+         <p>由于 <code>window</code> 对象上的 <code>error</code> 事件使用了非标准参数和返回值约定，因此 jQuery 不支持该事件。可以采用为 <code>window.onerror</code> 属性直接添加事件处理函数的方法来代替。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Display a paragraph's text in an alert when it is clicked:</p>
+      <p>当点击段落时，显示该段落中的文本：</p>
       <h5>jQuery 代码:</h5><pre><code>$("p").on("click", function(){
 alert( $(this).text() );
 });</code></pre><h3>示例:</h3>
-      <p>Pass data to the event handler, which is specified here by name:</p>
+      <p>向事件处理函数中传入数据，并且在事件处理函数中通过名字来获取传入的数据：</p>
       <h5>jQuery 代码:</h5><pre><code>function myHandler(event) {
 alert(event.data.foo);
 }
 $("p").on("click", {foo: "bar"}, myHandler)</code></pre><h3>示例:</h3>
-      <p>Cancel a form submit action and prevent the event from bubbling up by returning false:</p>
+      <p>取消表单的提交动作，并且通过返回 false 的方法来防止事件冒泡：</p>
       <h5>jQuery 代码:</h5><pre><code>$("form").on("submit", false)</code></pre><h3>示例:</h3>
-      <p>Cancel only the default action by using .preventDefault().</p>
+      <p>通过使用 .preventDefault()，仅取消默认的动作。</p>
       <h5>jQuery 代码:</h5><pre><code>$("form").on("submit", function(event) {
   event.preventDefault();
 });</code></pre><h3>示例:</h3>
-      <p>Stop submit events from bubbling without preventing form submit, using .stopPropagation().</p>
+      <p>通过使用 .stopPropagation()，防止提交事件的冒泡行为，但是并不禁止提交行为。</p>
       <h5>jQuery 代码:</h5><pre><code>$("form").on("submit", function(event) {
   event.stopPropagation();
 });</code></pre><h3>示例:</h3>
-      <p>Attach and trigger custom (non-browser) events.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>添加并触发自定义事件（非浏览器事件）。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -302,7 +271,7 @@ $("button").click(function () {
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="708" height="125"></iframe><h3>示例:</h3>
-      <p>Attach multiple event handlers simultaneously using a map.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>使用 map 同时添加多个事件处理函数。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -333,9 +302,7 @@ $("div.test").on({
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="708" height="125"></iframe><h3>示例:</h3>
-      <p>Click any paragraph to add another after it. Note that .on() allows a click event on any paragraph--even new ones--since the
-         event is handled by the ever-present body element after it bubbles to there.
-      </p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>点击任何一个段落时，就在它后面追加一个段落。注意，.on() 会为任何段落添加事件，包括新生成的段落，因为当事件冒泡到已经存在的 body 元素上时，就会触发绑定的事件。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -364,11 +331,11 @@ $("div.test").on({
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="708" height="125"></iframe><h3>示例:</h3>
-      <p>Display each paragraph's text in an alert box whenever it is clicked:</p>
+      <p>当点击段落时，显示该段落中的文本：</p>
       <h5>jQuery 代码:</h5><pre><code>$("body").on("click", "p", function(){
   alert( $(this).text() );
 });</code></pre><h3>示例:</h3>
-      <p>Cancel a link's default action using the preventDefault method.</p>
+      <p>使用 preventDefault 方法，取消链接的默认动作。</p>
       <h5>jQuery 代码:</h5><pre><code>$("body").on("click", "a", function(event){
   event.preventDefault();
 });</code></pre></div>
