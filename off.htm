@@ -15,7 +15,7 @@
 		</script><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>off(events, <em class="optional">[selector]</em>, <em class="optional">[handler(eventObject)]</em>)<br></h2>
    <div class="desc">
-      <p>Remove an event handler.</p>
+      <p>移除事件处理函数。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.7 新增</span>off(events, <em class="optional">[selector]</em>, <em class="optional">[handler(eventObject)]</em>)
@@ -23,16 +23,15 @@
             </h4>
             <div class="arguement"><strong>events</strong>
                								(String)
-               								One or more space-separated event types and optional namespaces, or just namespaces, such as "click", "keydown.myPlugin",
-               or ".myPlugin".
+               								一个或多个由空格分隔的事件类型及可选的名字空间，或者仅有名字空间。例如，"click"， "keydown.myPlugin"， 或 ".myPlugin"。
             </div>
             <div class="arguement"><strong>selector</strong>
                								(String)
-               								 可选参数，A selector which should match the one originally passed to <code>.on()</code> when attaching event handlers.
+               								 可选参数，与之前通过 <code>.on()</code> 进行绑定事件处理时相一致的选择器。
             </div>
             <div class="arguement"><strong>handler(eventObject)</strong>
                								(Function)
-               								 可选参数，A handler function previously attached for the event(s), or the special value <code>false</code>.
+               								 可选参数，之前为事件绑定的处理函数，或者是特殊值 <code>false</code>。
             </div>
          </li>
          <li>
@@ -41,44 +40,37 @@
             </h4>
             <div class="arguement"><strong>events-map</strong>
                								(Map)
-               								A map where the string keys represent one or more space-separated event types and optional namespaces, and the values represent
-               handler functions previously attached for the event(s).
+               								一个映射，键是由一个或多个由空格分隔的事件类型及可选的名字空间，值是先前为该事件绑定的处理函数。
             </div>
             <div class="arguement"><strong>selector</strong>
                								(String)
-               								 可选参数，A selector which should match the one originally passed to <code>.on()</code> when attaching event handlers.
+               								 可选参数，与之前通过 <code>.on()</code> 进行绑定事件处理时相一致的选择器。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p><code>off()</code> method removes event handlers that were attached with <code><a href="on.htm">
-                  .on()</a></code>
-            . See the discussion of delegated and directly bound events on that page for more information. Specific event handlers can
-            be removed on elements by providing combinations of event names, namespaces, selectors, or handler function names. <strong>When multiple filtering arguments are given, all of the arguments provided must match for the event handler to be removed.</strong>
+         <p><code>off()</code> 方法会移除通过 <code><a href="on.htm">
+                  .on()</a></code> 绑定的事件处理函数。了解更多信息，请查看在 <code><a href="on.htm">.on()</a></code> 方法中关于代理事件及直接事件的相关讨论。可以通过提供组合的事件名，名字空间，选择器或处理函数来移除绑定在元素上指定的事件处理函数。<strong>当提供了多个过滤参数时，只有与这些参数完全匹配的事件处理函数才会被移除。</strong>
             
          </p>
          
          
-         <p>If a simple event name such as <code>"click"</code> is provided, <em>all</em> events of that type (both direct and delegated) are removed from the elements in the jQuery set. When writing code that will
-            be used as a plugin, or simply when working with a large code base, best practice is to attach and remove events using namespaces
-            so that the code will not inadvertently remove event handlers attached by other code. All events of all types in a specific
-            namespace can be removed from an element by providing just a namespace, such as <code>".myPlugin"</code>. At minimum, either a namespace or event name must be provided.
+         <p>如果只简单的提供了诸如 <code>"click"</code> 这样的事件名，那么元素上<em>所有</em>该类型的事件(无论是直接事件还是代理事件)都会被移除。对于写插件，或者基于大型代码而编程时，最好是通过名字空间进行事件绑定或移除操作，这样就不会意外的移除其它代码添加的事件处理函数。可以通过名字空间，例如，<code>".myPlugin"</code> 来移除元素上所有与指定名字空间相匹配的事件，无论它是什么类型的事件。在移除事件处理时，至少要提供名字空间或事件名。
          </p>
          
          
-         <p>To remove specific delegated event handlers, provide a <code>selector</code> argument. The selector string must exactly match the one passed to <code>.on()</code> when the event handler was attached. To remove all delegated events from an element without removing non-delegated events,
-            use the special value <code>"**"</code>.
+         <p>若要移除指定的代理事件，需要提供 <code>selector</code> 参数。该选择器字符串必须与之前通过 <code>.on()</code> 进行事件处理绑定时使用的选择器相一致。若要移除元素上所有的代理事件，而不移除任何非代理事件，请使用特殊值 <code>"**"</code>。
          </p>
          
          
-         <p>A handler can also be removed by specifying the function name in the <code>handler</code> argument. When jQuery attaches an event handler, it assigns a unique id to the handler function. Handlers proxied by <code><a href="jQuery.proxy.htm">
+         <p>同样可以通过在 <code>handler</code> 参数中指定函数名来移除对应的事件处理。当 jQuery 绑定一个事件处理时，jQuery 会为该事件处理赋予一个独一无二的 id 值。通过 <code><a href="jQuery.proxy.htm">
                   jQuery.proxy()</a></code>
-            or a similar mechanism will all have the same unique id (the proxy function), so passing proxied handlers to <code>.off</code> may remove more handlers than intended. In those situations it is better to attach and remove event handlers using namespaces.
+            进行的事件代理，或类似的机制会使用这个 id(proxy 函数)，因此若向 <code>.off</code> 中传入了代理的事件处理函数，移除的处理函数可以会比预计的多。在这种情况下，最好是使用名字空间进行事件的绑定和移除。
          </p>
          
          
-         <p>As with <code>.on()</code>, you can pass an <code>events-map</code> argument instead of specifying the <code>events</code> 和 <code>handler</code> as separate arguments. The keys are events and/or namespaces; the values are handler functions or the special value <code>false</code>.
+         <p>与 <code>.on()</code> 一样，您可以传入一个 <code>events-map</code> 参数来取代 <code>events</code> 和 <code>handler</code> 参数。键是事件类型及可选的名字空间，值是绑定的处理函数，或者是特殊值 <code>false</code>。
          </p>
          
          
@@ -86,7 +78,7 @@
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Add and remove event handlers on the colored button.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>为有颜色的按钮添加并移除事件处理。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -121,11 +113,11 @@ $("#unbind").click(function () {
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="708" height="125"></iframe><h3>示例:</h3>
-      <p>Remove all event handlers from all paragraphs:</p>
+      <p>移除所有段落上的事件：</p>
       <h5>jQuery 代码:</h5><pre><code>$("p").off()</code></pre><h3>示例:</h3>
-      <p>Remove all delegated click handlers from all paragraphs:</p>
+      <p>移除所有段落上的代理事件：</p>
       <h5>jQuery 代码:</h5><pre><code>$("p").off( "click", "**" )</code></pre><h3>示例:</h3>
-      <p>Remove just one previously bound handler by passing it as the third argument:</p>
+      <p>通过传入的第三个参数，仅移除先前绑定的事件处理函数：</p>
       <h5>jQuery 代码:</h5><pre><code>var foo = function () {
   // code to handle some kind of event
 };
@@ -136,7 +128,7 @@ $("body").on("click", "p", foo);
 
 // ... foo will no longer be called.
 $("body").off("click", "p", foo); </code></pre><h3>示例:</h3>
-      <p>Unbind all delegated event handlers by their namespace:</p>
+      <p>通过指定名字空间，解除绑定表单上所有的代理事件：</p>
       <h5>jQuery 代码:</h5><pre><code>var validate = function () {
   // code to validate form entries
 };
