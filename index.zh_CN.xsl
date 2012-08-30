@@ -125,7 +125,7 @@
 			<script src="jquery.min.js"></script>
 			<script src="jquery.ba-hashchange.min.js"></script>
 			<script><![CDATA[
-				var sidebar_more_blink = function () {
+				function sidebar_more_blink() {
 					$("#sidebar_more").animate({
 							opacity: 'toggle'
 						}, "slow", function(){
