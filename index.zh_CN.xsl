@@ -153,12 +153,14 @@
 					$("#sidebar_more").hide();
 				};
 				var sidebar_offhover = function () {
-					$("#sidebar_more").animate({
-						width: 'toggle',
-						opacity: 0
-					}, "fast", function(){
-						$("#sidebar_more").show();
-						sidebar_more_blink();
+					$("#sidebar").animate({
+							width: 'toggle',
+							opacity: 0
+						},
+						"fast",
+						function(){
+							$("#sidebar_more").show();
+							sidebar_more_blink();
 					});
 					
 					$("#content").animate({
