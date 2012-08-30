@@ -14,7 +14,7 @@
             <h1>jQuery 1.8.0 中文文档 Translated by <a href="http://www.ho1ho.com/" target="_blank">Michael Leo</a>, Thanks <a href="http://www.cn-cuckoo.com/" target="_blank">为之漫笔</a> for original version. Welcome to visit jQuery Cheatsheet from <a href="http://oscarotero.com/jquery/" target="_blank">Oscar Otero</a>.
             </h1>
          </div>
-         <div class="headerMain">Last update: 2012-08-30<span id="current_time">11:29:41</span> (Chinese Standard Time) <span class="feedback">Bug report or Feedback： <a href="mailto:zytase-one@yahoo.com.cn">Michael Leo</a></span></div>
+         <div class="headerMain">Last update: 2012-08-30<span id="current_time">11:49:41</span> (Chinese Standard Time) <span class="feedback">Bug report or Feedback： <a href="mailto:zytase-one@yahoo.com.cn">Michael Leo</a></span></div>
       </div>
       <div id="wrapper">
          <div id="sidebar" style="display:none">
@@ -969,12 +969,14 @@
 					$("#sidebar_more").hide();
 				};
 				var sidebar_offhover = function () {
-					$("#sidebar_more").animate({
-						width: 'toggle',
-						opacity: 0
-					}, "fast", function(){
-						$("#sidebar_more").show();
-						sidebar_more_blink();
+					$("#sidebar").animate({
+							width: 'toggle',
+							opacity: 0
+						},
+						"fast",
+						function(){
+							$("#sidebar_more").show();
+							sidebar_more_blink();
 					});
 					
 					$("#content").animate({
