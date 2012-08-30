@@ -126,11 +126,13 @@
 			<script src="jquery.ba-hashchange.min.js"></script>
 			<script><![CDATA[
 				function sidebar_more_blink() {
-					$("#sidebar_more").animate({
+					$("#sidebar_more").animate(
+						{
 							opacity: 'toggle'
-						}, "slow", function(){
-							sidebar_more_blink();
-						});
+						}, 
+						"slow", 
+						sidebar_more_blink
+					);
 				};
 
 				var sidebar_more_mouseenter = function () {
