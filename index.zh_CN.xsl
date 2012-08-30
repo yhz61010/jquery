@@ -125,6 +125,45 @@
 			<script src="jquery.min.js"></script>
 			<script src="jquery.ba-hashchange.min.js"></script>
 			<script><![CDATA[
+				var sidebar_more_blink = function () {
+					$("#sidebar_more").animate({
+							opacity: 'toggle'
+						}, "slow", function(){
+							sidebar_more_blink();
+						});
+				};
+
+				var sidebar_more_mouseenter = function () {
+					$("#sidebar_more").stop();
+					$("#sidebar_more").hide();
+					$("#sidebar").animate({
+						width: 'toggle',
+						opacity: 1
+					}, "fast");
+
+					$("#content").animate({
+						marginLeft: '210px'
+					}, "fast");
+				};
+
+				var sidebar_onhover = function () {
+					$("#sidebar_more").stop();
+					$("#sidebar_more").hide();
+				};
+				var sidebar_offhover = function () {
+					$("#sidebar_more").animate({
+						width: 'toggle',
+						opacity: 0
+					}, "fast", function(){
+						$("#sidebar_more").show();
+						sidebar_more_blink();
+					});
+					
+					$("#content").animate({
+						marginLeft: '20px'
+					}, "fast");
+				};
+				/* =========================================== */
 				var global_top = 0;
 				var header_height = $('#header').height();
 				$(window).hashchange(function(){
@@ -146,6 +185,26 @@
 							doc.close();
 						});
 					});
+					if (page !== "cheatsheet"){
+						sidebar_more_blink = null;
+						delete sidebar_more_blink;
+						$("#sidebar").off("mouseenter mouseleave").show();
+						$("#sidebar_more").off("load mouseenter").hide();
+						$("#content").animate({
+							marginLeft: '210px'
+						}, "fast");
+					} else {
+						$("#sidebar").on({
+							"mouseenter" : sidebar_onhover,
+							"mouseleave" : sidebar_offhover
+						}).hide();
+						$("#sidebar_more")
+							.on({
+								"load"		 : sidebar_more_blink,
+								"mouseenter" : sidebar_more_mouseenter
+							})
+							.triggerHandler("load");
+					}
 				}).hashchange().scroll(function () {
 					if ($(window).scrollTop() < global_top){
 						if ($(window).scrollTop() > header_height) {
@@ -156,50 +215,6 @@
 					}
 				});
 
-				function sidebar_more_blink() {
-					$("#sidebar_more").animate({
-							opacity: 'toggle'
-						}, "slow", function(){
-							sidebar_more_blink();
-						});
-				}
-				sidebar_more_blink();
-
-				$("#sidebar_more").mouseenter(
-					function () {
-						$(this).stop();
-						$(this).hide();
-						$("#sidebar").animate({
-							width: 'toggle',
-							opacity: 1
-						}, "fast");
-						
-						$("#content").animate({
-							marginLeft: '210px'
-						}, "fast");
-					}
-				);
-				
-				$("#sidebar").hover(
-					function () {
-						$("#sidebar_more").stop();
-						$("#sidebar_more").hide();
-					},
-					function () {
-						$(this).animate({
-							width: 'toggle',
-							opacity: 0
-						}, "fast", function(){
-							$("#sidebar_more").show();
-							sidebar_more_blink();
-						});
-						
-						$("#content").animate({
-							marginLeft: '20px'
-						}, "fast");
-					}
-				);
-				
 				$("#sidebar h2").click(function(){
 					$(this).next("div").animate({
 						height: ['toggle', 'swing']
