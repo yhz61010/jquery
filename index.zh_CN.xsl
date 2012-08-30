@@ -11,12 +11,13 @@
 			<meta name="Keywords" content="jQuery中文文档,jQuery中文API手册,jQuery速查手册,jQuery最新版CHM下载,jQuery最新中文版,jQuery最新中文参考手册" />
 			<meta name="Description" content="jQuery中文文档,jQuery CHM下载,jQuery中文参考手册,jQuery中文版参考手册,jQuery 速查表,jQuery中文参考手册" />
 			<title>jQuery <xsl:value-of select="replace(/api/categories/category[@name='Version']/category[last()]/@name,'Version ','')"/> 中文文档 </title>
+			<link rel="stylesheet" href="css/ui-lightness/jquery-ui-custom.css"/>
 			<link rel="stylesheet" href="style.css"/>
 		</head>
 		<body id="api">
 			<div id="header">
 				<div class="headerMain"><h1>jQuery <xsl:value-of select="replace(/api/categories/category[@name='Version']/category[last()]/@name,'Version ','')"/> 中文文档 Translated by <a href="http://www.ho1ho.com/" target="_blank">Michael Leo</a>, Thanks <a href="http://www.cn-cuckoo.com/" target="_blank">为之漫笔</a> for original version. Welcome to visit jQuery Cheatsheet from <a href="http://oscarotero.com/jquery/" target="_blank">Oscar Otero</a>.</h1></div>
-				<div class="headerMain">Last update: <xsl:value-of select="year-from-dateTime($curDateTime)"/>-<xsl:number value="month-from-dateTime($curDateTime)" format="01"/>-<xsl:number value="day-from-dateTime($curDateTime)" format="01"/><span id="current_time"><xsl:number value="hours-from-dateTime($curDateTime)" format="01"/>:<xsl:number value="minutes-from-dateTime($curDateTime)" format="01"/>:<xsl:number value="seconds-from-dateTime($curDateTime)" format="01"/></span> (Chinese Standard Time) <span class="feedback">Bug report or Feedback： <a href="mailto:zytase-one@yahoo.com.cn">Michael Leo</a></span></div>
+				<div class="headerMain">Last update: <span id="current_date"><xsl:value-of select="year-from-dateTime($curDateTime)"/>-<xsl:number value="month-from-dateTime($curDateTime)" format="01"/>-<xsl:number value="day-from-dateTime($curDateTime)" format="01"/></span><span id="current_time"><xsl:number value="hours-from-dateTime($curDateTime)" format="01"/>:<xsl:number value="minutes-from-dateTime($curDateTime)" format="01"/>:<xsl:number value="seconds-from-dateTime($curDateTime)" format="01"/></span> (Chinese Standard Time) <span class="feedback">Bug report or Feedback： <a href="mailto:zytase-one@yahoo.com.cn">Michael Leo</a></span></div>
 			</div>
 			<div id="wrapper">
 				<div id="sidebar" style="display:none">
@@ -121,7 +122,10 @@
 				</div>
 			</div>
 			<script src="jquery.min.js"></script>
+			<script src="jquery-ui.custom.min.js"></script>
+			<script src="jstorage.min.js"></script>
 			<script src="jquery.ba-hashchange.min.js"></script>
+			<script src="common.js"></script>
 			<script><![CDATA[
 				function sidebar_more_blink() {
 					$("#sidebar_more").animate(
