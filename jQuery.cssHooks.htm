@@ -15,9 +15,7 @@
    <h2><span>返回值:Object</span>jQuery.cssHooks
    </h2>
    <div class="desc">
-      <p>Hook directly into jQuery to override how particular CSS properties are retrieved or set, normalize CSS property naming, or
-         create custom properties.
-      </p>
+      <p>直接向 jQuery 中添加钩子，用于覆盖设置或获取特定 CSS 属性时的方法，目的是为了标准化 CSS 属性名或创建自定义属性。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.4.3 新增</span>jQuery.cssHooks
@@ -26,17 +24,16 @@
       </ul>
       <div class="longdesc">
          
-         <p><code>$.cssHooks</code> object provides a way to define functions for getting and setting particular CSS values. It can also be used to create new
-            cssHooks for normalizing CSS3 features such as box shadows and gradients. 
+         <p><code>$.cssHooks</code> 对象提供了一种通过定义函数来获取或设置特定 CSS 值的方法。可以用它来创建新的 cssHooks 用于标准化 CSS3 功能，例如，盒子阴影（box shadows）及渐变（gradients）。
          </p>
          
-         <p>For example, some versions of Webkit-based browsers require <code>-webkit-border-radius</code> to set the <code>border-radius</code> on an element, while earlier Firefox versions require <code>-moz-border-radius</code>. A cssHook can normalize these vendor-prefixed properties to let <code>.css()</code> accept a single, standard property name (<code>border-radius</code>, or with DOM property syntax, <code>borderRadius</code>).
+         <p>例如，某些基于 Webkit 的浏览器会使用 <code>-webkit-border-radius</code> 来设置对象的 <code>border-radius</code>，然而,早先版本的 Firefox 则使用 <code>-moz-border-radius</code>。cssHook 就可以将这些不同的写法进行标准化，从而让 <code>.css()</code> 可以使用统一的标准化属性名(<code>border-radius</code> 或对应的 DOM 属性写法 <code>borderRadius</code>)。
          </p>
          
-         <p>In addition to providing fine-grained control over how specific style properties are handled, <code>$.cssHooks</code> also extends the set of properties available to the <code>.animate()</code> method.
+         <p>该方法除了提供了对特定样式的处理可以采用更加细致的控制外，<code>$.cssHooks</code> 同时还扩展了 <code>.animate()</code> 方法上的属性集。
          </p>
          
-         <p>Defining a new cssHook is straight-forward. The skeleton template below can serve as a guide to creating your own. </p>
+         <p>定义一个新的 cssHook 十分简单。下面的模板可以方便您创建自己的 cssHook：</p>
          <pre class="prettyprint">(function($) {
   // first, check to see if cssHooks are supported
   if ( !$.cssHooks ) {
@@ -55,10 +52,9 @@
   };
 })(jQuery);
 </pre>
-         <h4 id="feature-testing">Feature Testing</h4>
+         <h4 id="feature-testing">功能测试</h4>
          
-         <p>Before normalizing a vendor-specific CSS property, first determine whether the browser supports the standard property or a
-            vendor-prefixed variation. For example, to check for support of the <code>border-radius</code> property, see if any variation is a member of a temporary element's <code>style</code> object.
+         <p>在标准化 CSS 属性之前，首先要判断浏览器是否支持待标准的属性或经过变化（例如，带前缀）的属性。例如，要检查浏览器是否支持 <code>border-radius</code> 属性，还要检查该属性的任何变种写法是否是临时元素的 <code>style</code> 对象中的成员。
          </p>
          <pre class="prettyprint">(function($) {
   function styleSupport( prop ) {
@@ -98,11 +94,9 @@
   styleSupport( "borderRadius" );
 })(jQuery);
 </pre>
-         <h4 id="defining-complete-csshook">Defining a complete cssHook</h4>
+         <h4 id="defining-complete-csshook">定义一个完整的 cssHook</h4>
          
-         <p>To define a complete cssHook, combine the support test with a filled-out version of the skeleton template provided in the
-            first example:
-         </p>
+         <p>为了定义一个完整的 cssHook，首先我们需要测试您当前使用的 jQuery 版本是否支持 cssHooks 方法，此外，还要结合上面提到的例子：</p>
          <pre class="prettyprint">(function($) {
   if ( !$.cssHooks ) {
     throw("jQuery 1.4.3+ is needed for this plugin to work");
@@ -149,16 +143,12 @@
 })(jQuery);
 </pre>
          
-         <p>You can then set the border radius in a supported browser using either the DOM (camelCased) style or the CSS (hyphenated)
-            style:
-         </p>
+         <p>之后，您就可以在支持该属性的浏览器中使用 DOM (camel 式) 样式的写法或使用 CSS (带连字符号) 样式的写法来设置边框的半径了：</p>
          <pre class="prettyprint">
 $("#element").css("borderRadius", "10px");
 $("#another").css("border-radius", "20px");
 </pre>
-         <p>If the browser lacks support for any form of the CSS property, vendor-prefixed or not, the style is not applied to the element.
-            However, if the browser supports a proprietary alternative, it can be applied to the cssHooks instead. 
-         </p>
+         <p>如果浏览器不支持任何一种形式的 CSS 属性写法，并且也不支持任何前缀写法，那么该样式是不会应用到元素上的。但是，如果浏览器支持某种特殊的写法，那么可以在 cssHooks 中添加对该特殊用法的支持。</p>
          <pre class="prettyprint">
  (function($) {
   // feature test for support of a CSS property
@@ -191,24 +181,22 @@ $("#another").css("border-radius", "20px");
 
 })(jQuery);
 </pre>
-         <h4 id="special-units">Special units</h4>
+         <h4 id="special-units">特殊单位</h4>
          
-         <p>By default, jQuery adds a "px" unit to the values passed to the <code>.css()</code> method. This behavior can be prevented by adding the property to the <code>jQuery.cssNumber</code> object
+         <p>默认情况下，通过 <code>.css()</code> 方法设置的值，jQuery 会为其加上 "px" 单位。您可以通过向 <code>jQuery.cssNumber</code> 对象中添加属性的方法来防止这种行为的发生。
          </p>
          
          <pre class="prettyprint">$.cssNumber["someCSSProp"] = true;</pre>
          
-         <h4 id="animating">Animating with cssHooks</h4>
+         <h4 id="animating">动画与 cssHooks</h4>
          
-         <p>A cssHook can also hook into jQuery's animation mechanism by adding a property to the <code>jQuery.fx.step</code> object:
+         <p>通过向 <code>jQuery.fx.step</code> 对象中添加属性，cssHook 同样可以向 jQuery 的动画机制中添加钩子：
          </p>
          <pre class="prettyprint">$.fx.step["someCSSProp"] = function(fx){
   $.cssHooks["someCSSProp"].set( fx.elem, fx.now + fx.unit );
 };
 </pre>
-         <p>Note that this works best for simple numeric-value animations. More custom code may be required depending on the CSS property,
-            the type of value it returns, and the animation's complexity.
-         </p>
+         <p>注意，上述这种用法应用于简单的数值属性的动画是最好的。根据不同的 CSS 属性，返回值的类型以及动画的复杂性，可能需要在 cssHooks 写更多的代码。</p>
          
       </div>
    </div>
