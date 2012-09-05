@@ -91,7 +91,7 @@ showIt();
 		</script><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>queue(<em class="optional">[queueName]</em>, newQueue)<br></h2>
    <div class="desc">
-      <p>Manipulate the queue of functions to be executed on the matched elements.</p>
+      <p>操作匹配元素上将要执行的函数队列。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.2 新增</span>queue(<em class="optional">[queueName]</em>, newQueue)
@@ -103,7 +103,7 @@ showIt();
             </div>
             <div class="arguement"><strong>newQueue</strong>
                								(Array)
-               								An array of functions to replace the current queue contents.
+               								用于替换当前队列内容的函数数组。
             </div>
          </li>
          <li>
@@ -116,40 +116,34 @@ showIt();
             </div>
             <div class="arguement"><strong>callback( next )</strong>
                								(Function)
-               								The new function to add to the queue, with a function to call that will dequeue the next item.
+               								将要添加到队列中的新函数。当该函数被调用时，会从弹出队列中的下一个元素。
             </div>
          </li>
       </ul>
       <div class="longdesc">
-         <p>Every element can have one to many queues of functions attached to it by jQuery. In most applications, only one queue (called
-            <code>fx</code>) is used. Queues allow a sequence of actions to be called on an element asynchronously, without halting program execution.
-            The typical example of this is calling multiple animation methods on an element. For example:
+         <p>通过 jQuery，可以为每个元素绑定一个或多个函数队列。在大多数应用里，通常只使用一个队列(即 <code>fx</code>)。可以在队列中以异步方式在元素上调用多个动作而不会让程序停止。典型的例子就是在一个元素上调用多个动画方法。例如：
          </p>
          				        <pre>$('#foo').slideUp().fadeIn();</pre>
-         				        <p>When this statement is executed, the element begins its sliding animation immediately, but the fading transition is placed
-            on the <code>fx</code> queue to be called only once the sliding transition is complete.
+         				        <p>当上述语句被执行时，元素会立刻开始执行滑动动画，此时，渐变动画被加入 <code>fx</code> 队列中，当滑动动画执行完之后，才会开始渐变动画。
          </p>
          				        
-         <p><code>.queue()</code> method allows us to directly manipulate this queue of functions. Calling <code>.queue()</code> with a callback is particularly useful; it allows us to place a new function at the end of the queue.
+         <p><code>.queue()</code> 方法允许我们直接操作函数队列。调用带回调函数的 <code>.queue()</code> 是特别有用的，它允许我们在队列的最后添加新函数。
          </p>
          				        
-         <p>This feature is similar to providing a callback function with an animation method, but does not require the callback to be
-            given at the time the animation is performed.
-         </p>
+         <p>该函数的功能类似于在动画方法中提供了回调函数，但是不要求在动画执行时指定回调函数。</p>
          <pre>$('#foo').slideUp();
 $('#foo').queue(function() {
   alert('Animation complete.');
   $(this).dequeue();
 });</pre>
-         <p>This is equivalent to:</p>
+         <p>上述代码等价于如下代码：</p>
          <pre>$('#foo').slideUp(function() {
   alert('Animation complete.');
 });</pre>
-         <p>Note that when adding a function with <code>.queue()</code>, we should ensure that <code>.dequeue()</code> is eventually called so that the next function in line executes.
+         <p>注意，当通过 <code>.queue()</code> 添加函数时，我们应该保证在函数最后调用了 <code>.dequeue()</code>，这样就能让队列中的其它函数按顺序执行。
          </p>
          
-         <p><strong>As of jQuery 1.4</strong>, the function that's called is passed another function as the first argument. When called, this automatically dequeues the
-            next item and keeps the queue moving. We use it as follows:
+         <p><strong>从 jQuery 1.4 开始</strong>，向队列中追加函数时，可以向该函数中传入另一个函数，作为第一个参数。当调用函数时，会自动从函数队列中弹出下一个项目，保证队列中函数的继续进行。我们可以像下面这样使用：
          </p>
          <pre>$("#test").queue(function(next) {
     // Do some stuff...
@@ -159,7 +153,7 @@ $('#foo').queue(function() {
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>Queue a custom function.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>向队列中添加自定义函数。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -195,7 +189,7 @@ $(document.body).click(function () {
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="708" height="125"></iframe><h3>示例:</h3>
-      <p>Set a queue array to delete the queue.</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>设置一个队列数组，用于删除队列。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
