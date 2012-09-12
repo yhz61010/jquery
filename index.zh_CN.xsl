@@ -128,18 +128,14 @@
 			<script src="common.js"></script>
 			<script><![CDATA[
 				function sidebar_more_blink() {
-					$("#sidebar_more").animate(
-						{
+					$("#sidebar_more").animate({
 							opacity: 'toggle'
-						}, 
-						"slow", 
-						sidebar_more_blink
+						},"slow", sidebar_more_blink
 					);
 				};
 
 				var sidebar_more_mouseenter = function () {
-					$("#sidebar_more").stop();
-					$("#sidebar_more").hide();
+					$("#sidebar_more").stop(true).hide();
 					$("#sidebar").animate({
 						width: 'toggle',
 						opacity: 1
@@ -150,10 +146,6 @@
 					}, "fast");
 				};
 
-				var sidebar_onhover = function () {
-					$("#sidebar_more").stop();
-					$("#sidebar_more").hide();
-				};
 				var sidebar_offhover = function () {
 					$("#sidebar").animate({
 							width: 'toggle',
@@ -194,14 +186,13 @@
 					if (page !== "cheatsheet"){
 						sidebar_more_blink = null;
 						delete sidebar_more_blink;
-						$("#sidebar").off("mouseenter mouseleave").show();
-						$("#sidebar_more").off("load mouseenter").hide();
+						$("#sidebar_more").remove();
+						$("#sidebar").off().show().css("opacity", 1);
 						$("#content").animate({
 							marginLeft: '210px'
 						}, "fast");
 					} else {
 						$("#sidebar").on({
-							"mouseenter" : sidebar_onhover,
 							"mouseleave" : sidebar_offhover
 						}).hide();
 						$("#sidebar_more")
@@ -253,8 +244,9 @@
 		<xsl:variable name="zh-entry" select="$zh-entrys[$pos]"/>
 		<div id='go_home' style="cursor: pointer;" onclick="location.href='index.html'"></div>
 		<script>
+		<![CDATA[
 			(function(){
-				$("#go_home").stop();
+				$("#go_home").stop(true);
 				function go_home_blink() {
 					$("#go_home").animate({
 							opacity: 'toggle'
@@ -263,7 +255,15 @@
 						});
 				}
 				go_home_blink();
+				$(window).on("hashchange", function() { 
+					var previousUrl = location.href;
+					var isAPIPage = previousUrl.lastIndexOf("index.html#");
+					if (isAPIPage < 0){
+						location.href = "index.html";
+					}
+				});
 			})(jQuery);
+		]]>
 		</script>
 		<div class="entry">
 			<h2>
