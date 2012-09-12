@@ -1,7 +1,8 @@
 <!DOCTYPE HTML>
 <div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" id="go_home" style="cursor: pointer;" onclick="location.href='index.html'"></div><script xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions">
+		
 			(function(){
-				$("#go_home").stop();
+				$("#go_home").stop(true);
 				function go_home_blink() {
 					$("#go_home").animate({
 							opacity: 'toggle'
@@ -10,7 +11,15 @@
 						});
 				}
 				go_home_blink();
+				$(window).on("hashchange", function() { 
+					var previousUrl = location.href;
+					var isAPIPage = previousUrl.lastIndexOf("index.html#");
+					if (isAPIPage < 0){
+						location.href = "index.html";
+					}
+				});
 			})(jQuery);
+		
 		</script><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:Boolean</span>event.isPropagationStopped()<br></h2>
    <div class="desc">
