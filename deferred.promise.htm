@@ -37,7 +37,7 @@
       </ul>
       <div class="longdesc"> 
          
-         <p><code>deferred.promise()</code> 方法允许一个异步函数阻止那些干涉其内部请求的进度（progress）或状态（status）的其它代码。只有当延迟对象需要绑定额外的处理或判断状态(<code>then</code>, <code>done</code>, <code>fail</code>, <code>always</code>,<code>pipe</code>, <code>progress</code>, 和 <code>state</code>)时，才需要暴露 Promise 方法。如果是用于改变状态(<code>resolve</code>, <code>reject</code>, <code>notify</code>, <code>resolveWith</code>, <code>rejectWith</code>, 和 <code>notifyWith</code>)的话，不需要暴露 Promise 方法。
+         <p><code>deferred.promise()</code> 方法允许一个异步函数阻止那些干涉其内部请求的进度（progress）或状态（status）的其它代码。Promise 仅会暴露那些需要绑定额外的处理或判断状态的延迟方法(<code>then</code>, <code>done</code>, <code>fail</code>, <code>always</code>,<code>pipe</code>, <code>progress</code>, 和 <code>state</code>)时，并不会暴露任何用于改变状态的延迟方法(<code>resolve</code>, <code>reject</code>, <code>notify</code>, <code>resolveWith</code>, <code>rejectWith</code>, 和 <code>notifyWith</code>)。
          </p>
          
          

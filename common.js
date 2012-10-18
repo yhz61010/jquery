@@ -24,6 +24,14 @@ $(function(){
 					'Release update! 更新提示！' + 
 				'</p>' + 
 				'<p>' + 
+					'<strong>CHANGE LOG</strong>' + 
+				'</p>' + 
+				'<p>' + 
+					'<ol>' + 
+						'<li style="list-style-type:decimal">Fix translation of deferred.promise.</li>' + 
+					'</ol>' + 
+				'</p>' + 
+				'<p>' + 
 					'Please clear your browser cache or refresh page, otherwise page may be not displayed correctly.' + 
 				'</p>' + 
 				'<p>' + 
