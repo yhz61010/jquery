@@ -11021,7 +11021,7 @@ $('#foo').unbind('click', function() {
                   <strong>注意:</strong> 使用代理函数解绑元素上的事件并不会解绑该元素上所有的代理函数，因为相同的代理函数是作用于所有被代理的事件。可以使用事件上唯一的类名来解除绑定特定的事件(例如，<code>click.proxy1</code>, <code>click.proxy2</code>)。</p>
             </blockquote>
             <h4>使用命名空间</h4>
-            <p>与为了解除事件绑定，而维护事件处理方法的引用不同，我们可以为事件命令，并且使用它来缩小解除动作的范围。正如在 <code>.bind()</code> 方法中讨论过的那样，绑定事件处理的命名空间是使用句点(<code>.</code>)符号来定义的：</p>
+            <p>与为了解除事件绑定，而维护事件处理方法的引用不同，我们可以为事件定义命名空间，并且使用它来缩小解除动作的范围。正如在 <code>.bind()</code> 方法中讨论过的那样，绑定事件处理的命名空间是使用句点(<code>.</code>)符号来定义的：</p>
             <pre>$('#foo').bind('click.myEvents', handler);</pre>
             <p>当以这种方式绑定事件时，我们依然可以使用普通的方式来解除绑定：</p>
             <pre>$('#foo').unbind('click');</pre>
@@ -11187,7 +11187,7 @@ $('#foo').bind({
             </h4>
 
             <p><code>handler</code> 回调函数还可以带有参数。当调用该函数时，event 对象就是它的第一个参数。</p>
-            <p>通过是不需要 event 对象的，而且该参数通常被忽略，这是因为当触发事件处理时，我们可以通过上下文来取得足够的信息，完成我们需要的操作。然而，有的时候，当事件初始化完成时，我们需要收集更多关于用户环境的信息时，我们就需要使用该参数了。<a href="http://api.jquery.com/category/events/event-object/">查看全部 Event 对象</a>。</p>
+            <p>通常是不需要 event 对象的，而且该参数通常被忽略，这是因为当触发事件处理时，我们可以通过上下文来取得足够的信息，完成我们需要的操作。然而，有的时候，当事件初始化完成时，我们需要收集更多关于用户环境的信息时，我们就需要使用该参数了。<a href="http://api.jquery.com/category/events/event-object/">查看全部 Event 对象</a>。</p>
 
             <p>当事件处理返回 <code>false</code> 时，等价于同时在 event 对象上调用了 <code>.preventDefault()</code> 和 <code>.stopPropagation()</code>。</p>
             <p>可以下面这样，在事件处理中使用 event 对象：</p>
@@ -11201,7 +11201,7 @@ $('#foo').bind({
             <p>请注意，event 参数传给了一个匿名函数。上述代码的执行结果是，当用户在 ID 为 <code>foo</code> 的元素内点击了鼠标后，会显示出点击鼠标时的坐标。</p>
 
             <h4 id="passing-event-data">传入 Event Data</h4>
-            <p>通常并不使用可选的 <code>eventData</code> 参数。当提供该参数时，它允许我们向事件处理中传入额外的信息。使用该参数的方便这一在于可以解决闭包引起的问题。例如，假设我们有两个事件处理函数，都引用了相同的外部变量：</p>
+            <p>通常并不使用可选的 <code>eventData</code> 参数。当提供该参数时，它允许我们向事件处理中传入额外的信息。使用该参数的方便之一在于可以解决闭包引起的问题。例如，假设我们有两个事件处理函数，都引用了相同的外部变量：</p>
             <pre>var message = 'Spoon!';
 $('#foo').bind('click', function() {
   alert(message);
