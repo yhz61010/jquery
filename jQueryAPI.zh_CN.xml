@@ -2201,7 +2201,7 @@ $("#another").css("border-radius", "20px");
          </signature>
          <longdesc>
             <p>
-               <code>jQuery.parseXML</code> 使用浏览器原生的解析函数来创建一个有效的 XML 文档。该文档可以再被传入 <code>jQuery</code> 中用于创建一个类型的 jQuery 对象，可以使用 jQuery 的遍历和操作方法。</p>
+               <code>jQuery.parseXML</code> 使用浏览器原生的解析函数来创建一个有效的 XML 文档。该文档可以再被传入 <code>jQuery</code> 中用于创建一个典型的 jQuery 对象，可以使用 jQuery 的遍历和操作方法。</p>
          </longdesc>
          <example>
             <desc>使用一个 XML 字符串创建一个 jQuery 对象，并且获取 title 节点的值。</desc>
@@ -16398,7 +16398,7 @@ $("form").submit(function () {
             <p>如果你需要保留第一个数组的原始内容，请在调用 <code>$.merge()</code> 之前，对第一个数组进行拷贝。幸运的是，<code>$.merge()</code> 方法本身就可以完成这种拷贝操作：</p>
             <pre>var newArray = $.merge([], oldArray);</pre>
             <p>这种快捷方式创建了一个新的，空的数组，并将 oldArray 数组的内容插入到新的数组中，从而有效的对数组进行了克隆。</p>
-            <p>在 jQuery 1.4 之前，该方法的参数应该是真正的 Javascript 数组对象。使用 <code>$.makeArray</code> 来判断它们是否为真正的 Javascript 数组。</p>
+            <p>在 jQuery 1.4 之前，该方法的参数应该是真正的 Javascript 数组对象，如果不是，请使用 <code>$.makeArray</code> 将它们变成真正的 Javascript 数组。</p>
          </longdesc>
          <example>
             <desc>合并两个数组，修改第一个参数的内容。</desc>
@@ -17020,11 +17020,11 @@ overflow:auto;
             <added>1.3</added>
          </signature>
          <longdesc>
-            <p>与使用 <code>$.browser</code> 来检测 user agent 或者根据不同的浏览器，改变页面的展示效果相比，使用<strong>功能检测</strong>是更好的作法。为了使该该过程变得更简单，jQuery 进行了很多这样的测试，来设置 <code>jQuery.support</code> 对象的属性。</p>
-            <p>所有支持的属性值用来进行功能检测（不使用任何形式的浏览器侦测方法）。</p>
+            <p>与使用 <code>$.browser</code> 来检测 user agent 或者根据不同的浏览器改变页面的展示效果相比，使用<strong>功能检测</strong>是更好的作法。为了使该该过程变得更简单，jQuery 进行了很多这样的测试，来设置 <code>jQuery.support</code> 对象的属性。</p>
+            <p><strong>由于 jQuery 内部需要使用这些方法来进行检测，所以它们会在<em>每次</em>加载页面时被执行。下面列出了一些可用于检测的属性，但是某些不建议使用的或被删除的属性并没有被列出来，因为这些属性不是讨论的重点，而且当 jQuery 的内部代码不再需要某些属性时，它们就会被移除。</strong></p>
 
             <blockquote>
-               <p>以下是一些解释功能检测是如何工作的资源：</p>
+               <p>以下是一些解释功能检测是如何工作的文章：</p>
                <ul>
                   <li>
                      <a href="http://peter.michaux.ca/articles/feature-detection-state-of-the-art-browser-scripting">http://peter.michaux.ca/articles/feature-detection-state-of-the-art-browser-scripting</a>
