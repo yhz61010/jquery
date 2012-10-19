@@ -33,15 +33,15 @@
       </ul>
       <div class="longdesc">
          
-         <p>与使用 <code>$.browser</code> 来检测 user agent 或者根据不同的浏览器，改变页面的展示效果相比，使用<strong>功能检测</strong>是更好的作法。为了使该该过程变得更简单，jQuery 进行了很多这样的测试，来设置 <code>jQuery.support</code> 对象的属性。
+         <p>与使用 <code>$.browser</code> 来检测 user agent 或者根据不同的浏览器改变页面的展示效果相比，使用<strong>功能检测</strong>是更好的作法。为了使该该过程变得更简单，jQuery 进行了很多这样的测试，来设置 <code>jQuery.support</code> 对象的属性。
          </p>
          
-         <p>所有支持的属性值用来进行功能检测（不使用任何形式的浏览器侦测方法）。</p>
+         <p><strong>由于 jQuery 内部需要使用这些方法来进行检测，所以它们会在<em>每次</em>加载页面时被执行。下面列出了一些可用于检测的属性，但是某些不建议使用的或被删除的属性并没有被列出来，因为这些属性不是讨论的重点，而且当 jQuery 的内部代码不再需要某些属性时，它们就会被移除。</strong></p>
          
          
          <blockquote>
             
-            <p>以下是一些解释功能检测是如何工作的资源：</p>
+            <p>以下是一些解释功能检测是如何工作的文章：</p>
             
             <ul>
                

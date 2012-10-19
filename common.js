@@ -28,7 +28,9 @@ $(function(){
 				'</p>' + 
 				'<p>' + 
 					'<ol>' + 
-						'<li style="list-style-type:decimal">Fix translation of deferred.promise.</li>' + 
+						'<li style="list-style-type:decimal">Fix translation in jQuery.merge.</li>' + 
+						'<li style="list-style-type:decimal">Fix typo in jQuery.parseXML.</li>' + 
+						'<li style="list-style-type:decimal">Add missed translation in jQuery.support.</li>' + 
 					'</ol>' + 
 				'</p>' + 
 				'<p>' + 
