@@ -7328,7 +7328,7 @@ $("body").prepend("<h3>" + elementCount + " elements found</h3>");]]></code>
 &lt;div id="log"&gt;&lt;/div&gt;</pre>
 <p>The style definition is present to make the target element small enough to be scrollable:</p>
  
-<p class="image"><img src="/images/0042_05_11.png" alt="" />
+<p class="image"><img src="images/0042_05_11.png" alt="" />
 </p>
 <p>The <code>scroll</code> event handler can be bound to this element:</p>
 <pre>$('#target').scroll(function() {
@@ -8420,7 +8420,7 @@ $("li")
   Trigger the handler
 &lt;/div&gt;
 &lt;div id="log"&gt;&lt;/div&gt;</pre> 
-<p class="image"><img src="/images/0042_05_09.png" alt="" />
+<p class="image"><img src="images/0042_05_09.png" alt="" />
 </p>
 <p>The event handler can be bound to any element:</p>
 <pre>$('#outer').mouseleave(function() {
@@ -8523,7 +8523,7 @@ padding:0;
 &lt;/div&gt;
 &lt;div id="log"&gt;&lt;/div&gt;</pre>
  
-<p class="image"><img src="/images/0042_05_08.png" alt="" />
+<p class="image"><img src="images/0042_05_08.png" alt="" />
 </p>
 <p>The event handler can be bound to any element:</p>
 <pre>$('#outer').mouseenter(function() {
@@ -8624,7 +8624,7 @@ padding:0;
   Trigger the handler
 &lt;/div&gt;
 &lt;div id="log"&gt;&lt;/div&gt;</pre> 
-<p class="image"><img src="/images/0042_05_07.png" alt="" />
+<p class="image"><img src="images/0042_05_07.png" alt="" />
 </p>
 <p>The event handler can be bound to any element:</p>
 <pre>$('#outer').mouseout(function() {
@@ -8727,7 +8727,7 @@ padding:0;
 &lt;/div&gt;
 &lt;div id="log"&gt;&lt;/div&gt;</pre>
  
-<p class="image"><img src="/images/0042_05_06.png" alt="" />
+<p class="image"><img src="images/0042_05_06.png" alt="" />
 </p>
 <p>The event handler can be bound to any element:</p>
 <pre>$('#outer').mouseover(function() {
@@ -8819,7 +8819,7 @@ For example, consider the HTML:</p>
   Trigger the handler
 &lt;/div&gt;</pre>
  
-<p class="image"><img src="/images/0042_05_04.png" alt="" />
+<p class="image"><img src="images/0042_05_04.png" alt="" />
 </p>
 <p>The event handler can be bound to any <code>&lt;div&gt;</code>:</p>
 <pre>$('#target').dblclick(function() {
@@ -8903,7 +8903,7 @@ For example, consider the HTML:</p>
   Trigger the handler
 &lt;/div&gt;</pre>
 
-<p class="image"><img src="/images/0042_05_03.png" alt="" /></p>
+<p class="image"><img src="images/0042_05_03.png" alt="" /></p>
 <p>The event handler can be bound to any <code>&lt;div&gt;</code>:</p>
 <pre>$("#target").click(function() {
   alert("Handler for .click() called.");
@@ -8978,7 +8978,7 @@ For example, consider the HTML:</p>
   Trigger the handler
 &lt;/div&gt;
 </pre> 
-<p class="image"><img src="/images/0042_05_02.png" alt="" /></p>
+<p class="image"><img src="images/0042_05_02.png" alt="" /></p>
 <p>The event handler can be bound to any <code>&lt;div&gt;</code>:</p>
 <pre>$('#target').mouseup(function() {
   alert('Handler for .mouseup() called.');
@@ -9041,7 +9041,7 @@ For example, consider the HTML:</p>
   Trigger the handler
 &lt;/div&gt;</pre>
  
-<p class="image"><img src="/images/0042_05_01.png" alt="" /></p>
+<p class="image"><img src="images/0042_05_01.png" alt="" /></p>
 <p>The event handler can be bound to any <code>&lt;div&gt;</code>:</p>
 <pre>$('#target').mousedown(function() {
   alert('Handler for .mousedown() called.');
@@ -11516,12 +11516,12 @@ $('ul.first').find('.foo')
 });
 </pre>
 <p class="image">
-  <img src="/images/animate-1.jpg" alt="" />
+  <img src="images/animate-1.jpg" alt="" />
 </p>
 <p>Note that the target value of the <code>height</code> property is <code>'toggle'</code>. Since the image was visible before, the animation shrinks the height to 0 to hide it. A second click then reverses this transition:
 </p>
 <p class="image">
-<img src="/images/animate-2.jpg" alt="" />
+<img src="images/animate-2.jpg" alt="" />
 </p>
 
 <p>The <code>opacity</code> of the image is already at its target value, so this property is not animated by the second click. Since the target value for <code>left</code> is a relative value, the image moves even farther to the right during this second animation.</p>
@@ -11921,10 +11921,10 @@ div {
   });
   </pre>
   <p class="image four-across"> 
-    <img src="/images/0042_06_41.png" alt="" />
-    <img src="/images/0042_06_42.png" alt="" />
-    <img src="/images/0042_06_43.png" alt="" />
-    <img src="/images/0042_06_44.png" alt="" />
+    <img src="images/0042_06_41.png" alt="" />
+    <img src="images/0042_06_42.png" alt="" />
+    <img src="images/0042_06_43.png" alt="" />
+    <img src="images/0042_06_44.png" alt="" />
   </p>
   <p>With <code>duration</code> set to <code>0</code>, this method just changes the <code>opacity</code> CSS property, so <code>.fadeTo(0, opacity)</code> is the same as <code>.css('opacity', opacity)</code>.</p>
 </longdesc>
@@ -12046,10 +12046,10 @@ div { background:blue; }
   });
 });</pre>
     <p class="image four-across">
-      <img src="/images/0042_06_37.png" alt="" />
-      <img src="/images/0042_06_38.png" alt="" />
-      <img src="/images/0042_06_39.png" alt="" />
-      <img src="/images/0042_06_40.png" alt="" />
+      <img src="images/0042_06_37.png" alt="" />
+      <img src="images/0042_06_38.png" alt="" />
+      <img src="images/0042_06_39.png" alt="" />
+      <img src="images/0042_06_40.png" alt="" />
     </p>
 <blockquote>
 <p><strong>Note: </strong>To avoid unnecessary DOM manipulation, <code>.fadeOut()</code> will not hide an element that is already considered hidden. For information on which elements jQuery considers hidden, see <a href="http://api.jquery.com/hidden-selector"> :hidden Selector</a>.</p>
@@ -12282,10 +12282,10 @@ $("span").click(function () {
       });
     });</pre>
     <p class="image four-across">
-      <img src="/images/0042_06_33.png" alt="" />
-      <img src="/images/0042_06_34.png" alt="" />
-      <img src="/images/0042_06_35.png" alt="" />
-      <img src="/images/0042_06_36.png" alt="" />
+      <img src="images/0042_06_33.png" alt="" />
+      <img src="images/0042_06_34.png" alt="" />
+      <img src="images/0042_06_35.png" alt="" />
+      <img src="images/0042_06_36.png" alt="" />
     </p>
 
     <h4 id="easing">Easing</h4>
@@ -12523,18 +12523,18 @@ $("span").click(function () {
 </pre>
   <p>With the element initially shown, we can hide it slowly with the first click:</p>
   <p class="image four-across"> 
-    <img src="/images/0042_06_25.png" alt="" />
-    <img src="/images/0042_06_26.png" alt="" />
-    <img src="/images/0042_06_27.png" alt="" />
-    <img src="/images/0042_06_28.png" alt="" />
+    <img src="images/0042_06_25.png" alt="" />
+    <img src="images/0042_06_26.png" alt="" />
+    <img src="images/0042_06_27.png" alt="" />
+    <img src="images/0042_06_28.png" alt="" />
   </p>
   <p>A second click will show the element once again:</p>
 
   <p class="image four-across"> 
-    <img src="/images/0042_06_29.png" alt="" />
-    <img src="/images/0042_06_30.png" alt="" />
-    <img src="/images/0042_06_31.png" alt="" />
-    <img src="/images/0042_06_32.png" alt="" />
+    <img src="images/0042_06_29.png" alt="" />
+    <img src="images/0042_06_30.png" alt="" />
+    <img src="images/0042_06_31.png" alt="" />
+    <img src="images/0042_06_32.png" alt="" />
   </p>
     <h4 id="easing">Easing</h4>
     <p><strong>As of jQuery 1.4.3</strong>, an optional string naming an easing function may be used. Easing functions specify the speed at which the animation progresses at different points within the animation. The only easing implementations in the jQuery library are the default, called <code>swing</code>, and one that progresses at a constant pace, called <code>linear</code>. More easing functions are available with the use of plug-ins, most notably the <a href="http://jqueryui.com">jQuery UI suite</a>.</p>
@@ -12768,10 +12768,10 @@ $("span").click(function () {
 });
   </pre>
   <p class="image four-across"> 
-  <img src="/images/0042_06_21.png" alt="" />
-  <img src="/images/0042_06_22.png" alt="" />
-  <img src="/images/0042_06_23.png" alt="" /> 
-  <img src="/images/0042_06_24.png" alt="" />
+  <img src="images/0042_06_21.png" alt="" />
+  <img src="images/0042_06_22.png" alt="" />
+  <img src="images/0042_06_23.png" alt="" /> 
+  <img src="images/0042_06_24.png" alt="" />
   </p>
     <h4 id="easing">Easing</h4>
     <p><strong>As of jQuery 1.4.3</strong>, an optional string naming an easing function may be used. Easing functions specify the speed at which the animation progresses at different points within the animation. The only easing implementations in the jQuery library are the default, called <code>swing</code>, and one that progresses at a constant pace, called <code>linear</code>. More easing functions are available with the use of plug-ins, most notably the <a href="http://jqueryui.com">jQuery UI suite</a>.</p>
@@ -12985,10 +12985,10 @@ $("span").click(function () {
   });
 });</pre>
 <p class="image four-across"> 
-<img src="/images/0042_06_17.png" alt="" />
-<img src="/images/0042_06_18.png" alt="" />
-<img src="/images/0042_06_19.png" alt="" />
-<img src="/images/0042_06_20.png" alt="" />
+<img src="images/0042_06_17.png" alt="" />
+<img src="images/0042_06_18.png" alt="" />
+<img src="images/0042_06_19.png" alt="" />
+<img src="images/0042_06_20.png" alt="" />
 </p>
     <h4 id="easing">Easing</h4>
     <p><strong>As of jQuery 1.4.3</strong>, an optional string naming an easing function may be used. Easing functions specify the speed at which the animation progresses at different points within the animation. The only easing implementations in the jQuery library are the default, called <code>swing</code>, and one that progresses at a constant pace, called <code>linear</code>. More easing functions are available with the use of plug-ins, most notably the <a href="http://jqueryui.com">jQuery UI suite</a>.</p>
@@ -14541,7 +14541,7 @@ $('li').not(document.getElementById('notli'))
                 <longdesc><p>Returns the width of the element, along with left and right padding, border, and optionally margin, in pixels.</p>
 				<p>If <code>includeMargin</code> is omitted or <code>false</code>, the padding and border are included in the calculation; if <code>true</code>, the margin is also included.</p>
 				<p>This method is not applicable to <code>window</code> and <code>document</code> objects; for these, use <code><a href='/width'>.width()</a></code> instead.</p>
-				<p class="image"><img src="/images/0042_04_06.png"/></p></longdesc>
+				<p class="image"><img src="images/0042_04_06.png"/></p></longdesc>
                 <example>
                     <desc>Get the outerWidth of a paragraph.</desc>
                     <code><![CDATA[var p = $("p:first");
@@ -14568,7 +14568,7 @@ $("p:last").text( "outerWidth:" + p.outerWidth()+ " , outerWidth(true):" + p.out
                 <desc>Get the current computed height for the first element in the set of matched elements, including padding, border, and optionally margin. Returns an integer (without "px") representation of the value or null if called on an empty set of elements.</desc>
                 <longdesc><p>The top and bottom padding and border are always included in the <code>.outerHeight()</code> calculation; if the <code>includeMargin</code> argument is set to <code>true</code>, the margin (top and bottom) is also included.</p>
 				<p>This method is not applicable to <code>window</code> and <code>document</code> objects; for these, use <code><a href='/height'>.height()</a></code> instead.</p>
-				<p class="image"><img src="/images/0042_04_03.png"/></p></longdesc>
+				<p class="image"><img src="images/0042_04_03.png"/></p></longdesc>
                 <example>
                     <desc>Get the outerHeight of a paragraph.</desc>
                     <code><![CDATA[var p = $("p:first");
@@ -14638,16 +14638,16 @@ $("p:last").text( "outerHeight:" + p.outerHeight() + " , outerHeight(true):" + p
 <p>With the element initially shown, we can hide it slowly with the first click:
 </p>
 <p class="image four-across"> 
-<img src="/images/0042_06_09.png" alt="" />
-<img src="/images/0042_06_10.png" alt="" />
-<img src="/images/0042_06_11.png" alt="" />
-<img src="/images/0042_06_12.png" alt="" />
+<img src="images/0042_06_09.png" alt="" />
+<img src="images/0042_06_10.png" alt="" />
+<img src="images/0042_06_11.png" alt="" />
+<img src="images/0042_06_12.png" alt="" />
 </p>
 <p>A second click will show the element once again:</p>
-<p class="image four-across"><img src="/images/0042_06_13.png" alt="" />
-<img src="/images/0042_06_14.png" alt="" />
-<img src="/images/0042_06_15.png" alt="" />
-<img src="/images/0042_06_16.png" alt="" />
+<p class="image four-across"><img src="images/0042_06_13.png" alt="" />
+<img src="images/0042_06_14.png" alt="" />
+<img src="images/0042_06_15.png" alt="" />
+<img src="images/0042_06_16.png" alt="" />
 </p>
 <p>The second version of the method accepts a Boolean parameter. If this parameter is <code>true</code>, then the matched elements are shown; if <code>false</code>, the elements are hidden. In essence, the statement:
 </p>
@@ -14716,7 +14716,7 @@ $("p").toggle( flip++ % 2 == 0 );
                 <desc>Get the current computed width for the first element in the set of matched elements, including padding but not border.</desc>
                 <longdesc><p>This method returns the width of the element, including left and right padding, in pixels.</p>
 <p>This method is not applicable to <code>window</code> and <code>document</code> objects; for these, use <code><a href='/width'>.width()</a></code> instead.</p>
-<p class="image"><img src="/images/0042_04_05.png"/></p></longdesc>
+<p class="image"><img src="images/0042_04_05.png"/></p></longdesc>
                 <example>
                     <desc>Get the innerWidth of a paragraph.</desc>
                     <code><![CDATA[var p = $("p:first");
@@ -14736,7 +14736,7 @@ $("p:last").text( "innerWidth:" + p.innerWidth() );]]></code>
                 <desc>Get the current computed height for the first element in the set of matched elements, including padding but not border.</desc>
                 <longdesc><p>This method returns the height of the element, including top and bottom padding, in pixels.</p>
 <p>This method is not applicable to <code>window</code> and <code>document</code> objects; for these, use <code><a href='/height'>.height()</a></code> instead.</p>
-<p class="image"><img src="/images/0042_04_02.png"/></p></longdesc>
+<p class="image"><img src="images/0042_04_02.png"/></p></longdesc>
                 <example>
                     <desc>Get the innerHeight of a paragraph.</desc>
                     <code><![CDATA[var p = $("p:first");
@@ -14903,10 +14903,10 @@ $('#clickme').click(function() {
 });</pre>
 
 <p class="image four-across"> 
-  <img src="/images/0042_06_05.png" alt="" /> 
-  <img src="/images/0042_06_06.png" alt="" />
-  <img src="/images/0042_06_07.png" alt="" />
-  <img src="/images/0042_06_08.png" alt="" />
+  <img src="images/0042_06_05.png" alt="" /> 
+  <img src="images/0042_06_06.png" alt="" />
+  <img src="images/0042_06_07.png" alt="" />
+  <img src="images/0042_06_08.png" alt="" />
 </p>
 
 </longdesc>
@@ -14995,7 +14995,7 @@ $('#clickme').click(function() {
    <desc>Get the current computed width for the first element in the set of matched elements.</desc>
    <longdesc>
      <p>The difference between <code>.css(width)</code> and <code>.width()</code> is that the latter returns a unit-less pixel value (for example, <code>400</code>) while the former returns a value with units intact (for example, <code>400px</code>). The <code>.width()</code> method is recommended when an element's width needs to be used in a mathematical calculation.</p>
-    <p class="image"><img src="/images/0042_04_04.png"/></p>
+    <p class="image"><img src="images/0042_04_04.png"/></p>
     <p>This method is also able to find the width of the window and document.</p>
 
 <pre>$(window).width();   // returns width of browser viewport
@@ -15240,10 +15240,10 @@ $('#clickme').click(function() {
   });
 });</pre>
 <p class="image four-across">
-  <img src="/images/0042_06_01.png" alt="" />
-  <img src="/images/0042_06_02.png" alt="" />
-  <img src="/images/0042_06_03.png" alt="" />
-  <img src="/images/0042_06_04.png" alt="" />
+  <img src="images/0042_06_01.png" alt="" />
+  <img src="images/0042_06_02.png" alt="" />
+  <img src="images/0042_06_03.png" alt="" />
+  <img src="images/0042_06_04.png" alt="" />
 </p>
 
 </longdesc>
@@ -19142,7 +19142,7 @@ var title = $("em").attr("title");
     <desc>Set some attributes for all &lt;img&gt;s in the page.</desc>
     <code><![CDATA[
 $("img").attr({ 
-  src: "/images/hat.gif",
+  src: "images/hat.gif",
   title: "jQuery",
   alt: "jQuery Logo"
 });
