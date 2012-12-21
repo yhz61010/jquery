@@ -41,7 +41,7 @@
             <strong>注意:</strong> 从 jQuery 1.5.2 开始, <code>:text</code> 也选择那些 <code>input</code> 没有指定 <code>type</code> 属性的元素 (默认情况下 <code>type="text"</code>)。
          </p>
          
-         <p>This difference in behavior between <code>$(':text')</code> and <code>$('[type=text]')</code>, can be seen below:
+         <p>可以通过下面的例子，反映出 <code>$(':text')</code> 和 <code>$('[type=text]')</code> 之间的区别：
          </p><pre>$('&lt;input&gt;').is('[type=text]'); // false
 $('&lt;input&gt;').is(':text'); // true
 </pre>

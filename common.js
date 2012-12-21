@@ -28,7 +28,8 @@ $(function(){
 				'</p>' + 
 				'<p>' + 
 					'<ol>' + 
-						'<li style="list-style-type:decimal">Fix wrong picture links.</li>' + 
+						'<li style="list-style-type:decimal">Add missing translation in :text.</li>' + 
+						'<li style="list-style-type:decimal">Fix wrong api categorization in Cheatsheet about $.when(deferreds) which should be in Deferred.</li>' + 
 					'</ol>' + 
 				'</p>' + 
 				'<p>' + 
