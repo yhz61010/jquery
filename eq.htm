@@ -23,8 +23,7 @@
 		</script><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>eq(index)<br></h2>
    <div class="desc">
-      <p>选择在匹配的集合中，索引值等于 <code>index</code> 的元素。
-      </p>
+      <p>仅返回匹配元素集合中指定的索引位置的元素。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.1.2 新增</span>eq(index)
@@ -32,7 +31,7 @@
             </h4>
             <div class="arguement"><strong>index</strong>
                								(Integer)
-               								匹配元素用的索引值。索引值从 0 开始计数。
+               								一个整数，代表元素位置的索引值（索引值从 0 开始计数）。
             </div>
          </li>
          <li>
@@ -41,35 +40,50 @@
             </h4>
             <div class="arguement"><strong>-index</strong>
                								(Integer)
-               								
+               								一个负整数，代表元素逆向位置的索引值。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p>索引值相关的选择器 (<code>:eq()</code>, <code>:lt()</code>, <code>:gt()</code>, <code>:even</code>, <code>:odd</code>)，会在前面提供的选择器筛选出的元素基础上再进行筛选。进一步筛选的依据就是这个元素在原先匹配集合中的顺序。举例来说，如果一开始通过 class 选择器 (<code>.myclass</code>) 选中了 4 个元素，然后这四个元素的索引值会被分配为 <code>0</code> 到 <code>3</code>，之后就可以用这种索引值选择器来进一步筛选了。
+         <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.eq()</code> 方法会生成一个新的 jQuery 对象，其中包含指定的元素。所提供的索引值代表元素在集合中的位置。
          </p>
          
-         <p>注意，由于 JavaScript 数组的索引值是从 0 开始计数的，所以这些选择器也是以 0 开始计数的。例如，<code>$('.myclass:eq(1)')</code> 就能选中文档中 class 是 <code>myclass</code> 的第二个元素，而不是第一个元素。相反，<code>:nth-child(n)</code> 中的 n 是从 1 开始计数的，因为 CSS 规范里是这么设定的。
+         <p>例如，在页面中有如下一个简单的列表：</p>
+         <pre>
+  &lt;ul&gt;
+    &lt;li&gt;list item 1&lt;/li&gt;
+    &lt;li&gt;list item 2&lt;/li&gt;
+    &lt;li&gt;list item 3&lt;/li&gt;
+    &lt;li&gt;list item 4&lt;/li&gt;
+    &lt;li&gt;list item 5&lt;/li&gt;
+  &lt;/ul&gt;
+</pre>
+         <p>我们可以在列表项集合中应用此方法：</p>
+         <pre>
+  $('li').eq(2).css('background-color', 'red');
+</pre>
+         <p>上述代码的执行结果是第三个列表项的背景色变成了红色。注意，所提供的索引值是从 0 开始计数的，代表元素在 jQuery 对象中的位置，而不是其在 DOM 树中的位置。</p>
+         
+         <p>若提供的位置是一个负数的话，则索引值代表从结尾开始计数，而不是从开头开始计数。例如：</p>
+         <pre>
+  $('li').eq(-2).css('background-color', 'red');
+</pre>
+         <p>此次的执行结果是第四个列表项的背景变成了红色，因为它是倒数第二个列表项。</p>
+         
+         <p>若指定的索引位置不存在，该方法会生成一个新的空 jQuery 对象，它的 <code>length</code> 属性值是 0。
+         </p>
+         <pre>
+  $('li').eq(5).css('background-color', 'red');
+</pre>
+         <p>上述代码的执行结果是，没有任何列表项会变成红色，因为 <code>.eq(5)</code> 代表的是第六个列表项。
          </p>
          
-         <p>不像 <code><a href="eq.htm">
-                  .eq(index)</a></code>
-            方法, <code>:eq(index)</code> 选择器中的 <code>index</code> <em>不</em>接受负的索引值。例如，<code>$('li').eq(-1)</code> 会选中最后一个 <code>li</code> 元素,而 <code>$('li:eq(-1)')</code> 则什么都选不到。
-         </p>
-         
-      </div>
-      <h3 id="notes-0">补充说明:</h3>
-      <div class="longdesc">
-         <ul>
-            <li>由于 <code>:eq()</code> 是 jQuery 扩展出来的，它并不是 CSS 规范中的一部分。当使用 <code>:eq()</code> 时，并不会比使用原生的 DOM 方法 <code>querySelectorAll()</code> 性能好。为了在主流浏览器中得到更好的性能，请使用 <code>$("your-pure-css-selector").eq(index)</code> 方法来代替。
-            </li>
-         </ul>
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>查找第三个 td。</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>为索引值是为 2 的 div 添加适当的 class，将其变成蓝色。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;

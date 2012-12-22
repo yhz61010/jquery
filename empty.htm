@@ -23,7 +23,7 @@
 		</script><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>empty()<br></h2>
    <div class="desc">
-      <p>选择所有不含任何子元素以及文本节点的元素。</p>
+      <p>从 DOM 树中移除匹配元素的的所有子节点。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>empty()
@@ -33,20 +33,31 @@
       </ul>
       <div class="longdesc">
          
-         <p>这个选择器与 <code>:parent</code> 正好相反。
+         <p>该方法不仅移除子元素（还包括其后代元素），而且还包括匹配元素集合中的任何文本节点。这是因为，根据 DOM 规范，任何元素中的文本字符串都被认为是该元素的子节点。例如，有如下的 HTML：</p>
+         <pre>&lt;div class="container"&gt;
+  &lt;div class="hello"&gt;Hello&lt;/div&gt;
+  &lt;div class="goodbye"&gt;Goodbye&lt;/div&gt;
+&lt;/div&gt;</pre>
+         <p>我们可以移除任何想要移除的元素：</p>
+         <pre>$('.hello').empty();</pre>
+         <p>上述的代码的执行结果是，<code>Hello</code> 这个文本从 DOM 树中被删除了：
+         </p>
+         <pre>&lt;div class="container"&gt;
+  &lt;div class="hello"&gt;&lt;/div&gt;
+  &lt;div class="goodbye"&gt;Goodbye&lt;/div&gt;
+&lt;/div&gt;</pre>
+         <p>如果在 <code>&lt;div class="hello"&gt;</code> 中还嵌套了其它元素的话，它们也会被一同删除。
          </p>
          
-         <p>需要注意的是，<code>:empty</code> (和 <code>:parent</code>) 所涉及的子元素，包括文本节点。
-         </p>
-         
-         <p>W3C 建议  <code>&lt;p&gt;</code> 元素应当至少包含一个子元素，即使那个子元素仅仅是一个文本节点也好。(参考 <a href="http://www.w3.org/TR/html401/struct/text.html#edef-P">http://www.w3.org/TR/html401/struct/text.html#edef-P</a>)。另一方面，某些元素始终没有子元素或子元素始终是空的。比如： <code> &lt;input&gt;</code>, <code>&lt;img&gt;</code>, <code>&lt;br&gt;</code>, 和 <code>&lt;hr&gt;</code>。
-         </p>
+         <p>为了避免内存泄露，jQuery 在移除元素子元素自身之前，会先移除这些元素上绑定的 data 数据及事件处理函数。</p>
+         	    
+         <p>如果你只想移除元素，但是不想删除元素上绑定的 data 数据或事件处理函数的话（这样的话，这些绑定的信息还可以在之后被重新添加回来），请使用 .detach() 方法。</p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>查找所有空元素，即不含有子元素或文本元素。</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>移除段落中所有的子节点（包括文本节点）</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;

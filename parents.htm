@@ -67,7 +67,7 @@
 </pre>
          <p>如果我们从 item A 开始，我们可以查找它的所有祖先：</p>
          <pre>$('li.item-a').parents().css('background-color', 'red');</pre>
-         <p>其结果是，level-2 列表, item II, 和 level-1 列表 (延着 DOM 树向上直到 <code>&lt;html&gt;</code> 元素) 的背景色变成了红色。由于我们没有提供选择器表达式，所有的祖先元素都是返回的 jQuery 对象的一部分。如果我们提供了选择器，那么只有满足选择器的元素才会被包含在结果中。
+         <p>其结果是，level-2 列表, item II, 和 level-1 列表 (延着 DOM 树向上直到 <code>&lt;html&gt;</code> 元素) 的背景色变成了红色。由于我们没有提供选择器表达式，所以所有的祖先元素都是返回的 jQuery 对象的一部分。如果我们提供了选择器，那么只有满足选择器的元素才会被包含在结果中。
          </p>
          
       </div>

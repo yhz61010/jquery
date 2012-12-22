@@ -23,7 +23,7 @@
 		</script><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>not(selector)<br></h2>
    <div class="desc">
-      <p>选择所有与给定选择器不匹配的元素。</p>
+      <p>从匹配的元素集合中移除指定的元素。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>not(selector)
@@ -31,7 +31,7 @@
             </h4>
             <div class="arguement"><strong>selector</strong>
                								(Selector)
-               								用于过滤的选择器。
+               								用于匹配元素的选择器表达式字符串。
             </div>
          </li>
          <li>
@@ -40,7 +40,7 @@
             </h4>
             <div class="arguement"><strong>elements</strong>
                								(Elements)
-               								
+               								将要从匹配的元素集合中被移除的一个或多个 DOM 元素。
             </div>
          </li>
          <li>
@@ -49,7 +49,7 @@
             </h4>
             <div class="arguement"><strong>function(index)</strong>
                								(Function)
-               								
+               								用于测试集合中每个元素的函数。<code>this</code> 代表当前的 DOM 元素。
             </div>
          </li>
          <li>
@@ -58,25 +58,57 @@
             </h4>
             <div class="arguement"><strong>jQuery object</strong>
                								(Object)
-               								
+               								用于匹配当前元素集合中的一个已经存在的 jQuery 对象。
             </div>
          </li>
       </ul>
       <div class="longdesc">
-         
-         <p><code>:not()</code> 的参数可以接受所有选择器。比如 <code>:not(div a)</code> 和 <code>:not(div,a)</code>。
+         <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.not()</code> 方法会构造一个新的 jQuery 对象，用于存放筛选后的元素。所提供的选择器，会用于测试匹配集合中的每一个元素。与指定的选择器不匹配的元素会被包含在结果在。
          </p>
          
-         <h3>附加信息</h3>
+         <p>例如，在页面中有如下一个简单的列表：</p>
+         <pre>
+&lt;ul&gt;
+  &lt;li&gt;list item 1&lt;/li&gt;
+  &lt;li&gt;list item 2&lt;/li&gt;
+  &lt;li&gt;list item 3&lt;/li&gt;
+  &lt;li&gt;list item 4&lt;/li&gt;
+  &lt;li&gt;list item 5&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+         <p>我们可以在列表项集合中应用此方法：</p>
+         <pre>$('li').not(':even').css('background-color', 'red');</pre>
+         <p>上述代码的执行结果是，第二个和第四个列表项的背景色变成了红色，因为它们与指定的选择器不匹配(注意， :even 和 :odd 使用的是从 0 开始计数的索引值是)。</p>
          
-         <p>使用 <code><a href="not.htm">.not()</a></code> 方法可以让代码更易读。而使用 <code>:not()</code> 通常会构建出一个非常复杂的选择器。所以大多数情况下，推荐使用 <code><a href="not.htm">.not()</a></code> 方法。
+         <h4>移除特定的元素</h4>
+         
+         <p>第二个版本的 <code>.not()</code> 方法允许我们从匹配的元素中移除特定的元素，这些特殊的元素可能是我们之前通过其它方法已经查找过的元素。例如，假设在一个列表中，有一个列表项带有 id：
+         </p>
+         <pre>
+&lt;ul&gt;
+  &lt;li&gt;list item 1&lt;/li&gt;
+  &lt;li&gt;list item 2&lt;/li&gt;
+  &lt;li id="notli"&gt;list item 3&lt;/li&gt;
+  &lt;li&gt;list item 4&lt;/li&gt;
+  &lt;li&gt;list item 5&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+         <p>我们可以使用原生的 JavaScript <code>getElementById()</code> 函数来获得它，然后将它从 jQuery 对象中移除掉：
+         </p>
+         <pre>
+$('li').not(document.getElementById('notli'))
+  .css('background-color', 'red');
+</pre>
+         <p>上述语句会改变第 1, 2, 4 和 5 列表项的背景色。我们当然可以使用一个简单的 jQuery 表达式来完成相同的操作，不过这种用法有时还是很有用的，如果我们还使用了其它返回结果是 DOM 节点的 JavaScript 库的话。</p>
+         
+         <p>从 jQuery 1.4 开始，<code>.not()</code> 方法的参数还可以是一个参数，就像 <code>.filter()</code> 方法那样。如果该函数返回 <code>true</code>，那么当前元素就不会包含在结果中。
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>查找所有没有被选中的复选框，然后高亮后面的 span。注意，当你点击复选框的时候不会有反应，因为没有绑定任何点击事件。</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>为不是绿色或蓝色的 div 添加边框。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -110,10 +142,10 @@
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="708" height="125"></iframe><h3>示例:</h3>
-      <p></p>
+      <p>从段落集合中移除 ID 是 "selected" 的元素。</p>
       <h5>jQuery 代码:</h5><pre><code>$("p").not( $("#selected")[0] )</code></pre><h3>示例:</h3>
-      <p></p>
+      <p>从段落集合中移除 ID 是 "selected" 的元素。</p>
       <h5>jQuery 代码:</h5><pre><code>$("p").not("#selected")</code></pre><h3>示例:</h3>
-      <p></p>
+      <p>从段落集合中移除满足 "div p.selected" 的元素。</p>
       <h5>jQuery 代码:</h5><pre><code>$("p").not($("div p.selected"))</code></pre></div>
 </div>

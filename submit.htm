@@ -23,7 +23,7 @@
 		</script><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>submit(handler(eventObject))<br></h2>
    <div class="desc">
-      <p>选择所有提交按钮，即 type 为 submit 的元素。</p>
+      <p>为 JavaScript 的 "submit" 事件绑定一个处理函数，或者触发元素上的该事件。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>submit(handler(eventObject))
@@ -31,7 +31,7 @@
             </h4>
             <div class="arguement"><strong>handler(eventObject)</strong>
                								(Function)
-               								
+               								每当事件触发时执行的函数。
             </div>
          </li>
          <li>
@@ -40,11 +40,11 @@
             </h4>
             <div class="arguement"><strong>eventData</strong>
                								(Object)
-               								 可选参数，
+               								 可选参数，将要传递给事件处理函数的数据映射。
             </div>
             <div class="arguement"><strong>handler(eventObject)</strong>
                								(Function)
-               								
+               								每当事件触发时执行的函数。
             </div>
          </li>
          <li>
@@ -55,21 +55,56 @@
       </ul>
       <div class="longdesc">
          
-         <p><code>:submit</code> 选择器主要用于 button 或者 input 元素。注意，某些浏览器默认把没有设置 type 的 <code>&lt;button&gt;</code> 元素看做 <code>type="default"</code>，而另一些浏览器(比如IE)则并非如此。
+         <p>带有参数的该方法是 <code>.bind('submit', handler)</code> 的快捷方式 variation, and <code>.trigger('submit')</code> 的快捷方式。
          </p>
+         
+         <p>当用户尝试提交表单时，就会触发 <code>submit</code> 事件。该事件只能绑定在 <code>&lt;form&gt;</code> 元素上。以下几种情况会导致表单被提交：用户点击了 <code>&lt;input type="submit"&gt;</code>, <code>&lt;input type="image"&gt;</code>, 或 <code>&lt;button type="submit"&gt;</code>, 亦或当表单获得了焦点时，按下了 <kbd>Enter</kbd> 键。
+         </p>
+         
+         <blockquote>
+            
+            <p>根据不同的浏览器，Enter 键可能会导致表单被提交，如果这个表单只有一个文本框或只有一个 submit 按钮的话。界面不应该依赖于这个键的特殊行为，除非已经使用了 keypress 事件来监听 Enter 键的按下。</p>
+            
+         </blockquote>
+         
+         <p>举例来说，请看下面的HTML：</p>
+         <pre>&lt;form id="target" action="destination.html"&gt;
+  &lt;input type="text" value="Hello there" /&gt;
+  &lt;input type="submit" value="Go" /&gt;
+&lt;/form&gt;
+&lt;div id="other"&gt;
+  Trigger the handler
+&lt;/div&gt;</pre>
+         <p>将该事件绑定在 form 上:</p>
+         <pre>$('#target').submit(function() {
+  alert('Handler for .submit() called.');
+  return false;
+});</pre>
+         <p>当提交表单时，就会显示一个提示框。该事件发生在真正提交表单之前，因此，我们可以通过调用事件对象上的 <code>.preventDefault()</code> 或返回 <code>false</code> 的方式来取消提交。我们可以在点击其它元素时，手动触发该方法：
+         </p>
+         <pre>$('#other').click(function() {
+  $('#target').submit();
+});</pre>
+         <p>执行完上述代码之后，点击 <span class="output">Trigger the handler</span> 同样会显示提示框。除此之外，<code>submit</code> 的默认行为将会被触发，即提交表单。
+         </p>
+         
+         <p>在 IE 中，JavaScript 的 <code>submit</code> 事件不会进行事件冒泡。但是，依赖 <code>submit</code> 事件代理的脚本，从 jQuery 1.4 开始，可以跨浏览器正常使用。
+         </p>
+         
          
       </div>
       <h3 id="notes-0">补充说明:</h3>
       <div class="longdesc">
          <ul>
-            <li>由于 <code>:submit</code> 是 jQuery 扩展出来的，它并不是 CSS 规范中的一部分。当使用 <code>:submit</code> 时，并不会比使用原生的 DOM 方法 <code>querySelectorAll()</code> 性能好。为了在主流浏览器中得到更好的性能，请使用 <code>[type="submit"]</code> 方法来代替。
+            <li>为避免名字冲突，表单及其子元素的 id 或名字，不应该使用 input 名，或表单的属性名，例如：<code>submit</code>, <code>length</code>, 或 <code>method</code>。名字冲突会导致令人困惑的错误。有关完整的规则列表，及这些问题标记，请参见 <a href="http://kangax.github.com/domlint/">DOMLint</a>。
+               
             </li>
          </ul>
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>查找所有作为 td 元素后代的提交按钮。</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>如果你想根据一个标识来阻止表单被提交的话，可以像下面这样做：</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -109,10 +144,10 @@
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="708" height="125"></iframe><h3>示例:</h3>
-      <p></p>
+      <p>如果你想根据一个标识来阻止表单被提交的话，可以像下面这样做：</p>
       <h5>jQuery 代码:</h5><pre><code>$("form").submit( function () {
   return this.some_flag_variable;
 } );</code></pre><h3>示例:</h3>
-      <p></p>
+      <p>触发页面上第一个表单的提交事件：</p>
       <h5>jQuery 代码:</h5><pre><code>$("form:first").submit();</code></pre></div>
 </div>

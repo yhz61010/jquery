@@ -23,47 +23,34 @@
 		</script><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2>:has(selector)</h2>
    <div class="desc">
-      <p>保留包含特定后代的元素，去掉那些不含有指定后代的元素。</p>
+      <p>如果某个元素至少含有一个与选择器相匹配的元素，那么这个元素就会被选中。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.1.4 新增</span>:has(selector)
             </h4>
             <div class="arguement"><strong>selector</strong>
                								(Selector)
-               								用于匹配元素的选择器表达式字符串。
+               								任何选择器。
             </div>
          </li>
       </ul>
       <div class="longdesc">
          
-         <p>如果提供一个 jQuery 对象代表 DOM 元素集合，<code>.has()</code> 方法会用其子集创建一个新的jQuery对象。所提供的选择器会用于测试那些匹配的元素的后代，并将其保存在结果中。
+         <p>表达式 <code>$('div:has(p)')</code> 会匹配一个 <code>&lt;div&gt;</code>，并且它的后代元素中要含有 <code>&lt;p&gt;</code>，就算不是直接子元素也没关系。
          </p>
          
-         <p>下面是一个嵌套列表的页面：</p>
-         <pre>
- &lt;ul&gt;
-  &lt;li&gt;list item 1&lt;/li&gt;
-  &lt;li&gt;list item 2
-    &lt;ul&gt;
-      &lt;li&gt;list item 2-a&lt;/li&gt;
-      &lt;li&gt;list item 2-b&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;list item 3&lt;/li&gt;
-  &lt;li&gt;list item 4&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
-         <p>我们可以用如下方式对列表项集合应用这个方法：</p>
-         <pre>$('li').has('ul').css('background-color', 'red');</pre>
-         <p>结果是 item 2 背景变成了红色，因为只有这个 <code>&lt;li&gt;</code> 含有 <code>&lt;ul&gt;</code> 后代。
-         </p>
-         
-         
+      </div>
+      <h3 id="notes-0">补充说明:</h3>
+      <div class="longdesc">
+         <ul>
+            <li>由于 <code>:has()</code> 是 jQuery 扩展出来的，它并不是 CSS 规范中的一部分。当使用 <code>:has()</code> 时，并不会比使用原生的 DOM 方法 <code>querySelectorAll()</code> 性能好。为了在主流浏览器中得到更好的性能，请使用 <code>$("your-pure-css-selector").has(selector/DOMElement)</code> 方法来代替。
+            </li>
+         </ul>
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>检测一个元素是否在另一个元素之内。</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>给所有含有 p 段落标签的 div 加上一个名为 "test" 的 class。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;

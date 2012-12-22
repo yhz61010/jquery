@@ -28,8 +28,12 @@ $(function(){
 				'</p>' + 
 				'<p>' + 
 					'<ol>' + 
-						'<li style="list-style-type:decimal">Add missing translation in :text.</li>' + 
-						'<li style="list-style-type:decimal">Fix wrong api categorization in Cheatsheet about $.when(deferreds) which should be in Deferred.</li>' + 
+						'<li style="list-style-type:decimal">Fix bug of first() and add translation.</li>' + 
+						'<li style="list-style-type:decimal">Fix bug of last() and add translation.</li>' + 
+						'<li style="list-style-type:decimal">Fix bug of parent() and add translation.</li>' + 
+						'<li style="list-style-type:decimal">Fix bug of eq() and add translation.</li>' + 
+						'<li style="list-style-type:decimal">Fix bug of not() and add translation.</li>' + 
+						'<li style="list-style-type:decimal">Fix bug of empty() and add translation.</li>' + 
 					'</ol>' + 
 				'</p>' + 
 				'<p>' + 

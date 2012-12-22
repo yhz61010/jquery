@@ -23,7 +23,7 @@
 		</script><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>last()<br></h2>
    <div class="desc">
-      <p>选择最后一个匹配到的元素。</p>
+      <p>仅返回匹配元素集合中的最后一个元素。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.4 新增</span>last()
@@ -32,24 +32,28 @@
          </li>
       </ul>
       <div class="longdesc">
-         
-         <p>注意，<code>:last</code> 只会选择单个元素，这个元素是写在 <code>:last</code> 前面的那么选择器匹配到的元素集合中的最后一个元素。
+         <p>若一个 jQuery 对象代表了一个 DOM 元素集合，<code>.last()</code> 方法会生成一个新的 jQuery 对象，包含最后一个匹配的元素。
          </p>
          
-      </div>
-      <h3 id="notes-0">补充说明:</h3>
-      <div class="longdesc">
-         <ul>
-            <li>由于 <code>:last</code> 是 jQuery 扩展出来的，它并不是 CSS 规范中的一部分。当使用 <code>:last</code> 时，并不会比使用原生的 DOM 方法 <code>querySelectorAll()</code> 性能好。为了达到高效的 <code>:last</code> 元素选择，请优先使用纯 CSS 选择器 <code><a href="filter.htm">
-                     .filter(":last")</a></code>
-               。
-            </li>
-         </ul>
+         <p>例如，在页面中有如下一个简单的列表：</p>
+         <pre>
+&lt;ul&gt;
+  &lt;li&gt;list item 1&lt;/li&gt;
+  &lt;li&gt;list item 2&lt;/li&gt;
+  &lt;li&gt;list item 3&lt;/li&gt;
+  &lt;li&gt;list item 4&lt;/li&gt;
+  &lt;li&gt;list item 5&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+         <p>我们可以在列表项集合中应用此方法：</p>
+         <pre>$('li').last().css('background-color', 'red');</pre>
+         <p>上述方法的执行结果是，最后一个列表项的背景变成了红色。</p>
+         
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>查找表格中的最后一行。</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>使段落中的最后一个 span 高亮显示。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;.highlight{background-color: yellow}&lt;/style&gt;

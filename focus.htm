@@ -23,7 +23,7 @@
 		</script><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" class="entry">
    <h2><span>返回值:jQuery</span>focus(handler(eventObject))<br></h2>
    <div class="desc">
-      <p>选中当前已获得焦点的元素。（不支持事件冒泡）</p>
+      <p>为 JavaScript 的 "focus" 事件绑定一个处理函数，或者触发元素上的该事件。</p>
       <ul class="signatures">
          <li>
             <h4><span>1.0 新增</span>focus(handler(eventObject))
@@ -31,7 +31,7 @@
             </h4>
             <div class="arguement"><strong>handler(eventObject)</strong>
                								(Function)
-               								
+               								每当事件触发时执行的函数。
             </div>
          </li>
          <li>
@@ -40,11 +40,11 @@
             </h4>
             <div class="arguement"><strong>eventData</strong>
                								(Object)
-               								 可选参数，
+               								 可选参数，将要传递给事件处理函数的数据映射。
             </div>
             <div class="arguement"><strong>handler(eventObject)</strong>
                								(Function)
-               								
+               								每当事件触发时执行的函数。
             </div>
          </li>
          <li>
@@ -55,14 +55,64 @@
       </ul>
       <div class="longdesc">
          
-         <p>与其它伪类选择器(以 ":" 开头的选择器)一样，使用 <code>:focus</code> 时，建议在它前面加一个标签名或是其它一些选择器。否则的话，就意味着要使用全局选择器("*")。换句话说，<code>$(':focus')</code> 等价于 <code>$('*:focus')</code>。如果你要查找当前获得焦点的元素，可以使用 <code>$( document.activeElement )</code> ，而不必在整个 DOM 树中进行查找。
+         <ul>
+            
+            <li>带有参数的该方法是 <code>.bind('focus', handler)</code> 的快捷方式，不带参数的该方法是 <code>.trigger('focus')</code> in the third.
+            </li>
+            
+            <li>当元素获得焦点时，就会触发 <code>focus</code> 事件。虽然此事件起初只能应用于有限的元素上，例如，表单元素（<code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, 等。) 和链接 (<code>&lt;a href&gt;</code>)，但是在最近的浏览器版本中，除了上述元素外，该事件的应用范围被扩大到任何元素，只要这个元素指定了 <code>tabindex</code> 属性（上述元素不需要指定此属性）。元素可以通过键盘命令来获得焦点，例如 Tab 键，或在元素上点击了鼠标。
+            </li>
+            
+            <li>当元素获得焦点时，浏览器一般会以某种高亮方式来显示，例如，在元素周围显示点线。该事件通常用于判断哪个元素是最先接收键盘相关事件的元素。</li>
+            
+         </ul>
+         	    
+         <blockquote>
+            
+            <p>在 IE 中，如果尝试将焦点设置到 hidden 元素上的话，会导致出错。需要注意的是，只能对可见元素使用 <code>.focus()</code>。若要执行元素上的 focus 事件却又不想让该元素获得焦点的话，请使用 <code>.triggerHandler("focus")</code> 来代替 <code>.focus()</code>。
+            </p>
+            
+         </blockquote>
+         
+         <p>举例来说，请看下面的HTML：</p>
+         <pre>&lt;form&gt;
+  &lt;input id="target" type="text" value="Field 1" /&gt;
+  &lt;input type="text" value="Field 2" /&gt;
+&lt;/form&gt;
+&lt;div id="other"&gt;
+  Trigger the handler
+&lt;/div&gt;
+</pre>
+         <p>可以将该事件绑定在第一个 input 元素上：</p>
+         <pre>$('#target').focus(function() {
+  alert('Handler for .focus() called.');
+});</pre>
+         <p>现在，点击第一个文本框或使用 Tab 键移动到该元素上时，会显示一个提示框：</p>
+         
+         <p>
+            <span class="output">Handler for .focus() called.</span>
+            
+         </p>
+         
+         <p>我们也可以在点击其它元素时，触发该事件：</p>
+         <pre>$('#other').click(function() {
+  $('#target').focus();
+});</pre>
+         <p>在代码执行后，如果你点击 <span class="output">Trigger the handler</span> 将同样会弹出上面的消息。
+         </p>
+         
+         <p><code>focus</code> 事件在 IE 中不会引发事件冒泡。因此，当脚本依赖于 <code>focus</code> 事件代理时，在跨浏览器的情况下，该脚本可能无法正常工作。然而，从 1.4.2 版本开始，jQuery 通过将 <code>focus</code> 事件映射到 <code>focusin</code> 事件的方法，绕过了这个限制，从而可以在 <code><a href="live.htm">
+                  .live()</a></code>
+            和 <code><a href="delegate.htm">
+                  .delegate()</a></code> 事件代理中使用该方法，解决了跨浏览器的问题。
+            
          </p>
          
       </div>
    </div>
    <div class="example">
       <h3>示例:</h3>
-      <p>无论哪个元素获得了焦点，为这个元素添加一个样式。</p><pre><code>&lt;!DOCTYPE html&gt;
+      <p>触发 focus 事件的例子。</p><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;span {display:none;}&lt;/style&gt;
@@ -85,11 +135,11 @@
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h4>演示:</h4><iframe src="blank.html" width="708" height="125"></iframe><h3>示例:</h3>
-      <p></p>
+      <p>阻止用户在文本框中写任何内容：</p>
       <h5>jQuery 代码:</h5><pre><code>$("input[type=text]").focus(function(){
   $(this).blur();
 });</code></pre><h3>示例:</h3>
-      <p></p>
+      <p>在页面显示时，将焦点移到 id 为 'login' 的 input 元素上：</p>
       <h5>jQuery 代码:</h5><pre><code>$(document).ready(function(){
   $("#login").focus();
 });</code></pre></div>
