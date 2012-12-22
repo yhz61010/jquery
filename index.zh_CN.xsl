@@ -70,6 +70,10 @@
 														<xsl:attribute name="href"><xsl:value-of select="@filename"/>.htm</xsl:attribute>
 														<xsl:value-of select="@name"/>
 													</xsl:when>
+													<xsl:when test="@type='selector'">
+														<xsl:attribute name="href"><xsl:value-of select="replace(@name,' ','-')"/>-selector.htm</xsl:attribute>
+														<xsl:value-of select="sample"/>
+													</xsl:when>
 													<xsl:when test="@type='property' and @name='jquery'">
 														<xsl:attribute name="href"><xsl:value-of select="@name"/>-2.htm</xsl:attribute>
 														<xsl:value-of select="@name"/>
@@ -239,7 +243,7 @@
 	</xsl:template>
 
 	<xsl:template match="/api/entries/entry">
-		<xsl:variable name="zh-entrys" select="document('jQueryAPI.zh_CN.xml')//entry[@name=current()/@name]"/>
+		<xsl:variable name="zh-entrys" select="document('jQueryAPI.zh_CN.xml')//entry[@name=current()/@name and @type=current()/@type]"/>
 		<xsl:variable name="pos" select="position()"/>
 		<xsl:variable name="zh-entry" select="$zh-entrys[$pos]"/>
 		<div id='go_home' style="cursor: pointer;" onclick="location.href='index.html'"></div>
