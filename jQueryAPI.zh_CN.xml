@@ -1105,7 +1105,7 @@ $("button").on("click", { name: "Addy" }, greet);
 
             <p><em>从 jQuery 1.8 开始，不建议使用的方法：</em> <code>"hover"</code> 是字符串 <code>"mouseenter mouseleave"</code> 的简写形式。它为上述两个事件，绑定<em>一个单一事件处理函数</em>，而且，处理函数必须检查 <code>event.type</code> 来判断到底是 <code>mouseenter</code> 还是 <code>mouseleave</code>。不要将 "hover" 伪事件名和 <a href="hover.htm"><code>.hover()</code></a> 方法混为一谈, <a href="hover.htm"><code>.hover()</code></a> 可以接受<em>一个或两个</em>函数。</p>
 
-            <p>jQuery's 事件系统要求，一个 DOM 元素可以通过元素的属性附加数据，这样，事件就可以被跟踪和传递。<code>object</code>， <code>embed</code>， 和 <code>applet</code> 元素是不能附加数据的，因此，无法为这些元素绑定 jQuery 事件。</p>
+            <p>jQuery 的事件系统要求，一个 DOM 元素可以通过元素的属性附加数据，这样，事件就可以被跟踪和传递。<code>object</code>， <code>embed</code>， 和 <code>applet</code> 元素是不能附加数据的，因此，无法为这些元素绑定 jQuery 事件。</p>
 
             <p>根据 W3C 的规定，<code>focus</code> 和 <code>blur</code> 事件是不能进行冒泡的，但是 jQuery 定义了跨浏览器的 <code>focusin</code> 和 <code>focusout</code> 事件，从而实现了事件的冒泡。当 <code>focus</code> 和 <code>blur</code> 用于绑定代理事件的时候，jQuery 会将它们映射成对应的 <code>focusin</code> 或 <code>focusout</code>。为了保证使用上的一致和清晰，请使用支持冒泡事件的事件名。</p>
 
