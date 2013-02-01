@@ -65,8 +65,8 @@
 												</xsl:attribute>
 											</xsl:if>
 											<desc><xsl:copy-of select="desc/node()"/></desc>
-											<xsl:for-each select="option">
-												<option name="{@name}">
+											<xsl:for-each select="property">
+												<property name="{@name}">
 													<xsl:if test="@type">
 														<xsl:attribute name="type">
 															<xsl:value-of select="@type" />
@@ -83,7 +83,7 @@
 														</xsl:attribute>
 													</xsl:if>
 													<desc><xsl:copy-of select="desc/node()"/></desc>
-												</option>
+												</property>
 											</xsl:for-each>
 										</argument>
 									</xsl:for-each>
@@ -113,12 +113,12 @@
 								</example>
 							</xsl:for-each>
 							<xsl:for-each select="category">
-								<category name="{@name}">
+								<category slug="{@slug}">
 									<xsl:copy-of select="node()"/>
 								</category>
 							</xsl:for-each>
 							<xsl:for-each select="note">
-								<note type="{@type}">
+								<note>
 									<xsl:copy-of select="node()"/>
 								</note>
 							</xsl:for-each>
