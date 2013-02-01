@@ -6,17 +6,45 @@
 		<xsl:result-document href="../jQueryAPI.zh_CN.xml">
 			<api>
 				<xsl:copy-of select="document('category.zh_CN.xml')/api/categories"/>
+				<!-- If you want to create category through xslt, please uncomment the souces below. -->
+				<!--
+				<categories>
+					<xsl:for-each select="/api/categories/category">
+						<category name="{@name}" slug="{@slug}">
+							<desc><xsl:copy-of select="desc/node()" /></desc>
+							<xsl:if test="category">
+								<xsl:for-each select="current()/category">
+									<category name="{@name}" slug="{@slug}">
+										<desc><xsl:copy-of select="desc/node()" /></desc>
+									</category>
+								</xsl:for-each>
+							</xsl:if>
+						</category>
+					</xsl:for-each>
+				</categories>
+				-->
 				<!-- <xsl:variable name="zh-entrys" select="document('jqueryapi.xml')//subcat/*"/> -->
 				<entries>
 					<xsl:for-each select="/api/entries/entry">
 						<entry type="{@type}" name="{@name}" return="{@return}">
+							<xsl:if test="@deprecated">
+								<xsl:attribute name="deprecated">
+									<xsl:value-of select="@deprecated" />
+								</xsl:attribute>
+							</xsl:if>
+							<xsl:if test="@removed">
+								<xsl:attribute name="removed">
+									<xsl:value-of select="@removed" />
+								</xsl:attribute>
+							</xsl:if>
+							<title><xsl:copy-of select="title/node()"/></title>
 							<desc>
 								<!-- <xsl:value-of select="$zh-entrys[@type=current()/@type][@name=current()/@name]/desc"/> -->
 								<xsl:copy-of select="desc/node()"/>
 							</desc>
 							<xsl:for-each select="signature">
 								<signature>
-							        <added>
+									<added>
 										<xsl:copy-of select="added/node()"/>
 									</added>
 									<xsl:for-each select="argument">
