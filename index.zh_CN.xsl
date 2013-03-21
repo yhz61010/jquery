@@ -10,35 +10,32 @@
 		<head>
 			<meta name="Keywords" content="jQuery中文文档,jQuery中文API手册,jQuery速查手册,jQuery最新版CHM下载,jQuery最新中文版,jQuery最新中文参考手册" />
 			<meta name="Description" content="jQuery中文文档,jQuery CHM下载,jQuery中文参考手册,jQuery中文版参考手册,jQuery 速查表,jQuery中文参考手册" />
-			<title>jQuery <xsl:value-of select="replace(/api/categories/category[@name='Version']/category[last()]/@name,'Version ','')"/> 中文文档 </title>
-			<link rel="stylesheet" href="css/ui-lightness/jquery-ui-custom.css"/>
+			<title>jQuery <xsl:value-of select="replace(/api/categories/category[@name='Version']/category[last()-1]/@name,'Version ','')"/> 中文文档 </title>
+			<link rel="stylesheet" href="css/ui-lightness/jquery-ui.min.css"/>
+			<link rel="stylesheet" href="css/ui-lightness/jquery.ui.theme.css"/>
 			<link rel="stylesheet" href="style.css"/>
 		</head>
 		<body id="api">
 			<div id="header">
-				<div class="headerMain"><h1>jQuery <xsl:value-of select="replace(/api/categories/category[@name='Version']/category[last()]/@name,'Version ','')"/> 中文文档 Translated by <a href="http://www.ho1ho.com/" target="_blank">Michael Leo</a>, Thanks <a href="http://www.cn-cuckoo.com/" target="_blank">为之漫笔</a> for original version. Welcome to visit jQuery Cheatsheet from <a href="http://oscarotero.com/jquery/" target="_blank">Oscar Otero</a>.</h1></div>
+				<div class="headerMain"><h1>jQuery <label id="jquery_version"><xsl:value-of select="replace(/api/categories/category[@name='Version']/category[last()-1]/@name,'Version ','')"/></label> 中文文档 Translated by <a href="http://www.ho1ho.com/" target="_blank">Michael Leo</a>. Welcome to visit jQuery Cheatsheet from <a href="http://oscarotero.com/jquery/" target="_blank">Oscar Otero</a>.</h1></div>
 				<div class="headerMain">Last update: <span id="current_date"><xsl:value-of select="year-from-dateTime($curDateTime)"/>-<xsl:number value="month-from-dateTime($curDateTime)" format="01"/>-<xsl:number value="day-from-dateTime($curDateTime)" format="01"/></span><span id="current_time"><xsl:number value="hours-from-dateTime($curDateTime)" format="01"/>:<xsl:number value="minutes-from-dateTime($curDateTime)" format="01"/>:<xsl:number value="seconds-from-dateTime($curDateTime)" format="01"/></span> (Chinese Standard Time) <span class="feedback">Bug report or Feedback： <a href="mailto:zytase-one@yahoo.com.cn">Michael Leo</a></span></div>
 			</div>
 			<div id="wrapper">
 				<div id="sidebar" style="display:none">
 					<xsl:for-each select="/api/categories/category">
-						<h2><xsl:value-of select="document('jQueryAPI.zh_CN.xml')/api/categories//category[@name=current()/@name]/@zh"/></h2>
+						<h2><xsl:value-of select="document('jQueryAPI.zh_CN.xml')/api/categories//category[@slug=current()/@slug]/@zh"/></h2>
 						<div style="background: white;">
 							<xsl:choose>
 								<xsl:when test="category">
 									<xsl:for-each select="category">
-										<xsl:if test="//entry/category[@name=current()/@name]">
-											<b><xsl:value-of select="document('jQueryAPI.zh_CN.xml')/api/categories//category[@name=current()/@name]/@zh"/></b>
+										<xsl:if test="//entry/category[@slug=current()/@slug]">
+											<b><xsl:value-of select="document('jQueryAPI.zh_CN.xml')/api/categories//category[@slug=current()/@slug]/@zh"/></b>
 											<ul>
-												<xsl:for-each select="//entry/category[@name=current()/@name]/..">
+												<xsl:for-each select="//entry/category[@slug=current()/@slug]/..">
 													<xsl:sort select="@name"/>
-													<xsl:if test="not(following::entry[1]/@name=@name)">
+													<!--<xsl:if test="not(following::entry[1]/@name=@name)">-->
 														<li><a>
 															<xsl:choose>
-																<xsl:when test="@filename!=''">
-																	<xsl:attribute name="href"><xsl:value-of select="@filename"/>.htm</xsl:attribute>
-																	<xsl:value-of select="@name"/>
-																</xsl:when>
 																<xsl:when test="@type='selector'">
 																	<xsl:attribute name="href"><xsl:value-of select="replace(@name,' ','-')"/>-selector.htm</xsl:attribute>
 																	<xsl:value-of select="sample"/>
@@ -53,7 +50,7 @@
 																</xsl:otherwise>
 															</xsl:choose>
 														</a></li>
-													</xsl:if>
+													<!--</xsl:if>-->
 												</xsl:for-each>
 											</ul>
 										</xsl:if>
@@ -61,15 +58,11 @@
 								</xsl:when>
 								<xsl:otherwise>
 									<ul>
-									<xsl:for-each select="//entry/category[@name=current()/@name]/..">
+									<xsl:for-each select="//entry/category[@slug=current()/@slug]/..">
 										<xsl:sort select="@name"/>
-										<xsl:if test="not(following::entry[1]/@name=@name)">
+										<!--<xsl:if test="not(following::entry[1]/@name=@name)">-->
 											<li><a>
 												<xsl:choose>
-													<xsl:when test="@filename!=''">
-														<xsl:attribute name="href"><xsl:value-of select="@filename"/>.htm</xsl:attribute>
-														<xsl:value-of select="@name"/>
-													</xsl:when>
 													<xsl:when test="@type='selector'">
 														<xsl:attribute name="href"><xsl:value-of select="replace(@name,' ','-')"/>-selector.htm</xsl:attribute>
 														<xsl:value-of select="sample"/>
@@ -84,7 +77,7 @@
 													</xsl:otherwise>
 												</xsl:choose>
 											</a></li>
-										</xsl:if>
+										<!--</xsl:if>-->
 									</xsl:for-each>
 									</ul>
 								</xsl:otherwise>
@@ -96,36 +89,30 @@
 				<div id="content">
 					<xsl:for-each-group select="/api/entries/entry" group-by="@type">
 						<xsl:for-each-group select="current-group()" group-by="@name">
-							<xsl:for-each-group select="current-group()" group-by="@filename">
-								<xsl:sort select="@name"/>
-								<xsl:choose>
-									<xsl:when test="@filename!=''">
-										<xsl:result-document href="./dist/{@filename}.htm">
-											<xsl:apply-templates select="current-group()"/>
-										</xsl:result-document>
-									</xsl:when>
-									<xsl:when test="@type='selector'">
-										<xsl:result-document href="./dist/{replace(@name,' ','-')}-selector.htm">
-											<xsl:apply-templates select="current-group()"/>
-										</xsl:result-document>
-									</xsl:when>
-									<xsl:when test="@type='property' and @name='jquery'">
-										<xsl:result-document href="./dist/{@name}-2.htm">
-											<xsl:apply-templates select="current-group()"/>
-										</xsl:result-document>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:result-document href="./dist/{@name}.htm">
-											<xsl:apply-templates select="current-group()"/>
-										</xsl:result-document>
-									</xsl:otherwise>
-								</xsl:choose>
-							</xsl:for-each-group>
+							<xsl:sort select="@name"/>
+							<xsl:choose>
+								<xsl:when test="@type='selector'">
+									<xsl:result-document href="./dist/{replace(@name,' ','-')}-selector.htm">
+										<xsl:apply-templates select="current-group()"/>
+									</xsl:result-document>
+								</xsl:when>
+								<xsl:when test="@type='property' and @name='jquery'">
+									<xsl:result-document href="./dist/{@name}-2.htm">
+										<xsl:apply-templates select="current-group()"/>
+									</xsl:result-document>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:result-document href="./dist/{@name}.htm">
+										<xsl:apply-templates select="current-group()"/>
+									</xsl:result-document>
+								</xsl:otherwise>
+							</xsl:choose>
 						</xsl:for-each-group>
 					</xsl:for-each-group>
 				</div>
 			</div>
 			<script src="jquery.min.js"></script>
+			<script src="jquery-migrate.min.js"></script>
 			<script src="jquery-ui.custom.min.js"></script>
 			<script src="jstorage.min.js"></script>
 			<script src="jquery.ba-hashchange.min.js"></script>
