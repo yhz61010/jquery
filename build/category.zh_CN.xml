@@ -2,7 +2,7 @@
   <categories>
     <category name="Ajax" slug="ajax" zh="Ajax">
       <desc>The jQuery library has a full suite of AJAX capabilities. The functions and methods therein allow us to load data from the server without a browser page refresh.</desc>
-      <category name="Global Ajax Event Handlers" slug="global-ajax-event-handlers" zh="全局Ajax事件句柄">
+      <category name="Global Ajax Event Handlers" slug="ajax/global-ajax-event-handlers" zh="全局Ajax事件句柄">
         <desc>
           These methods register handlers to be called when certain events, such as initialization or completion, take place for any AJAX request on the page. The global events are fired on each AJAX request if the
           <code>global</code>
@@ -20,13 +20,13 @@
           </em>
         </desc>
       </category>
-      <category name="Helper Functions" slug="helper-functions" zh="辅助函数">
+      <category name="Helper Functions" slug="ajax/helper-functions" zh="辅助函数">
         <desc>These functions assist with common idioms encountered when performing AJAX tasks.</desc>
       </category>
-      <category name="Low-Level Interface" slug="low-level-interface" zh="底层接口">
+      <category name="Low-Level Interface" slug="ajax/low-level-interface" zh="底层接口">
         <desc>These methods can be used to make arbitrary AJAX requests.</desc>
       </category>
-      <category name="Shorthand Methods" slug="shorthand-methods" zh="快捷方法">
+      <category name="Shorthand Methods" slug="ajax/shorthand-methods" zh="快捷方法">
         <desc>These methods perform the more common types of AJAX requests in less code.</desc>
       </category>
     </category>
@@ -63,7 +63,26 @@
     </category>
     <category name="Deprecated" slug="deprecated" zh="不建议使用">
       <desc />
-      <category name="Deprecated 1.7" slug="deprecated-1.7" zh="1.7 不建议使用">
+      <category name="Deprecated 1.3" slug="deprecated/deprecated-1.3"  zh="1.3 不建议使用">
+        <desc>
+          All the aspects of the API that were deprecated in the corresponding version of jQuery.
+          <p>
+            For more information, see the
+            <a href="http://docs.jquery.com/Release:jQuery_1.3">jQuery 1.3 Release Notes</a>
+            .
+          </p>
+        </desc>
+      </category>
+      <category name="Deprecated 1.4" slug="deprecated/deprecated-1.4"  zh="1.4 不建议使用">
+        <desc>
+          All the aspects of the API that were deprecated in the corresponding version of jQuery.
+          <p>
+            For more information, see the
+            <a href="http://jquery14.com/day-01/jquery-14">jQuery 1.4 Release Notes</a>
+          </p>
+        </desc>
+      </category>
+      <category name="Deprecated 1.7" slug="deprecated/deprecated-1.7"  zh="1.7 不建议使用">
         <desc>
           All the aspects of the API that were deprecated in the corresponding version of jQuery.
           <p>
@@ -72,7 +91,7 @@
           </p>
         </desc>
       </category>
-      <category name="Deprecated 1.8" slug="deprecated-1.8" zh="1.8 不建议使用">
+      <category name="Deprecated 1.8" slug="deprecated/deprecated-1.8" zh="1.8 不建议使用">
         <desc>
           All the aspects of the API that were deprecated in the corresponding version of jQuery.
           <p>
@@ -87,31 +106,31 @@
     </category>
     <category name="Effects" slug="effects" zh="动画">
       <desc>The jQuery library provides several techniques for adding animation to a web page. These include simple, standard animations that are frequently used, and the ability to craft sophisticated custom effects.</desc>
-      <category name="Basics" slug="basics" zh="基本">
+      <category name="Basics" slug="effects/basics" zh="基本">
         <desc />
       </category>
-      <category name="Custom" slug="custom-effects" zh="自定义">
+      <category name="Custom" slug="effects/custom-effects" zh="自定义">
         <desc>These methods allow you to create effects that are not provided "out of the box" by jQuery.</desc>
       </category>
-      <category name="Fading" slug="fading" zh="渐变">
+      <category name="Fading" slug="effects/fading" zh="渐变">
         <desc>These methods adjust the opacity of elements.</desc>
       </category>
-      <category name="Sliding" slug="sliding" zh="滑动">
+      <category name="Sliding" slug="effects/sliding" zh="滑动">
         <desc />
       </category>
     </category>
     <category name="Events" slug="events" zh="事件">
       <desc>These methods are used to register behaviors to take effect when the user interacts with the browser, and to further manipulate those registered behaviors.</desc>
-      <category name="Browser Events" slug="browser-events" zh="浏览器事件">
+      <category name="Browser Events" slug="events/browser-events" zh="浏览器事件">
         <desc />
       </category>
-      <category name="Document Loading" slug="document-loading" zh="文档加载">
+      <category name="Document Loading" slug="events/document-loading" zh="文档加载">
         <desc />
       </category>
-      <category name="Event Handler Attachment" slug="event-handler-attachment" zh="事件追加">
+      <category name="Event Handler Attachment" slug="events/event-handler-attachment" zh="事件追加">
         <desc />
       </category>
-      <category name="Event Object" slug="event-object" zh="事件对象">
+      <category name="Event Object" slug="events/event-object" zh="事件对象">
         <desc>
           <p>
             jQuery's event system normalizes the event object according to
@@ -183,9 +202,7 @@
             <p>
               Certain events may have properties specific to them. Those can be accessed as properties of the
               <code>event.originalEvent</code>
-              object. To make special properties available in all event objects, they can be added to the
-              <code>jQuery.event.props</code>
-              array. This is not recommended, since it adds overhead to every event delivered by jQuery.
+              object.
             </p>
             <p>Example:</p>
             <pre>
@@ -196,20 +213,20 @@
           </div>
         </desc>
       </category>
-      <category name="Form Events" slug="form-events" zh="表单事件">
+      <category name="Form Events" slug="events/form-events" zh="表单事件">
         <desc />
       </category>
-      <category name="Keyboard Events" slug="keyboard-events" zh="键盘事件">
+      <category name="Keyboard Events" slug="events/keyboard-events" zh="键盘事件">
         <desc />
       </category>
-      <category name="Mouse Events" slug="mouse-events" zh="鼠标事件">
+      <category name="Mouse Events" slug="events/mouse-events" zh="鼠标事件">
         <desc />
       </category>
     </category>
     <category name="Forms" slug="forms" zh="表单">
       <desc>These methods and event handlers handle forms and their various elements.</desc>
     </category>
-    <category name="Internals" slug="internals" zh="内部 ">
+    <category name="Internals" slug="internals" zh="内部">
       <desc>Although this category is referred to as 'internal', any methods documented within the API site should be considered public and may be freely used.</desc>
     </category>
     <category name="Manipulation" slug="manipulation" zh="操作">
@@ -227,49 +244,49 @@
         <code>.val()</code>
         —also act as "getters," retrieving information from DOM elements for later use.
       </desc>
-      <category name="Class Attribute" slug="class-attribute" zh="Class属性">
+      <category name="Class Attribute" slug="manipulation/class-attribute" zh="Class属性">
         <desc>These methods inspect and manipulate the CSS classes assigned to elements.</desc>
       </category>
-      <category name="Copying" slug="copying" zh="拷贝">
+      <category name="Copying" slug="manipulation/copying" zh="拷贝">
         <desc>This method allows us to make copies of elements.</desc>
       </category>
-      <category name="DOM Insertion" slug="dom-insertion" zh="DOM插入">
+      <category name="DOM Insertion" slug="manipulation/dom-insertion" zh="DOM插入">
         <desc />
       </category>
-      <category name="DOM Insertion, Around" slug="dom-insertion-around" zh="包裹">
+      <category name="DOM Insertion, Around" slug="manipulation/dom-insertion-around" zh="包裹">
         <desc>These methods allow us to insert new content surrounding existing content.</desc>
       </category>
-      <category name="DOM Insertion, Inside" slug="dom-insertion-inside" zh="内部插入">
+      <category name="DOM Insertion, Inside" slug="manipulation/dom-insertion-inside" zh="内部插入">
         <desc>These methods allow us to insert new content inside an existing element.</desc>
       </category>
-      <category name="DOM Insertion, Outside" slug="dom-insertion-outside" zh="外部插入">
+      <category name="DOM Insertion, Outside" slug="manipulation/dom-insertion-outside" zh="外部插入">
         <desc>These methods allow us to insert new content outside an existing element.</desc>
       </category>
-      <category name="DOM Removal" slug="dom-removal" zh="DOM删除">
+      <category name="DOM Removal" slug="manipulation/dom-removal" zh="DOM删除">
         <desc>These methods allow us to delete elements from the DOM.</desc>
       </category>
-      <category name="DOM Replacement" slug="dom-replacement" zh="DOM替换">
+      <category name="DOM Replacement" slug="manipulation/dom-replacement" zh="DOM替换">
         <desc>These methods are used to remove content from the DOM and replace it with new content.</desc>
       </category>
-      <category name="General Attributes" slug="general-attributes" zh="通用属性">
+      <category name="General Attributes" slug="manipulation/general-attributes" zh="通用属性">
         <desc>These methods get and set DOM attributes of elements</desc>
       </category>
-      <category name="Style Properties" slug="style-properties" zh="样式属性">
+      <category name="Style Properties" slug="manipulation/style-properties" zh="样式属性">
         <desc>These methods get and set CSS-related properties of elements.</desc>
       </category>
     </category>
     <category name="Miscellaneous" slug="miscellaneous" zh="杂项">
       <desc />
-      <category name="Collection Manipulation" slug="collection-manipulation" zh="集合操作">
+      <category name="Collection Manipulation" slug="miscellaneous/collection-manipulation" zh="集合操作">
         <desc />
       </category>
-      <category name="Data Storage" slug="data-storage" zh="数据存储">
+      <category name="Data Storage" slug="miscellaneous/data-storage" zh="数据存储">
         <desc>These methods allow us to associate arbitrary data with specific DOM elements.</desc>
       </category>
-      <category name="DOM Element Methods" slug="dom-element-methods" zh="DOM元素方法">
+      <category name="DOM Element Methods" slug="miscellaneous/dom-element-methods" zh="DOM元素方法">
         <desc />
       </category>
-      <category name="Setup Methods" slug="setup-methods" zh="设置方法">
+      <category name="Setup Methods" slug="miscellaneous/setup-methods" zh="设置方法">
         <desc />
       </category>
     </category>
@@ -278,10 +295,10 @@
     </category>
     <category name="Properties" slug="properties" zh="属性">
       <desc />
-      <category name="Properties of jQuery Object Instances" slug="jquery-object-instance-properties" zh="jQuery对象实例属性">
+      <category name="Properties of jQuery Object Instances" slug="properties/jquery-object-instance-properties" zh="jQuery对象实例属性">
         <desc>Each jQuery object created with the jQuery() function contains a number of properties alongside its methods. These properties allow us to inspect various attributes of the object.</desc>
       </category>
-      <category name="Properties of the Global jQuery Object" slug="global-jquery-object-properties" zh="全局jQuery对象属性">
+      <category name="Properties of the Global jQuery Object" slug="properties/global-jquery-object-properties" zh="全局jQuery对象属性">
         <desc>These properties are associated with the global jQuery object.</desc>
       </category>
     </category>
@@ -304,7 +321,7 @@
           .
         </p>
       </desc>
-      <category name="Attribute" slug="attribute-selectors" zh="属性">
+      <category name="Attribute" slug="selectors/attribute-selectors" zh="属性">
         <desc>
           <p>The CSS specification allows elements to be identified by their attributes. While not supported by some older browsers for the purpose of styling documents, jQuery allows you to employ them regardless of the browser being used.</p>
           <p>
@@ -350,29 +367,29 @@
           </p>
         </desc>
       </category>
-      <category name="Basic" slug="basic-css-selectors" zh="基本">
+      <category name="Basic" slug="selectors/basic-css-selectors" zh="基本">
         <desc>
           The following selectors are based on the Cascading Style Sheet 1 specification, as outlined by the W3C. For more information about the specifications, visit
           <a href="http://www.w3.org/Style/CSS/#specs">http://www.w3.org/Style/CSS/#specs</a>
           .
         </desc>
       </category>
-      <category name="Basic Filter" slug="basic-filter-selectors" zh="基本筛选">
+      <category name="Basic Filter" slug="selectors/basic-filter-selectors" zh="基本筛选">
         <desc />
       </category>
-      <category name="Child Filter" slug="child-filter-selectors" zh="子元素筛选">
+      <category name="Child Filter" slug="selectors/child-filter-selectors" zh="子元素筛选">
         <desc />
       </category>
-      <category name="Content Filter" slug="content-filter-selector" zh="内容筛选">
+      <category name="Content Filter" slug="selectors/content-filter-selector" zh="内容筛选">
         <desc />
       </category>
-      <category name="Form" slug="form-selectors" zh="表单">
+      <category name="Form" slug="selectors/form-selectors" zh="表单">
         <desc />
       </category>
-      <category name="Hierarchy" slug="hierarchy-selectors" zh="层级">
+      <category name="Hierarchy" slug="selectors/hierarchy-selectors" zh="层级">
         <desc />
       </category>
-      <category name="jQuery Extensions" slug="jquery-selector-extensions" zh="jQuery扩展">
+      <category name="jQuery Extensions" slug="selectors/jquery-selector-extensions" zh="jQuery扩展">
         <desc>
           jQuery has extended the CSS3 selectors with the following selectors.  Because these selectors are jQuery extension and not part of the CSS specification, queries using them cannot take advantage of the performance boost provided by the native DOM
           <code>querySelectorAll()</code>
@@ -383,36 +400,36 @@
           .
         </desc>
       </category>
-      <category name="Visibility Filter" slug="visibility-filter-selectors" zh="可见性筛选">
+      <category name="Visibility Filter" slug="selectors/visibility-filter-selectors" zh="可见性筛选">
         <desc />
       </category>
     </category>
     <category name="Traversing" slug="traversing" zh="遍历">
       <desc />
-      <category name="Filtering" slug="filtering" zh="筛选">
+      <category name="Filtering" slug="traversing/filtering" zh="筛选">
         <desc />
       </category>
-      <category name="Miscellaneous Traversing" slug="miscellaneous-traversal" zh="其他遍历">
+      <category name="Miscellaneous Traversing" slug="traversing/miscellaneous-traversal" zh="其他遍历">
         <desc />
       </category>
-      <category name="Tree Traversal" slug="tree-traversal" zh="树遍历">
+      <category name="Tree Traversal" slug="traversing/tree-traversal" zh="树遍历">
         <desc />
       </category>
     </category>
-    <category name="Uncategorized" slug="uncategorized" zh="未分类"/>
+    <category name="Uncategorized" slug="uncategorized" zh="未分类" />
     <category name="Utilities" slug="utilities" zh="工具">
       <desc />
     </category>
     <category name="Version" slug="version" zh="版本">
       <desc />
-      <category name="Version 1.0" slug="1.0" zh="1.0 版">
+      <category name="Version 1.0" slug="version/1.0" zh="1.0 版">
         <desc>
           All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
           <a href="http://blog.jquery.com/2006/08/26/jquery-10/">jQuery 1.0 Release Notes</a>
           .
         </desc>
       </category>
-      <category name="Version 1.0.4" slug="1.0.4" zh="1.0.4 版">
+      <category name="Version 1.0.4" slug="version/1.0.4" zh="1.0.4 版">
         <desc>
           All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
 				Release Notes:
@@ -426,40 +443,40 @@
           .
         </desc>
       </category>
-      <category name="Version 1.1" slug="1.1" zh="1.1 版">
+      <category name="Version 1.1" slug="version/1.1" zh="1.1 版">
         <desc>
           All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
           <a href="http://blog.jquery.com/2007/01/14/jquery-birthday-11-new-site-new-docs/">jQuery 1.1 Release Notes</a>
           .
         </desc>
       </category>
-      <category name="Version 1.1.2" slug="1.1.2" zh="1.1.2 版">
+      <category name="Version 1.1.2" slug="version/1.1.2" zh="1.1.2 版">
         <desc>
           All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
           <a href="http://blog.jquery.com/2007/02/27/jquery-112/">jQuery 1.1.2 Release Notes</a>
           .
         </desc>
       </category>
-      <category name="Version 1.1.3" slug="1.1.3" zh="1.1.3 版">
+      <category name="Version 1.1.3" slug="version/1.1.3" zh="1.1.3 版">
         <desc>
           All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
           <a href="http://blog.jquery.com/2007/07/01/jquery-113-800-faster-still-20kb/">jQuery 1.1.3 Release Notes</a>
         </desc>
       </category>
-      <category name="Version 1.1.4" slug="1.1.4" zh="1.1.4 版">
+      <category name="Version 1.1.4" slug="version/1.1.4" zh="1.1.4 版">
         <desc>
           All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
           <a href="http://blog.jquery.com/2007/08/24/jquery-114-faster-more-tests-ready-for-12/">jQuery 1.1.4 Release Notes</a>
           .
         </desc>
       </category>
-      <category name="Version 1.2" slug="1.2" zh="1.2 版">
+      <category name="Version 1.2" slug="version/1.2" zh="1.2 版">
         <desc>
           All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
           <a href="http://docs.jquery.com/Release:jQuery_1.2">jQuery 1.2 Release Notes</a>
         </desc>
       </category>
-      <category name="Version 1.2.3" slug="1.2.3" zh="1.2.3 版">
+      <category name="Version 1.2.3" slug="version/1.2.3" zh="1.2.3 版">
         <desc>
           All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
 				Release Notes:
@@ -471,14 +488,14 @@
           .
         </desc>
       </category>
-      <category name="Version 1.2.6" slug="1.2.6" zh="1.2.6 版">
+      <category name="Version 1.2.6" slug="version/1.2.6" zh="1.2.6 版">
         <desc>
           All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
           <a href="http://docs.jquery.com/Release:jQuery_1.2.6">jQuery 1.2.6 Release Notes</a>
           .
         </desc>
       </category>
-      <category name="Version 1.3" slug="1.3" zh="1.3 版">
+      <category name="Version 1.3" slug="version/1.3" zh="1.3 版">
         <desc>
           All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
 				Release Notes:
@@ -489,42 +506,42 @@
           <a href="http://docs.jquery.com/Release:jQuery_1.3.2">1.3.2</a>
         </desc>
       </category>
-      <category name="Version 1.4" slug="1.4" zh="1.4 版">
+      <category name="Version 1.4" slug="version/1.4" zh="1.4 版">
         <desc>
           All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
           <a href="http://jquery14.com/day-01/jquery-14">jQuery 1.4 Release Notes</a>
           .
         </desc>
       </category>
-      <category name="Version 1.4.1" slug="1.4.1" zh="1.4.1 版">
+      <category name="Version 1.4.1" slug="version/1.4.1" zh="1.4.1 版">
         <desc>
           All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
           <a href="http://jquery14.com/day-12/jquery-141-released">jQuery 1.4.1 Release Notes</a>
           .
         </desc>
       </category>
-      <category name="Version 1.4.2" slug="1.4.2" zh="1.4.2 版">
+      <category name="Version 1.4.2" slug="version/1.4.2" zh="1.4.2 版">
         <desc>
           All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
           <a href="http://blog.jquery.com/2010/02/19/jquery-142-released/">jQuery 1.4.2 Release Notes</a>
           .
         </desc>
       </category>
-      <category name="Version 1.4.3" slug="1.4.3" zh="1.4.3 版">
+      <category name="Version 1.4.3" slug="version/1.4.3" zh="1.4.3 版">
         <desc>
           All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
           <a href="http://blog.jquery.com/2010/10/16/jquery-143-released/">jQuery 1.4.3 Release Notes</a>
           .
         </desc>
       </category>
-      <category name="Version 1.4.4" slug="1.4.4" zh="1.4.4 版">
+      <category name="Version 1.4.4" slug="version/1.4.4" zh="1.4.4 版">
         <desc>
           All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
           <a href="http://blog.jquery.com/2010/11/11/jquery-1-4-4-release-notes/">jQuery 1.4.4 Release Notes</a>
           .
         </desc>
       </category>
-      <category name="Version 1.5" slug="1.5" zh="1.5 版">
+      <category name="Version 1.5" slug="version/1.5" zh="1.5 版">
         <desc>
           <p>All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.</p>
           <p>
@@ -539,13 +556,13 @@
           </p>
         </desc>
       </category>
-      <category name="Version 1.5.1" slug="1.5.1" zh="1.5.1 版">
+      <category name="Version 1.5.1" slug="version/1.5.1" zh="1.5.1 版">
         <desc>Aspects of the API that were changed in the corresponding version of jQuery. API changes in jQuery 1.5.1 dealt primarily with jQuery.ajax settings and jQuery.support properties.</desc>
       </category>
-      <category name="Version 1.6" slug="1.6" zh="1.6 版">
+      <category name="Version 1.6" slug="version/1.6" zh="1.6 版">
         <desc>All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.</desc>
       </category>
-      <category name="Version 1.7" slug="1.7" zh="1.7 版">
+      <category name="Version 1.7" slug="version/1.7" zh="1.7 版">
         <desc>
           <p>
             Aspects of the API that were changed in the corresponding version of jQuery. API changes in jQuery 1.7.0 dealt primarily with the new
@@ -564,7 +581,7 @@
           <hr />
         </desc>
       </category>
-      <category name="Version 1.8" slug="1.8" zh="1.8 版">
+      <category name="Version 1.8" slug="version/1.8" zh="1.8 版">
         <desc>
           <p>
             Aspects of the API that were changed in the corresponding version of jQuery. API changes in jQuery 1.8.0 dealt primarily with animations and the removal of some methods such as
@@ -586,7 +603,7 @@
           <hr />
         </desc>
       </category>
-      <category name="Version 1.9" slug="1.9" zh="1.9 版">
+      <category name="Version 1.9" slug="version/1.9" zh="1.9 版">
         <desc>
           <p>
             Aspects of the API that were changed in the corresponding version of jQuery. Changes in jQuery 1.9 dealt primarily removal or modification of several APIs that behaved inconsistently or inefficiently in the past. A
@@ -602,7 +619,7 @@
           <hr />
         </desc>
       </category>
-      <category name="All" slug="all" zh="All"/>
+      <category name="All" slug="version/all" zh="All" />
     </category>
   </categories>
 </api>
